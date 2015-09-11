@@ -63,6 +63,7 @@
             this.textBox_vuxen.Name = "textBox_vuxen";
             this.textBox_vuxen.Size = new System.Drawing.Size(22, 20);
             this.textBox_vuxen.TabIndex = 2;
+            this.textBox_vuxen.Text = "0";
             // 
             // textBox_ungdom
             // 
@@ -70,6 +71,7 @@
             this.textBox_ungdom.Name = "textBox_ungdom";
             this.textBox_ungdom.Size = new System.Drawing.Size(22, 20);
             this.textBox_ungdom.TabIndex = 3;
+            this.textBox_ungdom.Text = "0";
             // 
             // textBox_barn
             // 
@@ -77,6 +79,7 @@
             this.textBox_barn.Name = "textBox_barn";
             this.textBox_barn.Size = new System.Drawing.Size(22, 20);
             this.textBox_barn.TabIndex = 4;
+            this.textBox_barn.Text = "0";
             // 
             // button1
             // 

@@ -63,14 +63,23 @@ namespace FirstTry
             catch (NpgsqlException ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-
-                      
+            }                      
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            Tempkop session = new Tempkop();
+            List<string> aktlista = new List<string>();
+            foreach (Object item in listBox_akter.SelectedItems)
+            {               
+                   aktlista.Add(item.ToString());              
+            }
+            session.akter = aktlista;
+                        
+            session.forestallning = listBox_forestallning.SelectedItem.ToString();
+            session.vuxna = Convert.ToInt32(textBox_vuxen.Text.ToString());
+            session.ungdom = Convert.ToInt32(textBox_ungdom.Text.ToString());
+            session.barn = Convert.ToInt32(textBox_barn.Text.ToString());
         }
     }
 }
