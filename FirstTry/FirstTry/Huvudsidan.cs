@@ -19,10 +19,10 @@ namespace FirstTry
         }
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         Tempkop session = new Tempkop();
-               
+        List<string> aktlista = new List<string>();
+
         private void Huvudsidan_Load(object sender, EventArgs e)
-        {
-            
+        {            
             DataTable dt = new DataTable();
             string query = "select namn from forestallning";
 
@@ -68,9 +68,7 @@ namespace FirstTry
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-
-            List<string> aktlista = new List<string>();
+        {            
             foreach (Object item in listBox_akter.SelectedItems)
             {
                 aktlista.Add(item.ToString());
@@ -83,6 +81,11 @@ namespace FirstTry
             session.barn = Convert.ToInt32(textBox_barn.Text.ToString());
             conn.Open();
             LaggTillTempkop();
+            
+            //foreach (string item in aktlista)
+            //{
+            //    LaggTillAktlista(item);
+            //}
             conn.Close();
         }
 
@@ -98,6 +101,44 @@ namespace FirstTry
             command.Parameters.AddWithValue("@barn", session.barn);
             return command.ExecuteNonQuery();
 
+        }
+        private int HamtaMaxId(string q, string radnamn)
+        {
+            int idnummer = 0;
+            DataTable dt3 = new DataTable();
+            try
+            {
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(q, conn);
+                da.Fill(dt3);
+
+                foreach (DataRow row in dt3.Rows)
+                {
+                    string namn = row[radnamn].ToString();
+                    idnummer = Convert.ToInt32(namn);
+                }
+
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return idnummer;
+        }
+
+        private int LaggTillAktlista(string aktinfo)
+        {
+            int id1 = HamtaMaxId("SELECT MAX(id) from tempkop", "max");
+            string query = "INSERT INTO aktlista (akt, tempkop) VALUES(@akt, @tempkop)";
+            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+                       
+                command.Parameters.AddWithValue("@akt", aktinfo);
+                command.Parameters.AddWithValue("@tempkop", id1);
+                  
+
+            
+
+            return command.ExecuteNonQuery();
+            // Gör om så vi arbetar mot idnummer.
 
         }
     }
