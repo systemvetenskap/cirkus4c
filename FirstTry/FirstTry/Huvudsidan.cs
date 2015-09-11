@@ -33,7 +33,6 @@ namespace FirstTry
                 foreach (DataRow row in dt.Rows)
                 {
                     string namn = row["namn"].ToString();
-
                     listBox_forestallning.Items.Add(namn);
                 }                
             }
@@ -66,11 +65,11 @@ namespace FirstTry
                 MessageBox.Show(ex.Message);
             }
 
+                      
+        }
 
-
-
-
-
+        private void button1_Click(object sender, EventArgs e)
+        {
             
         }
     }
