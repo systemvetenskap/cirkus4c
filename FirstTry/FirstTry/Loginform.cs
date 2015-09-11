@@ -20,6 +20,7 @@ namespace FirstTry
 
         private void button_login_Click(object sender, EventArgs e)
         {
+            bool bolean = false;
             NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
             DataTable dt = new DataTable();
             string query = "SELECT id FROM inlog WHERE anvandarnamn = 'dilan' AND losenord = '123'";
@@ -34,13 +35,22 @@ namespace FirstTry
                     int nyint = Convert.ToInt32(row["id"].ToString());
                     if (nyint > 0)
                     {
-                        this.Hide();
-                        Huvudsidan hs = new Huvudsidan();
-                        hs.ShowDialog();
-                        this.Close();
-                    }                                       
+                        bolean = true;                                              
+                    }
+                                    
                 }
-                MessageBox.Show("Inloggning misslyckades");             
+                if (bolean == false)
+                {
+                    textBox_anvandarnamn.Text = "fel";
+                }
+                else
+                {                    
+                    this.Hide();
+                    Huvudsidan hs = new Huvudsidan();
+                    hs.ShowDialog();
+                    this.Close();
+                }
+
             }
             catch (NpgsqlException ex)
             {

@@ -46,6 +46,7 @@
             this.listBox_forestallning.Name = "listBox_forestallning";
             this.listBox_forestallning.Size = new System.Drawing.Size(190, 238);
             this.listBox_forestallning.TabIndex = 0;
+            this.listBox_forestallning.SelectedIndexChanged += new System.EventHandler(this.listBox_forestallning_SelectedIndexChanged);
             // 
             // listBox_akter
             // 
@@ -128,6 +129,7 @@
             this.Controls.Add(this.listBox_forestallning);
             this.Name = "Huvudsidan";
             this.Text = "Huvudsidan";
+            this.Load += new System.EventHandler(this.Huvudsidan_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
