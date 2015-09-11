@@ -18,7 +18,8 @@ namespace FirstTry
             InitializeComponent();
         }
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-
+        Tempkop session = new Tempkop();
+               
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
             
@@ -68,18 +69,36 @@ namespace FirstTry
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Tempkop session = new Tempkop();
+
             List<string> aktlista = new List<string>();
             foreach (Object item in listBox_akter.SelectedItems)
-            {               
-                   aktlista.Add(item.ToString());              
+            {
+                aktlista.Add(item.ToString());
             }
+
             session.akter = aktlista;
-                        
             session.forestallning = listBox_forestallning.SelectedItem.ToString();
             session.vuxna = Convert.ToInt32(textBox_vuxen.Text.ToString());
             session.ungdom = Convert.ToInt32(textBox_ungdom.Text.ToString());
             session.barn = Convert.ToInt32(textBox_barn.Text.ToString());
+            conn.Open();
+            LaggTillTempkop();
+            conn.Close();
+        }
+
+        private int LaggTillTempkop()
+        {
+            String query = "INSERT INTO tempkop (forestallning, vuxna, ungdom, barn) VALUES(@forestallning, @vuxna, @ungdom, @barn)";
+
+            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+            command.Parameters.AddWithValue("@forestallning", session.forestallning);
+            command.Parameters.AddWithValue("@vuxna", session.vuxna);
+            command.Parameters.AddWithValue("@ungdom", session.ungdom);
+            command.Parameters.AddWithValue("@barn", session.barn);
+            return command.ExecuteNonQuery();
+
+
         }
     }
 }
