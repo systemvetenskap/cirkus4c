@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Security">
-      <HintPath>..\..\..\..\..\Documents\Visual Studio 2015\Projects\Mono.Security.dll</HintPath>
+      <HintPath>..\Mono.Security.dll</HintPath>
     </Reference>
     <Reference Include="Npgsql">
-      <HintPath>..\..\..\..\..\Documents\Visual Studio 2015\Projects\Npgsql.dll</HintPath>
+      <HintPath>..\Npgsql.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
