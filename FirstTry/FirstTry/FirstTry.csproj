@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Biljett.cs" />
+    <Compile Include="Forestallning.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
