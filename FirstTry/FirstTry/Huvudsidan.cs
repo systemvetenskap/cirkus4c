@@ -18,14 +18,18 @@ namespace FirstTry
             InitializeComponent();
         }
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+        NpgsqlConnection conn2 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         Tempkop session = new Tempkop();
         List<string> aktlista = new List<string>();
 
         private void Huvudsidan_Load(object sender, EventArgs e)
-        {            
+        {
+            //listBox_akter.SelectedIndex = -1;
+            //listBox_forestallning.SelectedIndex = -1;
             DataTable dt = new DataTable();
             string query = "select namn, id from forestallning";
-
+            //string forenamn = "forestallning";
+            //int forenummer = 1;
             try
             {
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
@@ -33,9 +37,31 @@ namespace FirstTry
 
                 foreach (DataRow row in dt.Rows)
                 {
+
                     string namn = row["namn"].ToString();
                     string id = row["id"].ToString();
-                   
+                    Forestallning fs = new Forestallning();
+                    fs.akter = new List<Akt>();                   
+                    fs.namn = namn;
+                    fs.id = Convert.ToInt32(id);
+                    listBox_forestallning.Items.Add(fs);
+                    //forenamn += forenummer;
+                    //forenummer++;
+
+                    Akt akt = new Akt();
+                    string query2 = "select aktinfo, id from akter where forestallningsid = " + fs.id.ToString();
+                    NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn2);
+                    DataTable dt2 = new DataTable();
+                    da2.Fill(dt2);
+                    foreach (DataRow row2 in dt2.Rows)
+                    {
+                        string aktnamn = row2["aktinfo"].ToString();
+                        string aktid = row2["id"].ToString();
+                        akt.namn = aktnamn;
+                        akt.id = Convert.ToInt32(aktid);
+                        fs.akter.Add(akt);
+                    }
+
                 }
                 //listBox_forestallning.Items.Add(namn);
             }
@@ -47,26 +73,31 @@ namespace FirstTry
 
         private void listBox_forestallning_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Forestallning fs = new Forestallning();
             listBox_akter.Items.Clear();
-            string forestallning = listBox_forestallning.SelectedItem.ToString();
-            string query2 = "SELECT akter.aktinfo FROM public.akter, public.forestallning WHERE akter.forestallningsid = forestallning.id AND forestallning.namn = '" + forestallning + "'";
-            DataTable dt2 = new DataTable();
-            try
-            {
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(query2, conn);
-                da.Fill(dt2);
+            //string forestallning = listBox_forestallning.SelectedItem.ToString();
+            //string query2 = "SELECT aktinfo, id FROM public.akter WHERE akter.forestallningsid = " + fs.id;
+            //DataTable dt2 = new DataTable();
+            //try
+            //{
+            //    NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
+            //    da2.Fill(dt2);
 
-                foreach (DataRow row in dt2.Rows)
-                {
-                    string namn = row["aktinfo"].ToString();
+            //    foreach (DataRow row2 in dt2.Rows)
+            //    {
+            //        string aktnamn = row2["aktinfo"].ToString();
+            //        string aktid = row2["id"].ToString();
+            //        Akt akt = new Akt();
+            //        akt.namn = aktnamn;
+            //        akt.id = Convert.ToInt32(aktid);
+            //        fs.akter.Add(akt);
 
-                    listBox_akter.Items.Add(namn);
-                }
-            }
-            catch (NpgsqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }                      
+            //    }
+            //}
+            //catch (NpgsqlException ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         private void button1_Click(object sender, EventArgs e)
