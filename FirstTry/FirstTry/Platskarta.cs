@@ -88,7 +88,7 @@ namespace FirstTry
                 label1.Text = tk.vuxna.ToString();
                 label2.Text = tk.ungdom.ToString();
                 label3.Text = tk.barn.ToString();
-                //tk.forestallning = (Forestallning)dr[1];
+                tk.forestallning = (Forestallning)dr[4];
             }
             
 
