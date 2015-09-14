@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace FirstTry
 {
-    public class Tempkop
+    class Tempkop
     {
-        public string forestallning { get; set; }
-        public List<string> akter { get; set; }
+        
+        public Forestallning forestallning { get; set; }
+        public List<Akt> akter { get; set; }
         public int vuxna { get; set; }
         public int ungdom { get; set; }
         public int barn { get; set; }

@@ -20,7 +20,7 @@ namespace FirstTry
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         
         Tempkop session = new Tempkop();
-        List<string> aktlista = new List<string>();
+        List<Akt> aktlista = new List<Akt>();
 
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
@@ -111,24 +111,28 @@ namespace FirstTry
 
         private void button1_Click(object sender, EventArgs e)
         {            
-            foreach (Object item in listBox_akter.SelectedItems)
+            foreach (Akt akt in listBox_akter.SelectedItems)
             {
-                aktlista.Add(item.ToString());
+                aktlista.Add(akt);
             }
 
             session.akter = aktlista;
-            session.forestallning = listBox_forestallning.SelectedItem.ToString();
+            session.forestallning = (Forestallning)listBox_forestallning.SelectedItem;
             session.vuxna = Convert.ToInt32(textBox_vuxen.Text.ToString());
             session.ungdom = Convert.ToInt32(textBox_ungdom.Text.ToString());
             session.barn = Convert.ToInt32(textBox_barn.Text.ToString());
             conn.Open();
             LaggTillTempkop();
-            
-            //foreach (string item in aktlista)
-            //{
-            //    LaggTillAktlista(item);
-            //}
+
+            foreach (Akt akt in aktlista)
+            {
+                LaggTillAktlista(akt);
+            }
             conn.Close();
+            this.Hide();
+            Platskarta pk = new Platskarta();
+            pk.ShowDialog();
+            this.Close();
         }
 
         private int LaggTillTempkop()
@@ -137,7 +141,7 @@ namespace FirstTry
 
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
-            command.Parameters.AddWithValue("@forestallning", session.forestallning);
+            command.Parameters.AddWithValue("@forestallning", session.forestallning.ToString());
             command.Parameters.AddWithValue("@vuxna", session.vuxna);
             command.Parameters.AddWithValue("@ungdom", session.ungdom);
             command.Parameters.AddWithValue("@barn", session.barn);
@@ -167,13 +171,13 @@ namespace FirstTry
             return idnummer;
         }
 
-        private int LaggTillAktlista(string aktinfo)
+        private int LaggTillAktlista(Akt aktinfo)
         {
             int id1 = HamtaMaxId("SELECT MAX(id) from tempkop", "max");
             string query = "INSERT INTO aktlista (akt, tempkop) VALUES(@akt, @tempkop)";
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
                        
-                command.Parameters.AddWithValue("@akt", aktinfo);
+                command.Parameters.AddWithValue("@akt", aktinfo.id);
                 command.Parameters.AddWithValue("@tempkop", id1);
                   
 
