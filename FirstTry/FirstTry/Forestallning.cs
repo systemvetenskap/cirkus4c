@@ -10,6 +10,7 @@ namespace FirstTry
     {
         public string namn { get; set; }
         public int id { get; set; }
+        public List<Akt> akter { get; set; }
 
 
 
