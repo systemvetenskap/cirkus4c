@@ -9,8 +9,8 @@ namespace FirstTry
     class Biljett
     {
 
-        public string forestallning { get; set; }
-        public List<string> akter { get; set; }
+        public Forestallning forestallning { get; set; }
+        public List<Akt> akter { get; set; }
         public int pris { get; set; }
         public DateTime tid { get; set; }
         public string biljettyp { get; set; }

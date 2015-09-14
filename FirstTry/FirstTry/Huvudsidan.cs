@@ -137,11 +137,11 @@ namespace FirstTry
 
         private int LaggTillTempkop()
         {
-            String query = "INSERT INTO tempkop (forestallning, vuxna, ungdom, barn) VALUES(@forestallning, @vuxna, @ungdom, @barn)";
+            string query = "INSERT INTO tempkop (forestallning, vuxna, ungdom, barn) VALUES(@forestallning, @vuxna, @ungdom, @barn)";
 
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
-            command.Parameters.AddWithValue("@forestallning", session.forestallning.ToString());
+            command.Parameters.AddWithValue("@forestallning", session.forestallning.id);
             command.Parameters.AddWithValue("@vuxna", session.vuxna);
             command.Parameters.AddWithValue("@ungdom", session.ungdom);
             command.Parameters.AddWithValue("@barn", session.barn);
