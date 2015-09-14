@@ -130,7 +130,7 @@ namespace FirstTry
             }
             conn.Close();
             this.Hide();
-            Platskarta pk = new Platskarta();
+            Platskarta pk = new Platskarta(session);
             pk.ShowDialog();
             this.Close();
         }

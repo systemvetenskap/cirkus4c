@@ -10,16 +10,20 @@ using System.Windows.Forms;
 using Npgsql;
 namespace FirstTry
 {
-    public partial class Platskarta : Form
+    partial class Platskarta : Form
     {
-        public Platskarta()
+        Tempkop tk = new Tempkop();
+
+        public Platskarta(Tempkop tk2)
         {
             InitializeComponent();
+            tk = tk2;
         }
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         DataTable dt = new DataTable();
-        Tempkop tk = new Tempkop();
+        
+        
 
         private void button_A1_Click(object sender, EventArgs e)
         {
@@ -27,10 +31,10 @@ namespace FirstTry
             ReserveraBiljett();
 
 
-            foreach (Akt akt in tk.akter)
-            {
-                Innehaller(akt.id, button_A1.Text);
-            }
+     //       foreach (Akt akt in tk.akter)
+       //     {
+         //       Innehaller(akt.id, button_A1.Text);
+           // }
             conn.Close();
         }
 
@@ -72,62 +76,9 @@ namespace FirstTry
 
         private void Platskarta_Load(object sender, EventArgs e)
         {
-
-            string query = "select * from tempkop where id = (select MAX(id) from tempkop)";
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            DataTableReader dr = new DataTableReader(dt);
-                    
-
-            while (dr.Read())
-            {
-                tk.vuxna = Convert.ToInt32(dr[1]);
-                tk.ungdom = Convert.ToInt32(dr[2]);
-                tk.barn = Convert.ToInt32(dr[3]);
-                label1.Text = tk.vuxna.ToString();
-                label2.Text = tk.ungdom.ToString();
-                label3.Text = tk.barn.ToString();
-                tk.forestallning = (Forestallning)dr[4];
-            }
-            
-
-            //try
-            //{
-            //    List<int> lstSelect = new List<int>();
-
-            //    NpgsqlCommand command = new NpgsqlCommand(query, conn);
-            //    NpgsqlDataReader dr = command.ExecuteReader();
-
-            //    while (dr.Read())
-            //    {
-            //        for (int i = 0; i < dr.FieldCount; i++)
-            //        {
-            //            lstSelect.Add(Convert.ToInt32(dr[i]));
-            //        }
-            //    }
-
-            //}
-            //catch (NpgsqlException ex)
-            //{
-            //    MessageBox.Show(ex.ToString());
-            //}
-
-
-            //foreach (DataRow item in dt.Rows)
-            //{
-            //dt.Select("vuxna");
-            int vuxna = Convert.ToInt32(dt.Select("vuxna"));
-            //int ungdomar = Convert.ToInt32(item["ungdomar"]);
-            //int barn = Convert.ToInt32(item["barn"]);
-            tk.vuxna = vuxna;
-            //tk.ungdom = ungdomar;
-            //tk.barn = barn;
-
-            //}
-            
-
-
+            label1.Text = tk.vuxna.ToString();
+            label2.Text = tk.ungdom.ToString();
+            label3.Text = tk.barn.ToString();
 
 
         }
