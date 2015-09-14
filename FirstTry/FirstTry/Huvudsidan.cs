@@ -18,7 +18,7 @@ namespace FirstTry
             InitializeComponent();
         }
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-        NpgsqlConnection conn2 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+        
         Tempkop session = new Tempkop();
         List<string> aktlista = new List<string>();
 
@@ -48,13 +48,14 @@ namespace FirstTry
                     //forenamn += forenummer;
                     //forenummer++;
 
-                    Akt akt = new Akt();
+                    
                     string query2 = "select aktinfo, id from akter where forestallningsid = " + fs.id.ToString();
-                    NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn2);
+                    NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
                     DataTable dt2 = new DataTable();
                     da2.Fill(dt2);
                     foreach (DataRow row2 in dt2.Rows)
                     {
+                        Akt akt = new Akt();
                         string aktnamn = row2["aktinfo"].ToString();
                         string aktid = row2["id"].ToString();
                         akt.namn = aktnamn;
@@ -74,7 +75,15 @@ namespace FirstTry
         private void listBox_forestallning_SelectedIndexChanged(object sender, EventArgs e)
         {
             Forestallning fs = new Forestallning();
+            fs.akter = new List<Akt>();
             listBox_akter.Items.Clear();
+            fs = (Forestallning)listBox_forestallning.SelectedItem;
+            foreach (Akt akt in fs.akter)
+            {
+                listBox_akter.Items.Add(akt);
+            }
+
+
             //string forestallning = listBox_forestallning.SelectedItem.ToString();
             //string query2 = "SELECT aktinfo, id FROM public.akter WHERE akter.forestallningsid = " + fs.id;
             //DataTable dt2 = new DataTable();
