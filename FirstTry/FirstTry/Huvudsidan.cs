@@ -24,7 +24,7 @@ namespace FirstTry
         private void Huvudsidan_Load(object sender, EventArgs e)
         {            
             DataTable dt = new DataTable();
-            string query = "select namn from forestallning";
+            string query = "select namn, id from forestallning";
 
             try
             {
@@ -34,8 +34,10 @@ namespace FirstTry
                 foreach (DataRow row in dt.Rows)
                 {
                     string namn = row["namn"].ToString();
-                    listBox_forestallning.Items.Add(namn);
-                }                
+                    string id = row["id"].ToString();
+                   
+                }
+                //listBox_forestallning.Items.Add(namn);
             }
             catch (NpgsqlException ex)
             {
