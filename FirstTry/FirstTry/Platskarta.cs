@@ -72,35 +72,51 @@ namespace FirstTry
 
         private void Platskarta_Load(object sender, EventArgs e)
         {
+
             string query = "select * from tempkop where id = (select MAX(id) from tempkop)";
-            //NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
-            //da.Fill(dt);
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            DataTableReader dr = new DataTableReader(dt);
+                    
 
-            try
+            while (dr.Read())
             {
-                List<int> lstSelect = new List<int>();
-
-                NpgsqlCommand command = new NpgsqlCommand(query, conn);
-                NpgsqlDataReader dr = command.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    for (int i = 0; i < dr.FieldCount; i++)
-                    {
-                        lstSelect.Add(Convert.ToInt32(dr[i]));
-                    }
-                }
-
+                tk.vuxna = Convert.ToInt32(dr[1]);
+                tk.ungdom = Convert.ToInt32(dr[2]);
+                tk.barn = Convert.ToInt32(dr[3]);
+                label1.Text = tk.vuxna.ToString();
+                label2.Text = tk.ungdom.ToString();
+                label3.Text = tk.barn.ToString();
+                //tk.forestallning = (Forestallning)dr[1];
             }
-            catch (NpgsqlException ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            
+
+            //try
+            //{
+            //    List<int> lstSelect = new List<int>();
+
+            //    NpgsqlCommand command = new NpgsqlCommand(query, conn);
+            //    NpgsqlDataReader dr = command.ExecuteReader();
+
+            //    while (dr.Read())
+            //    {
+            //        for (int i = 0; i < dr.FieldCount; i++)
+            //        {
+            //            lstSelect.Add(Convert.ToInt32(dr[i]));
+            //        }
+            //    }
+
+            //}
+            //catch (NpgsqlException ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
 
 
-                //foreach (DataRow item in dt.Rows)
-                //{
-                //dt.Select("vuxna");
+            //foreach (DataRow item in dt.Rows)
+            //{
+            //dt.Select("vuxna");
             int vuxna = Convert.ToInt32(dt.Select("vuxna"));
             //int ungdomar = Convert.ToInt32(item["ungdomar"]);
             //int barn = Convert.ToInt32(item["barn"]);
@@ -109,9 +125,7 @@ namespace FirstTry
             //tk.barn = barn;
 
             //}
-            label1.Text = tk.vuxna.ToString();
-            label2.Text = tk.ungdom.ToString();
-            label3.Text = tk.barn.ToString();
+            
 
 
 
