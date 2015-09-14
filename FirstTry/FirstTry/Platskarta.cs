@@ -21,14 +21,7 @@ namespace FirstTry
         }
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-        DataTable dt = new DataTable();
-        
-        
-
-        private void button_A1_Click(object sender, EventArgs e)
-        {
-            generellknapp(button_A1);
-        }
+        DataTable dt = new DataTable();    
 
         private void generellknapp(Button knapp)
         {
@@ -44,7 +37,6 @@ namespace FirstTry
             knapp.BackColor = Color.Red;
             knapp.Enabled = false;
         }
-
 
         private int ReserveraBiljett()
         {
@@ -95,8 +87,46 @@ namespace FirstTry
             label1.Text = tk.vuxna.ToString();
             label2.Text = tk.ungdom.ToString();
             label3.Text = tk.barn.ToString();
+        }
 
+        private void button_A1_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_A1);
+        }
 
+        private void button_A2_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_A2);
+        }
+
+        private void button_A3_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_A3);
+        }
+
+        private void button_A4_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_A4);
+        }
+
+        private void button_A5_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_A5);
+        }
+
+        private void button_A6_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_A6);
+        }
+
+        private void button_A7_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_A7);
+        }
+
+        private void button_A8_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_A8);
         }
     }
 }

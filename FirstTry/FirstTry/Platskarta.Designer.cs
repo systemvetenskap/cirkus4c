@@ -64,6 +64,7 @@
             this.button_A2.TabIndex = 1;
             this.button_A2.Text = "A2";
             this.button_A2.UseVisualStyleBackColor = false;
+            this.button_A2.Click += new System.EventHandler(this.button_A2_Click);
             // 
             // button_A3
             // 
@@ -74,6 +75,7 @@
             this.button_A3.TabIndex = 2;
             this.button_A3.Text = "A3";
             this.button_A3.UseVisualStyleBackColor = false;
+            this.button_A3.Click += new System.EventHandler(this.button_A3_Click);
             // 
             // button_A4
             // 
@@ -84,6 +86,7 @@
             this.button_A4.TabIndex = 3;
             this.button_A4.Text = "A4";
             this.button_A4.UseVisualStyleBackColor = false;
+            this.button_A4.Click += new System.EventHandler(this.button_A4_Click);
             // 
             // button_A5
             // 
@@ -94,6 +97,7 @@
             this.button_A5.TabIndex = 4;
             this.button_A5.Text = "A5";
             this.button_A5.UseVisualStyleBackColor = false;
+            this.button_A5.Click += new System.EventHandler(this.button_A5_Click);
             // 
             // button_A6
             // 
@@ -104,6 +108,7 @@
             this.button_A6.TabIndex = 5;
             this.button_A6.Text = "A6";
             this.button_A6.UseVisualStyleBackColor = false;
+            this.button_A6.Click += new System.EventHandler(this.button_A6_Click);
             // 
             // button_A7
             // 
@@ -114,6 +119,7 @@
             this.button_A7.TabIndex = 6;
             this.button_A7.Text = "A7";
             this.button_A7.UseVisualStyleBackColor = false;
+            this.button_A7.Click += new System.EventHandler(this.button_A7_Click);
             // 
             // button_A8
             // 
@@ -124,6 +130,7 @@
             this.button_A8.TabIndex = 7;
             this.button_A8.Text = "A8";
             this.button_A8.UseVisualStyleBackColor = false;
+            this.button_A8.Click += new System.EventHandler(this.button_A8_Click);
             // 
             // radioButton_vuxen
             // 
