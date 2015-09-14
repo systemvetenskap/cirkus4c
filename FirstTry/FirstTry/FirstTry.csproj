@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Akt.cs" />
     <Compile Include="Biljett.cs" />
     <Compile Include="Forestallning.cs" />
     <Compile Include="Form1.cs">
