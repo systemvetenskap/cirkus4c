@@ -27,16 +27,24 @@ namespace FirstTry
 
         private void button_A1_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            ReserveraBiljett();
-
-
-     //       foreach (Akt akt in tk.akter)
-       //     {
-         //       Innehaller(akt.id, button_A1.Text);
-           // }
-            conn.Close();
+            generellknapp(button_A1);
         }
+
+        private void generellknapp(Button knapp)
+        {
+            conn.Open();
+            //dubbelkolla igen först så den inte är bokad
+            ReserveraBiljett();
+            foreach (Akt akt in tk.akter)
+            {
+                Innehaller(akt.id, knapp.Text);
+            }
+            conn.Close();
+
+            knapp.BackColor = Color.Red;
+            knapp.Enabled = false;
+        }
+
 
         private int ReserveraBiljett()
         {
@@ -70,8 +78,16 @@ namespace FirstTry
             DataTable dt = new DataTable();
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
             da.Fill(dt);
+            string id = "";
 
-            return Convert.ToInt32(dt.Rows.ToString());
+            foreach (DataRow row in dt.Rows)
+            {
+                id = row["id"].ToString();
+            }
+
+            int idnummer = Convert.ToInt32(id);
+
+            return idnummer;
         }
 
         private void Platskarta_Load(object sender, EventArgs e)
