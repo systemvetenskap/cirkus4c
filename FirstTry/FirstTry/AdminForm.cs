@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Npgsql;
 
 namespace FirstTry
 {
@@ -17,9 +18,20 @@ namespace FirstTry
             InitializeComponent();
         }
 
+       // NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+
+
         private void button1_Click(object sender, EventArgs e)
         {
-
+            //string sql = "select * from akter";
+            //DataSet ds = new DataSet();
+            //DataTable dt = new DataTable();
+            //NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+            //NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+            //ds.Reset();
+            //da.Fill(ds);
+            //dt = ds.Tables[0];
+            //richTextBoxForestInf.Text = dt.ToString();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -39,6 +51,13 @@ namespace FirstTry
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void AdminForm_Load(object sender, EventArgs e)
+        {
+
+           
 
         }
     }

@@ -85,7 +85,7 @@
             this.buttonLaggTillForest.Name = "buttonLaggTillForest";
             this.buttonLaggTillForest.Size = new System.Drawing.Size(122, 23);
             this.buttonLaggTillForest.TabIndex = 3;
-            this.buttonLaggTillForest.Text = "Lägg till föreställning";
+            this.buttonLaggTillForest.Text = "Lägg till / ändra";
             this.buttonLaggTillForest.UseVisualStyleBackColor = true;
             this.buttonLaggTillForest.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -103,7 +103,7 @@
             this.buttonLaggTillAktInfo.Name = "buttonLaggTillAktInfo";
             this.buttonLaggTillAktInfo.Size = new System.Drawing.Size(100, 23);
             this.buttonLaggTillAktInfo.TabIndex = 6;
-            this.buttonLaggTillAktInfo.Text = "Lägg till Akt";
+            this.buttonLaggTillAktInfo.Text = "Lägg till /ändra";
             this.buttonLaggTillAktInfo.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -288,6 +288,7 @@
             this.Controls.Add(this.listBoxAdminForestallning);
             this.Name = "AdminForm";
             this.Text = "AdminForm";
+            this.Load += new System.EventHandler(this.AdminForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
