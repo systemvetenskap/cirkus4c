@@ -67,6 +67,12 @@
     <Compile Include="Huvudsidan.Designer.cs">
       <DependentUpon>Huvudsidan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kunduppgifter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kunduppgifter.Designer.cs">
+      <DependentUpon>Kunduppgifter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Loginform.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Huvudsidan.resx">
       <DependentUpon>Huvudsidan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kunduppgifter.resx">
+      <DependentUpon>Kunduppgifter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Loginform.resx">
       <DependentUpon>Loginform.cs</DependentUpon>
