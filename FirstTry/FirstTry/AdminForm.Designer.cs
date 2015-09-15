@@ -28,19 +28,160 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.listBoxAdminForestallning = new System.Windows.Forms.ListBox();
+            this.textBoxForestNamn = new System.Windows.Forms.TextBox();
+            this.labelForestNamn = new System.Windows.Forms.Label();
+            this.buttonLaggTillForest = new System.Windows.Forms.Button();
+            this.listBoxAkter = new System.Windows.Forms.ListBox();
+            this.buttonLaggTillAktInfo = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.richTextBoxAktInf = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxForestInf = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
+            // 
+            // listBoxAdminForestallning
+            // 
+            this.listBoxAdminForestallning.FormattingEnabled = true;
+            this.listBoxAdminForestallning.Location = new System.Drawing.Point(192, 41);
+            this.listBoxAdminForestallning.Name = "listBoxAdminForestallning";
+            this.listBoxAdminForestallning.Size = new System.Drawing.Size(168, 277);
+            this.listBoxAdminForestallning.TabIndex = 0;
+            // 
+            // textBoxForestNamn
+            // 
+            this.textBoxForestNamn.Location = new System.Drawing.Point(39, 58);
+            this.textBoxForestNamn.Name = "textBoxForestNamn";
+            this.textBoxForestNamn.Size = new System.Drawing.Size(147, 20);
+            this.textBoxForestNamn.TabIndex = 1;
+            // 
+            // labelForestNamn
+            // 
+            this.labelForestNamn.AutoSize = true;
+            this.labelForestNamn.Location = new System.Drawing.Point(36, 41);
+            this.labelForestNamn.Name = "labelForestNamn";
+            this.labelForestNamn.Size = new System.Drawing.Size(97, 13);
+            this.labelForestNamn.TabIndex = 2;
+            this.labelForestNamn.Text = "Föreställningsnamn";
+            this.labelForestNamn.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // buttonLaggTillForest
+            // 
+            this.buttonLaggTillForest.Location = new System.Drawing.Point(238, 360);
+            this.buttonLaggTillForest.Name = "buttonLaggTillForest";
+            this.buttonLaggTillForest.Size = new System.Drawing.Size(122, 23);
+            this.buttonLaggTillForest.TabIndex = 3;
+            this.buttonLaggTillForest.Text = "Lägg till föreställning";
+            this.buttonLaggTillForest.UseVisualStyleBackColor = true;
+            this.buttonLaggTillForest.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // listBoxAkter
+            // 
+            this.listBoxAkter.FormattingEnabled = true;
+            this.listBoxAkter.Location = new System.Drawing.Point(517, 41);
+            this.listBoxAkter.Name = "listBoxAkter";
+            this.listBoxAkter.Size = new System.Drawing.Size(187, 277);
+            this.listBoxAkter.TabIndex = 4;
+            // 
+            // buttonLaggTillAktInfo
+            // 
+            this.buttonLaggTillAktInfo.Location = new System.Drawing.Point(604, 360);
+            this.buttonLaggTillAktInfo.Name = "buttonLaggTillAktInfo";
+            this.buttonLaggTillAktInfo.Size = new System.Drawing.Size(100, 23);
+            this.buttonLaggTillAktInfo.TabIndex = 6;
+            this.buttonLaggTillAktInfo.Text = "Lägg till";
+            this.buttonLaggTillAktInfo.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(391, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Aktinfo";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // richTextBoxAktInf
+            // 
+            this.richTextBoxAktInf.Location = new System.Drawing.Point(394, 57);
+            this.richTextBoxAktInf.Name = "richTextBoxAktInf";
+            this.richTextBoxAktInf.Size = new System.Drawing.Size(100, 96);
+            this.richTextBoxAktInf.TabIndex = 8;
+            this.richTextBoxAktInf.Text = "";
+            // 
+            // richTextBoxForestInf
+            // 
+            this.richTextBoxForestInf.Location = new System.Drawing.Point(39, 111);
+            this.richTextBoxForestInf.Name = "richTextBoxForestInf";
+            this.richTextBoxForestInf.Size = new System.Drawing.Size(117, 101);
+            this.richTextBoxForestInf.TabIndex = 9;
+            this.richTextBoxForestInf.Text = "";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(36, 94);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(125, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Föreställnings information";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(396, 169);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "label3";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(399, 185);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 13;
             // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(776, 445);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.richTextBoxForestInf);
+            this.Controls.Add(this.richTextBoxAktInf);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonLaggTillAktInfo);
+            this.Controls.Add(this.listBoxAkter);
+            this.Controls.Add(this.buttonLaggTillForest);
+            this.Controls.Add(this.labelForestNamn);
+            this.Controls.Add(this.textBoxForestNamn);
+            this.Controls.Add(this.listBoxAdminForestallning);
             this.Name = "AdminForm";
             this.Text = "AdminForm";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.ListBox listBoxAdminForestallning;
+        private System.Windows.Forms.TextBox textBoxForestNamn;
+        private System.Windows.Forms.Label labelForestNamn;
+        private System.Windows.Forms.Button buttonLaggTillForest;
+        private System.Windows.Forms.ListBox listBoxAkter;
+        private System.Windows.Forms.Button buttonLaggTillAktInfo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RichTextBox richTextBoxAktInf;
+        private System.Windows.Forms.RichTextBox richTextBoxForestInf;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
