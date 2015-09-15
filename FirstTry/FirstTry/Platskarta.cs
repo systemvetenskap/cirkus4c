@@ -155,7 +155,11 @@ namespace FirstTry
 
             if (x >= 8)
             {
-                MessageBox.Show("Tyvärr finns inte tillräkligt med plats");
+                MessageBox.Show("Tyvärr finns inte tillräkligt med plats, utanför");
+                this.Hide();
+                Huvudsidan hu = new Huvudsidan();
+                hu.ShowDialog();
+                this.Close();
             }
 
             foreach (DataRow row in dt.Rows)
@@ -165,7 +169,11 @@ namespace FirstTry
 
                 if (x >= 8)
                 {
-                    MessageBox.Show("Tyvärr finns inte tillräkligt med plats");
+                    MessageBox.Show("Tyvärr finns inte tillräkligt med plats, innanför");
+                    this.Hide();
+                    Huvudsidan hu = new Huvudsidan();
+                    hu.ShowDialog();
+                    this.Close();
                 }
                 else
                 {
@@ -199,9 +207,7 @@ namespace FirstTry
                         gk(button_A8, fusk);
                     }
                 }
-
                 x++;
-
             }
 
         }
