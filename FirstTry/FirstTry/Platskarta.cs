@@ -13,15 +13,17 @@ namespace FirstTry
     partial class Platskarta : Form
     {
         Tempkop tk = new Tempkop();
-
+         
         public Platskarta(Tempkop tk2)
         {
             InitializeComponent();
             tk = tk2;
+
         }
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-        DataTable dt = new DataTable();    
+        DataTable dt = new DataTable();
+        int i = 0; 
 
         private void generellknapp(Button knapp)
         {
@@ -35,10 +37,7 @@ namespace FirstTry
                 conn.Open();
                 //dubbelkolla igen först så den inte är bokad
                 ReserveraBiljett();
-                foreach (Akt akt in tk.akter)
-                {
-                    Innehaller(akt.id, knapp.Text);
-                }
+                Innehaller(tk.akter[tk.antal].id, knapp.Text);
                 conn.Close();
 
                 knapp.BackColor = Color.Red;
@@ -70,16 +69,34 @@ namespace FirstTry
 
         private int ReserveraBiljett()
         {
-            Biljett biljetten = new Biljett();
-            string query = "INSERT INTO biljett (totalpris) VALUES(@totalpris)";
 
-            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+            string query = "";
+
+            if (tk.reservation == true)
+            {
+                query = "INSERT INTO biljett (totalpris, tidsstampel) VALUES(@totalpris, @tidsstampel)";
+                Biljett biljetten = new Biljett();
+                NpgsqlCommand command = new NpgsqlCommand(query, conn);
+                command.Parameters.AddWithValue("@totalpris", 66);
+                command.Parameters.AddWithValue("@tidsstampel", DateTime.Now);
+
+                return command.ExecuteNonQuery();
+            }
+            else
+            {
+                query = "INSERT INTO biljett (totalpris) VALUES(@totalpris)";
+                Biljett biljetten = new Biljett();
+                NpgsqlCommand command = new NpgsqlCommand(query, conn);
+                command.Parameters.AddWithValue("@totalpris", 66);
+
+                return command.ExecuteNonQuery();
+            }
+
 
             //command.Parameters.AddWithValue("@tidsstampel", session.forestallning.ToString());
             //command.Parameters.AddWithValue("@datum", session.vuxna);
             //command.Parameters.AddWithValue("@tid", session.ungdom);
-            command.Parameters.AddWithValue("@totalpris", 66);
-            return command.ExecuteNonQuery();
+
         }
 
         private int Innehaller(int aktint, string kn)
@@ -118,48 +135,72 @@ namespace FirstTry
             label2.Text = tk.ungdom.ToString();
             label3.Text = tk.barn.ToString();
 
+
+
             radiokoll();
 
-            int id = tk.akter[0].id;
+            Akt temp = new Akt();
+
+            temp = tk.akter[tk.antal];
+            
+            int id = temp.id;
 
             string query = "select platser_id from innehaller where akter_id = ";
             query += id.ToString();
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
             da.Fill(dt);
+            int x = 0;
+            x = tk.vuxna + tk.barn + tk.ungdom;
 
-
+            if (x >= 8)
+            {
+                MessageBox.Show("Tyvärr finns inte tillräkligt med plats");
+            }
 
             foreach (DataRow row in dt.Rows)
             {
-                string platsid = row["platser_id"].ToString();
-
-                string query2 = "select nummer from platser where id =" + platsid;
-                
 
                 
-                NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
-                DataTable dt2 = new DataTable();
-                da2.Fill(dt2);
-                DataTableReader dr = new DataTableReader(dt2);
 
-                string platsnamn = "";
-                
-
-                while (dr.Read())
+                if (x >= 8)
                 {
-                    string fusk = "button_";
-                    platsnamn = dr[0].ToString();
-                    fusk += platsnamn;
-
-                    gk(button_A1, fusk);
-                    gk(button_A2, fusk);
-                    gk(button_A3, fusk);
-                    gk(button_A4, fusk);
-                    gk(button_A5, fusk);
-                    gk(button_A6, fusk);
-                    gk(button_A7, fusk);
-                    gk(button_A8, fusk);
+                    MessageBox.Show("Tyvärr finns inte tillräkligt med plats");
                 }
+                else
+                {
+                    string platsid = row["platser_id"].ToString();
+
+                    string query2 = "select nummer from platser where id =" + platsid;
+
+
+
+                    NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
+                    DataTable dt2 = new DataTable();
+                    da2.Fill(dt2);
+                    DataTableReader dr = new DataTableReader(dt2);
+
+                    string platsnamn = "";
+
+
+                    while (dr.Read())
+                    {
+                        string fusk = "button_";
+                        platsnamn = dr[0].ToString();
+                        fusk += platsnamn;
+
+                        gk(button_A1, fusk);
+                        gk(button_A2, fusk);
+                        gk(button_A3, fusk);
+                        gk(button_A4, fusk);
+                        gk(button_A5, fusk);
+                        gk(button_A6, fusk);
+                        gk(button_A7, fusk);
+                        gk(button_A8, fusk);
+                    }
+                }
+
+                x++;
+
             }
 
         }
@@ -187,18 +228,48 @@ namespace FirstTry
             }
             if (x == 3)
             {
-                DialogResult dialogResult = MessageBox.Show("Vill du Slutföra köpet?", "Bokning", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    if (tk.reservation == true)
-                    {
 
-                    }
-                }
-                else if (dialogResult == DialogResult.No)
+                tk.antal++;
+                this.Hide();
+                if (tk.antal < tk.loopar)
                 {
-                    //do something else
+                    
+                    Platskarta pk2 = new Platskarta(tk);
+                    pk2.ShowDialog();
+                    
+
                 }
+                else
+                {
+                    DialogResult dialogResult = MessageBox.Show("Vill du Slutföra köpet?", "Bokning", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        
+
+                        if (tk.reservation == true)
+                        {
+                            Kunduppgifter ku = new Kunduppgifter();
+                            ku.ShowDialog();
+                        }
+                        else
+                        {
+                            Huvudsidan hu = new Huvudsidan();
+                            hu.ShowDialog();
+                        }
+
+                        
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        //ej krav?!
+                        Huvudsidan hu = new Huvudsidan();
+                        hu.ShowDialog();
+                    }
+
+                }
+
+                this.Close();
+                
             }
 
         }

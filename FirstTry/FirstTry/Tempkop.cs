@@ -15,6 +15,8 @@ namespace FirstTry
         public int ungdom { get; set; }
         public int barn { get; set; }
         public bool reservation { get; set; }
+        public int antal { get; set; }
+        public int loopar { get; set; }
 
 
        

@@ -110,11 +110,15 @@ namespace FirstTry
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {            
+        {
+            int x = 0;  
             foreach (Akt akt in listBox_akter.SelectedItems)
             {
                 aktlista.Add(akt);
+                x++;
             }
+
+            
 
             session.akter = aktlista;
             session.forestallning = (Forestallning)listBox_forestallning.SelectedItem;
@@ -122,6 +126,8 @@ namespace FirstTry
             session.ungdom = Convert.ToInt32(textBox_ungdom.Text.ToString());
             session.barn = Convert.ToInt32(textBox_barn.Text.ToString());
             session.reservation = checkBox1.Checked;
+            session.antal = 0;
+            session.loopar = x; 
             conn.Open();
             LaggTillTempkop();
 
