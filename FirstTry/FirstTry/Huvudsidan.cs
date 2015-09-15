@@ -129,6 +129,8 @@ namespace FirstTry
                 LaggTillAktlista(akt);
             }
             conn.Close();
+
+
             this.Hide();
             Platskarta pk = new Platskarta(session);
             pk.ShowDialog();

@@ -87,11 +87,64 @@ namespace FirstTry
             label1.Text = tk.vuxna.ToString();
             label2.Text = tk.ungdom.ToString();
             label3.Text = tk.barn.ToString();
+
+            int id = tk.akter[0].id;
+
+            string query = "select platser_id from innehaller where akter_id = ";
+            query += id.ToString();
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+            da.Fill(dt);
+
+
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string platsid = row["platser_id"].ToString();
+
+                string query2 = "select nummer from platser where id =" + platsid;
+                
+
+                
+                NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
+                DataTable dt2 = new DataTable();
+                da2.Fill(dt2);
+                DataTableReader dr = new DataTableReader(dt2);
+
+                string platsnamn = "";
+                
+
+                while (dr.Read())
+                {
+                    string fusk = "button_";
+                    platsnamn = dr[0].ToString();
+                    fusk += platsnamn;
+
+                    gk(button_A1, fusk);
+                    gk(button_A2, fusk);
+                    gk(button_A3, fusk);
+                    gk(button_A4, fusk);
+                    gk(button_A5, fusk);
+                    gk(button_A6, fusk);
+                    gk(button_A7, fusk);
+                    gk(button_A8, fusk);
+                }
+            }
+
+        }
+
+        private void gk(Button bt, string namn)
+        {
+            if (bt.Name == namn)
+            {
+                bt.Enabled = false;
+                bt.BackColor = Color.Red;
+            }
         }
 
         private void button_A1_Click(object sender, EventArgs e)
         {
             generellknapp(button_A1);
+
         }
 
         private void button_A2_Click(object sender, EventArgs e)
