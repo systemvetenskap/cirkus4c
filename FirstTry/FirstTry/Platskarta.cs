@@ -190,7 +190,10 @@ namespace FirstTry
                 DialogResult dialogResult = MessageBox.Show("Vill du Slutföra köpet?", "Bokning", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                   
+                    if (tk.reservation == true)
+                    {
+
+                    }
                 }
                 else if (dialogResult == DialogResult.No)
                 {

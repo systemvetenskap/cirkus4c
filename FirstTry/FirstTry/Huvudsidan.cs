@@ -121,6 +121,7 @@ namespace FirstTry
             session.vuxna = Convert.ToInt32(textBox_vuxen.Text.ToString());
             session.ungdom = Convert.ToInt32(textBox_ungdom.Text.ToString());
             session.barn = Convert.ToInt32(textBox_barn.Text.ToString());
+            session.reservation = checkBox1.Checked;
             conn.Open();
             LaggTillTempkop();
 
