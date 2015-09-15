@@ -24,7 +24,7 @@ namespace FirstTry
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+          //insert into kund, spara kund id till tempköp  
         }
     }
 }
