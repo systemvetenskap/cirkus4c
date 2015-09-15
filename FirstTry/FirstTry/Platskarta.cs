@@ -25,17 +25,47 @@ namespace FirstTry
 
         private void generellknapp(Button knapp)
         {
-            conn.Open();
-            //dubbelkolla igen först så den inte är bokad
-            ReserveraBiljett();
-            foreach (Akt akt in tk.akter)
-            {
-                Innehaller(akt.id, knapp.Text);
-            }
-            conn.Close();
 
-            knapp.BackColor = Color.Red;
-            knapp.Enabled = false;
+            if (radioButton_ungdom.Checked == false && radioButton_barn.Checked == false && radioButton_vuxen.Checked == false)
+            {
+                MessageBox.Show("Var vänlig välj en biljettyp");
+            }
+            else
+            {
+                conn.Open();
+                //dubbelkolla igen först så den inte är bokad
+                ReserveraBiljett();
+                foreach (Akt akt in tk.akter)
+                {
+                    Innehaller(akt.id, knapp.Text);
+                }
+                conn.Close();
+
+                knapp.BackColor = Color.Red;
+                knapp.Enabled = false;
+
+                if (radioButton_barn.Checked == true)
+                {
+                    int x = Convert.ToInt32(label3.Text);
+                    x--;
+                    label3.Text = x.ToString();
+                    radiokoll();
+                }
+                if (radioButton_ungdom.Checked == true)
+                {
+                    int x = Convert.ToInt32(label2.Text);
+                    x--;
+                    label2.Text = x.ToString();
+                    radiokoll();
+                }
+                if (radioButton_vuxen.Checked == true)
+                {
+                    int x = Convert.ToInt32(label1.Text);
+                    x--;
+                    label1.Text = x.ToString();
+                    radiokoll();
+                }
+            }
         }
 
         private int ReserveraBiljett()
@@ -88,6 +118,8 @@ namespace FirstTry
             label2.Text = tk.ungdom.ToString();
             label3.Text = tk.barn.ToString();
 
+            radiokoll();
+
             int id = tk.akter[0].id;
 
             string query = "select platser_id from innehaller where akter_id = ";
@@ -132,6 +164,41 @@ namespace FirstTry
 
         }
 
+        private void radiokoll()
+        {
+            int x = 0;
+            if (Convert.ToInt32(label1.Text) == 0)
+            {
+                radioButton_vuxen.Enabled = false;
+                radioButton_vuxen.Checked = false;
+                x++;
+            }
+            if (Convert.ToInt32(label2.Text) == 0)
+            {
+                radioButton_ungdom.Enabled = false;
+                radioButton_ungdom.Checked = false;
+                x++;
+            }
+            if (Convert.ToInt32(label3.Text) == 0)
+            {
+                radioButton_barn.Enabled = false;
+                radioButton_barn.Checked = false;
+                x++;
+            }
+            if (x == 3)
+            {
+                DialogResult dialogResult = MessageBox.Show("Vill du Slutföra köpet?", "Bokning", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                   
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do something else
+                }
+            }
+
+        }
         private void gk(Button bt, string namn)
         {
             if (bt.Name == namn)
@@ -144,7 +211,6 @@ namespace FirstTry
         private void button_A1_Click(object sender, EventArgs e)
         {
             generellknapp(button_A1);
-
         }
 
         private void button_A2_Click(object sender, EventArgs e)
