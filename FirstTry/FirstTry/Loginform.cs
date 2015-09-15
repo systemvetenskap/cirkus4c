@@ -58,5 +58,10 @@ namespace FirstTry
             }                  
 
         }
+
+        private void Loginform_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

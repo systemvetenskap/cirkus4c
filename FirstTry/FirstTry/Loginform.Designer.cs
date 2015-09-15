@@ -89,6 +89,7 @@
             this.Controls.Add(this.textBox_anvandarnamn);
             this.Name = "Loginform";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Loginform_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
