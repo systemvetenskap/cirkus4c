@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace FirstTry
 {
-    public partial class Kunduppgifter : Form
+    partial class Kunduppgifter : Form
     {
-        public Kunduppgifter()
+        Tempkop tk = new Tempkop();
+
+        public Kunduppgifter(Tempkop tk2)
         {
+
             InitializeComponent();
+            tk = tk2;
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

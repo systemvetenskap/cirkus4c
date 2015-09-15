@@ -79,7 +79,7 @@ namespace FirstTry
                 NpgsqlCommand command = new NpgsqlCommand(query, conn);
                 command.Parameters.AddWithValue("@totalpris", 66);
                 command.Parameters.AddWithValue("@tidsstampel", DateTime.Now);
-
+                //måste insert kund ID
                 return command.ExecuteNonQuery();
             }
             else
@@ -134,7 +134,8 @@ namespace FirstTry
             label1.Text = tk.vuxna.ToString();
             label2.Text = tk.ungdom.ToString();
             label3.Text = tk.barn.ToString();
-
+            label5.Text = tk.forestallning.namn;
+            label6.Text = tk.akter[tk.antal].namn;
 
 
             radiokoll();
@@ -248,7 +249,7 @@ namespace FirstTry
 
                         if (tk.reservation == true)
                         {
-                            Kunduppgifter ku = new Kunduppgifter();
+                            Kunduppgifter ku = new Kunduppgifter(tk);
                             ku.ShowDialog();
                         }
                         else

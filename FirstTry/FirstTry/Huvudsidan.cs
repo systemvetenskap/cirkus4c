@@ -137,11 +137,22 @@ namespace FirstTry
             }
             conn.Close();
 
+            if (session.reservation == true)
+            {
+                this.Hide();
+                Kunduppgifter ku = new Kunduppgifter(session);
+                ku.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                this.Hide();
+                Platskarta pk = new Platskarta(session);
+                pk.ShowDialog();
+                this.Close();
+            }
 
-            this.Hide();
-            Platskarta pk = new Platskarta(session);
-            pk.ShowDialog();
-            this.Close();
+
         }
 
         private int LaggTillTempkop()
