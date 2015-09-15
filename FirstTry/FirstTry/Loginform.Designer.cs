@@ -37,41 +37,46 @@
             // 
             // textBox_anvandarnamn
             // 
-            this.textBox_anvandarnamn.Location = new System.Drawing.Point(118, 49);
+            this.textBox_anvandarnamn.Location = new System.Drawing.Point(157, 60);
+            this.textBox_anvandarnamn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_anvandarnamn.Name = "textBox_anvandarnamn";
-            this.textBox_anvandarnamn.Size = new System.Drawing.Size(100, 20);
+            this.textBox_anvandarnamn.Size = new System.Drawing.Size(132, 22);
             this.textBox_anvandarnamn.TabIndex = 0;
             // 
             // textBox_losenord
             // 
-            this.textBox_losenord.Location = new System.Drawing.Point(118, 86);
+            this.textBox_losenord.Location = new System.Drawing.Point(157, 106);
+            this.textBox_losenord.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_losenord.Name = "textBox_losenord";
-            this.textBox_losenord.Size = new System.Drawing.Size(100, 20);
+            this.textBox_losenord.Size = new System.Drawing.Size(132, 22);
             this.textBox_losenord.TabIndex = 1;
             // 
             // label_anvandarnamn
             // 
             this.label_anvandarnamn.AutoSize = true;
-            this.label_anvandarnamn.Location = new System.Drawing.Point(118, 30);
+            this.label_anvandarnamn.Location = new System.Drawing.Point(157, 37);
+            this.label_anvandarnamn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_anvandarnamn.Name = "label_anvandarnamn";
-            this.label_anvandarnamn.Size = new System.Drawing.Size(79, 13);
+            this.label_anvandarnamn.Size = new System.Drawing.Size(104, 17);
             this.label_anvandarnamn.TabIndex = 2;
             this.label_anvandarnamn.Text = "Användarnamn";
             // 
             // label_losenord
             // 
             this.label_losenord.AutoSize = true;
-            this.label_losenord.Location = new System.Drawing.Point(118, 70);
+            this.label_losenord.Location = new System.Drawing.Point(157, 86);
+            this.label_losenord.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_losenord.Name = "label_losenord";
-            this.label_losenord.Size = new System.Drawing.Size(51, 13);
+            this.label_losenord.Size = new System.Drawing.Size(68, 17);
             this.label_losenord.TabIndex = 3;
             this.label_losenord.Text = "Lösenord";
             // 
             // button_login
             // 
-            this.button_login.Location = new System.Drawing.Point(118, 113);
+            this.button_login.Location = new System.Drawing.Point(157, 139);
+            this.button_login.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_login.Name = "button_login";
-            this.button_login.Size = new System.Drawing.Size(75, 23);
+            this.button_login.Size = new System.Drawing.Size(100, 28);
             this.button_login.TabIndex = 4;
             this.button_login.Text = "Logga in";
             this.button_login.UseVisualStyleBackColor = true;
@@ -79,16 +84,18 @@
             // 
             // Loginform
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(338, 171);
+            this.ClientSize = new System.Drawing.Size(451, 210);
             this.Controls.Add(this.button_login);
             this.Controls.Add(this.label_losenord);
             this.Controls.Add(this.label_anvandarnamn);
             this.Controls.Add(this.textBox_losenord);
             this.Controls.Add(this.textBox_anvandarnamn);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Loginform";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Loginform_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
