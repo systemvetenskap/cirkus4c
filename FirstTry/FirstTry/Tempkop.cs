@@ -18,6 +18,7 @@ namespace FirstTry
         public int antal { get; set; }
         public int loopar { get; set; }
         public int kund_id { get; set; }
+        public int totalpris { get; set; }
     }
 
     

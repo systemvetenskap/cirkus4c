@@ -135,22 +135,59 @@ namespace FirstTry
             conn.Open();
             LaggTillTempkop();
 
+            int y = 0;
+
+            int barnrabatt = 0;
+            int ungdomsrabatt = 0;
+
+            string query = "SELECT biljettyp.rabattsats, biljettyp FROM public.biljettyp;";
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                
+                if(row["biljettyp"].ToString() == "vuxen")
+                {
+                    
+                }
+
+                else if (row["biljettyp"].ToString() == "ungdom")
+                {
+                    ungdomsrabatt = Convert.ToInt32(row["rabattsats"]);
+                }
+                else if (row["biljettyp"].ToString() == "barn")
+                {
+                    barnrabatt = Convert.ToInt32(row["rabattsats"]);
+                }
+            }
+
+
+
+
             foreach (Akt akt in aktlista)
             {
                 LaggTillAktlista(akt);
-                antalakter++;
+                totalpris += (session.akter[y].pris - ungdomsrabatt) * session.ungdom;
+                totalpris += (session.akter[y].pris - barnrabatt) * session.barn;
+                totalpris += session.akter[y].pris * session.vuxna;
+                y++;
             }
             conn.Close();
 
+            int rabatsats = 10;
+
+            if (y >= 2)
+            {
+                totalpris -= 10;
+            }
+         //   totalpris *= (100 - y * rabatsats);
+         //   totalpris /= 100;
+
 
             //Admin ska väll kunna ändra pris?
-            totalpris += session.akter[0].pris * antalakter * session.vuxna;
-            totalpris += (session.akter[0].pris -25) * antalakter * session.ungdom;
-            totalpris += (session.akter[0].pris -40) * antalakter * session.barn;
-
-
-            MessageBox.Show("Det totala priset kommer vara: " + totalpris.ToString() + " Kr");
-
             if (session.reservation == true)
             {
                 this.Hide();
