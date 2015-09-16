@@ -63,24 +63,25 @@ namespace FirstTry
                         {
                             
                             string namn = row["namn"].ToString();
-                            string id = row["id"].ToString();
+                            int id = Convert.ToInt32(row["id"]);
                             string generellinfo = row["generell_info"].ToString();
-                          //string starttid = row["starttid"].ToString(); Måste ändra till datetime
-                          //string sluttid = row["slutttid"].ToString(); Måste ändra till datetime
-                             
-                            string vuxenpris = row["vuxenpris"].ToString();
-                            string ungdomspris = row["ungdomspris"].ToString();
-                            string barnpris = row["barnpris"].ToString();
-                            //bool open = (row["open"]);
+                            DateTime starttid = (DateTime)row["starttid"];
+                            DateTime sluttid = (DateTime)row["sluttid"];
 
-                            //Forestallning fs = new Forestallning();
-                            fs.akter = new List<Akt>();
-                            fs.namn = namn;
-                            fs.id = Convert.ToInt32(id);
-                            fs.generellinfo = generellinfo;
-                            //fs.vuxenpris = Convert.ToInt32(vuxenpris);
-                            //fs.ungdomspris = Convert.ToInt32(ungdomspris); 
-                            //fs.barnpris = Convert.ToInt32(barnpris); 
+                            int vuxenpris = Convert.ToInt32(row["vuxenpris"]);
+                            int ungdomspris = Convert.ToInt32(row["ungdomspris"]);
+                            int barnpris = Convert.ToInt32(row["barnpris"]);
+                            bool open = (bool)row["open"];
+
+                    //Markerat ut nedanstående tills jag fått rätt på ovanstånde/Jill
+                    
+                    //fs.akter = new List<Akt>(); 
+                    //        fs.namn = namn;
+                    //        fs.id = Convert.ToInt32(id);
+                    //        fs.generellinfo = generellinfo;
+                    //        fs.vuxenpris = Convert.ToInt32(vuxenpris);
+                    //        fs.ungdomspris = Convert.ToInt32(ungdomspris); 
+                    //        fs.barnpris = Convert.ToInt32(barnpris); 
 
                     listBoxAdminForestallning.Items.Add(fs);
                        
