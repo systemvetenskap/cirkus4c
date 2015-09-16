@@ -19,7 +19,7 @@ namespace FirstTry
         }
 
        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-
+        Forestallning fs = new Forestallning();
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -48,6 +48,7 @@ namespace FirstTry
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
+            listBoxAdminForestallning.Items.Clear();
               DataTable dt = new DataTable();
                     string query = "select * from forestallning";
                    
@@ -61,32 +62,41 @@ namespace FirstTry
                             
                             string namn = row["namn"].ToString();
                             string id = row["id"].ToString();
-                            string generell_info = row["generell_info"].ToString();
-                    
-                            string starttid = row["starttid"].ToString();
-                            DateTime starttid2 = DateTimeConverter.;
-                            
-                            Forestallning fs = new Forestallning();
-                            fs.akter = new List<Akt>();                   
+                            string generellinfo = row["generell_info"].ToString();
+                          //string starttid = row["starttid"].ToString(); Måste ändra till datetime
+                          //string sluttid = row["slutttid"].ToString(); Måste ändra till datetime
+                             
+                            string vuxenpris = row["vuxenpris"].ToString();
+                            string ungdomspris = row["ungdomspris"].ToString();
+                            string barnpris = row["barnpris"].ToString();
+                            //bool open = (row["open"]);
+
+                            //Forestallning fs = new Forestallning();
+                            fs.akter = new List<Akt>();
                             fs.namn = namn;
                             fs.id = Convert.ToInt32(id);
-                            listBoxAdminForestallning.Items.Add(fs);
+                            fs.generellinfo = generellinfo;
+                            //fs.vuxenpris = Convert.ToInt32(vuxenpris);
+                            //fs.ungdomspris = Convert.ToInt32(ungdomspris); 
+                            //fs.barnpris = Convert.ToInt32(barnpris); 
+
+                    listBoxAdminForestallning.Items.Add(fs);
                        
 
 
-                            string query2 = "select aktnr, id from akter";
-                            NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
-                            DataTable dt2 = new DataTable();
-                            da2.Fill(dt2);
-                            foreach (DataRow row2 in dt2.Rows)
-                            {
-                                Akt akt = new Akt();
-                                string aktnamn = row2["aktinfo"].ToString();
-                                string aktid = row2["id"].ToString();
-                                akt.namn = aktnamn;
-                                akt.id = Convert.ToInt32(aktid);
-                                fs.akter.Add(akt);
-                            }
+                            //string query2 = "select aktnr, id from akter";
+                            //NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
+                            //DataTable dt2 = new DataTable();
+                            //da2.Fill(dt2);
+                            //foreach (DataRow row2 in dt2.Rows)
+                            //{
+                            //    Akt akt = new Akt();
+                            //    string aktnamn = row2["aktinfo"].ToString();
+                            //    string aktid = row2["id"].ToString();
+                            //    akt.namn = aktnamn;
+                            //    akt.id = Convert.ToInt32(aktid);
+                            //    fs.akter.Add(akt);
+                            //}
 
                         }
                         //listBox_forestallning.Items.Add(namn);
@@ -97,67 +107,23 @@ namespace FirstTry
                     }
                 }
 
-                private void listBox_forestallning_SelectedIndexChanged(object sender, EventArgs e)
-                {
-                    Forestallning fs = new Forestallning();
-                    fs.akter = new List<Akt>();
-                    listBox_akter.Items.Clear();
-                    fs = (Forestallning)listBox_forestallning.SelectedItem;
-                    foreach (Akt akt in fs.akter)
-                    {
-                        listBox_akter.Items.Add(akt);
-                    }
+        
+        private void listBoxAdminForestallning_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            //valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
+            fs.namn = textBoxForestNamn.Text;
 
 
-                    //string forestallning = listBox_forestallning.SelectedItem.ToString();
-                    //string query2 = "SELECT aktinfo, id FROM public.akter WHERE akter.forestallningsid = " + fs.id;
-                    //DataTable dt2 = new DataTable();
-                    //try
-                    //{
-                    //    NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
-                    //    da2.Fill(dt2);
 
-                    //    foreach (DataRow row2 in dt2.Rows)
-                    //    {
-                    //        string aktnamn = row2["aktinfo"].ToString();
-                    //        string aktid = row2["id"].ToString();
-                    //        Akt akt = new Akt();
-                    //        akt.namn = aktnamn;
-                    //        akt.id = Convert.ToInt32(aktid);
-                    //        fs.akter.Add(akt);
-
-                    //    }
-                    //}
-                    //catch (NpgsqlException ex)
-                    //{
-                    //    MessageBox.Show(ex.Message);
-                    //}
-                }
-
-                private void button1_Click(object sender, EventArgs e)
-                {            
-                    foreach (Akt akt in listBox_akter.SelectedItems)
-                    {
-                        aktlista.Add(akt);
-                    }
-
-                    session.akter = aktlista;
-                    session.forestallning = (Forestallning)listBox_forestallning.SelectedItem;
-                    session.vuxna = Convert.ToInt32(textBox_vuxen.Text.ToString());
-                    session.ungdom = Convert.ToInt32(textBox_ungdom.Text.ToString());
-                    session.barn = Convert.ToInt32(textBox_barn.Text.ToString());
-                    conn.Open();
-                    LaggTillTempkop();
-
-                    foreach (Akt akt in aktlista)
-                    {
-                        LaggTillAktlista(akt);
-                    }
-                    conn.Close();
-                    this.Hide();
-                    Platskarta pk = new Platskarta(session);
-                    pk.ShowDialog();
-                    this.Close();  
+            this.Refresh();
+           
         }
+
+
     }
-}
+
+                   
+        }
+    
+
