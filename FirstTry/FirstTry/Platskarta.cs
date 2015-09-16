@@ -141,7 +141,7 @@ namespace FirstTry
 
         private void Platskarta_Load(object sender, EventArgs e)
         {
-            //grön röd gul
+            
 
             label1.Text = tk.vuxna.ToString();
             label2.Text = tk.ungdom.ToString();
@@ -279,16 +279,10 @@ namespace FirstTry
                     {
                         
 
-                        if (tk.reservation == true)
-                        {
-                            Kunduppgifter ku = new Kunduppgifter(tk); 
-                            ku.ShowDialog();
-                        }
-                        else
-                        {
+                        //biljettform ladda
                             Huvudsidan hu = new Huvudsidan();
                             hu.ShowDialog();
-                        }
+                            
 
                         
                     }
@@ -297,6 +291,7 @@ namespace FirstTry
                         //ej krav?!
                         Huvudsidan hu = new Huvudsidan();
                         hu.ShowDialog();
+                        //ta bort från innehåller och biljett
                     }
 
                 }
