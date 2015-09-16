@@ -115,13 +115,23 @@ namespace FirstTry
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int x = 0;  
+            int x = 0;
+            int l = 0;
             foreach (Akt akt in listBox_akter.SelectedItems)
             {
                 aktlista.Add(akt);
                 x++;
             }
+            foreach (Akt akt2 in listBox_akter.Items)
+            {
+                l++;
+            }
 
+            if (x == l)
+            {
+                //då har vill man boka hela förestälningen
+                session.hela = true;
+            }
             
 
             session.akter = aktlista;
