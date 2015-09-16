@@ -115,6 +115,7 @@ namespace FirstTry
                 command2.Parameters.AddWithValue("@platser_id", KnappId(kn));
                 command2.Parameters.AddWithValue("@reserverad", false);
 
+
                 return command2.ExecuteNonQuery();
             }
 
@@ -193,7 +194,7 @@ namespace FirstTry
                     {
                         DateTime dat = (DateTime)row["tidsstampel"];
                         DateTime nu = DateTime.Now;
-                        TimeSpan ts = new TimeSpan(0, 0, 0, 5);
+                        TimeSpan ts = new TimeSpan(0, 0, 0, 15);
                         TimeSpan elapsed = nu.Subtract(dat);
 
                         if (elapsed > ts)

@@ -63,6 +63,7 @@ namespace FirstTry
             nyKund();
             tk.kund_id = nyKundID();
             conn.Close();
+
             this.Hide();
             Platskarta pk = new Platskarta(tk);
             pk.ShowDialog();
