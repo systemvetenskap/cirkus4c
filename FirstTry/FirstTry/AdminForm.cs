@@ -133,7 +133,7 @@ namespace FirstTry
             command.Parameters.AddWithValue("@generellinfo", laggtillforestallning.generellinfo);
             command.Parameters.AddWithValue("@starttid", laggtillforestallning.starttid);
             command.Parameters.AddWithValue("@sluttid", laggtillforestallning.sluttid);
-            command.Parameters.AddWithValue("@open", laggtillforestallning.open);
+            command.Parameters.AddWithValue("@open", false);//false tills öppnad
             command.Parameters.AddWithValue("@vuxenpris", laggtillforestallning.vuxenpris);
             command.Parameters.AddWithValue("@ungdomspris", laggtillforestallning.ungdomspris);
             command.Parameters.AddWithValue("@barnpris", laggtillforestallning.barnpris);
