@@ -125,7 +125,7 @@ namespace FirstTry
         private int LaggTillForestallning()
         {
             Forestallning laggtillforestallning = new Forestallning();
-            string query = "INSERT INTO forestallning (forestallning, namn, generell_info, starttid, sluttid) VALUES(@forestallning, @namn, @generell_info, @starttid, @sluttid)";
+            string query = "INSERT INTO forestallning (forestallning, namn, generell_info, starttid, sluttid, vuxenpris, ungdomspris, barnpris) VALUES(@namn, @generell_info, @starttid, @sluttid, vuxenpris, ungdomspris, barnpris)";
 
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
@@ -151,8 +151,8 @@ namespace FirstTry
 
             //session.akter = forestallningslista;
             //session.forestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
-            //session.vuxna = Convert.ToInt32(textBox_vuxen.Text.ToString());
-            //session.ungdom = Convert.ToInt32(textBox_ungdom.Text.ToString());
+            fs.namn = (textBoxForestNamn.Text);
+           // fs.generellinfo = (text)
             //session.barn = Convert.ToInt32(textBox_barn.Text.ToString());
             //conn.Open();
             //LaggTillForestallning();
