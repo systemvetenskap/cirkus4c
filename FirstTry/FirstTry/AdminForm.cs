@@ -67,11 +67,10 @@ namespace FirstTry
                             string generellinfo = row["generell_info"].ToString();
                             DateTime starttid = (DateTime)row["starttid"];
                             DateTime sluttid = (DateTime)row["sluttid"];
-
-                            int vuxenpris = Convert.ToInt32(row["vuxenpris"]);
-                            int ungdomspris = Convert.ToInt32(row["ungdomspris"]);
-                            int barnpris = Convert.ToInt32(row["barnpris"]);
-                            bool open = (bool)row["open"];
+                           // int vuxenpris = Convert.ToInt32(row["vuxenpris"]);
+                            ////int ungdomspris = Convert.ToInt32(row["ungdomspris"]);
+                            ////int barnpris = Convert.ToInt32(row["barnpris"]);
+                          
 
                     //Markerat ut nedanstående tills jag fått rätt på ovanstånde/Jill
                     
@@ -144,17 +143,18 @@ namespace FirstTry
         }
 
         private void buttonLaggTillForest_Click(object sender, EventArgs e)
-        {
-            foreach (Forestallning forest in listBoxAdminForestallning.SelectedItems)
-            {
-                forestallningslista.Add(forest);
-            }
-
-            //session.akter = forestallningslista;
-            //session.forestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
+        { 
+            //Påbörjat knapp lägg till föreställning, dock osäker på huruvida vi skulle lägga texten
+            //uppe i formen så låter det vara så här""
+            
             fs.namn = (textBoxForestNamn.Text);
-           // fs.generellinfo = (text)
-            //session.barn = Convert.ToInt32(textBox_barn.Text.ToString());
+            fs.generellinfo = (richTextBoxForestInf.Text);
+            //fs.starttid = 
+            //fs.sluttid 
+            //fs.open
+            //fs.vuxenpris
+            //fs.ungdomspris
+            //fs.barnpris
             //conn.Open();
             //LaggTillForestallning();
 
