@@ -20,7 +20,7 @@ namespace FirstTry
 
        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         Forestallning fs = new Forestallning();
-        private Forestallning valdforestallning;
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -113,13 +113,13 @@ namespace FirstTry
         {
 
 
+           //Forestallning fs2 = new Forestallning();
+           //fs2.namn = listBoxAdminForestallning.SelectedItem.ToString();
 
-            //valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
+           textBoxForestNamn.Text = listBoxAdminForestallning.SelectedItem.ToString();
 
-            //textBoxForestNamn.Text = valdforestallning.namn;
+            //this.Refresh();
 
-            this.Refresh();
-           
         }
 
 
