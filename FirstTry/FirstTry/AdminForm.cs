@@ -124,19 +124,19 @@ namespace FirstTry
         }
         private int LaggTillForestallning()
         {
-            Forestallning fslaggtillkund = new Forestallning();
+            Forestallning laggtillforestallning = new Forestallning();
             string query = "INSERT INTO forestallning (forestallning, namn, generell_info, starttid, sluttid) VALUES(@forestallning, @namn, @generell_info, @starttid, @sluttid)";
 
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
-            command.Parameters.AddWithValue("@namn", fslaggtillkund.namn);
-            command.Parameters.AddWithValue("@generellinfo", fslaggtillkund.generellinfo);
-            command.Parameters.AddWithValue("@starttid", fslaggtillkund.starttid);
-            command.Parameters.AddWithValue("@sluttid", fslaggtillkund.sluttid);
-            command.Parameters.AddWithValue("@open", fslaggtillkund.open);
-            command.Parameters.AddWithValue("@vuxenpris", fslaggtillkund.vuxenpris);
-            command.Parameters.AddWithValue("@ungdomspris", fslaggtillkund.ungdomspris);
-            command.Parameters.AddWithValue("@barnpris", fslaggtillkund.barnpris);
+            command.Parameters.AddWithValue("@namn", laggtillforestallning.namn);
+            command.Parameters.AddWithValue("@generellinfo", laggtillforestallning.generellinfo);
+            command.Parameters.AddWithValue("@starttid", laggtillforestallning.starttid);
+            command.Parameters.AddWithValue("@sluttid", laggtillforestallning.sluttid);
+            command.Parameters.AddWithValue("@open", laggtillforestallning.open);
+            command.Parameters.AddWithValue("@vuxenpris", laggtillforestallning.vuxenpris);
+            command.Parameters.AddWithValue("@ungdomspris", laggtillforestallning.ungdomspris);
+            command.Parameters.AddWithValue("@barnpris", laggtillforestallning.barnpris);
 
             return command.ExecuteNonQuery();
 
