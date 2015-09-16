@@ -11,6 +11,8 @@ namespace FirstTry
         public string namn { get; set; }
         public int id { get; set; }
         public DateTime datumTid { get; set; }
+        public int pris { get; set; }
+
 
 
         public override string ToString()

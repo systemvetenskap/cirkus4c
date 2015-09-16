@@ -38,6 +38,8 @@
             this.label_ungdom = new System.Windows.Forms.Label();
             this.label_barn = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBox_forestallning
@@ -65,6 +67,7 @@
             this.textBox_vuxen.Size = new System.Drawing.Size(22, 20);
             this.textBox_vuxen.TabIndex = 2;
             this.textBox_vuxen.Text = "0";
+            this.textBox_vuxen.TextChanged += new System.EventHandler(this.textBox_vuxen_TextChanged);
             // 
             // textBox_ungdom
             // 
@@ -73,6 +76,7 @@
             this.textBox_ungdom.Size = new System.Drawing.Size(22, 20);
             this.textBox_ungdom.TabIndex = 3;
             this.textBox_ungdom.Text = "0";
+            this.textBox_ungdom.TextChanged += new System.EventHandler(this.textBox_ungdom_TextChanged);
             // 
             // textBox_barn
             // 
@@ -81,6 +85,7 @@
             this.textBox_barn.Size = new System.Drawing.Size(22, 20);
             this.textBox_barn.TabIndex = 4;
             this.textBox_barn.Text = "0";
+            this.textBox_barn.TextChanged += new System.EventHandler(this.textBox_barn_TextChanged);
             // 
             // button1
             // 
@@ -129,11 +134,31 @@
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(470, 444);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Totalt pris;";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(525, 444);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "SEK";
+            // 
             // Huvudsidan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(710, 481);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label_barn);
             this.Controls.Add(this.label_ungdom);
@@ -164,5 +189,7 @@
         private System.Windows.Forms.Label label_ungdom;
         private System.Windows.Forms.Label label_barn;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

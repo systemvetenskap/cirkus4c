@@ -23,7 +23,7 @@ namespace FirstTry
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         DataTable dt = new DataTable();
-        int i = 0; 
+         
 
         private void generellknapp(Button knapp)
         {
@@ -159,7 +159,7 @@ namespace FirstTry
                 this.Hide();
                 Huvudsidan hu = new Huvudsidan();
                 hu.ShowDialog();
-                this.Close();
+                Close();
             }
 
             foreach (DataRow row in dt.Rows)
@@ -173,7 +173,7 @@ namespace FirstTry
                     this.Hide();
                     Huvudsidan hu = new Huvudsidan();
                     hu.ShowDialog();
-                    this.Close();
+                    Close();
                 }
                 else
                 {

@@ -21,6 +21,8 @@ namespace FirstTry
         
         Tempkop session = new Tempkop();
         List<Akt> aktlista = new List<Akt>();
+        int totalpris = 0;
+        int antalakter = 0;
 
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
@@ -49,7 +51,7 @@ namespace FirstTry
                     //forenummer++;
 
                     
-                    string query2 = "select aktinfo, id from akter where forestallningsid = " + fs.id.ToString();
+                    string query2 = "select aktinfo, id, pris from akter where forestallningsid = " + fs.id.ToString();
                     NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
                     DataTable dt2 = new DataTable();
                     da2.Fill(dt2);
@@ -58,8 +60,10 @@ namespace FirstTry
                         Akt akt = new Akt();
                         string aktnamn = row2["aktinfo"].ToString();
                         string aktid = row2["id"].ToString();
+                        int aktpris = Convert.ToInt32(row2["pris"]);
                         akt.namn = aktnamn;
                         akt.id = Convert.ToInt32(aktid);
+                        akt.pris = aktpris;
                         fs.akter.Add(akt);
                     }
 
@@ -134,8 +138,18 @@ namespace FirstTry
             foreach (Akt akt in aktlista)
             {
                 LaggTillAktlista(akt);
+                antalakter++;
             }
             conn.Close();
+
+
+            //Admin ska väll kunna ändra pris?
+            totalpris += session.akter[0].pris * antalakter * session.vuxna;
+            totalpris += (session.akter[0].pris -25) * antalakter * session.ungdom;
+            totalpris += (session.akter[0].pris -40) * antalakter * session.barn;
+
+
+            MessageBox.Show("Det totala priset kommer vara: " + totalpris.ToString() + " Kr");
 
             if (session.reservation == true)
             {
@@ -206,6 +220,27 @@ namespace FirstTry
             return command.ExecuteNonQuery();
             // Gör om så vi arbetar mot idnummer.
 
+        }
+
+        private void textBox_vuxen_TextChanged(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void totpris(string typ)
+        {
+
+        }
+
+        private void textBox_ungdom_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox_barn_TextChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }
