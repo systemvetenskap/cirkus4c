@@ -20,7 +20,8 @@ namespace FirstTry
 
        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         Forestallning fs = new Forestallning();
-        
+        List<Forestallning> forestallningslista = new List<Forestallning>();
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -118,14 +119,56 @@ namespace FirstTry
 
            textBoxForestNamn.Text = listBoxAdminForestallning.SelectedItem.ToString();
 
-            //this.Refresh();
+           
+
+        }
+        private int LaggTillForestallning()
+        {
+            Forestallning fslaggtillkund = new Forestallning();
+            string query = "INSERT INTO forestallning (forestallning, namn, generell_info, starttid, sluttid) VALUES(@forestallning, @namn, @generell_info, @starttid, @sluttid)";
+
+            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+            command.Parameters.AddWithValue("@namn", fslaggtillkund.namn);
+            command.Parameters.AddWithValue("@generellinfo", fslaggtillkund.generellinfo);
+            command.Parameters.AddWithValue("@starttid", fslaggtillkund.starttid);
+            command.Parameters.AddWithValue("@sluttid", fslaggtillkund.sluttid);
+            command.Parameters.AddWithValue("@open", fslaggtillkund.open);
+            command.Parameters.AddWithValue("@vuxenpris", fslaggtillkund.vuxenpris);
+            command.Parameters.AddWithValue("@ungdomspris", fslaggtillkund.ungdomspris);
+            command.Parameters.AddWithValue("@barnpris", fslaggtillkund.barnpris);
+
+            return command.ExecuteNonQuery();
 
         }
 
+        private void buttonLaggTillForest_Click(object sender, EventArgs e)
+        {
+            foreach (Forestallning forest in listBoxAdminForestallning.SelectedItems)
+            {
+                forestallningslista.Add(forest);
+            }
 
+            //session.akter = forestallningslista;
+            //session.forestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
+            //session.vuxna = Convert.ToInt32(textBox_vuxen.Text.ToString());
+            //session.ungdom = Convert.ToInt32(textBox_ungdom.Text.ToString());
+            //session.barn = Convert.ToInt32(textBox_barn.Text.ToString());
+            //conn.Open();
+            //LaggTillForestallning();
+
+            foreach (Forestallning forest in forestallningslista)
+            {
+                LaggTillForestallning();
+            }
+            this.Refresh();
+            conn.Close();
+           
+        }
     }
+}
 
                    
-        }
+
     
 

@@ -59,7 +59,7 @@
             this.listBoxAdminForestallning.FormattingEnabled = true;
             this.listBoxAdminForestallning.ItemHeight = 16;
             this.listBoxAdminForestallning.Location = new System.Drawing.Point(256, 50);
-            this.listBoxAdminForestallning.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxAdminForestallning.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxAdminForestallning.Name = "listBoxAdminForestallning";
             this.listBoxAdminForestallning.Size = new System.Drawing.Size(223, 340);
             this.listBoxAdminForestallning.TabIndex = 0;
@@ -68,7 +68,7 @@
             // textBoxForestNamn
             // 
             this.textBoxForestNamn.Location = new System.Drawing.Point(52, 71);
-            this.textBoxForestNamn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxForestNamn.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxForestNamn.Name = "textBoxForestNamn";
             this.textBoxForestNamn.Size = new System.Drawing.Size(179, 22);
             this.textBoxForestNamn.TabIndex = 1;
@@ -87,19 +87,20 @@
             // buttonLaggTillForest
             // 
             this.buttonLaggTillForest.Location = new System.Drawing.Point(317, 399);
-            this.buttonLaggTillForest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLaggTillForest.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLaggTillForest.Name = "buttonLaggTillForest";
             this.buttonLaggTillForest.Size = new System.Drawing.Size(163, 28);
             this.buttonLaggTillForest.TabIndex = 3;
             this.buttonLaggTillForest.Text = "Lägg till / ändra";
             this.buttonLaggTillForest.UseVisualStyleBackColor = true;
+            this.buttonLaggTillForest.Click += new System.EventHandler(this.buttonLaggTillForest_Click);
             // 
             // listBoxAkter
             // 
             this.listBoxAkter.FormattingEnabled = true;
             this.listBoxAkter.ItemHeight = 16;
             this.listBoxAkter.Location = new System.Drawing.Point(728, 50);
-            this.listBoxAkter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxAkter.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxAkter.Name = "listBoxAkter";
             this.listBoxAkter.Size = new System.Drawing.Size(197, 340);
             this.listBoxAkter.TabIndex = 4;
@@ -107,7 +108,7 @@
             // buttonLaggTillAktInfo
             // 
             this.buttonLaggTillAktInfo.Location = new System.Drawing.Point(793, 399);
-            this.buttonLaggTillAktInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLaggTillAktInfo.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLaggTillAktInfo.Name = "buttonLaggTillAktInfo";
             this.buttonLaggTillAktInfo.Size = new System.Drawing.Size(133, 28);
             this.buttonLaggTillAktInfo.TabIndex = 6;
@@ -128,7 +129,7 @@
             // richTextBoxAktInf
             // 
             this.richTextBoxAktInf.Location = new System.Drawing.Point(532, 135);
-            this.richTextBoxAktInf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBoxAktInf.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBoxAktInf.Name = "richTextBoxAktInf";
             this.richTextBoxAktInf.Size = new System.Drawing.Size(155, 85);
             this.richTextBoxAktInf.TabIndex = 8;
@@ -137,7 +138,7 @@
             // richTextBoxForestInf
             // 
             this.richTextBoxForestInf.Location = new System.Drawing.Point(52, 137);
-            this.richTextBoxForestInf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBoxForestInf.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBoxForestInf.Name = "richTextBoxForestInf";
             this.richTextBoxForestInf.Size = new System.Drawing.Size(179, 102);
             this.richTextBoxForestInf.TabIndex = 9;
@@ -166,7 +167,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(532, 71);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(155, 22);
             this.textBox1.TabIndex = 13;
@@ -174,7 +175,7 @@
             // textBoxAktStarttid
             // 
             this.textBoxAktStarttid.Location = new System.Drawing.Point(535, 261);
-            this.textBoxAktStarttid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAktStarttid.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAktStarttid.Name = "textBoxAktStarttid";
             this.textBoxAktStarttid.Size = new System.Drawing.Size(132, 22);
             this.textBoxAktStarttid.TabIndex = 14;
@@ -192,7 +193,7 @@
             // textBoxAktSluttid
             // 
             this.textBoxAktSluttid.Location = new System.Drawing.Point(533, 318);
-            this.textBoxAktSluttid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAktSluttid.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAktSluttid.Name = "textBoxAktSluttid";
             this.textBoxAktSluttid.Size = new System.Drawing.Size(132, 22);
             this.textBoxAktSluttid.TabIndex = 16;
@@ -210,7 +211,7 @@
             // textBoxPris
             // 
             this.textBoxPris.Location = new System.Drawing.Point(536, 372);
-            this.textBoxPris.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPris.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPris.Name = "textBoxPris";
             this.textBoxPris.Size = new System.Drawing.Size(132, 22);
             this.textBoxPris.TabIndex = 18;
@@ -248,7 +249,7 @@
             // textBoxForestStarttid
             // 
             this.textBoxForestStarttid.Location = new System.Drawing.Point(57, 288);
-            this.textBoxForestStarttid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxForestStarttid.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxForestStarttid.Name = "textBoxForestStarttid";
             this.textBoxForestStarttid.Size = new System.Drawing.Size(132, 22);
             this.textBoxForestStarttid.TabIndex = 22;
@@ -256,7 +257,7 @@
             // textBoxForestSluttid
             // 
             this.textBoxForestSluttid.Location = new System.Drawing.Point(57, 347);
-            this.textBoxForestSluttid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxForestSluttid.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxForestSluttid.Name = "textBoxForestSluttid";
             this.textBoxForestSluttid.Size = new System.Drawing.Size(132, 22);
             this.textBoxForestSluttid.TabIndex = 23;
@@ -265,7 +266,7 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(63, 497);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(154, 21);
             this.checkBox1.TabIndex = 24;
@@ -276,7 +277,7 @@
             // buttonOppnaForest
             // 
             this.buttonOppnaForest.Location = new System.Drawing.Point(227, 490);
-            this.buttonOppnaForest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonOppnaForest.Margin = new System.Windows.Forms.Padding(4);
             this.buttonOppnaForest.Name = "buttonOppnaForest";
             this.buttonOppnaForest.Size = new System.Drawing.Size(167, 33);
             this.buttonOppnaForest.TabIndex = 25;
@@ -312,7 +313,7 @@
             this.Controls.Add(this.labelForestNamn);
             this.Controls.Add(this.textBoxForestNamn);
             this.Controls.Add(this.listBoxAdminForestallning);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdminForm";
             this.Text = "AdminForm";
             this.Load += new System.EventHandler(this.AdminForm_Load);
