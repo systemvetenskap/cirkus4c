@@ -87,7 +87,7 @@
             this.buttonLaggTillForest.TabIndex = 3;
             this.buttonLaggTillForest.Text = "Lägg till / ändra";
             this.buttonLaggTillForest.UseVisualStyleBackColor = true;
-            this.buttonLaggTillForest.Click += new System.EventHandler(this.button1_Click);
+            //this.buttonLaggTillForest.Click += new System.EventHandler(this.button1_Click);
             // 
             // listBoxAkter
             // 
