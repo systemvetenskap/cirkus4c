@@ -51,7 +51,7 @@ namespace FirstTry
                     //forenummer++;
 
                     
-                    string query2 = "select aktinfo, id, pris from akter where forestallningsid = " + fs.id.ToString();
+                    string query2 = "select aktinfo, id, vuxenpris from akter where forestallningsid = " + fs.id.ToString();
                     NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
                     DataTable dt2 = new DataTable();
                     da2.Fill(dt2);
@@ -60,7 +60,7 @@ namespace FirstTry
                         Akt akt = new Akt();
                         string aktnamn = row2["aktinfo"].ToString();
                         string aktid = row2["id"].ToString();
-                        int aktpris = Convert.ToInt32(row2["pris"]);
+                        int aktpris = Convert.ToInt32(row2["vuxenpris"]);
                         akt.namn = aktnamn;
                         akt.id = Convert.ToInt32(aktid);
                         akt.pris = aktpris;

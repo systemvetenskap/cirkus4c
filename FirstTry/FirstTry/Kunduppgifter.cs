@@ -34,14 +34,34 @@ namespace FirstTry
             command.Parameters.AddWithValue("@efternamn", textBox2.Text);
             command.Parameters.AddWithValue("@telefon", textBox3.Text);
             command.Parameters.AddWithValue("@mail", textBox4.Text);
+            
 
             return command.ExecuteNonQuery();
+        }
+
+        private int nyKundID()
+        {
+            string query = "SELECT currval(pg_get_serial_sequence('kund','id'));";
+
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            NpgsqlCommand nc = new NpgsqlCommand(query, conn);
+
+            NpgsqlDataReader dr = nc.ExecuteReader();
+
+            while(dr.Read())
+            {
+                return Convert.ToInt32(dr[0]);
+            }
+            return -1;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             conn.Open();
             nyKund();
+            tk.kund_id = nyKundID();
             conn.Close();
             this.Hide();
             Platskarta pk = new Platskarta(tk);

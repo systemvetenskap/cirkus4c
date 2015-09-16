@@ -36,10 +36,10 @@ namespace FirstTry
             {
                 conn.Open();
                 //dubbelkolla igen först så den inte är bokad
-                ReserveraBiljett();
+               // ReserveraBiljett();
                 Innehaller(tk.akter[tk.antal].id, knapp.Text);
                 conn.Close();
-
+                
                 knapp.BackColor = Color.Red;
                 knapp.Enabled = false;
 
@@ -70,27 +70,14 @@ namespace FirstTry
         private int ReserveraBiljett()
         {
 
-            string query = "";
-
-            if (tk.reservation == true)
-            {
-                query = "INSERT INTO biljett (totalpris, tidsstampel) VALUES(@totalpris, @tidsstampel)";
-                Biljett biljetten = new Biljett();
-                NpgsqlCommand command = new NpgsqlCommand(query, conn);
-                command.Parameters.AddWithValue("@totalpris", 66);
-                command.Parameters.AddWithValue("@tidsstampel", DateTime.Now);
-                //måste insert kund ID
-                return command.ExecuteNonQuery();
-            }
-            else
-            {
-                query = "INSERT INTO biljett (totalpris) VALUES(@totalpris)";
+            
+                string query = "INSERT INTO biljett (totalpris) VALUES(@totalpris)";
                 Biljett biljetten = new Biljett();
                 NpgsqlCommand command = new NpgsqlCommand(query, conn);
                 command.Parameters.AddWithValue("@totalpris", 66);
 
                 return command.ExecuteNonQuery();
-            }
+          
 
 
             //command.Parameters.AddWithValue("@tidsstampel", session.forestallning.ToString());
@@ -101,14 +88,36 @@ namespace FirstTry
 
         private int Innehaller(int aktint, string kn)
         {
-            string query = "INSERT INTO innehaller (akter_id, platser_id, biljett_id) VALUES(@akter_id, @platser_id, (select max(id) from biljett))";
 
-            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+            ReserveraBiljett();
 
-            command.Parameters.AddWithValue("@akter_id", aktint);
-            command.Parameters.AddWithValue("@platser_id", KnappId(kn));
+            if (tk.reservation == true)
+            {
+                string query2 = "INSERT INTO innehaller (akter_id, platser_id, biljett_id, tidsstampel, reserverad, kund_id) VALUES(@akter_id, @platser_id, (select max(id) from biljett), @tidsstampel, @reserverad, @kund_id)";
 
-            return command.ExecuteNonQuery();
+                NpgsqlCommand command2 = new NpgsqlCommand(query2, conn);
+
+                command2.Parameters.AddWithValue("@akter_id", aktint);
+                command2.Parameters.AddWithValue("@platser_id", KnappId(kn));
+                command2.Parameters.AddWithValue("@tidsstampel", DateTime.Now);
+                command2.Parameters.AddWithValue("@reserverad", true);
+                command2.Parameters.AddWithValue("@kund_id", tk.kund_id);
+
+                return command2.ExecuteNonQuery();
+            }
+            else
+            {
+                string query2 = "INSERT INTO innehaller (akter_id, platser_id, biljett_id, reserverad) VALUES(@akter_id, @platser_id, (select max(id) from biljett), @reserverad)";
+
+                NpgsqlCommand command2 = new NpgsqlCommand(query2, conn);
+
+                command2.Parameters.AddWithValue("@akter_id", aktint);
+                command2.Parameters.AddWithValue("@platser_id", KnappId(kn));
+                command2.Parameters.AddWithValue("@reserverad", false);
+
+                return command2.ExecuteNonQuery();
+            }
+
         }
 
         private int KnappId(string knappnamn)
@@ -146,7 +155,7 @@ namespace FirstTry
             
             int id = temp.id;
 
-            string query = "select platser_id from innehaller where akter_id = ";
+            string query = "select platser_id, tidsstampel, reserverad from innehaller where akter_id = ";
             query += id.ToString();
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
             da.Fill(dt);
@@ -178,6 +187,20 @@ namespace FirstTry
                 else
                 {
                     string platsid = row["platser_id"].ToString();
+                    bool vecka = false;
+
+                    if ((bool)row["reserverad"] == true)
+                    {
+                        DateTime dat = (DateTime)row["tidsstampel"];
+                        DateTime nu = DateTime.Now;
+                        TimeSpan ts = new TimeSpan(0, 0, 0, 5);
+                        TimeSpan elapsed = nu.Subtract(dat);
+
+                        if (elapsed > ts)
+                        {
+                            vecka = true;
+                        }
+                    }
 
                     string query2 = "select nummer from platser where id =" + platsid;
 
@@ -197,14 +220,14 @@ namespace FirstTry
                         platsnamn = dr[0].ToString();
                         fusk += platsnamn;
 
-                        gk(button_A1, fusk);
-                        gk(button_A2, fusk);
-                        gk(button_A3, fusk);
-                        gk(button_A4, fusk);
-                        gk(button_A5, fusk);
-                        gk(button_A6, fusk);
-                        gk(button_A7, fusk);
-                        gk(button_A8, fusk);
+                        gk(button_A1, fusk, vecka, platsid, id);
+                        gk(button_A2, fusk, vecka, platsid, id);
+                        gk(button_A3, fusk, vecka, platsid, id);
+                        gk(button_A4, fusk, vecka, platsid, id);
+                        gk(button_A5, fusk, vecka, platsid, id);
+                        gk(button_A6, fusk, vecka, platsid, id);
+                        gk(button_A7, fusk, vecka, platsid, id);
+                        gk(button_A8, fusk, vecka, platsid, id);
                     }
                 }
                 x++;
@@ -280,12 +303,30 @@ namespace FirstTry
             }
 
         }
-        private void gk(Button bt, string namn)
+
+        private int tabortreserv(string plats, int akt)
+        {
+            string dquery = "delete from innehaller where platser_id = " + plats + " and akter_id = " + akt + ";";
+           
+            NpgsqlCommand command = new NpgsqlCommand(dquery, conn);
+            return command.ExecuteNonQuery();           
+        }
+        private void gk(Button bt, string namn, bool vecka, string plats, int akt)
         {
             if (bt.Name == namn)
             {
-                bt.Enabled = false;
-                bt.BackColor = Color.Red;
+
+                if (vecka == true)
+                {
+                    conn.Open();
+                    tabortreserv(plats, akt);
+                    conn.Close();                    
+                }
+                else
+                {
+                    bt.Enabled = false;
+                    bt.BackColor = Color.Red;
+                }
             }
         }
 
