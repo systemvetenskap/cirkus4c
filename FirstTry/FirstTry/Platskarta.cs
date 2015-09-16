@@ -255,7 +255,7 @@ namespace FirstTry
 
                         if (tk.reservation == true)
                         {
-                            Kunduppgifter ku = new Kunduppgifter(tk);
+                            Kunduppgifter ku = new Kunduppgifter(tk); 
                             ku.ShowDialog();
                         }
                         else

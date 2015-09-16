@@ -182,13 +182,14 @@ namespace FirstTry
             if (y >= 2)
             {
                 totalpris -= 10;
+                
             }
          //   totalpris *= (100 - y * rabatsats);
          //   totalpris /= 100;
 
 
             //Admin ska väll kunna ändra pris?
-            if (session.reservation == true)
+           if (session.reservation == true)
             {
                 this.Hide();
                 Kunduppgifter ku = new Kunduppgifter(session);
