@@ -97,7 +97,7 @@ namespace FirstTry
 
         private void Loginform_Load(object sender, EventArgs e)
         {
-            textBox_losenord.UseSystemPasswordChar = true;
+           /* textBox_losenord.UseSystemPasswordChar = true;
 
             dateTimePicker2.Format = DateTimePickerFormat.Custom;
             dateTimePicker2.CustomFormat = "HH mm";
@@ -105,31 +105,32 @@ namespace FirstTry
 
 
             dateTimePicker2.ShowUpDown = true;
-
+            */
            // conn.Open();
            // LaggTillAktlista();
            // conn.Close();
 
 
         }
+        /*
+       private int LaggTillAktlista()
+       {
+           
+           string query = "INSERT INTO forestallning (open, fri_placering, forsaljningslut) VALUES(@open, @fri_placering, @forsaljningslut)";
+           NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
-        private int LaggTillAktlista()
-        {
-            
-            string query = "INSERT INTO forestallning (open, fri_placering, forsaljningslut) VALUES(@open, @fri_placering, @forsaljningslut)";
-            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+           DateTime dt2 = dateTimePicker1.Value.Date + dateTimePicker2.Value.TimeOfDay;
 
-            DateTime dt2 = dateTimePicker1.Value.Date + dateTimePicker2.Value.TimeOfDay;
+           command.Parameters.AddWithValue("@open", true);
+           command.Parameters.AddWithValue("@fri_placering", false);
+           command.Parameters.AddWithValue("@forsaljningslut", dt2);
 
-            command.Parameters.AddWithValue("@open", true);
-            command.Parameters.AddWithValue("@fri_placering", false);
-            command.Parameters.AddWithValue("@forsaljningslut", dt2);
+           return command.ExecuteNonQuery();
+        // Gör om så vi arbetar mot idnummer.
+    }
+    */
 
-            return command.ExecuteNonQuery();
-            // Gör om så vi arbetar mot idnummer.
-        }
-
-        private void textBox_losenord_TextChanged(object sender, EventArgs e)
+    private void textBox_losenord_TextChanged(object sender, EventArgs e)
         {
             
 
