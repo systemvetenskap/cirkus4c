@@ -11,7 +11,9 @@ namespace FirstTry
         public string namn { get; set; }
         public int id { get; set; }
         public DateTime datumTid { get; set; }
-        public int pris { get; set; }
+        public int vuxen { get; set; }
+        public int ungdom { get; set; }
+        public int barn { get; set; }
 
 
 

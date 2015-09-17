@@ -11,7 +11,10 @@ namespace FirstTry
         public string namn { get; set; }
         public int id { get; set; }
         public List<Akt> akter { get; set; }
-
+        public bool friplacering { get; set; }
+        public int vuxen { get; set; }
+        public int ungdom { get; set; }
+        public int barn { get; set; }
 
 
         public override string ToString()

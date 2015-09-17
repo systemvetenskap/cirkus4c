@@ -203,7 +203,7 @@ namespace FirstTry
             label3.Text = tk.barn.ToString();
             label5.Text = tk.forestallning.namn;
             label6.Text = tk.akter[tk.antal].namn;
-            label8.Text = tk.totalpris.ToString();
+            label8.Text = tk.totalpris.ToString() + " Kr";
 
 
             radiokoll();

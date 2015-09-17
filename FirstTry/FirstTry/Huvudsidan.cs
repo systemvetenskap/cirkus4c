@@ -29,7 +29,7 @@ namespace FirstTry
             //listBox_akter.SelectedIndex = -1;
             //listBox_forestallning.SelectedIndex = -1;
             DataTable dt = new DataTable();
-            string query = "select namn, id from forestallning";
+            string query = "select * from forestallning";
             //string forenamn = "forestallning";
             //int forenummer = 1;
             try
@@ -39,33 +39,53 @@ namespace FirstTry
 
                 foreach (DataRow row in dt.Rows)
                 {
-
-                    string namn = row["namn"].ToString();
-                    string id = row["id"].ToString();
-                    Forestallning fs = new Forestallning();
-                    fs.akter = new List<Akt>();                   
-                    fs.namn = namn;
-                    fs.id = Convert.ToInt32(id);
-                    listBox_forestallning.Items.Add(fs);
-                    //forenamn += forenummer;
-                    //forenummer++;
-
-                    
-                    string query2 = "select aktinfo, id, vuxenpris from akter where forestallningsid = " + fs.id.ToString();
-                    NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
-                    DataTable dt2 = new DataTable();
-                    da2.Fill(dt2);
-                    foreach (DataRow row2 in dt2.Rows)
+                    if ((bool)row["open"] == false)
                     {
-                        Akt akt = new Akt();
-                        string aktnamn = row2["aktinfo"].ToString();
-                        string aktid = row2["id"].ToString();
-                        int aktpris = Convert.ToInt32(row2["vuxenpris"]);
-                        akt.namn = aktnamn;
-                        akt.id = Convert.ToInt32(aktid);
-                        akt.pris = aktpris;
-                        fs.akter.Add(akt);
+
                     }
+                    else
+                    {
+                        string namn = row["namn"].ToString();
+                        string id = row["id"].ToString();
+                        bool fri = (bool)row["fri_placering"];
+                        int vuxen = Convert.ToInt32(row["vuxenpris"]);
+                        int ungdom = Convert.ToInt32(row["ungdomspris"]);
+                        int barn = Convert.ToInt32(row["barnpris"]);
+                        Forestallning fs = new Forestallning();
+                        fs.akter = new List<Akt>();
+                        fs.namn = namn;
+                        fs.id = Convert.ToInt32(id);
+                        fs.friplacering = fri;
+                        fs.barn = barn;
+                        fs.ungdom = ungdom;
+                        fs.vuxen = vuxen;
+                        listBox_forestallning.Items.Add(fs);
+                        //forenamn += forenummer;
+                        //forenummer++;
+
+
+                        string query2 = "select * from akter where forestallningsid = " + fs.id.ToString();
+                        NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
+                        DataTable dt2 = new DataTable();
+                        da2.Fill(dt2);
+                        foreach (DataRow row2 in dt2.Rows)
+                        {
+                            Akt akt = new Akt();
+                            string aktnamn = row2["aktinfo"].ToString();
+                            string aktid = row2["id"].ToString();
+                          //  int aktpris = Convert.ToInt32(row2["vuxenpris"]);
+                            int vuxen2 = Convert.ToInt32(row2["vuxenpris"]);
+                            int ungdom2 = Convert.ToInt32(row2["ungdomspris"]);
+                            int barn2 = Convert.ToInt32(row2["barnpris"]);
+                            akt.namn = aktnamn;
+                            akt.id = Convert.ToInt32(aktid);
+                            akt.vuxen = vuxen2;
+                            akt.ungdom = ungdom2;
+                            akt.barn = barn2;
+                            fs.akter.Add(akt);
+                        }
+                    }
+                    
 
                 }
                 //listBox_forestallning.Items.Add(namn);
@@ -142,63 +162,41 @@ namespace FirstTry
             session.barn = Convert.ToInt32(textBox_barn.Text.ToString());
             session.reservation = checkBox1.Checked;
             session.antal = 0;
-            session.loopar = x; 
+            session.loopar = x;
+             
             conn.Open();
-            LaggTillTempkop();
+            LaggTillTempkop(); //behövs den?
+            conn.Close();
 
-            int y = 0;
 
-            int barnrabatt = 0;
-            int ungdomsrabatt = 0;
-
+            /*
             string query = "SELECT biljettyp.rabattsats, biljettyp FROM public.biljettyp;";
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
             DataTable dt = new DataTable();
 
             da.Fill(dt);
+            */
+            int totalpris = 0;
 
-            foreach (DataRow row in dt.Rows)
+            if (session.hela == true)
             {
-                
-                if(row["biljettyp"].ToString() == "vuxen")
+                totalpris += session.barn * session.forestallning.barn;
+                totalpris += session.ungdom * session.forestallning.ungdom;
+                totalpris += session.vuxna * session.forestallning.vuxen;
+            }
+            else
+            {
+                foreach (Akt item in aktlista)
                 {
-                    
-                }
-
-                else if (row["biljettyp"].ToString() == "ungdom")
-                {
-                    ungdomsrabatt = Convert.ToInt32(row["rabattsats"]);
-                }
-                else if (row["biljettyp"].ToString() == "barn")
-                {
-                    barnrabatt = Convert.ToInt32(row["rabattsats"]);
+                    totalpris += session.barn * item.barn;
+                    totalpris += session.ungdom * item.ungdom;
+                    totalpris += session.vuxna * item.vuxen;
                 }
             }
 
-
-
-
-            foreach (Akt akt in aktlista)
-            {
-                LaggTillAktlista(akt);
-                totalpris += (session.akter[y].pris - ungdomsrabatt) * session.ungdom;
-                totalpris += (session.akter[y].pris - barnrabatt) * session.barn;
-                totalpris += session.akter[y].pris * session.vuxna;
-                y++;
-            }
-            conn.Close();
-
-            int rabatsats = 10;
-
-            if (y >= 2)
-            {
-                totalpris -= 10;
-                
-            }
-         //   totalpris *= (100 - y * rabatsats);
-         //   totalpris /= 100;
-
-
+            session.totalpris = totalpris;
+           
+        
             //Admin ska väll kunna ändra pris?
            if (session.reservation == true)
             {
@@ -206,6 +204,11 @@ namespace FirstTry
                 Kunduppgifter ku = new Kunduppgifter(session);
                 ku.ShowDialog();
                 this.Close();
+            }
+            else if (session.forestallning.friplacering == true)
+            {
+                //ladda biljett stuff direkt
+                MessageBox.Show("ITS WORKING");
             }
             else
             {
