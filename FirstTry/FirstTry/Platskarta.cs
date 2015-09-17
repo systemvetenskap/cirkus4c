@@ -54,7 +54,14 @@ namespace FirstTry
             //dubbelkolla igen först så den inte är bokad
 
             // ReserveraBiljett();
-            Innehaller(id, knapp.Text);
+            if (Innehaller(id, knapp.Text) == -1)
+            {
+                this.Hide();
+                Platskarta pk2 = new Platskarta(tk);
+                pk2.ShowDialog();
+                this.Close(); //ta bort this?
+            }
+          //  Innehaller(id, knapp.Text);
             conn.Close();
 
             knapp.BackColor = Color.Red;
@@ -121,30 +128,52 @@ namespace FirstTry
             {
                 string query2 = "INSERT INTO innehaller (akter_id, platser_id, biljett_id, tidsstampel, reserverad, kund_id) VALUES(@akter_id, @platser_id, (select max(id) from biljett), @tidsstampel, @reserverad, @kund_id)";
 
-                NpgsqlCommand command2 = new NpgsqlCommand(query2, conn);
+                try
+                {
+                    NpgsqlCommand command2 = new NpgsqlCommand(query2, conn);
 
-                command2.Parameters.AddWithValue("@akter_id", aktint);
-                command2.Parameters.AddWithValue("@platser_id", KnappId(kn));
-                command2.Parameters.AddWithValue("@tidsstampel", DateTime.Now);
-                command2.Parameters.AddWithValue("@reserverad", true);
-                command2.Parameters.AddWithValue("@kund_id", tk.kund_id);
+                    command2.Parameters.AddWithValue("@akter_id", aktint);
+                    command2.Parameters.AddWithValue("@platser_id", KnappId(kn));
+                    command2.Parameters.AddWithValue("@tidsstampel", DateTime.Now);
+                    command2.Parameters.AddWithValue("@reserverad", true);
+                    command2.Parameters.AddWithValue("@kund_id", tk.kund_id);
 
-                return command2.ExecuteNonQuery();
+                    return command2.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Tyvärr blev platsen precis bokad");
+
+                    return -1;
+                    //throw;
+                }
+
             }
             else
             {
-                string query2 = "INSERT INTO innehaller (akter_id, platser_id, biljett_id, reserverad) VALUES(@akter_id, @platser_id, (select max(id) from biljett), @reserverad)";
+                try
+                {
+                    string query2 = "INSERT INTO innehaller (akter_id, platser_id, biljett_id, reserverad) VALUES(@akter_id, @platser_id, (select max(id) from biljett), @reserverad)";
 
-                NpgsqlCommand command2 = new NpgsqlCommand(query2, conn);
+                    NpgsqlCommand command2 = new NpgsqlCommand(query2, conn);
 
-                int knapp = KnappId(kn);
+                    int knapp = KnappId(kn);
 
-                command2.Parameters.AddWithValue("@akter_id", aktint);
-                command2.Parameters.AddWithValue("@platser_id", knapp);
-                command2.Parameters.AddWithValue("@reserverad", false);
+                    command2.Parameters.AddWithValue("@akter_id", aktint);
+                    command2.Parameters.AddWithValue("@platser_id", knapp);
+                    command2.Parameters.AddWithValue("@reserverad", false);
 
 
-                return command2.ExecuteNonQuery();
+                    return command2.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Tyvärr blev platsen precis bokad");
+
+                    return -1;
+                    //throw;
+                }
+
             }
 
         }

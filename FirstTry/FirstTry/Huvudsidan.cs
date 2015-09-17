@@ -115,6 +115,7 @@ namespace FirstTry
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             int x = 0;
             int l = 0;
             foreach (Akt akt in listBox_akter.SelectedItems)
