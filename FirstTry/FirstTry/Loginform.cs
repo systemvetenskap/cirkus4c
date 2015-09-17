@@ -17,6 +17,7 @@ namespace FirstTry
         {
             InitializeComponent();
         }
+        string losenord = "";
 
         private void button_login_Click(object sender, EventArgs e)
         {
@@ -77,7 +78,7 @@ namespace FirstTry
                         }
                         else if(Convert.ToInt32(row["aktortyp_id"]) == 3)
                         {
-                            Huvudsidan hs = new Huvudsidan();
+                            Huvudsidan hs = new Huvudsidan(aktortyper);
                             hs.ShowDialog();
                         }
                     }
@@ -96,6 +97,12 @@ namespace FirstTry
 
         private void Loginform_Load(object sender, EventArgs e)
         {
+            textBox_losenord.UseSystemPasswordChar = true;
+        }
+
+        private void textBox_losenord_TextChanged(object sender, EventArgs e)
+        {
+            
 
         }
     }
