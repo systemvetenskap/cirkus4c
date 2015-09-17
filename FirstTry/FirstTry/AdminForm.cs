@@ -54,7 +54,7 @@ namespace FirstTry
             {
                 conn.Open();
                 //MessageBox.Show(conn.State.ToString());
-                NpgsqlCommand command = new NpgsqlCommand("Select namn from forestallning" , conn);
+                NpgsqlCommand command = new NpgsqlCommand("Select * from forestallning" , conn);
                 NpgsqlDataReader dr = command.ExecuteReader();
 
                 while (dr.Read())
@@ -88,7 +88,7 @@ namespace FirstTry
                             //string namn = row["namn"].ToString();
                             //int id = Convert.ToInt32(row["id"]);
                             //string generellinfo = row["generell_info"].ToString();
-                            //DateTime starttid = (DateTime)row["starttid"];
+                          //  DateTime starttid = Convert.ToDateTime(dr["starttid"]); jörgens föslag
                             //DateTime sluttid = (DateTime)row["sluttid"];
                            
                     
@@ -143,8 +143,11 @@ namespace FirstTry
            //fs2.namn = listBoxAdminForestallning.SelectedItem.ToString();
 
            textBoxForestNamn.Text = listBoxAdminForestallning.SelectedItem.ToString();
+           richTextBoxForestInf.Text = Forestallning.generellinfo.
 
-           
+
+
+
 
         }
         private int LaggTillForestallning()
