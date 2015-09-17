@@ -15,6 +15,8 @@ namespace FirstTry
         public int vuxen { get; set; }
         public int ungdom { get; set; }
         public int barn { get; set; }
+        public DateTime datum { get; set; }
+        public DateTime tid { get; set; }
 
 
         public override string ToString()

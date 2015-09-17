@@ -62,6 +62,8 @@ namespace FirstTry
                         int vuxen = Convert.ToInt32(row["vuxenpris"]);
                         int ungdom = Convert.ToInt32(row["ungdomspris"]);
                         int barn = Convert.ToInt32(row["barnpris"]);
+                        DateTime datum = (DateTime)row["datum"];
+                        DateTime tid = (DateTime)row["starttid"];
                         Forestallning fs = new Forestallning();
                         fs.akter = new List<Akt>();
                         fs.namn = namn;
@@ -70,6 +72,8 @@ namespace FirstTry
                         fs.barn = barn;
                         fs.ungdom = ungdom;
                         fs.vuxen = vuxen;
+                        fs.datum = datum;
+                        fs.tid = tid;
                         listBox_forestallning.Items.Add(fs);
                         //forenamn += forenummer;
                         //forenummer++;
@@ -109,15 +113,27 @@ namespace FirstTry
 
         private void listBox_forestallning_SelectedIndexChanged(object sender, EventArgs e)
         {
+            label16.Text = "";
+            label15.Text = "";
+
             Forestallning fs = new Forestallning();
             fs.akter = new List<Akt>();
             listBox_akter.Items.Clear();
 
-            fs = (Forestallning)listBox_forestallning.SelectedItem;
-            foreach (Akt akt in fs.akter)
+            if ((Forestallning)listBox_forestallning.SelectedItem != null)
             {
-                listBox_akter.Items.Add(akt);
+                fs = (Forestallning)listBox_forestallning.SelectedItem;
+                foreach (Akt akt in fs.akter)
+                {
+                    listBox_akter.Items.Add(akt);
+                }
+                label15.Visible = true;
+                label16.Visible = true;
+                
+                label16.Text = fs.datum.ToShortDateString();
+                label15.Text = fs.tid.ToShortTimeString();               
             }
+           
 
             label5.Visible = false;
             label6.Visible = false;
