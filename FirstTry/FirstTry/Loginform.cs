@@ -74,7 +74,8 @@ namespace FirstTry
 
                         if (Convert.ToInt32(row["aktortyp_id"]) == 6)
                         {
-                            //ladda admin form
+                            AdminForm af = new AdminForm();
+                            af.ShowDialog();
                         }
                         else if(Convert.ToInt32(row["aktortyp_id"]) == 3)
                         {
@@ -97,18 +98,18 @@ namespace FirstTry
 
         private void Loginform_Load(object sender, EventArgs e)
         {
-           /* textBox_losenord.UseSystemPasswordChar = true;
+            textBox_losenord.UseSystemPasswordChar = true;
+            /*
+                        dateTimePicker2.Format = DateTimePickerFormat.Custom;
+                        dateTimePicker2.CustomFormat = "HH mm";
 
-            dateTimePicker2.Format = DateTimePickerFormat.Custom;
-            dateTimePicker2.CustomFormat = "HH mm";
 
 
-
-            dateTimePicker2.ShowUpDown = true;
-            */
-           // conn.Open();
-           // LaggTillAktlista();
-           // conn.Close();
+                        dateTimePicker2.ShowUpDown = true;
+                        */
+            // conn.Open();
+            // LaggTillAktlista();
+            // conn.Close();
 
 
         }
@@ -130,7 +131,7 @@ namespace FirstTry
     }
     */
 
-    private void textBox_losenord_TextChanged(object sender, EventArgs e)
+        private void textBox_losenord_TextChanged(object sender, EventArgs e)
         {
             
 

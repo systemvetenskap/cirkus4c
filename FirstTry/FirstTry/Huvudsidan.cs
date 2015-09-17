@@ -232,7 +232,7 @@ namespace FirstTry
         private void skapaTempkop()
         {
 
-            helaforestallningen();
+            
             int loopar = 0;
 
             Tempkop s2 = new Tempkop();
@@ -244,29 +244,37 @@ namespace FirstTry
                 aktlista.Add(akt);
                 loopar++;           
             }
+            int u = 0;
+            int v = 0;
+            int b = 0;
 
-            
-            session.akter = aktlista;
-            session.forestallning = (Forestallning)listBox_forestallning.SelectedItem;
-            session.vuxna = Convert.ToInt32(textBox_vuxen.Text.ToString());
-            session.ungdom = Convert.ToInt32(textBox_ungdom.Text.ToString());
-            session.barn = Convert.ToInt32(textBox_barn.Text.ToString());
-            session.reservation = checkBox1.Checked;
-            session.antal = 0;
-            session.loopar = loopar;
+            if (int.TryParse(textBox_ungdom.Text,out u) == true && int.TryParse(textBox_vuxen.Text, out v) == true && int.TryParse(textBox_barn.Text, out b) == true)
+            {
+                helaforestallningen();
+                session.akter = aktlista;
+                session.forestallning = (Forestallning)listBox_forestallning.SelectedItem;
+                session.vuxna = v; //lägg i ensklid if tryparse på varje
+                session.ungdom = u;
+                session.barn = b;
+                session.reservation = checkBox1.Checked;
+                session.antal = 0;
+                session.loopar = loopar;
 
-            conn.Open();
-            LaggTillTempkop(); //behövs den?
-            conn.Close();
+                conn.Open();
+                LaggTillTempkop(); //behövs den?
+                conn.Close();
 
 
-            /*
-            string query = "SELECT biljettyp.rabattsats, biljettyp FROM public.biljettyp;";
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
-            DataTable dt = new DataTable();
+                /*
+                string query = "SELECT biljettyp.rabattsats, biljettyp FROM public.biljettyp;";
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
 
-            da.Fill(dt);
-            */
+                da.Fill(dt);
+                */
+
+            }
+
             int totalpris = 0;
 
             if (session.hela == true)
@@ -288,6 +296,7 @@ namespace FirstTry
             session.totalpris = totalpris;
             label2.Visible = true;
             label2.Text = session.totalpris.ToString();
+
         }
 
         private int LaggTillTempkop()
