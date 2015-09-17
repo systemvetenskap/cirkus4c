@@ -42,15 +42,19 @@ namespace FirstTry
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
                 da.Fill(dt);
 
-                DateTime slutdatum = new DateTime();
-                DateTime tid2 = new DateTime();
-                slutdatum = DateTime.Now;
-                tid2 = DateTime.Now;
+                /*  DateTime slutdatum = new DateTime();
+                  DateTime tid2 = new DateTime();
+                  slutdatum = DateTime.Now;
+                  tid2 = DateTime.Now;*/
+                
+
 
                 foreach (DataRow row in dt.Rows)
                 {
+                    DateTime slutdatum = (DateTime)row["forsaljningslut"];
+                   
 
-                    if ((bool)row["open"] == true && slutdatum < tid2)
+                    if ((bool)row["open"] == true && slutdatum > DateTime.Now)
                     {
                         string namn = row["namn"].ToString();
                         string id = row["id"].ToString();

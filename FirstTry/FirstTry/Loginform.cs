@@ -98,9 +98,18 @@ namespace FirstTry
         private void Loginform_Load(object sender, EventArgs e)
         {
             textBox_losenord.UseSystemPasswordChar = true;
+
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.CustomFormat = "HH mm";
+
+
+
+            dateTimePicker2.ShowUpDown = true;
+
            // conn.Open();
-            //LaggTillAktlista();
-            //conn.Close();
+           // LaggTillAktlista();
+           // conn.Close();
+
 
         }
 
@@ -110,8 +119,7 @@ namespace FirstTry
             string query = "INSERT INTO forestallning (open, fri_placering, forsaljningslut) VALUES(@open, @fri_placering, @forsaljningslut)";
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
-            DateTime dt2 = new DateTime();
-            dt2.AddMinutes(1);
+            DateTime dt2 = dateTimePicker1.Value.Date + dateTimePicker2.Value.TimeOfDay;
 
             command.Parameters.AddWithValue("@open", true);
             command.Parameters.AddWithValue("@fri_placering", false);

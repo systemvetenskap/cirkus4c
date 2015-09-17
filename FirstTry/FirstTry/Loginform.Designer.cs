@@ -34,6 +34,7 @@
             this.label_losenord = new System.Windows.Forms.Label();
             this.button_login = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // textBox_anvandarnamn
@@ -81,16 +82,28 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(329, 49);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 5;
+            this.dateTimePicker1.Value = new System.DateTime(2015, 9, 17, 0, 0, 0, 0);
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(329, 112);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(80, 20);
+            this.dateTimePicker2.TabIndex = 6;
+            this.dateTimePicker2.Value = new System.DateTime(2015, 9, 17, 0, 0, 0, 0);
             // 
             // Loginform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 446);
+            this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button_login);
             this.Controls.Add(this.label_losenord);
@@ -113,5 +126,6 @@
         private System.Windows.Forms.Label label_losenord;
         private System.Windows.Forms.Button button_login;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }
