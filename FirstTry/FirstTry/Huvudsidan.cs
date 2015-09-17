@@ -24,11 +24,10 @@ namespace FirstTry
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         
         Tempkop session = new Tempkop();
-        List<Akt> aktlista = new List<Akt>();
+
         int totalpris = 0;
         int antalakter = 0;
-        int xh = 0;
-        int l = 0;
+
 
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
@@ -43,13 +42,15 @@ namespace FirstTry
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
                 da.Fill(dt);
 
+                DateTime slutdatum = new DateTime();
+                DateTime tid2 = new DateTime();
+                slutdatum = DateTime.Now;
+                tid2 = DateTime.Now;
+
                 foreach (DataRow row in dt.Rows)
                 {
-                    if ((bool)row["open"] == false)
-                    {
 
-                    }
-                    else
+                    if ((bool)row["open"] == true && slutdatum < tid2)
                     {
                         string namn = row["namn"].ToString();
                         string id = row["id"].ToString();
@@ -79,7 +80,7 @@ namespace FirstTry
                             Akt akt = new Akt();
                             string aktnamn = row2["aktinfo"].ToString();
                             string aktid = row2["id"].ToString();
-                          //  int aktpris = Convert.ToInt32(row2["vuxenpris"]);
+                            //  int aktpris = Convert.ToInt32(row2["vuxenpris"]);
                             int vuxen2 = Convert.ToInt32(row2["vuxenpris"]);
                             int ungdom2 = Convert.ToInt32(row2["ungdomspris"]);
                             int barn2 = Convert.ToInt32(row2["barnpris"]);
@@ -91,7 +92,7 @@ namespace FirstTry
                             fs.akter.Add(akt);
                         }
                     }
-                    
+
 
                 }
                 //listBox_forestallning.Items.Add(namn);
@@ -107,6 +108,7 @@ namespace FirstTry
             Forestallning fs = new Forestallning();
             fs.akter = new List<Akt>();
             listBox_akter.Items.Clear();
+
             fs = (Forestallning)listBox_forestallning.SelectedItem;
             foreach (Akt akt in fs.akter)
             {
@@ -182,14 +184,13 @@ namespace FirstTry
 
 
         }
-
-        private void skapaTempkop()
+        private void helaforestallningen()
         {
-
+            int xh = 0;
+            int l = 0;
 
             foreach (Akt akt in listBox_akter.SelectedItems)
             {
-                aktlista.Add(akt);
                 xh++;
             }
             foreach (Akt akt2 in listBox_akter.Items)
@@ -202,8 +203,29 @@ namespace FirstTry
                 //då har vill man boka hela förestälningen
                 session.hela = true;
             }
+            else
+            {
+                session.hela = false;
+            }
 
+        }
+        private void skapaTempkop()
+        {
 
+            helaforestallningen();
+            int loopar = 0;
+
+            Tempkop s2 = new Tempkop();
+            session = s2;
+            List<Akt> aktlista = new List<Akt>();
+
+            foreach (Akt akt in listBox_akter.SelectedItems)
+            {
+                aktlista.Add(akt);
+                loopar++;           
+            }
+
+            
             session.akter = aktlista;
             session.forestallning = (Forestallning)listBox_forestallning.SelectedItem;
             session.vuxna = Convert.ToInt32(textBox_vuxen.Text.ToString());
@@ -211,7 +233,7 @@ namespace FirstTry
             session.barn = Convert.ToInt32(textBox_barn.Text.ToString());
             session.reservation = checkBox1.Checked;
             session.antal = 0;
-            session.loopar = xh;
+            session.loopar = loopar;
 
             conn.Open();
             LaggTillTempkop(); //behövs den?
@@ -339,22 +361,23 @@ namespace FirstTry
 
         private void listBox_akter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (xh != l)
+            
+
+            if ((Akt)(listBox_akter.SelectedItem) != null)
             {
-                //då har vill man boka hela förestälningen
-                session.hela = true;
+                Akt akt = (Akt)(listBox_akter.SelectedItem);
+
+                label5.Visible = true;
+                label6.Visible = true;
+                label7.Visible = true;
+
+                noll();
+
+                label5.Text = akt.vuxen.ToString();
+                label6.Text = akt.ungdom.ToString();
+                label7.Text = akt.barn.ToString();
             }
-            Akt akt = (Akt)(listBox_akter.SelectedItem);
-
-            label5.Visible = true;
-            label6.Visible = true;
-            label7.Visible = true;
-
-            noll();
-
-            label5.Text = akt.vuxen.ToString();
-            label6.Text = akt.ungdom.ToString();
-            label7.Text = akt.barn.ToString();
+            
 
         }
 

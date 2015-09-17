@@ -17,12 +17,12 @@ namespace FirstTry
         {
             InitializeComponent();
         }
-        string losenord = "";
+        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+
 
         private void button_login_Click(object sender, EventArgs e)
         {
             bool bolean = false;
-            NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
             DataTable dt = new DataTable();
             string anv = textBox_anvandarnamn.Text;
             string losen = textBox_losenord.Text;
@@ -98,6 +98,27 @@ namespace FirstTry
         private void Loginform_Load(object sender, EventArgs e)
         {
             textBox_losenord.UseSystemPasswordChar = true;
+           // conn.Open();
+            //LaggTillAktlista();
+            //conn.Close();
+
+        }
+
+        private int LaggTillAktlista()
+        {
+            
+            string query = "INSERT INTO forestallning (open, fri_placering, forsaljningslut) VALUES(@open, @fri_placering, @forsaljningslut)";
+            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+            DateTime dt2 = new DateTime();
+            dt2.AddMinutes(1);
+
+            command.Parameters.AddWithValue("@open", true);
+            command.Parameters.AddWithValue("@fri_placering", false);
+            command.Parameters.AddWithValue("@forsaljningslut", dt2);
+
+            return command.ExecuteNonQuery();
+            // Gör om så vi arbetar mot idnummer.
         }
 
         private void textBox_losenord_TextChanged(object sender, EventArgs e)

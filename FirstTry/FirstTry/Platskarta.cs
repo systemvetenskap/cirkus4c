@@ -140,9 +140,9 @@ namespace FirstTry
 
                     return command2.ExecuteNonQuery();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Tyvärr blev platsen precis bokad");
+                    MessageBox.Show("Tyvärr blev platsen precis bokad" + ex.ToString());
 
                     return -1;
                     //throw;
@@ -166,9 +166,9 @@ namespace FirstTry
 
                     return command2.ExecuteNonQuery();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Tyvärr blev platsen precis bokad");
+                    MessageBox.Show("Tyvärr blev platsen precis bokad" + ex.ToString());
 
                     return -1;
                     //throw;
