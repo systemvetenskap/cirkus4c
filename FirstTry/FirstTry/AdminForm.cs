@@ -18,7 +18,7 @@ namespace FirstTry
             InitializeComponent();
         }
 
-       NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         Forestallning fs = new Forestallning();
         List<Forestallning> forestallningslista = new List<Forestallning>();
 
@@ -50,24 +50,49 @@ namespace FirstTry
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
-            listBoxAdminForestallning.Items.Clear();
-              DataTable dt = new DataTable();
-                    string query = "select * from forestallning";
-                   
-                    try
-                    {
-                        NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
-                        da.Fill(dt);
+            try
+            {
+                conn.Open();
+                //MessageBox.Show(conn.State.ToString());
+                NpgsqlCommand command = new NpgsqlCommand("Select namn from forestallning" , conn);
+                NpgsqlDataReader dr = command.ExecuteReader();
 
-                        foreach (DataRow row in dt.Rows)
-                        {
+                while (dr.Read())
+                {
+                    listBoxAdminForestallning.Items.Add(dr["namn"]);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+           
+            //listBoxAdminForestallning.Items.Clear();
+            //  DataTable dt = new DataTable();
+            //        string query = "select * from forestallning";
+                       
+                   
+            //        try
+            //        {
+            //            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+            //            da.Fill(dt);
+
+            //            foreach (DataRow row in dt.Rows)
+            //            {
                             
-                            string namn = row["namn"].ToString();
-                            int id = Convert.ToInt32(row["id"]);
-                            string generellinfo = row["generell_info"].ToString();
-                            DateTime starttid = (DateTime)row["starttid"];
-                            DateTime sluttid = (DateTime)row["sluttid"];
-                           // int vuxenpris = Convert.ToInt32(row["vuxenpris"]);
+                            //string namn = row["namn"].ToString();
+                            //int id = Convert.ToInt32(row["id"]);
+                            //string generellinfo = row["generell_info"].ToString();
+                            //DateTime starttid = (DateTime)row["starttid"];
+                            //DateTime sluttid = (DateTime)row["sluttid"];
+                           
+                    
+                            // int vuxenpris = Convert.ToInt32(row["vuxenpris"]);
                             ////int ungdomspris = Convert.ToInt32(row["ungdomspris"]);
                             ////int barnpris = Convert.ToInt32(row["barnpris"]);
                           
@@ -82,7 +107,7 @@ namespace FirstTry
                     //        fs.ungdomspris = Convert.ToInt32(ungdomspris); 
                     //        fs.barnpris = Convert.ToInt32(barnpris); 
 
-                    listBoxAdminForestallning.Items.Add(fs);
+                    //listBoxAdminForestallning.Items.Add(fs);
                        
 
 
@@ -102,12 +127,12 @@ namespace FirstTry
 
                         }
                         //listBox_forestallning.Items.Add(namn);
-                    }
-                    catch (NpgsqlException ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
+                //    }
+                //    catch (NpgsqlException ex)
+                //    {
+                //        MessageBox.Show(ex.Message);
+                //    }
+                //}
 
         
         private void listBoxAdminForestallning_SelectedIndexChanged(object sender, EventArgs e)
