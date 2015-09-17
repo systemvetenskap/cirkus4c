@@ -33,6 +33,7 @@
             this.label_anvandarnamn = new System.Windows.Forms.Label();
             this.label_losenord = new System.Windows.Forms.Label();
             this.button_login = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // textBox_anvandarnamn
@@ -78,11 +79,19 @@
             this.button_login.UseVisualStyleBackColor = true;
             this.button_login.Click += new System.EventHandler(this.button_login_Click);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(329, 49);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 5;
+            // 
             // Loginform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(338, 171);
+            this.ClientSize = new System.Drawing.Size(680, 446);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button_login);
             this.Controls.Add(this.label_losenord);
             this.Controls.Add(this.label_anvandarnamn);
@@ -103,5 +112,6 @@
         private System.Windows.Forms.Label label_anvandarnamn;
         private System.Windows.Forms.Label label_losenord;
         private System.Windows.Forms.Button button_login;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
