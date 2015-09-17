@@ -23,6 +23,8 @@ namespace FirstTry
         List<Akt> aktlista = new List<Akt>();
         int totalpris = 0;
         int antalakter = 0;
+        int xh = 0;
+        int l = 0;
 
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
@@ -107,6 +109,20 @@ namespace FirstTry
                 listBox_akter.Items.Add(akt);
             }
 
+            label5.Visible = false;
+            label6.Visible = false;
+            label7.Visible = false;
+
+            noll();
+
+            label10.Visible = true;
+            label9.Visible = true;
+            label8.Visible = true;
+
+            label10.Text = fs.vuxen.ToString();
+            label9.Text = fs.ungdom.ToString();
+            label8.Text = fs.barn.ToString();
+
 
             //string forestallning = listBox_forestallning.SelectedItem.ToString();
             //string query2 = "SELECT aktinfo, id FROM public.akter WHERE akter.forestallningsid = " + fs.id;
@@ -136,24 +152,53 @@ namespace FirstTry
         private void button1_Click(object sender, EventArgs e)
         {
 
-            int x = 0;
-            int l = 0;
+
+           ///asdf
+        
+            //Admin ska väll kunna ändra pris?
+           if (session.reservation == true)
+            {
+                this.Hide();
+                Kunduppgifter ku = new Kunduppgifter(session);
+                ku.ShowDialog();
+                this.Close();
+            }
+            else if (session.forestallning.friplacering == true)
+            {
+                //ladda biljett stuff direkt
+                MessageBox.Show("ITS WORKING");
+            }
+            else
+            {
+                this.Hide();
+                Platskarta pk = new Platskarta(session);
+                pk.ShowDialog();
+                this.Close();
+            }
+
+
+        }
+
+        private void skapaTempkop()
+        {
+
+
             foreach (Akt akt in listBox_akter.SelectedItems)
             {
                 aktlista.Add(akt);
-                x++;
+                xh++;
             }
             foreach (Akt akt2 in listBox_akter.Items)
             {
                 l++;
             }
 
-            if (x == l)
+            if (xh == l)
             {
                 //då har vill man boka hela förestälningen
                 session.hela = true;
             }
-            
+
 
             session.akter = aktlista;
             session.forestallning = (Forestallning)listBox_forestallning.SelectedItem;
@@ -162,8 +207,8 @@ namespace FirstTry
             session.barn = Convert.ToInt32(textBox_barn.Text.ToString());
             session.reservation = checkBox1.Checked;
             session.antal = 0;
-            session.loopar = x;
-             
+            session.loopar = xh;
+
             conn.Open();
             LaggTillTempkop(); //behövs den?
             conn.Close();
@@ -195,30 +240,8 @@ namespace FirstTry
             }
 
             session.totalpris = totalpris;
-           
-        
-            //Admin ska väll kunna ändra pris?
-           if (session.reservation == true)
-            {
-                this.Hide();
-                Kunduppgifter ku = new Kunduppgifter(session);
-                ku.ShowDialog();
-                this.Close();
-            }
-            else if (session.forestallning.friplacering == true)
-            {
-                //ladda biljett stuff direkt
-                MessageBox.Show("ITS WORKING");
-            }
-            else
-            {
-                this.Hide();
-                Platskarta pk = new Platskarta(session);
-                pk.ShowDialog();
-                this.Close();
-            }
-
-
+            label2.Visible = true;
+            label2.Text = session.totalpris.ToString();
         }
 
         private int LaggTillTempkop()
@@ -276,7 +299,22 @@ namespace FirstTry
 
         private void textBox_vuxen_TextChanged(object sender, EventArgs e)
         {
+            skapaTempkop();
             
+            /*
+            Forestallning fs = (Forestallning)listBox_forestallning.SelectedItem;
+            List<Akt> a = new List<Akt>();
+            int x = 0;
+
+            foreach (Akt item in listBox_akter.SelectedItems)
+            {
+                
+
+            } */
+
+            
+
+            //label2
 
         }
 
@@ -287,12 +325,53 @@ namespace FirstTry
 
         private void textBox_ungdom_TextChanged(object sender, EventArgs e)
         {
-            
+            skapaTempkop();
         }
 
         private void textBox_barn_TextChanged(object sender, EventArgs e)
         {
-           
+            skapaTempkop();
+        }
+
+        private void listBox_akter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (xh != l)
+            {
+                //då har vill man boka hela förestälningen
+                session.hela = true;
+            }
+            Akt akt = (Akt)(listBox_akter.SelectedItem);
+
+            label5.Visible = true;
+            label6.Visible = true;
+            label7.Visible = true;
+
+            noll();
+
+            label5.Text = akt.vuxen.ToString();
+            label6.Text = akt.ungdom.ToString();
+            label7.Text = akt.barn.ToString();
+
+        }
+
+        private void noll()
+        {
+            
+            textBox_barn.Text = "0";
+            textBox_vuxen.Text = "0";
+            textBox_ungdom.Text = "0";
+
+            session.totalpris = 0;
+        }
+        
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Loginform lf = new Loginform();
+            lf.ShowDialog();
+            this.Close();
         }
     }
 }

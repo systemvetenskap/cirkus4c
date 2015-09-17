@@ -48,6 +48,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox_forestallning
@@ -67,6 +68,7 @@
             this.listBox_akter.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox_akter.Size = new System.Drawing.Size(190, 238);
             this.listBox_akter.TabIndex = 1;
+            this.listBox_akter.SelectedIndexChanged += new System.EventHandler(this.listBox_akter_SelectedIndexChanged);
             // 
             // textBox_vuxen
             // 
@@ -101,7 +103,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
+            this.button1.Text = "Fortsätt";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -156,9 +158,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(525, 444);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.Size = new System.Drawing.Size(13, 13);
             this.label2.TabIndex = 11;
-            this.label2.Text = "SEK";
+            this.label2.Text = "0";
             // 
             // label3
             // 
@@ -186,6 +188,7 @@
             this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 14;
             this.label5.Text = "Vuxen";
+            this.label5.Visible = false;
             // 
             // label6
             // 
@@ -195,6 +198,7 @@
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 15;
             this.label6.Text = "Vuxen";
+            this.label6.Visible = false;
             // 
             // label7
             // 
@@ -204,6 +208,7 @@
             this.label7.Size = new System.Drawing.Size(37, 13);
             this.label7.TabIndex = 16;
             this.label7.Text = "Vuxen";
+            this.label7.Visible = false;
             // 
             // label8
             // 
@@ -213,6 +218,7 @@
             this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 19;
             this.label8.Text = "Vuxen";
+            this.label8.Visible = false;
             // 
             // label9
             // 
@@ -222,6 +228,7 @@
             this.label9.Size = new System.Drawing.Size(37, 13);
             this.label9.TabIndex = 18;
             this.label9.Text = "Vuxen";
+            this.label9.Visible = false;
             // 
             // label10
             // 
@@ -231,12 +238,24 @@
             this.label10.Size = new System.Drawing.Size(37, 13);
             this.label10.TabIndex = 17;
             this.label10.Text = "Vuxen";
+            this.label10.Visible = false;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(623, 12);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Logga ut";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Huvudsidan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(710, 481);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
@@ -287,5 +306,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button2;
     }
 }

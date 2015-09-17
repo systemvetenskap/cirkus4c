@@ -447,5 +447,13 @@ namespace FirstTry
         {
             generellknapp(button_A8);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Huvudsidan hs = new Huvudsidan();
+            hs.ShowDialog();
+            this.Close();
+        }
     }
 }
