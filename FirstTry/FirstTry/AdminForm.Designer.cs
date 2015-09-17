@@ -54,6 +54,7 @@
             this.buttonOppnaForest = new System.Windows.Forms.Button();
             this.uppdatera = new System.Windows.Forms.Button();
             this.buttonTaBort = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // listBoxAdminForestallning
@@ -278,11 +279,19 @@
             this.buttonTaBort.Text = "Ta bort";
             this.buttonTaBort.UseVisualStyleBackColor = true;
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(43, 342);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 28;
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(776, 445);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.buttonTaBort);
             this.Controls.Add(this.uppdatera);
             this.Controls.Add(this.buttonOppnaForest);
@@ -345,5 +354,6 @@
         private System.Windows.Forms.Button buttonOppnaForest;
         private System.Windows.Forms.Button uppdatera;
         private System.Windows.Forms.Button buttonTaBort;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
