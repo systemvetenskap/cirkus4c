@@ -13,6 +13,8 @@ namespace FirstTry
     partial class Platskarta : Form
     {
         Tempkop tk = new Tempkop();
+      //  List<int> biljett_id = new List<int>();
+        
 
         public Platskarta(Tempkop tk2)
         {
@@ -23,6 +25,8 @@ namespace FirstTry
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         DataTable dt = new DataTable();
+
+        
 
 
         private void generellknapp(Button knapp)
@@ -100,16 +104,21 @@ namespace FirstTry
             }
         }
 
-        private int ReserveraBiljett()
+        private void ReserveraBiljett()
         {
 
 
-            string query = "INSERT INTO biljett (totalpris) VALUES(@totalpris)";
+            string query = "INSERT INTO biljett (totalpris) VALUES(@totalpris) RETURNING id;";
             Biljett biljetten = new Biljett();
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
             command.Parameters.AddWithValue("@totalpris", 66);
 
-            return command.ExecuteNonQuery();
+            // nyssInlagdBiljett();
+
+            int x = (int)command.ExecuteScalar();
+
+          //  biljett_id.Add(x);
+            tk.biljett_id.Add(x);
 
 
 
@@ -118,10 +127,22 @@ namespace FirstTry
             //command.Parameters.AddWithValue("@tid", session.ungdom);
 
         }
+        private void nyssInlagdBiljett()
+        {
+            string query = "SELECT CURRVAL('biljett','id')";
+
+            DataTable dt = new DataTable();
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+            da.Fill(dt);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                tk.biljett_id.Add(Convert.ToInt32(item["id"]));
+            }
+        }
 
         private int Innehaller(int aktint, string kn)
         {
-
             ReserveraBiljett();
 
             if (tk.reservation == true)
@@ -299,6 +320,7 @@ namespace FirstTry
 
         private void Platskarta_Load(object sender, EventArgs e)
         {
+            tk.biljett_id = new List<int>();
             if (tk.hela == true)
             {
                 foreach (Akt item in tk.akter)
@@ -367,8 +389,8 @@ namespace FirstTry
                         else if (dialogResult == DialogResult.No)
                         {
                             //ej krav?!
-                            Huvudsidan hu = new Huvudsidan();
-                            hu.ShowDialog();
+                          //  Huvudsidan hu = new Huvudsidan();
+                           // hu.ShowDialog();
                             //ta bort från innehåller och biljett
                         }
 
@@ -407,6 +429,17 @@ namespace FirstTry
                     bt.BackColor = Color.Red;
                 }
             }
+        }
+        private void avbrytkop()
+        {
+            foreach (int bid in tk.biljett_id)
+            {
+                string dquery = "delete from innehaller where biljett_id = " + bid;
+
+                NpgsqlCommand command = new NpgsqlCommand(dquery, conn);
+                command.ExecuteNonQuery();
+            }
+
         }
 
         private void button_A1_Click(object sender, EventArgs e)
@@ -451,6 +484,10 @@ namespace FirstTry
 
         private void button1_Click(object sender, EventArgs e)
         {
+            conn.Open();
+            avbrytkop();
+            conn.Close();
+
             this.Hide();
             Huvudsidan hs = new Huvudsidan();
             hs.ShowDialog();

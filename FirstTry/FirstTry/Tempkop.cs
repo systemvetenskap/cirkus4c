@@ -10,7 +10,7 @@ namespace FirstTry
 {
     class Tempkop
     {
-        
+
         public Forestallning forestallning { get; set; }
         public List<Akt> akter { get; set; }
         public int vuxna { get; set; }
@@ -22,6 +22,7 @@ namespace FirstTry
         public int kund_id { get; set; }
         public int totalpris { get; set; }
         public bool hela { get; set; }
+        public List<int> biljett_id {get; set;}
 
 
         public bool fullbokat(Tempkop tk)

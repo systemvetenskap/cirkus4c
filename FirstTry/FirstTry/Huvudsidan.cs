@@ -24,6 +24,7 @@ namespace FirstTry
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         
         Tempkop session = new Tempkop();
+        
 
         
         int antalakter = 0;
@@ -32,7 +33,7 @@ namespace FirstTry
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
             session.totalpris = 0; //För att kolla vid button click att inget är vallt
-
+            
             //listBox_akter.SelectedIndex = -1;
             //listBox_forestallning.SelectedIndex = -1;
             DataTable dt = new DataTable();
@@ -68,6 +69,7 @@ namespace FirstTry
                         DateTime tid = (DateTime)row["starttid"];
                         Forestallning fs = new Forestallning();
                         fs.akter = new List<Akt>();
+                        
                         fs.namn = namn;
                         fs.id = Convert.ToInt32(id);
                         fs.friplacering = fri;
