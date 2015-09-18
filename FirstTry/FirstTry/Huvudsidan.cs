@@ -25,12 +25,14 @@ namespace FirstTry
         
         Tempkop session = new Tempkop();
 
-        int totalpris = 0;
+        
         int antalakter = 0;
 
 
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
+            session.totalpris = 0; //För att kolla vid button click att inget är vallt
+
             //listBox_akter.SelectedIndex = -1;
             //listBox_forestallning.SelectedIndex = -1;
             DataTable dt = new DataTable();
@@ -178,30 +180,48 @@ namespace FirstTry
         private void button1_Click(object sender, EventArgs e)
         {
 
-
-           ///asdf
-        
-            //Admin ska väll kunna ändra pris?
-           if (session.reservation == true)
+            if (antal_ar_siffror() == false)
             {
-                this.Hide();
-                Kunduppgifter ku = new Kunduppgifter(session);
-                ku.ShowDialog();
-                this.Close();
+                if ((Forestallning)listBox_forestallning.SelectedItem == null)
+                {
+                    MessageBox.Show("Hoppsan! Du glömde visst att välja en föreställning");
+                }
+                else if ((Akt)listBox_akter.SelectedItem == null)
+                {
+                    MessageBox.Show("Hoppsan! Du glömde visst att välja akt");
+                }
+                else
+                {
+                    MessageBox.Show("Hoppsan! Du fyllde i antalet besökare felaktigt.");
+                }
             }
-            else if (session.forestallning.friplacering == true)
+            else if (session.fullbokat(session) == true)
             {
-                //ladda biljett stuff direkt
-                MessageBox.Show("ITS WORKING");
+                MessageBox.Show("Tyvärr så finns det inte tillräkligt med plats på de valda akterna");
             }
             else
             {
-                this.Hide();
-                Platskarta pk = new Platskarta(session);
-                pk.ShowDialog();
-                this.Close();
+                //Admin ska väll kunna ändra pris?
+                if (session.reservation == true)
+                {
+                    this.Hide();
+                    Kunduppgifter ku = new Kunduppgifter(session);
+                    ku.ShowDialog();
+                    this.Close();
+                }
+                else if (session.forestallning.friplacering == true)
+                {
+                    //ladda biljett stuff direkt
+                    MessageBox.Show("ITS WORKING");
+                }
+                else
+                {
+                    this.Hide();
+                    Platskarta pk = new Platskarta(session);
+                    pk.ShowDialog();
+                    this.Close();
+                }
             }
-
 
         }
         private void helaforestallningen()
@@ -229,6 +249,34 @@ namespace FirstTry
             }
 
         }
+        private bool antal_ar_siffror()
+        {
+            int u = 0;
+            int v = 0;
+            int b = 0;
+            
+
+            if (int.TryParse(textBox_ungdom.Text, out u) == true)
+            {
+                session.ungdom = u;
+            }
+            if (int.TryParse(textBox_vuxen.Text, out v) == true)
+            {
+                session.vuxna = v;
+            }
+            if (int.TryParse(textBox_barn.Text, out b) == true)
+            {
+                session.barn = b;
+            }
+
+            if ((u + v + b) == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         private void skapaTempkop()
         {
 
@@ -244,36 +292,20 @@ namespace FirstTry
                 aktlista.Add(akt);
                 loopar++;           
             }
-            int u = 0;
-            int v = 0;
-            int b = 0;
-
-            if (int.TryParse(textBox_ungdom.Text,out u) == true && int.TryParse(textBox_vuxen.Text, out v) == true && int.TryParse(textBox_barn.Text, out b) == true)
-            {
-                helaforestallningen();
-                session.akter = aktlista;
-                session.forestallning = (Forestallning)listBox_forestallning.SelectedItem;
-                session.vuxna = v; //lägg i ensklid if tryparse på varje
-                session.ungdom = u;
-                session.barn = b;
-                session.reservation = checkBox1.Checked;
-                session.antal = 0;
-                session.loopar = loopar;
-
-                conn.Open();
-                LaggTillTempkop(); //behövs den?
-                conn.Close();
 
 
-                /*
-                string query = "SELECT biljettyp.rabattsats, biljettyp FROM public.biljettyp;";
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
+            helaforestallningen();
+            session.akter = aktlista;
+            session.forestallning = (Forestallning)listBox_forestallning.SelectedItem;           
+            session.reservation = checkBox1.Checked;
+            session.antal = 0;
+            session.loopar = loopar;
+            antal_ar_siffror();
 
-                da.Fill(dt);
-                */
+            conn.Open();
+            LaggTillTempkop(); //behövs den?
+            conn.Close();
 
-            }
 
             int totalpris = 0;
 
@@ -354,7 +386,12 @@ namespace FirstTry
 
         private void textBox_vuxen_TextChanged(object sender, EventArgs e)
         {
-            skapaTempkop();
+            //Ska vi dölja dem innan man valt akt och föreställning
+            if ((Forestallning)listBox_forestallning.SelectedItem != null && (Akt)listBox_akter.SelectedItem != null)
+            {
+                skapaTempkop();
+            }
+            
             
             /*
             Forestallning fs = (Forestallning)listBox_forestallning.SelectedItem;
@@ -380,12 +417,18 @@ namespace FirstTry
 
         private void textBox_ungdom_TextChanged(object sender, EventArgs e)
         {
-            skapaTempkop();
+            if ((Forestallning)listBox_forestallning.SelectedItem != null && (Akt)listBox_akter.SelectedItem != null)
+            {
+                skapaTempkop();
+            }
         }
 
         private void textBox_barn_TextChanged(object sender, EventArgs e)
         {
-            skapaTempkop();
+            if ((Forestallning)listBox_forestallning.SelectedItem != null && (Akt)listBox_akter.SelectedItem != null)
+            {
+                skapaTempkop();
+            }
         }
 
         private void listBox_akter_SelectedIndexChanged(object sender, EventArgs e)

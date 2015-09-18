@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Npgsql;
+using System.Data;
 
 namespace FirstTry
 {
@@ -20,6 +22,53 @@ namespace FirstTry
         public int kund_id { get; set; }
         public int totalpris { get; set; }
         public bool hela { get; set; }
+
+
+        public bool fullbokat(Tempkop tk)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+
+           // int id = akt_id;//akten.id;
+
+            string query = "select platser_id, tidsstampel, reserverad from innehaller where akter_id = ";
+
+            foreach (Akt item in tk.akter)
+            {
+                query += item.id.ToString();
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+                int x = 0;
+                x = tk.vuxna + tk.barn + tk.ungdom;
+
+
+                if (x >= 8)
+                {
+                    // MessageBox.Show("Tyvärr finns inte tillräkligt med plats, utanför");
+                    // this.Hide();
+                    //Huvudsidan hu = new Huvudsidan();
+                    //hu.ShowDialog();
+                    // Close();
+                    return true;
+                }
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (x >= 8)
+                    {
+                        // MessageBox.Show("Tyvärr finns inte tillräkligt med plats, innanför");
+                        //this.Hide();
+                        Huvudsidan hu = new Huvudsidan();
+                        hu.ShowDialog();
+                        //Close();
+                        return true;
+                    }
+                    x++;
+                }
+            }         
+                return false;
+        }
     }
 
     

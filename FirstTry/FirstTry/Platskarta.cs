@@ -231,6 +231,7 @@ namespace FirstTry
                 hu.ShowDialog();
                 Close();
             }
+            //Här ska tk metoden ligga, kanske :p
 
             foreach (DataRow row in dt.Rows)
             {
