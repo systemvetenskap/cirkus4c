@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="Akt.cs" />
     <Compile Include="Biljett.cs" />
+    <Compile Include="Databasmetoder.cs" />
     <Compile Include="Forestallning.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

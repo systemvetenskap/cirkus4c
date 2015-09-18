@@ -13,25 +13,13 @@ namespace FirstTry
 {
     public partial class AdminForm : Form
     {
+        private Forestallning valdforestallning;
+        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+        
         public AdminForm()
         {
             InitializeComponent();
         }
-
-        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-        Forestallning fs = new Forestallning();
-        List<Forestallning> forestallningslista = new List<Forestallning>();
-
-        //string namn;
-        //int id;
-        //string generellinfo;
-        ////  DateTime starttid = Convert.ToDateTime(dr["starttid"]); jörgens föslag
-        ////DateTime sluttid = (DateTime)row["sluttid"];
-        
-        //int vuxenpris;
-        //int ungdomspris;
-        //int barnpris;
-
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -60,7 +48,78 @@ namespace FirstTry
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
-            try
+            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+
+        }
+        private void listBoxAdminForestallning_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
+            listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id); 
+            textBoxForestNamn.Text =valdforestallning.ToString();
+            richTextBoxForestInf.Text = valdforestallning.generellinfo;
+            textBoxForestStarttid.Text = valdforestallning.starttid.ToString();
+            textBoxForestSluttid.Text = valdforestallning.sluttid.ToString();
+            textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
+            textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
+            textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
+
+        }
+        private int LaggTillForestallning()
+        {
+            Forestallning laggtillforestallning = new Forestallning();
+            string query = "INSERT INTO forestallning (namn, generell_info, starttid, sluttid, vuxenpris, ungdomspris, barnpris) VALUES(@namn, @generellinfo, @starttid, @sluttid, vuxenpris, ungdomspris, barnpris)";
+
+            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+            command.Parameters.AddWithValue("@namn", laggtillforestallning.namn);
+            command.Parameters.AddWithValue("@generellinfo", laggtillforestallning.generellinfo);
+            command.Parameters.AddWithValue("@starttid", laggtillforestallning.starttid);
+            command.Parameters.AddWithValue("@sluttid", laggtillforestallning.sluttid);
+            command.Parameters.AddWithValue("@open", false);//false tills öppnad
+            command.Parameters.AddWithValue("@vuxenpris", laggtillforestallning.vuxenpris);
+            command.Parameters.AddWithValue("@ungdomspris", laggtillforestallning.ungdomspris);
+            command.Parameters.AddWithValue("@barnpris", laggtillforestallning.barnpris);
+
+            return command.ExecuteNonQuery();
+        }
+
+        private void buttonLaggTillForest_Click(object sender, EventArgs e)
+        {
+
+            //fs.namn = textBoxForestNamn.Text;
+            //fs.generellinfo = richTextBoxForestInf.Text;
+            ////fs.starttid = 
+            ////fs.sluttid 
+            ////fs.open
+            ////fs.vuxenpris
+            ////fs.ungdomspris
+            ////fs.barnpris
+            ////conn.Open();
+            ////LaggTillForestallning();
+
+            //foreach (Forestallning forest in forestallningslista)
+            //{
+            //    LaggTillForestallning();
+            //}
+            //this.Refresh();
+            //conn.Close();
+           
+        }
+
+        private void listBoxAkter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
+
+            //listBoxAkter.DataSource 
+        }
+    }
+}
+
+
+// datetime picker för att kunna sätta slutdatum för försäljning.
+//lägga till behörighet. 
+/*
+try
             {
                 conn.Open();
                 //MessageBox.Show(conn.State.ToString());
@@ -172,72 +231,9 @@ namespace FirstTry
                 //    }
                 //}
 
-        
-        private void listBoxAdminForestallning_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-
-          // Forestallning fs2 = new Forestallning();
-          // fs2.namn = listBoxAdminForestallning.SelectedItem.ToString();
-            
-            textBoxForestNamn.Text = listBoxAdminForestallning.SelectedItem.ToString();
-            richTextBoxForestInf.Text = fs.generellinfo;
-            //textBox2.Text = fs.generellinfo;
+*/
 
 
 
-
-
-        }
-        private int LaggTillForestallning()
-        {
-            Forestallning laggtillforestallning = new Forestallning();
-            string query = "INSERT INTO forestallning (namn, generell_info, starttid, sluttid, vuxenpris, ungdomspris, barnpris) VALUES(@namn, @generellinfo, @starttid, @sluttid, vuxenpris, ungdomspris, barnpris)";
-
-            NpgsqlCommand command = new NpgsqlCommand(query, conn);
-
-            command.Parameters.AddWithValue("@namn", laggtillforestallning.namn);
-            command.Parameters.AddWithValue("@generellinfo", laggtillforestallning.generellinfo);
-            command.Parameters.AddWithValue("@starttid", laggtillforestallning.starttid);
-            command.Parameters.AddWithValue("@sluttid", laggtillforestallning.sluttid);
-            command.Parameters.AddWithValue("@open", false);//false tills öppnad
-            command.Parameters.AddWithValue("@vuxenpris", laggtillforestallning.vuxenpris);
-            command.Parameters.AddWithValue("@ungdomspris", laggtillforestallning.ungdomspris);
-            command.Parameters.AddWithValue("@barnpris", laggtillforestallning.barnpris);
-
-            return command.ExecuteNonQuery();
-
-        }
-
-        private void buttonLaggTillForest_Click(object sender, EventArgs e)
-        { 
-            //Påbörjat knapp lägg till föreställning, dock osäker på huruvida vi skulle lägga texten
-            //uppe i formen så låter det vara så här""
-            
-            fs.namn = textBoxForestNamn.Text;
-            fs.generellinfo = richTextBoxForestInf.Text;
-            //fs.starttid = 
-            //fs.sluttid 
-            //fs.open
-            //fs.vuxenpris
-            //fs.ungdomspris
-            //fs.barnpris
-            //conn.Open();
-            //LaggTillForestallning();
-
-            foreach (Forestallning forest in forestallningslista)
-            {
-                LaggTillForestallning();
-            }
-            this.Refresh();
-            conn.Close();
-           
-        }
-    }
-}
-
-                   
-// datetime picker för att kunna sätta slutdatum för försäljning.
-//lägga till behörighet. 
-    
 

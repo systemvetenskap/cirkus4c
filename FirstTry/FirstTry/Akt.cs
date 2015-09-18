@@ -8,6 +8,7 @@ namespace FirstTry
 {
     class Akt
     {
+
         public string namn { get; set; }
         public int id { get; set; }
         public DateTime datumTid { get; set; }
