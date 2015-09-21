@@ -54,6 +54,7 @@
             // button_A1
             // 
             this.button_A1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button_A1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_A1.Location = new System.Drawing.Point(333, 306);
             this.button_A1.Name = "button_A1";
             this.button_A1.Size = new System.Drawing.Size(30, 30);
