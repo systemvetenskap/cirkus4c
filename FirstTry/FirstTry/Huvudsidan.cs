@@ -55,7 +55,7 @@ namespace FirstTry
                 foreach (DataRow row in dt.Rows)
                 {
                     DateTime slutdatum = (DateTime)row["forsaljningslut"];
-                   
+                    
 
                     if ((bool)row["open"] == true && slutdatum > DateTime.Now)
                     {
@@ -182,9 +182,12 @@ namespace FirstTry
         private void button1_Click(object sender, EventArgs e)
         {
 
+
             if (antal_ar_siffror() == false)
             {
-                if ((Forestallning)listBox_forestallning.SelectedItem == null)
+                    MessageBox.Show("Hoppsan! Du fyllde i antalet besökare felaktigt.");
+            }
+                else if ((Forestallning)listBox_forestallning.SelectedItem == null)
                 {
                     MessageBox.Show("Hoppsan! Du glömde visst att välja en föreställning");
                 }
@@ -192,11 +195,8 @@ namespace FirstTry
                 {
                     MessageBox.Show("Hoppsan! Du glömde visst att välja akt");
                 }
-                else
-                {
-                    MessageBox.Show("Hoppsan! Du fyllde i antalet besökare felaktigt.");
-                }
-            }
+
+            
             else if (session.fullbokat(session) == true)
             {
                 MessageBox.Show("Tyvärr så finns det inte tillräkligt med plats på de valda akterna");
@@ -282,54 +282,57 @@ namespace FirstTry
         private void skapaTempkop()
         {
 
-            
-            int loopar = 0;
-
-            Tempkop s2 = new Tempkop();
-            session = s2;
-            List<Akt> aktlista = new List<Akt>();
-
-            foreach (Akt akt in listBox_akter.SelectedItems)
+            if (listBox_akter.SelectedIndex != null && listBox_forestallning != null)
             {
-                aktlista.Add(akt);
-                loopar++;           
-            }
+                int loopar = 0;
 
+                Tempkop s2 = new Tempkop();
+                session = s2;
+                List<Akt> aktlista = new List<Akt>();
 
-            helaforestallningen();
-            session.akter = aktlista;
-            session.forestallning = (Forestallning)listBox_forestallning.SelectedItem;           
-            session.reservation = checkBox1.Checked;
-            session.antal = 0;
-            session.loopar = loopar;
-            antal_ar_siffror();
-
-            conn.Open();
-            LaggTillTempkop(); //behövs den?
-            conn.Close();
-
-
-            int totalpris = 0;
-
-            if (session.hela == true)
-            {
-                totalpris += session.barn * session.forestallning.barn;
-                totalpris += session.ungdom * session.forestallning.ungdom;
-                totalpris += session.vuxna * session.forestallning.vuxen;
-            }
-            else
-            {
-                foreach (Akt item in aktlista)
+                foreach (Akt akt in listBox_akter.SelectedItems)
                 {
-                    totalpris += session.barn * item.barn;
-                    totalpris += session.ungdom * item.ungdom;
-                    totalpris += session.vuxna * item.vuxen;
+                    aktlista.Add(akt);
+                    loopar++;
                 }
+
+
+                helaforestallningen();
+                session.akter = aktlista;
+                session.forestallning = (Forestallning)listBox_forestallning.SelectedItem;
+                session.reservation = checkBox1.Checked;
+                session.antal = 0;
+                session.loopar = loopar;
+                antal_ar_siffror();
+
+                conn.Open();
+                LaggTillTempkop(); //behövs den?
+                conn.Close();
+
+
+                int totalpris = 0;
+
+                if (session.hela == true)
+                {
+                    totalpris += session.barn * session.forestallning.barn;
+                    totalpris += session.ungdom * session.forestallning.ungdom;
+                    totalpris += session.vuxna * session.forestallning.vuxen;
+                }
+                else
+                {
+                    foreach (Akt item in aktlista)
+                    {
+                        totalpris += session.barn * item.barn;
+                        totalpris += session.ungdom * item.ungdom;
+                        totalpris += session.vuxna * item.vuxen;
+                    }
+                }
+
+                session.totalpris = totalpris;
+                label2.Visible = true;
+                label2.Text = session.totalpris.ToString();
             }
 
-            session.totalpris = totalpris;
-            label2.Visible = true;
-            label2.Text = session.totalpris.ToString();
 
         }
 

@@ -33,39 +33,45 @@ namespace FirstTry
 
             string query = "select platser_id, tidsstampel, reserverad from innehaller where akter_id = ";
 
-            foreach (Akt item in tk.akter)
+            if (tk.akter != null)
             {
-                query += item.id.ToString();
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-                int x = 0;
-                x = tk.vuxna + tk.barn + tk.ungdom;
 
 
-                if (x >= 8)
+
+                foreach (Akt item in tk.akter)
                 {
-                    // MessageBox.Show("Tyvärr finns inte tillräkligt med plats, utanför");
-                    // this.Hide();
-                    //Huvudsidan hu = new Huvudsidan();
-                    //hu.ShowDialog();
-                    // Close();
-                    return true;
-                }
+                    query += item.id.ToString();
+                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+                    DataTable dt = new DataTable();
 
-                foreach (DataRow row in dt.Rows)
-                {
+                    da.Fill(dt);
+                    int x = 0;
+                    x = tk.vuxna + tk.barn + tk.ungdom;
+
+
                     if (x >= 8)
                     {
-                        // MessageBox.Show("Tyvärr finns inte tillräkligt med plats, innanför");
-                        //this.Hide();
-                        Huvudsidan hu = new Huvudsidan();
-                        hu.ShowDialog();
-                        //Close();
+                        // MessageBox.Show("Tyvärr finns inte tillräkligt med plats, utanför");
+                        // this.Hide();
+                        //Huvudsidan hu = new Huvudsidan();
+                        //hu.ShowDialog();
+                        // Close();
                         return true;
                     }
-                    x++;
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (x >= 8)
+                        {
+                            // MessageBox.Show("Tyvärr finns inte tillräkligt med plats, innanför");
+                            //this.Hide();
+                            Huvudsidan hu = new Huvudsidan();
+                            hu.ShowDialog();
+                            //Close();
+                            return true;
+                        }
+                        x++;
+                    }
                 }
             }         
                 return false;
