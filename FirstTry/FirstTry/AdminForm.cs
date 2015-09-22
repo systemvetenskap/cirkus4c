@@ -87,7 +87,20 @@ namespace FirstTry
 
         private void buttonLaggTillForest_Click(object sender, EventArgs e)
         {
+            string namn = textBoxForestNamn.Text;
+            string generellinfo = richTextBoxForestInf.Text;
+            DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
+            DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
+            int vuxenpris = Convert.ToInt32(textBoxUngdomspris.Text);
+            int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
+            int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
 
+           
+            Databasmetoder.LaggTillNyForestallning(namn, generellinfo, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
+            Databasmetoder.HamtaForestallningLista();
+           
+
+          
             //fs.namn = textBoxForestNamn.Text;
             //fs.generellinfo = richTextBoxForestInf.Text;
             ////fs.starttid = 
@@ -105,7 +118,7 @@ namespace FirstTry
             //}
             //this.Refresh();
             //conn.Close();
-           
+
         }
 
         private void listBoxAkter_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,7 +128,7 @@ namespace FirstTry
             // Akt valdAkt = listBoxAkter.SelectedItem;
             //if ((Akt)(listBoxAkter.SelectedItem) != null)
             //{
-          Akt valdAkt = (Akt)(listBoxAkter.SelectedItem);
+            Akt valdAkt = (Akt)(listBoxAkter.SelectedItem);
 
 
             textBoxAktnamn.Text = valdAkt.ToString();
@@ -125,27 +138,36 @@ namespace FirstTry
             textBoxAktVuxenpris.Text = valdAkt.vuxen.ToString();
             textBoxAktUngdPris.Text = valdAkt.ungdom.ToString();
             TextBoxAktBarnpris.Text = valdAkt.barn.ToString();
-
-                
-
-
-           // }
+        
+         }
 
 
-
-            /* richTextBoxAktInf.Text = valdAkt.
-            textBoxForestStarttid.Text = valdforestallning.starttid.ToString();
-            textBoxForestSluttid.Text = valdforestallning.sluttid.ToString();
-            textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
-            textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
-            textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
-            //listBoxAkter.DataSource */
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
+            private void tomTextBoxar()
         {
-
+            textBoxAktnamn.Clear();
+            richTextBoxAktInf.Clear();
+            textBoxAktStarttid.Clear();
+            textBoxAktSluttid.Clear();
+            textBoxAktVuxenpris.Clear();
+            textBoxAktUngdPris.Clear();
+            TextBoxAktBarnpris.Clear(); 
+            
         }
+             
+
+        /* richTextBoxAktInf.Text = valdAkt.
+        textBoxForestStarttid.Text = valdforestallning.starttid.ToString();
+        textBoxForestSluttid.Text = valdforestallning.sluttid.ToString();
+        textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
+        textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
+        textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
+        //listBoxAkter.DataSource */
+    
+
+    private void button1_Click_1(object sender, EventArgs e)
+    { }
+
+        
 
         private void button1_Click_2(object sender, EventArgs e)
         {
@@ -158,6 +180,7 @@ namespace FirstTry
         }
     }
 }
+
 
 
 // datetime picker för att kunna sätta slutdatum för försäljning.
