@@ -16,7 +16,7 @@ namespace FirstTry
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Huvudsidan());
+            Application.Run(new FinalPage());
         }
     }
 }

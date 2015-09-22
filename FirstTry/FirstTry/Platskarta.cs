@@ -57,7 +57,7 @@ namespace FirstTry
             conn.Open();
             //dubbelkolla igen först så den inte är bokad
 
-            // ReserveraBiljett();
+          //  ReserveraBiljett();
             if (Innehaller(id, knapp.Text) == -1)
             {
                 this.Hide();
@@ -144,7 +144,7 @@ namespace FirstTry
         private int Innehaller(int aktint, string kn)
         {
             ReserveraBiljett();
-
+            tk.platsnamn.Add(kn);
             if (tk.reservation == true)
             {
                 string query2 = "INSERT INTO innehaller (akter_id, platser_id, biljett_id, tidsstampel, reserverad, kund_id) VALUES(@akter_id, @platser_id, (select max(id) from biljett), @tidsstampel, @reserverad, @kund_id)";
@@ -321,6 +321,7 @@ namespace FirstTry
         private void Platskarta_Load(object sender, EventArgs e)
         {
             tk.biljett_id = new List<int>();
+            tk.platsnamn = new List<string>();
             if (tk.hela == true)
             {
                 foreach (Akt item in tk.akter)
@@ -379,19 +380,19 @@ namespace FirstTry
                         {
 
 
-                            //biljettform ladda
-                            Huvudsidan hu = new Huvudsidan();
-                            hu.ShowDialog();
+                        //biljettform ladda
+                        FinalPage fp = new FinalPage(tk);
+                        fp.ShowDialog();
 
 
 
                         }
                         else if (dialogResult == DialogResult.No)
                         {
-                            //ej krav?!
+                            
                           //  Huvudsidan hu = new Huvudsidan();
                            // hu.ShowDialog();
-                            //ta bort från innehåller och biljett
+
                         }
 
                     

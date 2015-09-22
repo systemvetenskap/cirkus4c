@@ -23,6 +23,7 @@ namespace FirstTry
         public int totalpris { get; set; }
         public bool hela { get; set; }
         public List<int> biljett_id {get; set;}
+        public List<string> platsnamn { get; set; }
 
 
         public bool fullbokat(Tempkop tk)
