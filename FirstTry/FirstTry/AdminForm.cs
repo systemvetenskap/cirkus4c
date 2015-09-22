@@ -14,6 +14,7 @@ namespace FirstTry
     public partial class AdminForm : Form
     {
         private Forestallning valdforestallning;
+        private Akt valdAkt;
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         
         public AdminForm()
@@ -108,9 +109,26 @@ namespace FirstTry
 
         private void listBoxAkter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
+            valdAkt = (Akt)listBoxAkter.SelectedItem;
 
+            text .Text = valdforestallning.ToString();
+            richTextBoxForestInf.Text = valdforestallning.generellinfo;
+            textBoxForestStarttid.Text = valdforestallning.starttid.ToString();
+            textBoxForestSluttid.Text = valdforestallning.sluttid.ToString();
+            textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
+            textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
+            textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
             //listBoxAkter.DataSource 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace FirstTry
 {
@@ -28,7 +29,7 @@ namespace FirstTry
         public DateTime tid { get; set; }
 
 
-
+        
         public override string ToString()
         {
             return namn;
