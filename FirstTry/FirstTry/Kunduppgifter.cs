@@ -34,7 +34,8 @@ namespace FirstTry
             command.Parameters.AddWithValue("@efternamn", textBox2.Text);
             command.Parameters.AddWithValue("@telefon", textBox3.Text);
             command.Parameters.AddWithValue("@mail", textBox4.Text);
-            
+
+            tk.epost = textBox4.Text;
 
             return command.ExecuteNonQuery();
         }

@@ -73,6 +73,7 @@ namespace FirstTry
 
             if (radioButton_barn.Checked == true)
             {
+                tk.typ.Add("barn");
                 int x = Convert.ToInt32(label3.Text);
                 x--;
                 label3.Text = x.ToString();
@@ -84,6 +85,7 @@ namespace FirstTry
             }
             if (radioButton_ungdom.Checked == true)
             {
+                tk.typ.Add("ungdom");
                 int x = Convert.ToInt32(label2.Text);
                 x--;
                 label2.Text = x.ToString();
@@ -94,6 +96,7 @@ namespace FirstTry
             }
             if (radioButton_vuxen.Checked == true)
             {
+                tk.typ.Add("vuxen");
                 int x = Convert.ToInt32(label1.Text);
                 x--;
                 label1.Text = x.ToString();
@@ -145,6 +148,8 @@ namespace FirstTry
         {
             ReserveraBiljett();
             tk.platsnamn.Add(kn);
+
+
             if (tk.reservation == true)
             {
                 string query2 = "INSERT INTO innehaller (akter_id, platser_id, biljett_id, tidsstampel, reserverad, kund_id) VALUES(@akter_id, @platser_id, (select max(id) from biljett), @tidsstampel, @reserverad, @kund_id)";

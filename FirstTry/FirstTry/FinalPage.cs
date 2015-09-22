@@ -59,6 +59,11 @@ namespace FirstTry
 
         private void FinalPage_Load(object sender, EventArgs e)
         {
+            if (tk.reservation == true)
+            {
+                textBox_epost.Text = tk.epost;
+            }
+
             int totalt = tk.vuxna + tk.ungdom + tk.barn;
             int x = 0;
             int y = 0;
@@ -68,7 +73,7 @@ namespace FirstTry
             {
                 foreach (int biljett in tk.biljett_id)
                 {
-                    richTextBox1.Text += " Biljett ID: " + biljett.ToString() + " \n Föreställningsnamn: " + tk.forestallning.namn +" \n Akt:" + tk.akter[y].namn +  "\n Datum: " + tk.forestallning.datum.ToShortDateString() + " \n Tid: " + tk.forestallning.tid.ToShortTimeString() + "\n Plats: " + tk.platsnamn[x].ToString()  + " \n  \n -------------------------------  \n \n";
+                    richTextBox1.Text += " Biljett ID: " + biljett.ToString() + " \n Föreställningsnamn: " + tk.forestallning.namn +" \n Akt: " + tk.akter[y].namn +  "\n Datum: " + tk.forestallning.datum.ToShortDateString() + " \n Tid: " + tk.forestallning.tid.ToShortTimeString() + "\n Plats: " + tk.platsnamn[x].ToString()  + "\n " + tk.typ[x] + " \n  \n -------------------------------  \n \n";
                     x++;
                     if (x == (tk.antal * (y+1)))
                     {

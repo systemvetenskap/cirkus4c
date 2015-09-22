@@ -24,6 +24,8 @@ namespace FirstTry
         public bool hela { get; set; }
         public List<int> biljett_id {get; set;}
         public List<string> platsnamn { get; set; }
+        public List<string> typ { get; set; }
+        public string epost { get; set; }
 
 
         public bool fullbokat(Tempkop tk)

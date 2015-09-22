@@ -184,6 +184,7 @@ namespace FirstTry
         {
             session.biljett_id = new List<int>();
             session.platsnamn = new List<string>();
+            session.typ = new List<string>();
 
             if (antal_ar_siffror() == false)
             {
