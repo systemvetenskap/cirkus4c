@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
+using System.Net.Mail;
 
 namespace FirstTry
 {
@@ -32,6 +33,12 @@ namespace FirstTry
 
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
+
+            MailMessage mm = new MailMessage("sq.martin91@gmail.com", "sq.martin91@gmail.com", "VS test", "undrar om detta funkar lalalalal");
+            SmtpClient client = new SmtpClient();
+            // Add credentials if the SMTP server requires them.
+            client.Send(mm);
+
             session.totalpris = 0; //För att kolla vid button click att inget är vallt
             
             //listBox_akter.SelectedIndex = -1;
