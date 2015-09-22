@@ -120,11 +120,11 @@ namespace FirstTry
 
             textBoxAktnamn.Text = valdAkt.ToString();
             richTextBoxAktInf.Text = valdAkt.Aktinfo;
-          //  textBoxAktStarttid.Text = valdAkt.
-           // textBoxAktSluttid.Text = 
-          // textBoxAktVuxenpris.Text = 
-          // textBoxAktUngdPris.Text =
-         //TextBoxAktBarnpris.Text = 
+            //  textBoxAktStarttid.Text = valdAkt.
+            // textBoxAktSluttid.Text = 
+            textBoxAktVuxenpris.Text = valdAkt.vuxen.ToString();
+            textBoxAktUngdPris.Text = valdAkt.ungdom.ToString();
+            TextBoxAktBarnpris.Text = valdAkt.barn.ToString();
 
                 
 
