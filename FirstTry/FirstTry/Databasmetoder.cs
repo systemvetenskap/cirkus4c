@@ -162,7 +162,7 @@ namespace FirstTry
             }       
        }
 
-        public static void LaggTillNyAkt(string aktnamn, string aktinfo, DateTime starttid, DateTime sluttid, int vuxen, int ungdom, int barn)
+        public static void LaggTillNyAkt(string aktnamn, string aktinfo, DateTime starttid, DateTime sluttid, int vuxen, int ungdom, int barn, string forestallningsNamn)
         {
             NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
             NpgsqlTransaction trans = null;

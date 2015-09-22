@@ -49,23 +49,37 @@ namespace FirstTry
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
-            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
            
+
+            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+            
+
+
 
         }
         private void listBoxAdminForestallning_SelectedIndexChanged(object sender, EventArgs e)
         {
-            valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
-            listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id); 
-            textBoxForestNamn.Text =valdforestallning.ToString();
-            richTextBoxForestInf.Text = valdforestallning.generellinfo;
-            textBoxForestStarttid.Text = valdforestallning.starttid.ToString();
-            textBoxForestSluttid.Text = valdforestallning.sluttid.ToString();
-            textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
-            textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
-            textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
 
-        }
+                valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
+            if (valdforestallning != null)
+            {
+                listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+                textBoxForestNamn.Text = valdforestallning.ToString();
+                richTextBoxForestInf.Text = valdforestallning.generellinfo;
+                textBoxForestStarttid.Text = valdforestallning.starttid.ToString();
+                textBoxForestSluttid.Text = valdforestallning.sluttid.ToString();
+                textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
+                textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
+                textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
+            }  
+          }
+
+        //private void valdforestallning
+               
+        //{
+
+        //}
+    
         private int LaggTillForestallning()
         {
             Forestallning laggtillforestallning = new Forestallning();
@@ -87,6 +101,7 @@ namespace FirstTry
 
         private void buttonLaggTillForest_Click(object sender, EventArgs e)
         {
+            
             string namn = textBoxForestNamn.Text;
             string generellinfo = richTextBoxForestInf.Text;
             DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
@@ -97,27 +112,18 @@ namespace FirstTry
 
            
             Databasmetoder.LaggTillNyForestallning(namn, generellinfo, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
-            Databasmetoder.HamtaForestallningLista();
-           
 
-          
-            //fs.namn = textBoxForestNamn.Text;
-            //fs.generellinfo = richTextBoxForestInf.Text;
-            ////fs.starttid = 
-            ////fs.sluttid 
-            ////fs.open
-            ////fs.vuxenpris
-            ////fs.ungdomspris
-            ////fs.barnpris
-            ////conn.Open();
-            ////LaggTillForestallning();
 
+            //listBoxAdminForestallning.Items.Clear();
+            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+            //Databasmetoder.HamtaForestallningLista();
+            this.Refresh();
             //foreach (Forestallning forest in forestallningslista)
             //{
             //    LaggTillForestallning();
             //}
-            //this.Refresh();
-            //conn.Close();
+           
+            conn.Close();
 
         }
 
@@ -177,6 +183,13 @@ namespace FirstTry
         private void TextBoxAktBarnpris_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSkapaForestallning_Click(object sender, EventArgs e)
+        {
+            //listBoxAdminForestallning.Items.Clear();
+            //tomTextBoxar();
+            //listBoxAdminForestallning.SelectedIndex = -1;
         }
     }
 }
