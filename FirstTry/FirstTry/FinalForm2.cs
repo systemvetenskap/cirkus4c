@@ -57,12 +57,7 @@ namespace FirstTry
             g.DrawString("KuloBus", fBody1, sb, 10, 120);
             g.DrawString("------------------------------", fBody1, sb, 20, 120);
             g.DrawString("Hermans barnjonglering", fBody1, sb, 50, 120);
-            g.DrawString("BYOB", fBody1, sb, 80, 120);
-            
-
-
-
-
+            g.DrawString("BYOB", fBody1, sb, 80, 120);          
         }
     }
     
