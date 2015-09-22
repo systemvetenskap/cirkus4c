@@ -39,12 +39,12 @@
             this.richTextBoxForestInf = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Lable3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxAktnamn = new System.Windows.Forms.TextBox();
             this.textBoxAktStarttid = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxAktSluttid = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBoxPris = new System.Windows.Forms.TextBox();
+            this.textBoxAktVuxenpris = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -62,6 +62,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.buttonUppdateraAkt = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxAktUngdPris = new System.Windows.Forms.TextBox();
+            this.TextBoxAktBarnpris = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // listBoxAdminForestallning
@@ -162,12 +166,12 @@
             this.Lable3.TabIndex = 12;
             this.Lable3.Text = "Aktnamn";
             // 
-            // textBox1
+            // textBoxAktnamn
             // 
-            this.textBox1.Location = new System.Drawing.Point(399, 58);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(117, 20);
-            this.textBox1.TabIndex = 13;
+            this.textBoxAktnamn.Location = new System.Drawing.Point(399, 58);
+            this.textBoxAktnamn.Name = "textBoxAktnamn";
+            this.textBoxAktnamn.Size = new System.Drawing.Size(117, 20);
+            this.textBoxAktnamn.TabIndex = 13;
             // 
             // textBoxAktStarttid
             // 
@@ -201,21 +205,21 @@
             this.label5.TabIndex = 17;
             this.label5.Text = "Sluttid";
             // 
-            // textBoxPris
+            // textBoxAktVuxenpris
             // 
-            this.textBoxPris.Location = new System.Drawing.Point(402, 302);
-            this.textBoxPris.Name = "textBoxPris";
-            this.textBoxPris.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPris.TabIndex = 18;
+            this.textBoxAktVuxenpris.Location = new System.Drawing.Point(402, 302);
+            this.textBoxAktVuxenpris.Name = "textBoxAktVuxenpris";
+            this.textBoxAktVuxenpris.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAktVuxenpris.TabIndex = 18;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(402, 285);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(24, 13);
+            this.label6.Size = new System.Drawing.Size(53, 13);
             this.label6.TabIndex = 19;
-            this.label6.Text = "Pris";
+            this.label6.Text = "Vuxenpris";
             // 
             // label7
             // 
@@ -355,11 +359,48 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(402, 335);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(68, 13);
+            this.label11.TabIndex = 36;
+            this.label11.Text = "Ungdomspris";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(402, 385);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(45, 13);
+            this.label12.TabIndex = 37;
+            this.label12.Text = "Barnpris";
+            // 
+            // textBoxAktUngdPris
+            // 
+            this.textBoxAktUngdPris.Location = new System.Drawing.Point(401, 353);
+            this.textBoxAktUngdPris.Name = "textBoxAktUngdPris";
+            this.textBoxAktUngdPris.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAktUngdPris.TabIndex = 38;
+            // 
+            // TextBoxAktBarnpris
+            // 
+            this.TextBoxAktBarnpris.Location = new System.Drawing.Point(405, 401);
+            this.TextBoxAktBarnpris.Name = "TextBoxAktBarnpris";
+            this.TextBoxAktBarnpris.Size = new System.Drawing.Size(100, 20);
+            this.TextBoxAktBarnpris.TabIndex = 39;
+            this.TextBoxAktBarnpris.TextChanged += new System.EventHandler(this.TextBoxAktBarnpris_TextChanged);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(776, 485);
+            this.Controls.Add(this.TextBoxAktBarnpris);
+            this.Controls.Add(this.textBoxAktUngdPris);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonUppdateraAkt);
             this.Controls.Add(this.label10);
@@ -377,12 +418,12 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBoxPris);
+            this.Controls.Add(this.textBoxAktVuxenpris);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxAktSluttid);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxAktStarttid);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxAktnamn);
             this.Controls.Add(this.Lable3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.richTextBoxForestInf);
@@ -415,12 +456,12 @@
         private System.Windows.Forms.RichTextBox richTextBoxForestInf;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Lable3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxAktnamn;
         private System.Windows.Forms.TextBox textBoxAktStarttid;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxAktSluttid;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBoxPris;
+        private System.Windows.Forms.TextBox textBoxAktVuxenpris;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
@@ -438,5 +479,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button buttonUppdateraAkt;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBoxAktUngdPris;
+        private System.Windows.Forms.TextBox TextBoxAktBarnpris;
     }
 }

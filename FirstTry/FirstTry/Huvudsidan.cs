@@ -260,6 +260,7 @@ namespace FirstTry
                 session.antal = 0;
                 session.loopar = loopar;
 
+
                 conn.Open();
                 LaggTillTempkop(); //behövs den?
                 conn.Close();

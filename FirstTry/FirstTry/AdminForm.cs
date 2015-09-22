@@ -50,6 +50,7 @@ namespace FirstTry
         private void AdminForm_Load(object sender, EventArgs e)
         {
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+           
 
         }
         private void listBoxAdminForestallning_SelectedIndexChanged(object sender, EventArgs e)
@@ -109,16 +110,36 @@ namespace FirstTry
 
         private void listBoxAkter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            valdAkt = (Akt)listBoxAkter.SelectedItem;
+            //  listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+            // Akt valdAkt = new Akt();
+            // Akt valdAkt = listBoxAkter.SelectedItem;
+            //if ((Akt)(listBoxAkter.SelectedItem) != null)
+            //{
+          Akt valdAkt = (Akt)(listBoxAkter.SelectedItem);
 
-            text .Text = valdforestallning.ToString();
-            richTextBoxForestInf.Text = valdforestallning.generellinfo;
+
+            textBoxAktnamn.Text = valdAkt.ToString();
+            richTextBoxAktInf.Text = valdAkt.Aktinfo;
+          //  textBoxAktStarttid.Text = valdAkt.
+           // textBoxAktSluttid.Text = 
+          // textBoxAktVuxenpris.Text = 
+          // textBoxAktUngdPris.Text =
+         //TextBoxAktBarnpris.Text = 
+
+                
+
+
+           // }
+
+
+
+            /* richTextBoxAktInf.Text = valdAkt.
             textBoxForestStarttid.Text = valdforestallning.starttid.ToString();
             textBoxForestSluttid.Text = valdforestallning.sluttid.ToString();
             textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
             textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
             textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
-            //listBoxAkter.DataSource 
+            //listBoxAkter.DataSource */
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -127,6 +148,11 @@ namespace FirstTry
         }
 
         private void button1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBoxAktBarnpris_TextChanged(object sender, EventArgs e)
         {
 
         }
