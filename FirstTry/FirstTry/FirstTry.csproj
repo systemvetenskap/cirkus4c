@@ -60,6 +60,12 @@
     </Compile>
     <Compile Include="Akt.cs" />
     <Compile Include="Biljett.cs" />
+    <Compile Include="FinalForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinalForm2.Designer.cs">
+      <DependentUpon>FinalForm2.cs</DependentUpon>
+    </Compile>
     <Compile Include="FinalPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     <Compile Include="Tempkop.cs" />
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinalForm2.resx">
+      <DependentUpon>FinalForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FinalPage.resx">
       <DependentUpon>FinalPage.cs</DependentUpon>
