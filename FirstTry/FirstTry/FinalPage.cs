@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Web;
 using System.IO;
 using System.Net.Mail;
+using System.Drawing.Printing;
 
 namespace FirstTry
 {
@@ -59,13 +60,23 @@ namespace FirstTry
         private void FinalPage_Load(object sender, EventArgs e)
         {
             int totalt = tk.vuxna + tk.ungdom + tk.barn;
+            int x = 0;
+            int y = 0;
 
 
-            foreach (int biljett in tk.biljett_id)
+            if (tk.biljett_id != null)
             {
-                richTextBox1.Text += biljett.ToString();
-                
+                foreach (int biljett in tk.biljett_id)
+                {
+                    richTextBox1.Text += " Biljett ID: " + biljett.ToString() + " \n Föreställningsnamn: " + tk.forestallning.namn +" \n Akt:" + tk.akter[y].namn +  "\n Datum: " + tk.forestallning.datum.ToShortDateString() + " \n Tid: " + tk.forestallning.tid.ToShortTimeString() + "\n Plats: " + tk.platsnamn[x].ToString()  + " \n  \n -------------------------------  \n \n";
+                    x++;
+                    if (x == (tk.antal * (y+1)))
+                    {
+                        y++;
+                    }
+                }
             }
+
 
 
         }

@@ -33,8 +33,6 @@ namespace FirstTry
 
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
-          
-
             session.totalpris = 0; //För att kolla vid button click att inget är vallt
             
             //listBox_akter.SelectedIndex = -1;
@@ -184,7 +182,8 @@ namespace FirstTry
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            session.biljett_id = new List<int>();
+            session.platsnamn = new List<string>();
 
             if (antal_ar_siffror() == false)
             {

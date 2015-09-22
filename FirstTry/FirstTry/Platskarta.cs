@@ -320,8 +320,7 @@ namespace FirstTry
 
         private void Platskarta_Load(object sender, EventArgs e)
         {
-            tk.biljett_id = new List<int>();
-            tk.platsnamn = new List<string>();
+            
             if (tk.hela == true)
             {
                 foreach (Akt item in tk.akter)
@@ -369,9 +368,10 @@ namespace FirstTry
                     tk.antal++;
                     this.Hide();
                     if (tk.antal < tk.loopar && tk.hela == false)
-                    {                        
-                        Platskarta pk2 = new Platskarta(tk);
-                        pk2.ShowDialog();
+                    {
+                    Platskarta pk2 = new Platskarta(tk);
+                    pk2.ShowDialog();
+                    
                     }
                     else
                     {
