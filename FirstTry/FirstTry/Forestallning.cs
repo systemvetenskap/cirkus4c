@@ -32,7 +32,7 @@ namespace FirstTry
         
         public override string ToString()
         {
-            return namn;
+            return namn + " " +id;
         }
 
     }

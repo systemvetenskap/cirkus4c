@@ -114,7 +114,7 @@
             this.listBoxAkter.FormattingEnabled = true;
             this.listBoxAkter.Location = new System.Drawing.Point(546, 41);
             this.listBoxAkter.Name = "listBoxAkter";
-            this.listBoxAkter.Size = new System.Drawing.Size(149, 277);
+            this.listBoxAkter.Size = new System.Drawing.Size(177, 277);
             this.listBoxAkter.TabIndex = 4;
             this.listBoxAkter.SelectedIndexChanged += new System.EventHandler(this.listBoxAkter_SelectedIndexChanged);
             // 
@@ -261,7 +261,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(581, 401);
+            this.checkBox1.Location = new System.Drawing.Point(578, 404);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(117, 17);
             this.checkBox1.TabIndex = 24;
@@ -402,7 +402,7 @@
             // btnSkapaForestallning
             // 
             this.btnSkapaForestallning.Location = new System.Drawing.Point(192, 335);
-            this.btnSkapaForestallning.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSkapaForestallning.Margin = new System.Windows.Forms.Padding(2);
             this.btnSkapaForestallning.Name = "btnSkapaForestallning";
             this.btnSkapaForestallning.Size = new System.Drawing.Size(168, 19);
             this.btnSkapaForestallning.TabIndex = 40;

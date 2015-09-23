@@ -57,10 +57,7 @@ namespace FirstTry
             dateTimePickerTid.Format = DateTimePickerFormat.Custom;
             dateTimePickerTid.CustomFormat = "yyyy-MM-dd  HH:mm";
             
-            //dateTimePicker2.Format = DateTimePickerFormat.Custom;
-            //dateTimePicker2.CustomFormat = "HH mm";
-
-
+           
 
         }
         private void listBoxAdminForestallning_SelectedIndexChanged(object sender, EventArgs e)
@@ -77,6 +74,8 @@ namespace FirstTry
                 textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
                 textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
                 textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
+
+               
             }  
           }
 
@@ -200,7 +199,17 @@ namespace FirstTry
 
         private void uppdatera_Click(object sender, EventArgs e)
         {
+            int id = valdforestallning.id;
+            string namn = textBoxForestNamn.Text;
+            string generellinfo = richTextBoxForestInf.Text;
+            DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
+            DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
+            int vuxenpris = Convert.ToInt32(textBoxUngdomspris.Text);
+            int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
+            int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
 
+
+            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -211,6 +220,11 @@ namespace FirstTry
         private void dateTimePickerTid_ValueChanged(object sender, EventArgs e)
         {
             buttonOppnaForest.Enabled = true;
+        }
+
+        private void dateTimePicker1_ValueChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

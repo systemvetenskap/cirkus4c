@@ -231,6 +231,51 @@ namespace FirstTry
             }
         }
 
+
+
+             public static void UppdateraForestallning(int forestallningsid, string namn, string generellinfo, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
+        {
+
+            NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+           
+            try
+            {
+                conn1.Open();
+               
+                NpgsqlCommand command1 = new NpgsqlCommand(@" UPDATE forestallning set (namn = :namn,  generellinfo = :generellinfo, starttid = :starttid, sluttid = :sluttid, vuxenpris = :vuxenpris, ungdomspris = :ungdomspris, barnpris = :barnpris 
+                                                            WHERE id = :id", conn1);
+
+                command1.Parameters.Add(new NpgsqlParameter("id", DbType.String));
+                command1.Parameters[0].Value = forestallningsid;
+                command1.Parameters.Add(new NpgsqlParameter("namn", DbType.String));
+                command1.Parameters[1].Value = namn;
+                command1.Parameters.Add(new NpgsqlParameter("generellinfo", DbType.String));
+                command1.Parameters[2].Value = generellinfo;
+                command1.Parameters.Add(new NpgsqlParameter("starttid", DbType.DateTime));
+                command1.Parameters[3].Value = starttid;
+                command1.Parameters.Add(new NpgsqlParameter("sluttid", DbType.DateTime));
+                command1.Parameters[4].Value = sluttid;
+                command1.Parameters.Add(new NpgsqlParameter("vuxenpris", DbType.Int32));
+                command1.Parameters[5].Value = vuxenpris;
+                command1.Parameters.Add(new NpgsqlParameter("ungdomspris", DbType.Int32));
+                command1.Parameters[6].Value = ungdomspris;
+                command1.Parameters.Add(new NpgsqlParameter("barnpris", DbType.Int32));
+                command1.Parameters[7].Value = barnpris;
+               
+                int numberOfAffectedRows = command1.ExecuteNonQuery();
+
+                }
+
+            catch (NpgsqlException ex)
+            {
+                return;
+            }
+            finally
+            {
+                conn1.Close();
+            }       
+       }  */
+
     }
 }
 
