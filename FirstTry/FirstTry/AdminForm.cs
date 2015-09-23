@@ -75,60 +75,45 @@ namespace FirstTry
                 textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
                 textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
 
-               
             }  
           }
-
-        //private void valdforestallning
-               
-        //{
-
-        //}
-    
-        //private int LaggTillForestallning()
-        //{
-        //    Forestallning laggtillforestallning = new Forestallning();
-        //    string query = "INSERT INTO forestallning (namn, generell_info, starttid, sluttid, vuxenpris, ungdomspris, barnpris) VALUES(@namn, @generellinfo, @starttid, @sluttid, vuxenpris, ungdomspris, barnpris)";
-
-        //    NpgsqlCommand command = new NpgsqlCommand(query, conn);
-
-        //    command.Parameters.AddWithValue("@namn", laggtillforestallning.namn);
-        //    command.Parameters.AddWithValue("@generellinfo", laggtillforestallning.generellinfo);
-        //    command.Parameters.AddWithValue("@starttid", laggtillforestallning.starttid);
-        //    command.Parameters.AddWithValue("@sluttid", laggtillforestallning.sluttid);
-        //    command.Parameters.AddWithValue("@open", false);//false tills öppnad
-        //    command.Parameters.AddWithValue("@vuxenpris", laggtillforestallning.vuxenpris);
-        //    command.Parameters.AddWithValue("@ungdomspris", laggtillforestallning.ungdomspris);
-        //    command.Parameters.AddWithValue("@barnpris", laggtillforestallning.barnpris);
-
-        //    return command.ExecuteNonQuery();
-        //}
+       
 
         private void buttonLaggTillForest_Click(object sender, EventArgs e)
         {
-            
+            Forestallning tillagdfs = new Forestallning();
+            //listBoxAdminForestallning.Items.Clear();
+            tomTextBoxar();
             string namn = textBoxForestNamn.Text;
             string generellinfo = richTextBoxForestInf.Text;
             DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
             DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
-            int vuxenpris = Convert.ToInt32(textBoxUngdomspris.Text);
+            int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
 
-           
-            Databasmetoder.LaggTillNyForestallning(namn, generellinfo, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
 
+            //Databasmetoder.LaggTillNyForestallning(namn, generellinfo, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
+            Databasmetoder.LaggTillForestallning();
 
             //listBoxAdminForestallning.Items.Clear();
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
-            //Databasmetoder.HamtaForestallningLista();
-            this.Refresh();
-            //foreach (Forestallning forest in forestallningslista)
+
+            //NpgsqlCommand command = new NpgsqlCommand("Select * from forestallning", conn);
+            //NpgsqlDataReader dr = command.ExecuteReader();
+            //while (dr.Read())
             //{
-            //    LaggTillForestallning();
-            //}
-           
-            conn.Close();
+            //    listBoxAdminForestallning.Items.Add(dr["namn"]);
+            //} 
+                //Databasmetoder.HamtaForestallningLista();
+
+                //foreach (Forestallning forest in forestallningslista)
+                //{
+                //    LaggTillForestallning();
+                //}
+                //forestallningslista.Add(fs);
+
+                conn.Close();
 
         }
 

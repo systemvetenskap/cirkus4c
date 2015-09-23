@@ -12,7 +12,29 @@ namespace FirstTry
 
     class Databasmetoder
     {
+        public static int LaggTillForestallning()
+        {
+            NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+            conn.Open();
+            Forestallning laggtillforestallning = new Forestallning();
+            string query = "INSERT INTO forestallning (namn, generell_info, starttid, sluttid, vuxenpris, ungdomspris, barnpris) VALUES(@namn, @generellinfo, @starttid, @sluttid, @vuxenpris, @ungdomspris, @barnpris)";
 
+            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+            command.Parameters.AddWithValue("@namn", laggtillforestallning.namn);
+            command.Parameters.AddWithValue("@generellinfo", laggtillforestallning.generellinfo);
+            command.Parameters.AddWithValue("@starttid", laggtillforestallning.starttid);
+            command.Parameters.AddWithValue("@sluttid", laggtillforestallning.sluttid);
+            //command.Parameters.AddWithValue("@open",true);//false tills öppnad
+            command.Parameters.AddWithValue("@vuxenpris", laggtillforestallning.vuxenpris);
+            command.Parameters.AddWithValue("@ungdomspris", laggtillforestallning.ungdomspris);
+            command.Parameters.AddWithValue("@barnpris", laggtillforestallning.barnpris);
+
+            return command.ExecuteNonQuery();
+            
+        }
+
+       
         public static List<Forestallning> HamtaForestallningLista()
         {
             List<Forestallning> forestallningslista = new List<Forestallning>();
