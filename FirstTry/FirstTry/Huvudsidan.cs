@@ -209,10 +209,11 @@ namespace FirstTry
                 //Admin ska väll kunna ändra pris?
                 if (session.reservation == true)
                 {
-                    this.Hide();
+                    //this.Hide();
                     Kunduppgifter ku = new Kunduppgifter(session);
                     ku.ShowDialog();
-                    this.Close();
+
+                    //this.Close();
                 }
                 else if (session.forestallning.friplacering == true)
                 {
@@ -221,10 +222,10 @@ namespace FirstTry
                 }
                 else
                 {
-                    this.Hide();
+                    //this.Hide();
                     Platskarta pk = new Platskarta(session);
                     pk.ShowDialog();
-                    this.Close();
+                   // this.Close();
                 }
             }
 

@@ -16,6 +16,7 @@ namespace FirstTry
 {
     partial class FinalPage : Form
     {
+        PrintDocument pd = new PrintDocument();
         Tempkop tk = new Tempkop();
         int x = 0;
         public FinalPage(Tempkop tk2)
@@ -70,63 +71,76 @@ namespace FirstTry
             }
 
             int totalt = tk.vuxna + tk.ungdom + tk.barn;
-            int x = 0;
-            int y = 0;
+            //int x = 0;
+            //int y = 0;
 
 
             if (tk.biljett_id != null)
             {
-                foreach (int biljett in tk.biljett_id)
-                {
+                //foreach (int biljett in tk.biljett_id)
+                //{
 
-                    Print();
-                    
-                    //richTextBox1.Text += " Biljett ID: " + biljett.ToString() + " \n Föreställningsnamn: " + tk.forestallning.namn +" \n Akt: " + tk.akter[y].namn +  "\n Datum: " + tk.forestallning.datum.ToShortDateString() + " \n Tid: " + tk.forestallning.tid.ToShortTimeString() + "\n Plats: " + tk.platsnamn[x].ToString()  + "\n " + tk.typ[x] + " \n  \n -------------------------------  \n \n";
-                    //x++;
-                    //if (x == (tk.antal * (y+1)))
-                    //{
-                    //  y++;
-                    //}
-                }
+                //Print();
+                pd.PrintController = new StandardPrintController();
+                pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
+                pd.PrinterSettings.PrintToFile = true;
+                pd.Print();
+                
+
+
+
+                //richTextBox1.Text += " Biljett ID: " + biljett.ToString() + " \n Föreställningsnamn: " + tk.forestallning.namn +" \n Akt: " + tk.akter[y].namn +  "\n Datum: " + tk.forestallning.datum.ToShortDateString() + " \n Tid: " + tk.forestallning.tid.ToShortTimeString() + "\n Plats: " + tk.platsnamn[x].ToString()  + "\n " + tk.typ[x] + " \n  \n -------------------------------  \n \n";
+                //x++;
+                //if (x == (tk.antal * (y+1)))
+                //{
+                //  y++;
+                //}
+                //}
 
             }
         }
         private void pd_PrintPage(object sender, PrintPageEventArgs e)
         {
-            int SPACE = 145;
+            int pointVar = 10;
+            int strinPlacering = 120;
+            foreach (int i in tk.biljett_id)
+            {
+                Graphics g = e.Graphics;
+                Rectangle rect = new Rectangle(10, pointVar, 593, 343);
+                Pen pen = new Pen(Brushes.Black);
+                g.DrawRectangle(pen, rect);
 
-            Graphics g = e.Graphics;
-            Rectangle rect = new Rectangle(10, 10, 573, 403);
-            Pen pen = new Pen(Brushes.Black);
-            g.DrawRectangle(pen, rect);
+                Font fBody = new Font("Lucida Console", 15, FontStyle.Bold);
+                Font fBody1 = new Font("Lucida Console", 15, FontStyle.Regular);
+                Font fBody2 = new Font("Lucida Console", 9, FontStyle.Regular);
+
+                SolidBrush sb = new SolidBrush(Color.Black);
+                g.DrawString(tk.forestallning.namn, fBody1, sb, 10, strinPlacering);
+                //g.DrawString(tk.akter[x].namn, fBody1, sb, 10, strinPlacering + 20);
+                g.DrawString(tk.forestallning.datum.ToShortDateString(), fBody1, sb, 10, strinPlacering + 40);
+                g.DrawString(i.ToString(), fBody1, sb, 10, strinPlacering + 60);
+
+                pointVar += 360;
+                strinPlacering += 360;
+                pd.Dispose();
+            }
             
-            Font fBody = new Font("Lucida Console", 15, FontStyle.Bold);
-            Font fBody1 = new Font("Lucida Console", 15, FontStyle.Regular);
-            Font fBody2 = new Font("Lucida Console", 9, FontStyle.Regular);
-
-            SolidBrush sb = new SolidBrush(Color.Black);
-
-                g.DrawString(tk.forestallning.namn, fBody1, sb, 10, 120);
-                g.DrawString(tk.akter[x].namn, fBody1, sb, 10, 140);
-                g.DrawString(tk.forestallning.datum.ToString(), fBody1, sb, 10, 160);
-                g.DrawString(tk.biljett_id[x].ToString(), fBody1, sb, 10, 180);
 
         }
         private void Print()
         {
-            PrintDocument pd = new PrintDocument();
-            PaperSize ps = new PaperSize("test", 583, 413);
             
-            pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
-            pd.PrintController = new StandardPrintController();
-            /*     pd.DefaultPageSettings.Margins.Left = 50;
-                 pd.DefaultPageSettings.Margins.Right = 50;
-                 pd.DefaultPageSettings.Margins.Top = 50;
-                 pd.DefaultPageSettings.Margins.Bottom = 50; */
-            pd.PrinterSettings.DefaultPageSettings.PaperSize = ps;
-            pd.PrinterSettings.PrintToFile = true;
-            pd.Print();
-            //g.Dispose();
+            //PaperSize ps = new PaperSize("test", 583, 413);
+            //pd.PrinterSettings.DefaultPageSettings.PaperSize = ps;
+           
+                        
+            
+            //pd.DefaultPageSettings.Margins.Left = 50;
+            //pd.DefaultPageSettings.Margins.Right = 50;
+            //pd.DefaultPageSettings.Margins.Top = 50;
+            //pd.DefaultPageSettings.Margins.Bottom = 50;
+            
+            //pd.Dispose();
         }
 
 

@@ -27,37 +27,37 @@ namespace FirstTry
 
         private void Print()
         {
-            PrintDocument pd = new PrintDocument();
-            PaperSize ps = new PaperSize("", 420, 540);
+            //PrintDocument pd = new PrintDocument();
+            //PaperSize ps = new PaperSize("", 420, 540);
 
-            pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
-            pd.PrintController = new StandardPrintController();
-            pd.DefaultPageSettings.Margins.Left = 50;
-            pd.DefaultPageSettings.Margins.Right = 50;
-            pd.DefaultPageSettings.Margins.Top = 50;
-            pd.DefaultPageSettings.Margins.Bottom = 50;
-            pd.DefaultPageSettings.PaperSize = ps;
-            pd.Print();
+            //pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
+            //pd.PrintController = new StandardPrintController();
+            //pd.DefaultPageSettings.Margins.Left = 50;
+            //pd.DefaultPageSettings.Margins.Right = 50;
+            //pd.DefaultPageSettings.Margins.Top = 50;
+            //pd.DefaultPageSettings.Margins.Bottom = 50;
+            //pd.DefaultPageSettings.PaperSize = ps;
+            //pd.Print();
             //g.Dispose();
         }
 
         private void pd_PrintPage(object sender, PrintPageEventArgs e)
         {
-            int SPACE = 145;
+            //int SPACE = 145;
            
-            Graphics g = e.Graphics;
-            g.DrawRectangle(Pens.Black, 5, 5, 410, 530);
+            //Graphics g = e.Graphics;
+            //g.DrawRectangle(Pens.Black, 5, 5, 410, 530);
 
-            Font fBody = new Font("Lucida Console", 15, FontStyle.Bold);
-            Font fBody1 = new Font("Lucida Console", 15, FontStyle.Regular);
-            Font fBody2 = new Font("Lucida Console", 9, FontStyle.Regular);
+            //Font fBody = new Font("Lucida Console", 15, FontStyle.Bold);
+            //Font fBody1 = new Font("Lucida Console", 15, FontStyle.Regular);
+            //Font fBody2 = new Font("Lucida Console", 9, FontStyle.Regular);
 
-            SolidBrush sb = new SolidBrush(Color.Black);
+            //SolidBrush sb = new SolidBrush(Color.Black);
             
-            g.DrawString("KuloBus", fBody1, sb, 10, 120);
-            g.DrawString("------------------------------", fBody1, sb, 20, 120);
-            g.DrawString("Hermans barnjonglering", fBody1, sb, 50, 120);
-            g.DrawString("BYOB", fBody1, sb, 80, 120);          
+            //g.DrawString("KuloBus", fBody1, sb, 10, 120);
+            //g.DrawString("------------------------------", fBody1, sb, 20, 120);
+            //g.DrawString("Hermans barnjonglering", fBody1, sb, 50, 120);
+            //g.DrawString("BYOB", fBody1, sb, 80, 120);          
         }
     }
     

@@ -27,9 +27,14 @@ namespace FirstTry
         public List<string> typ { get; set; }
         public string epost { get; set; }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tk">tempköp</param>
+        /// <returns>true om full</returns>
         public bool fullbokat(Tempkop tk)
         {
+           
             NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
 
            // int id = akt_id;//akten.id;
