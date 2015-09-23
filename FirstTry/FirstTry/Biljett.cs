@@ -10,18 +10,22 @@ namespace FirstTry
     {
 
         public Forestallning forestallning { get; set; }
-        public List<Akt> akter { get; set; }
+        public Akt akter { get; set; }
         public int pris { get; set; }
-        public DateTime tid { get; set; }
         public string biljettyp { get; set; }
-        public int biljettnummer { get; set; }
-        
+        public int biljett_id { get; set; }
+        public int plats_id { get; set; }
+        public bool resserverad { get; set; }
+        public bool hela { get; set; }
+        //datum
+        //tid
+
         /// <summary>
         /// Make life hell.
         /// </summary>
         public Biljett()
         {
-
+            
 
         }
     }

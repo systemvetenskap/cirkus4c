@@ -107,14 +107,24 @@ namespace FirstTry
             }
         }
 
+        private void skapaBiljettKlass()
+        {
+            
+        }
         private void ReserveraBiljett()
         {
 
 
-            string query = "INSERT INTO biljett (tid_vid_kop) VALUES(@tid_vid_kop) RETURNING id;";
+            string query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, plats_id) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @plats_id) RETURNING id;";
             Biljett biljetten = new Biljett();
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
-            command.Parameters.AddWithValue("@tid_vid_kop", DateTime.Now);
+
+            command.Parameters.AddWithValue("@pris", 123);
+            command.Parameters.AddWithValue("@forestallning_id", 123);
+            command.Parameters.AddWithValue("@akt_id", 123);
+            command.Parameters.AddWithValue("@biljettyp", 123);
+            command.Parameters.AddWithValue("@pris", 123);
+            command.Parameters.AddWithValue("@reserverad", tk.reservation);
 
             // nyssInlagdBiljett();
 
@@ -148,9 +158,9 @@ namespace FirstTry
         {
             ReserveraBiljett();
             tk.platsnamn.Add(kn);
+            return -1;
 
-
-            if (tk.reservation == true)
+          /*  if (tk.reservation == true)
             {
                 string query2 = "INSERT INTO innehaller (akter_id, platser_id, biljett_id, tidsstampel, reserverad, kund_id) VALUES(@akter_id, @platser_id, (select max(id) from biljett), @tidsstampel, @reserverad, @kund_id)";
 
@@ -200,7 +210,7 @@ namespace FirstTry
                     //throw;
                 }
 
-            }
+            } */
 
         }
 
