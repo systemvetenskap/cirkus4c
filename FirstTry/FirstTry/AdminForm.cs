@@ -44,7 +44,8 @@ namespace FirstTry
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-
+            
+            dateTimePickerTid.Enabled = true;
         }
 
         private void AdminForm_Load(object sender, EventArgs e)
@@ -52,7 +53,12 @@ namespace FirstTry
            
 
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+
+            dateTimePickerTid.Format = DateTimePickerFormat.Custom;
+            dateTimePickerTid.CustomFormat = "yyyy-MM-dd  HH:mm";
             
+            //dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            //dateTimePicker2.CustomFormat = "HH mm";
 
 
 
@@ -190,6 +196,21 @@ namespace FirstTry
             //listBoxAdminForestallning.Items.Clear();
             //tomTextBoxar();
             //listBoxAdminForestallning.SelectedIndex = -1;
+        }
+
+        private void uppdatera_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePickerTid_ValueChanged(object sender, EventArgs e)
+        {
+            buttonOppnaForest.Enabled = true;
         }
     }
 }
