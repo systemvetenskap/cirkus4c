@@ -96,7 +96,9 @@ namespace FirstTry
             int SPACE = 145;
 
             Graphics g = e.Graphics;
-            g.DrawRectangle(Pens.Black, 5, 5, 573, 403);
+            Rectangle rect = new Rectangle(10, 10, 573, 403);
+            Pen pen = new Pen(Brushes.Black);
+            g.DrawRectangle(pen, rect);
             
             Font fBody = new Font("Lucida Console", 15, FontStyle.Bold);
             Font fBody1 = new Font("Lucida Console", 15, FontStyle.Regular);
@@ -113,15 +115,16 @@ namespace FirstTry
         private void Print()
         {
             PrintDocument pd = new PrintDocument();
-            PaperSize ps = new PaperSize("", 583, 413);
-         
+            PaperSize ps = new PaperSize("test", 583, 413);
+            
             pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
             pd.PrintController = new StandardPrintController();
-       /*     pd.DefaultPageSettings.Margins.Left = 50;
-            pd.DefaultPageSettings.Margins.Right = 50;
-            pd.DefaultPageSettings.Margins.Top = 50;
-            pd.DefaultPageSettings.Margins.Bottom = 50; */
-            pd.DefaultPageSettings.PaperSize = ps;
+            /*     pd.DefaultPageSettings.Margins.Left = 50;
+                 pd.DefaultPageSettings.Margins.Right = 50;
+                 pd.DefaultPageSettings.Margins.Top = 50;
+                 pd.DefaultPageSettings.Margins.Bottom = 50; */
+            pd.PrinterSettings.DefaultPageSettings.PaperSize = ps;
+            pd.PrinterSettings.PrintToFile = true;
             pd.Print();
             //g.Dispose();
         }
