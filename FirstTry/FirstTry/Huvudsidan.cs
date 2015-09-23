@@ -55,54 +55,61 @@ namespace FirstTry
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    DateTime slutdatum = (DateTime)row["forsaljningslut"];
+                    
                     
 
-                    if ((bool)row["open"] == true && slutdatum > DateTime.Now)
+                    if ((bool)row["open"] == true )
                     {
-                        string namn = row["namn"].ToString();
-                        string id = row["id"].ToString();
-                        bool fri = (bool)row["fri_placering"];
-                        int vuxen = Convert.ToInt32(row["vuxenpris"]);
-                        int ungdom = Convert.ToInt32(row["ungdomspris"]);
-                        int barn = Convert.ToInt32(row["barnpris"]);
-                        DateTime datum = (DateTime)row["datum"];
-                        DateTime tid = (DateTime)row["starttid"];
-                        Forestallning fs = new Forestallning();
-                        fs.akter = new List<Akt>();
-                        
-                        fs.namn = namn;
-                        fs.id = Convert.ToInt32(id);
-                        fs.friplacering = fri;
-                        fs.barn = barn;
-                        fs.ungdom = ungdom;
-                        fs.vuxen = vuxen;
-                        fs.datum = datum;
-                        fs.tid = tid;
-                        listBox_forestallning.Items.Add(fs);
-                        //forenamn += forenummer;
-                        //forenummer++;
-
-
-                        string query2 = "select * from akter where forestallningsid = " + fs.id.ToString();
-                        NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
-                        DataTable dt2 = new DataTable();
-                        da2.Fill(dt2);
-                        foreach (DataRow row2 in dt2.Rows)
+                        DateTime slutdatum = (DateTime)row["forsaljningslut"];
+                        if (slutdatum > DateTime.Now)
                         {
-                            Akt akt = new Akt();
-                            string aktnamn = row2["aktinfo"].ToString();
-                            string aktid = row2["id"].ToString();
-                            //  int aktpris = Convert.ToInt32(row2["vuxenpris"]);
-                            int vuxen2 = Convert.ToInt32(row2["vuxenpris"]);
-                            int ungdom2 = Convert.ToInt32(row2["ungdomspris"]);
-                            int barn2 = Convert.ToInt32(row2["barnpris"]);
-                            akt.namn = aktnamn;
-                            akt.id = Convert.ToInt32(aktid);
-                            akt.vuxen = vuxen2;
-                            akt.ungdom = ungdom2;
-                            akt.barn = barn2;
-                            fs.akter.Add(akt);
+                            string namn = row["namn"].ToString();
+                            string id = row["id"].ToString();
+                            bool fri = (bool)row["fri_placering"];
+                            int vuxen = Convert.ToInt32(row["vuxenpris"]);
+                            int ungdom = Convert.ToInt32(row["ungdomspris"]);
+                            int barn = Convert.ToInt32(row["barnpris"]);
+                            DateTime datum = (DateTime)row["datum"];
+                            DateTime tid = (DateTime)row["starttid"];
+                            Forestallning fs = new Forestallning();
+                            fs.akter = new List<Akt>();
+
+                            fs.namn = namn;
+                            fs.id = Convert.ToInt32(id);
+                            fs.friplacering = fri;
+                            fs.barn = barn;
+                            fs.ungdom = ungdom;
+                            fs.vuxen = vuxen;
+                            fs.datum = datum;
+                            fs.tid = tid;
+                            listBox_forestallning.Items.Add(fs);
+                            //forenamn += forenummer;
+                            //forenummer++;
+
+
+                            string query2 = "select * from akter where forestallningsid = " + fs.id.ToString();
+                            NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
+                            DataTable dt2 = new DataTable();
+                            da2.Fill(dt2);
+                            foreach (DataRow row2 in dt2.Rows)
+                            {
+                                Akt akt = new Akt();
+                                string aktnamn = row2["aktinfo"].ToString();
+                                string aktid = row2["id"].ToString();
+                                //  int aktpris = Convert.ToInt32(row2["vuxenpris"]);
+                                int vuxen2 = Convert.ToInt32(row2["vuxenpris"]);
+                                int ungdom2 = Convert.ToInt32(row2["ungdomspris"]);
+                                int barn2 = Convert.ToInt32(row2["barnpris"]);
+                                akt.namn = aktnamn;
+                                akt.id = Convert.ToInt32(aktid);
+                                akt.vuxen = vuxen2;
+                                akt.ungdom = ungdom2;
+                                akt.barn = barn2;
+                                fs.akter.Add(akt);
+                            }
+                        
+
+ 
                         }
                     }
 
