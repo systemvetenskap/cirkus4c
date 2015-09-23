@@ -192,7 +192,14 @@ namespace FirstTry
             session.biljett_id = new List<int>();
             session.platsnamn = new List<string>();
             session.typ = new List<string>();
-            
+
+            foreach (Akt akter in listBox_akter.SelectedItems)
+            {
+                session.loopar++;
+                session.akter.Add(akter);
+            }
+            session.antal = 0;
+
             if (antal_ar_siffror() == false)
             {
                     MessageBox.Show("Hoppsan! Du fyllde i antalet besökare felaktigt.");
@@ -222,7 +229,7 @@ namespace FirstTry
 
                     //this.Close();
                 }
-                else if (session.forestallning.friplacering == true)
+                else if (session.biljetter[0].forestallning.friplacering == true)
                 {
                     //ladda biljett stuff direkt
                     MessageBox.Show("ITS WORKING");
@@ -295,7 +302,7 @@ namespace FirstTry
 
             if (listBox_akter.SelectedIndex != null && listBox_forestallning != null)
             {
-                int loopar = 0;
+               // int loopar = 0;
 
 
                 //       Tempkop s2 = new Tempkop();
@@ -308,7 +315,7 @@ namespace FirstTry
                 b.biljettyp = biljettyp;
                 b.pris = pris;
                 b.resserverad = checkBox1.Checked;
-                
+
                 session.biljetter.Add(b);
 
                 // List<Akt> aktlista = new List<Akt>();
@@ -499,10 +506,14 @@ namespace FirstTry
             if ((Forestallning)listBox_forestallning.SelectedItem != null && (Akt)listBox_akter.SelectedItem != null)
             {
                 int totalpris = 0;
-
+                int antal = Convert.ToInt32(textBox_ungdom.Text);
                 foreach (Akt akt in listBox_akter.SelectedItems)
                 {
-                    skapaTempkop("ungdom", akt, akt.ungdom);
+                    for (int i = 0; i < antal; i++)
+                    {
+                        skapaTempkop("ungdom", akt, akt.ungdom);
+                    }
+                    
                 }
                 foreach (Biljett b in session.biljetter)
                 {
@@ -516,10 +527,13 @@ namespace FirstTry
             if ((Forestallning)listBox_forestallning.SelectedItem != null && (Akt)listBox_akter.SelectedItem != null)
             {
                 int totalpris = 0;
-
+                int antal = Convert.ToInt32(textBox_barn.Text);
                 foreach (Akt akt in listBox_akter.SelectedItems)
                 {
-                    skapaTempkop("barn", akt, akt.barn);
+                    for (int i = 0; i < antal; i++)
+                    {
+                        skapaTempkop("barn", akt, akt.barn);
+                    }
                 }
                 foreach (Biljett b in session.biljetter)
                 {

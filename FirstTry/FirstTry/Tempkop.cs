@@ -26,17 +26,20 @@ namespace FirstTry
 
         public bool hela { get; set; }
 
-        public List<int> biljett_id {get; set;}
+        public List<int> biljett_id { get; set; }
         public List<string> platsnamn { get; set; }
         public List<string> typ { get; set; }
         public string epost { get; set; }
         public List<Biljett> biljetter { get; set; }
+        public int fuskIgen{get;set;}
 
 
 
         public Tempkop()
         {
             biljetter = new List<Biljett>();
+            akter = new List<Akt>();
+            fuskIgen = 0;
         }
 
 

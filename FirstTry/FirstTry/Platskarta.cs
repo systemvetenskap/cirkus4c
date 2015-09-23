@@ -20,19 +20,19 @@ namespace FirstTry
         {
             InitializeComponent();
             tk = tk2;
-
         }
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         DataTable dt = new DataTable();
+     //   int vilkenbiljett = 0;
 
         
-
+        
 
         private void generellknapp(Button knapp)
         {
 
-
+            
 
             if (radioButton_ungdom.Checked == false && radioButton_barn.Checked == false && radioButton_vuxen.Checked == false)
             {
@@ -58,7 +58,7 @@ namespace FirstTry
             //dubbelkolla igen först så den inte är bokad
 
           //  ReserveraBiljett();
-            if (Innehaller(id, knapp.Text) == -1)
+            if (ReserveraBiljett(knapp.Text) == -1)
             {
                 this.Hide();
                 Platskarta pk2 = new Platskarta(tk);
@@ -111,27 +111,41 @@ namespace FirstTry
         {
             
         }
-        private void ReserveraBiljett()
+        private int ReserveraBiljett(string kn)
         {
+            try
+            {
+                string query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, plats_id, reserverad) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @plats_id, @reserverad) RETURNING id;";
+                Biljett biljetten = new Biljett();
+                NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+                command.Parameters.AddWithValue("@pris", tk.biljetter[tk.fuskIgen].pris);
+                command.Parameters.AddWithValue("@forestallning_id", tk.biljetter[tk.fuskIgen].forestallning.id);
+                command.Parameters.AddWithValue("@akt_id", tk.biljetter[tk.fuskIgen].akter.id);
+                command.Parameters.AddWithValue("@biljettyp", tk.biljetter[tk.fuskIgen].biljettyp);
+                command.Parameters.AddWithValue("@plats_id", KnappId(kn));
+                command.Parameters.AddWithValue("@reserverad", tk.biljetter[tk.fuskIgen].resserverad);
+
+                int x = (int)command.ExecuteScalar();
+
+                //  biljett_id.Add(x);
+                //   tk.biljett_id.Add(x);
+                tk.biljetter[tk.fuskIgen].biljett_id = x;
+                tk.fuskIgen++;
+                return x;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Tyvärr blev platsen precis bokad" + ex.ToString());
+
+                return -1;
+                //throw;
+            }
 
 
-            string query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, plats_id) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @plats_id) RETURNING id;";
-            Biljett biljetten = new Biljett();
-            NpgsqlCommand command = new NpgsqlCommand(query, conn);
-
-            command.Parameters.AddWithValue("@pris", 123);
-            command.Parameters.AddWithValue("@forestallning_id", 123);
-            command.Parameters.AddWithValue("@akt_id", 123);
-            command.Parameters.AddWithValue("@biljettyp", 123);
-            command.Parameters.AddWithValue("@pris", 123);
-            command.Parameters.AddWithValue("@reserverad", tk.reservation);
 
             // nyssInlagdBiljett();
 
-            int x = (int)command.ExecuteScalar();
-
-          //  biljett_id.Add(x);
-            tk.biljett_id.Add(x);
 
 
 
@@ -156,8 +170,8 @@ namespace FirstTry
 
         private int Innehaller(int aktint, string kn)
         {
-            ReserveraBiljett();
-            tk.platsnamn.Add(kn);
+            //ReserveraBiljett(kn);
+            //tk.platsnamn.Add(kn);
             return -1;
 
           /*  if (tk.reservation == true)
@@ -237,7 +251,7 @@ namespace FirstTry
             label1.Text = tk.vuxna.ToString();
             label2.Text = tk.ungdom.ToString();
             label3.Text = tk.barn.ToString();
-            label5.Text = tk.forestallning.namn;
+            label5.Text = tk.biljetter[0].forestallning.namn;
             label6.Text = tk.akter[tk.antal].namn;
             label8.Text = tk.totalpris.ToString() + " Kr";
 
@@ -341,7 +355,7 @@ namespace FirstTry
             }
         }
 
-        private DateTime kop_slut()
+     /*  private DateTime kop_slut()
         {
             DataTable dt2 = new DataTable();
             string query = "select forsaljningslut from forestallning where id = ";
@@ -356,6 +370,7 @@ namespace FirstTry
 
             return DateTime.Now;
         }
+        
         private DateTime tid_vid_kop()
         {
             DataTable dt2 = new DataTable();
@@ -371,18 +386,19 @@ namespace FirstTry
 
             return DateTime.Now;
         }
+        */
         private void Platskarta_Load(object sender, EventArgs e)
         {
 
-            DateTime dtr = new DateTime();
+           // DateTime dtr = new DateTime();
 
-            dtr = kop_slut();
+           // dtr = kop_slut();
             
             if (tk.hela == true)
             {
-                foreach (Akt item in tk.akter)
+                foreach (Biljett item in tk.biljetter)
                 {
-                    backbone(item);
+                    backbone(item.akter);
                 }
             }
             else
