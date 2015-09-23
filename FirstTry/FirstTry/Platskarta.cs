@@ -111,10 +111,10 @@ namespace FirstTry
         {
 
 
-            string query = "INSERT INTO biljett (totalpris) VALUES(@totalpris) RETURNING id;";
+            string query = "INSERT INTO biljett (tid_vid_kop) VALUES(@tid_vid_kop) RETURNING id;";
             Biljett biljetten = new Biljett();
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
-            command.Parameters.AddWithValue("@totalpris", 66);
+            command.Parameters.AddWithValue("@tid_vid_kop", DateTime.Now);
 
             // nyssInlagdBiljett();
 
@@ -316,13 +316,32 @@ namespace FirstTry
                         gk(button_A6, fusk, vecka, platsid, id);
                         gk(button_A7, fusk, vecka, platsid, id);
                         gk(button_A8, fusk, vecka, platsid, id);
+
+                        gk(button_B1, fusk, vecka, platsid, id);
+                        gk(button_B2, fusk, vecka, platsid, id);
+                        gk(button_B3, fusk, vecka, platsid, id);
+                        gk(button_B4, fusk, vecka, platsid, id);
+                        gk(button_B5, fusk, vecka, platsid, id);
+                        gk(button_B6, fusk, vecka, platsid, id);
+                        gk(button_B7, fusk, vecka, platsid, id);
+                        gk(button_B8, fusk, vecka, platsid, id);
                     }
                 }
                 x++;
             }
         }
 
+        private DateTime kop_slut()
+        {
 
+            string query = "select platser_id, tidsstampel, reserverad from innehaller where akter_id = ";
+            
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+            da.Fill(dt);
+
+
+            return DateTime.Now;
+        }
         private void Platskarta_Load(object sender, EventArgs e)
         {
             
@@ -395,8 +414,8 @@ namespace FirstTry
                         else if (dialogResult == DialogResult.No)
                         {
                             
-                          //  Huvudsidan hu = new Huvudsidan();
-                           // hu.ShowDialog();
+                          Huvudsidan hu = new Huvudsidan();
+                          hu.ShowDialog();
 
                         }
 
