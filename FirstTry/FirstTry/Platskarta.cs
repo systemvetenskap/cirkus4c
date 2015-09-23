@@ -249,14 +249,14 @@ namespace FirstTry
             int x = 0;
             x = tk.vuxna + tk.barn + tk.ungdom;
 
-            if (x >= 8)
+           /* if (x >= 8)
             {
                 MessageBox.Show("Tyvärr finns inte tillräkligt med plats, utanför");
                 this.Hide();
                 Huvudsidan hu = new Huvudsidan();
                 hu.ShowDialog();
-                Close();
-            }
+                Close(); 
+            }*/
             //Här ska tk metoden ligga, kanske :p
 
             foreach (DataRow row in dt.Rows)
@@ -264,7 +264,7 @@ namespace FirstTry
 
 
 
-                if (x >= 8)
+             /*   if (x >= 8)
                 {
                     MessageBox.Show("Tyvärr finns inte tillräkligt med plats, innanför");
                     this.Hide();
@@ -273,7 +273,7 @@ namespace FirstTry
                     Close();
                 }
                 else
-                {
+                { */
                     string platsid = row["platser_id"].ToString();
                     bool vecka = false;
 
@@ -325,7 +325,7 @@ namespace FirstTry
                         gk(button_B6, fusk, vecka, platsid, id);
                         gk(button_B7, fusk, vecka, platsid, id);
                         gk(button_B8, fusk, vecka, platsid, id);
-                    }
+                   // }
                 }
                 x++;
             }
@@ -333,17 +333,40 @@ namespace FirstTry
 
         private DateTime kop_slut()
         {
-
-            string query = "select platser_id, tidsstampel, reserverad from innehaller where akter_id = ";
-            
+            DataTable dt2 = new DataTable();
+            string query = "select forsaljningslut from forestallning where id = ";
+            query += tk.forestallning.id.ToString();
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
-            da.Fill(dt);
+            da.Fill(dt2);
 
+            foreach (DataRow fslut in dt2.Rows)
+            {              
+                return (DateTime)fslut["forsaljningslut"];
+            }
+
+            return DateTime.Now;
+        }
+        private DateTime tid_vid_kop()
+        {
+            DataTable dt2 = new DataTable();
+            string query = "SELECT biljett.tid_vid_kop, platser.nummer, platser.id FROM public.biljett, public.innehaller, public.platser WHERE innehaller.biljett_id = biljett.id AND innehaller.platser_id = platser.id;";
+            query += tk.forestallning.id.ToString();
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+            da.Fill(dt2);
+            
+            foreach (DataRow bslut in dt2.Rows)
+            {
+                return (DateTime)bslut["tid_vid_kop"];
+            }
 
             return DateTime.Now;
         }
         private void Platskarta_Load(object sender, EventArgs e)
         {
+
+            DateTime dtr = new DateTime();
+
+            dtr = kop_slut();
             
             if (tk.hela == true)
             {

@@ -52,7 +52,7 @@ namespace FirstTry
                     x = tk.vuxna + tk.barn + tk.ungdom;
 
 
-                    if (x >= 8)
+                    if (x >= 16)
                     {
                         // MessageBox.Show("Tyvärr finns inte tillräkligt med plats, utanför");
                         // this.Hide();
@@ -64,7 +64,7 @@ namespace FirstTry
 
                     foreach (DataRow row in dt.Rows)
                     {
-                        if (x >= 8)
+                        if (x >= 16)
                         {
                             // MessageBox.Show("Tyvärr finns inte tillräkligt med plats, innanför");
                             //this.Hide();
