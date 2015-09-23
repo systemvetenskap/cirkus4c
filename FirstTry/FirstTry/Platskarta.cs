@@ -44,12 +44,13 @@ namespace FirstTry
                 {
                     bokaplats(knapp, id.id);
                 }
-                radiokoll();
+               // radiokoll();
             }
             else
             {
                 bokaplats(knapp, tk.akter[tk.antal].id);
             }
+            radiokoll();
         }
 
         private void bokaplats(Button knapp, int id)
@@ -132,6 +133,7 @@ namespace FirstTry
                 //   tk.biljett_id.Add(x);
                 tk.biljetter[tk.fuskIgen].biljett_id = x;
                 tk.fuskIgen++;
+                radiokoll();
                 return x;
             }
             catch (Exception ex)
@@ -435,6 +437,22 @@ namespace FirstTry
                 radioButton_barn.Checked = false;
                 x++;
             }
+
+       /*     if (tk.biljetter[tk.fuskIgen].biljettyp == "vuxen")
+            {
+                radioButton_vuxen.Checked = true;
+            }
+            else if (tk.biljetter[tk.fuskIgen].biljettyp == "ungdom")
+            {
+                radioButton_ungdom.Checked = true;
+            }
+            else if (tk.biljetter[tk.fuskIgen].biljettyp == "barn")
+            {
+                radioButton_barn.Checked = true;
+            }
+
+    */
+
             if (x == 3)
             {
               
