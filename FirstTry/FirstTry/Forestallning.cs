@@ -32,7 +32,7 @@ namespace FirstTry
         
         public override string ToString()
         {
-            return namn + " " +id;
+            return namn + "\t \t" + starttid.ToShortDateString() + " " + starttid.ToShortTimeString();
         }
 
     }

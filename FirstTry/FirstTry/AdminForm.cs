@@ -67,7 +67,7 @@ namespace FirstTry
             if (valdforestallning != null)
             {
                 listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
-                textBoxForestNamn.Text = valdforestallning.ToString();
+                textBoxForestNamn.Text = valdforestallning.namn;
                 richTextBoxForestInf.Text = valdforestallning.generellinfo;
                 textBoxForestStarttid.Text = valdforestallning.starttid.ToString();
                 textBoxForestSluttid.Text = valdforestallning.sluttid.ToString();
@@ -85,24 +85,24 @@ namespace FirstTry
 
         //}
     
-        private int LaggTillForestallning()
-        {
-            Forestallning laggtillforestallning = new Forestallning();
-            string query = "INSERT INTO forestallning (namn, generell_info, starttid, sluttid, vuxenpris, ungdomspris, barnpris) VALUES(@namn, @generellinfo, @starttid, @sluttid, vuxenpris, ungdomspris, barnpris)";
+        //private int LaggTillForestallning()
+        //{
+        //    Forestallning laggtillforestallning = new Forestallning();
+        //    string query = "INSERT INTO forestallning (namn, generell_info, starttid, sluttid, vuxenpris, ungdomspris, barnpris) VALUES(@namn, @generellinfo, @starttid, @sluttid, vuxenpris, ungdomspris, barnpris)";
 
-            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+        //    NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
-            command.Parameters.AddWithValue("@namn", laggtillforestallning.namn);
-            command.Parameters.AddWithValue("@generellinfo", laggtillforestallning.generellinfo);
-            command.Parameters.AddWithValue("@starttid", laggtillforestallning.starttid);
-            command.Parameters.AddWithValue("@sluttid", laggtillforestallning.sluttid);
-            command.Parameters.AddWithValue("@open", false);//false tills öppnad
-            command.Parameters.AddWithValue("@vuxenpris", laggtillforestallning.vuxenpris);
-            command.Parameters.AddWithValue("@ungdomspris", laggtillforestallning.ungdomspris);
-            command.Parameters.AddWithValue("@barnpris", laggtillforestallning.barnpris);
+        //    command.Parameters.AddWithValue("@namn", laggtillforestallning.namn);
+        //    command.Parameters.AddWithValue("@generellinfo", laggtillforestallning.generellinfo);
+        //    command.Parameters.AddWithValue("@starttid", laggtillforestallning.starttid);
+        //    command.Parameters.AddWithValue("@sluttid", laggtillforestallning.sluttid);
+        //    command.Parameters.AddWithValue("@open", false);//false tills öppnad
+        //    command.Parameters.AddWithValue("@vuxenpris", laggtillforestallning.vuxenpris);
+        //    command.Parameters.AddWithValue("@ungdomspris", laggtillforestallning.ungdomspris);
+        //    command.Parameters.AddWithValue("@barnpris", laggtillforestallning.barnpris);
 
-            return command.ExecuteNonQuery();
-        }
+        //    return command.ExecuteNonQuery();
+        //}
 
         private void buttonLaggTillForest_Click(object sender, EventArgs e)
         {
@@ -142,7 +142,7 @@ namespace FirstTry
             Akt valdAkt = (Akt)(listBoxAkter.SelectedItem);
 
 
-            textBoxAktnamn.Text = valdAkt.ToString();
+            textBoxAktnamn.Text = valdAkt.namn;
             richTextBoxAktInf.Text = valdAkt.Aktinfo;
             textBoxAktStarttid.Text = valdAkt.Starttid.ToString();
             textBoxAktSluttid.Text = valdAkt.Sluttid.ToString(); 
@@ -210,7 +210,10 @@ namespace FirstTry
 
 
             Databasmetoder.UppdateraForestallning(id, namn, generellinfo, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
+            Databasmetoder.HamtaForestallningLista();
         }
+
+
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
@@ -223,6 +226,11 @@ namespace FirstTry
         }
 
         private void dateTimePicker1_ValueChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxForestNamn_TextChanged(object sender, EventArgs e)
         {
 
         }

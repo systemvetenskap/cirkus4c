@@ -74,9 +74,9 @@
             // listBoxAdminForestallning
             // 
             this.listBoxAdminForestallning.FormattingEnabled = true;
-            this.listBoxAdminForestallning.Location = new System.Drawing.Point(192, 41);
+            this.listBoxAdminForestallning.Location = new System.Drawing.Point(186, 45);
             this.listBoxAdminForestallning.Name = "listBoxAdminForestallning";
-            this.listBoxAdminForestallning.Size = new System.Drawing.Size(168, 277);
+            this.listBoxAdminForestallning.Size = new System.Drawing.Size(204, 277);
             this.listBoxAdminForestallning.TabIndex = 0;
             this.listBoxAdminForestallning.SelectedIndexChanged += new System.EventHandler(this.listBoxAdminForestallning_SelectedIndexChanged);
             // 
@@ -86,6 +86,7 @@
             this.textBoxForestNamn.Name = "textBoxForestNamn";
             this.textBoxForestNamn.Size = new System.Drawing.Size(135, 20);
             this.textBoxForestNamn.TabIndex = 1;
+            this.textBoxForestNamn.TextChanged += new System.EventHandler(this.textBoxForestNamn_TextChanged);
             // 
             // labelForestNamn
             // 
@@ -114,7 +115,7 @@
             this.listBoxAkter.FormattingEnabled = true;
             this.listBoxAkter.Location = new System.Drawing.Point(546, 41);
             this.listBoxAkter.Name = "listBoxAkter";
-            this.listBoxAkter.Size = new System.Drawing.Size(177, 277);
+            this.listBoxAkter.Size = new System.Drawing.Size(212, 277);
             this.listBoxAkter.TabIndex = 4;
             this.listBoxAkter.SelectedIndexChanged += new System.EventHandler(this.listBoxAkter_SelectedIndexChanged);
             // 
