@@ -251,22 +251,22 @@ namespace FirstTry
             label1.Text = tk.vuxna.ToString();
             label2.Text = tk.ungdom.ToString();
             label3.Text = tk.barn.ToString();
-            label5.Text = tk.biljetter[0].forestallning.namn;
-            label6.Text = tk.akter[tk.antal].namn;
+            label5.Text = tk.biljetter[tk.fuskIgen].forestallning.namn;
+            label6.Text = tk.biljetter[tk.fuskIgen].akter.namn;
             label8.Text = tk.totalpris.ToString() + " Kr";
 
 
             radiokoll();
 
-            
+
 
             //Akt temp = new Akt();
 
             //temp = tk.akter[tk.antal];
-            
-            int id = akten.id;
 
-            string query = "select platser_id, tidsstampel, reserverad from innehaller where akter_id = ";
+            int id = tk.biljetter[tk.fuskIgen].akter.id;
+
+            string query = "select * from biljett where akt_id = ";
             query += id.ToString();
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
             da.Fill(dt);
@@ -298,10 +298,10 @@ namespace FirstTry
                 }
                 else
                 { */
-                    string platsid = row["platser_id"].ToString();
+                    string platsid = row["plats_id"].ToString();
                     bool vecka = false;
 
-                    if ((bool)row["reserverad"] == true)
+                /*    if ((bool)row["reserverad"] == true)
                     {
                         DateTime dat = (DateTime)row["tidsstampel"];
                         DateTime nu = DateTime.Now;
@@ -313,7 +313,7 @@ namespace FirstTry
                             vecka = true;
                         }
                     }
-
+                    */
                     string query2 = "select nummer from platser where id =" + platsid;
 
 
@@ -405,8 +405,9 @@ namespace FirstTry
             {
                 //Akt temp = new Akt();
 
-               // temp = tk.akter[tk.antal];
-                backbone(tk.akter[tk.antal]);
+                // temp = tk.akter[tk.antal];
+                // här är den som funkade förut backbone(tk.akter[tk.antal]);
+                backbone(tk.biljetter[tk.fuskIgen].akter);
             }
 
 
