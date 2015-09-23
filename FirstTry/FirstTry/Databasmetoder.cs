@@ -249,26 +249,27 @@ namespace FirstTry
                 conn1.Open();
                 MessageBox.Show(conn1.State.ToString());
                
-                NpgsqlCommand command1 = new NpgsqlCommand(@" UPDATE forestallning set namn = :namn,  generellinfo = :generellinfo, starttid = :starttid, sluttid = :sluttid, vuxenpris = :vuxenpris, ungdomspris = :ungdomspris, barnpris = :barnpris 
-                                                            WHERE id = :id", conn1);
+                NpgsqlCommand command1 = new NpgsqlCommand(@" UPDATE forestallning set namn = :uppdnamn, generell_info = :uppdgenerellinfo, starttid = :uppdstarttid, sluttid = :uppdsluttid, vuxenpris = :uppdvuxenpris, ungdomspris = :uppdungdomspris, barnpris = :uppdbarnpris 
+                                                            WHERE id = :uppdid", conn1);
 
-                command1.Parameters.Add(new NpgsqlParameter("id", DbType.Int32));
+                command1.Parameters.Add(new NpgsqlParameter("uppdid", DbType.Int32));
                 command1.Parameters["id"].Value = forestallningsid;
-                command1.Parameters.Add(new NpgsqlParameter("namn", DbType.String));
+                command1.Parameters.Add(new NpgsqlParameter("uppdnamn", DbType.String));
                 command1.Parameters["namn"].Value = namn;
-                command1.Parameters.Add(new NpgsqlParameter("generellinfo", DbType.String));
-                command1.Parameters["generellinfo"].Value = generellinfo;
-                command1.Parameters.Add(new NpgsqlParameter("starttid", DbType.DateTime));
+                command1.Parameters.Add(new NpgsqlParameter("uppdgenerellinfo", DbType.String));
+                command1.Parameters["generell_info"].Value = generellinfo;
+                command1.Parameters.Add(new NpgsqlParameter("uppdstarttid", DbType.DateTime));
                 command1.Parameters["starttid"].Value = starttid;
-                command1.Parameters.Add(new NpgsqlParameter("sluttid", DbType.DateTime));
+                command1.Parameters.Add(new NpgsqlParameter("uppdsluttid", DbType.DateTime));
                 command1.Parameters["sluttid"].Value = sluttid;
-                command1.Parameters.Add(new NpgsqlParameter("vuxenpris", DbType.Int32));
+                command1.Parameters.Add(new NpgsqlParameter("uppdvuxenpris", DbType.Int32));
                 command1.Parameters["vuxenpris"].Value = vuxenpris;
-                command1.Parameters.Add(new NpgsqlParameter("ungdomspris", DbType.Int32));
+                command1.Parameters.Add(new NpgsqlParameter("uppdungdomspris", DbType.Int32));
                 command1.Parameters["ungdomspris"].Value = ungdomspris;
-                command1.Parameters.Add(new NpgsqlParameter("barnpris", DbType.Int32));
+                command1.Parameters.Add(new NpgsqlParameter("uppdbarnpris", DbType.Int32));
                 command1.Parameters["barnpris"].Value = barnpris;
                
+
                 int numberOfAffectedRows = command1.ExecuteNonQuery();
 
                 }
