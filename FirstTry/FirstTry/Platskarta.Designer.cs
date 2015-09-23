@@ -49,13 +49,21 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.button_B8 = new System.Windows.Forms.Button();
+            this.button_B7 = new System.Windows.Forms.Button();
+            this.button_B6 = new System.Windows.Forms.Button();
+            this.button_B5 = new System.Windows.Forms.Button();
+            this.button_B4 = new System.Windows.Forms.Button();
+            this.button_B3 = new System.Windows.Forms.Button();
+            this.button_B2 = new System.Windows.Forms.Button();
+            this.button_B1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_A1
             // 
             this.button_A1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.button_A1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_A1.Location = new System.Drawing.Point(333, 306);
+            this.button_A1.Location = new System.Drawing.Point(345, 482);
             this.button_A1.Name = "button_A1";
             this.button_A1.Size = new System.Drawing.Size(30, 30);
             this.button_A1.TabIndex = 0;
@@ -66,7 +74,7 @@
             // button_A2
             // 
             this.button_A2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button_A2.Location = new System.Drawing.Point(369, 306);
+            this.button_A2.Location = new System.Drawing.Point(381, 482);
             this.button_A2.Name = "button_A2";
             this.button_A2.Size = new System.Drawing.Size(30, 30);
             this.button_A2.TabIndex = 1;
@@ -77,7 +85,7 @@
             // button_A3
             // 
             this.button_A3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button_A3.Location = new System.Drawing.Point(405, 306);
+            this.button_A3.Location = new System.Drawing.Point(417, 482);
             this.button_A3.Name = "button_A3";
             this.button_A3.Size = new System.Drawing.Size(30, 30);
             this.button_A3.TabIndex = 2;
@@ -88,7 +96,7 @@
             // button_A4
             // 
             this.button_A4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button_A4.Location = new System.Drawing.Point(441, 306);
+            this.button_A4.Location = new System.Drawing.Point(453, 482);
             this.button_A4.Name = "button_A4";
             this.button_A4.Size = new System.Drawing.Size(30, 30);
             this.button_A4.TabIndex = 3;
@@ -99,7 +107,7 @@
             // button_A5
             // 
             this.button_A5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button_A5.Location = new System.Drawing.Point(333, 342);
+            this.button_A5.Location = new System.Drawing.Point(345, 518);
             this.button_A5.Name = "button_A5";
             this.button_A5.Size = new System.Drawing.Size(30, 30);
             this.button_A5.TabIndex = 4;
@@ -110,7 +118,7 @@
             // button_A6
             // 
             this.button_A6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button_A6.Location = new System.Drawing.Point(369, 342);
+            this.button_A6.Location = new System.Drawing.Point(381, 518);
             this.button_A6.Name = "button_A6";
             this.button_A6.Size = new System.Drawing.Size(30, 30);
             this.button_A6.TabIndex = 5;
@@ -121,7 +129,7 @@
             // button_A7
             // 
             this.button_A7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button_A7.Location = new System.Drawing.Point(405, 342);
+            this.button_A7.Location = new System.Drawing.Point(417, 518);
             this.button_A7.Name = "button_A7";
             this.button_A7.Size = new System.Drawing.Size(30, 30);
             this.button_A7.TabIndex = 6;
@@ -132,7 +140,7 @@
             // button_A8
             // 
             this.button_A8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button_A8.Location = new System.Drawing.Point(441, 342);
+            this.button_A8.Location = new System.Drawing.Point(453, 518);
             this.button_A8.Name = "button_A8";
             this.button_A8.Size = new System.Drawing.Size(30, 30);
             this.button_A8.TabIndex = 7;
@@ -264,11 +272,108 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button_B8
+            // 
+            this.button_B8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button_B8.Location = new System.Drawing.Point(299, 415);
+            this.button_B8.Name = "button_B8";
+            this.button_B8.Size = new System.Drawing.Size(30, 30);
+            this.button_B8.TabIndex = 28;
+            this.button_B8.Text = "B8";
+            this.button_B8.UseVisualStyleBackColor = false;
+            this.button_B8.Click += new System.EventHandler(this.button_B8_Click);
+            // 
+            // button_B7
+            // 
+            this.button_B7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button_B7.Location = new System.Drawing.Point(263, 415);
+            this.button_B7.Name = "button_B7";
+            this.button_B7.Size = new System.Drawing.Size(30, 30);
+            this.button_B7.TabIndex = 27;
+            this.button_B7.Text = "B7";
+            this.button_B7.UseVisualStyleBackColor = false;
+            this.button_B7.Click += new System.EventHandler(this.button_B7_Click);
+            // 
+            // button_B6
+            // 
+            this.button_B6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button_B6.Location = new System.Drawing.Point(227, 415);
+            this.button_B6.Name = "button_B6";
+            this.button_B6.Size = new System.Drawing.Size(30, 30);
+            this.button_B6.TabIndex = 26;
+            this.button_B6.Text = "B6";
+            this.button_B6.UseVisualStyleBackColor = false;
+            this.button_B6.Click += new System.EventHandler(this.button_B6_Click);
+            // 
+            // button_B5
+            // 
+            this.button_B5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button_B5.Location = new System.Drawing.Point(191, 415);
+            this.button_B5.Name = "button_B5";
+            this.button_B5.Size = new System.Drawing.Size(30, 30);
+            this.button_B5.TabIndex = 25;
+            this.button_B5.Text = "B5";
+            this.button_B5.UseVisualStyleBackColor = false;
+            this.button_B5.Click += new System.EventHandler(this.button_B5_Click);
+            // 
+            // button_B4
+            // 
+            this.button_B4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button_B4.Location = new System.Drawing.Point(299, 379);
+            this.button_B4.Name = "button_B4";
+            this.button_B4.Size = new System.Drawing.Size(30, 30);
+            this.button_B4.TabIndex = 24;
+            this.button_B4.Text = "B4";
+            this.button_B4.UseVisualStyleBackColor = false;
+            this.button_B4.Click += new System.EventHandler(this.button_B4_Click);
+            // 
+            // button_B3
+            // 
+            this.button_B3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button_B3.Location = new System.Drawing.Point(263, 379);
+            this.button_B3.Name = "button_B3";
+            this.button_B3.Size = new System.Drawing.Size(30, 30);
+            this.button_B3.TabIndex = 23;
+            this.button_B3.Text = "B3";
+            this.button_B3.UseVisualStyleBackColor = false;
+            this.button_B3.Click += new System.EventHandler(this.button_B3_Click);
+            // 
+            // button_B2
+            // 
+            this.button_B2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button_B2.Location = new System.Drawing.Point(227, 379);
+            this.button_B2.Name = "button_B2";
+            this.button_B2.Size = new System.Drawing.Size(30, 30);
+            this.button_B2.TabIndex = 22;
+            this.button_B2.Text = "B2";
+            this.button_B2.UseVisualStyleBackColor = false;
+            this.button_B2.Click += new System.EventHandler(this.button_B2_Click);
+            // 
+            // button_B1
+            // 
+            this.button_B1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button_B1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_B1.Location = new System.Drawing.Point(191, 379);
+            this.button_B1.Name = "button_B1";
+            this.button_B1.Size = new System.Drawing.Size(30, 30);
+            this.button_B1.TabIndex = 21;
+            this.button_B1.Text = "B1";
+            this.button_B1.UseVisualStyleBackColor = false;
+            this.button_B1.Click += new System.EventHandler(this.button_B1_Click);
+            // 
             // Platskarta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 467);
+            this.ClientSize = new System.Drawing.Size(828, 599);
+            this.Controls.Add(this.button_B8);
+            this.Controls.Add(this.button_B7);
+            this.Controls.Add(this.button_B6);
+            this.Controls.Add(this.button_B5);
+            this.Controls.Add(this.button_B4);
+            this.Controls.Add(this.button_B3);
+            this.Controls.Add(this.button_B2);
+            this.Controls.Add(this.button_B1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
@@ -321,5 +426,13 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_B8;
+        private System.Windows.Forms.Button button_B7;
+        private System.Windows.Forms.Button button_B6;
+        private System.Windows.Forms.Button button_B5;
+        private System.Windows.Forms.Button button_B4;
+        private System.Windows.Forms.Button button_B3;
+        private System.Windows.Forms.Button button_B2;
+        private System.Windows.Forms.Button button_B1;
     }
 }

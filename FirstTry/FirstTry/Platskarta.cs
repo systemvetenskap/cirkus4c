@@ -499,5 +499,45 @@ namespace FirstTry
             hs.ShowDialog();
             this.Close();
         }
+
+        private void button_B1_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_B1);
+        }
+
+        private void button_B2_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_B2);
+        }
+
+        private void button_B3_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_B3);
+        }
+
+        private void button_B4_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_B4);
+        }
+
+        private void button_B5_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_B5);
+        }
+
+        private void button_B6_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_B6);
+        }
+
+        private void button_B7_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_B7);
+        }
+
+        private void button_B8_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_B8);
+        }
     }
 }
