@@ -78,26 +78,56 @@ namespace FirstTry
             }  
           }
        
+        private int laggTillForest(string namn, string generellinfo, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
+        {
+           
+           //// NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+            conn.Open();
+           // Forestallning laggtillforestallning = new Forestallning();
+            string query = "INSERT INTO forestallning (namn, generell_info, starttid, sluttid, open, vuxenpris, ungdomspris, barnpris, fri_placering) VALUES(@namn, @generell_info, @starttid, @sluttid, @open, @vuxenpris, @ungdomspris, @barnpris, @fri_placering)";
 
+            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+            command.Parameters.AddWithValue("@namn", namn);
+            command.Parameters.AddWithValue("@generell_info", generellinfo);
+            command.Parameters.AddWithValue("@starttid", starttid);
+            command.Parameters.AddWithValue("@sluttid", sluttid);
+            command.Parameters.AddWithValue("@open", false);//false tills öppnad
+            command.Parameters.AddWithValue("@vuxenpris", vuxenpris);
+            command.Parameters.AddWithValue("@ungdomspris", ungdomspris);
+            command.Parameters.AddWithValue("@barnpris", barnpris);
+            command.Parameters.AddWithValue(@"fri_placering", false);
+
+            return command.ExecuteNonQuery();
+        }
         private void buttonLaggTillForest_Click(object sender, EventArgs e)
         {
-            Forestallning tillagdfs = new Forestallning();
+
+           // Forestallning tillagdfs = new Forestallning();
             //listBoxAdminForestallning.Items.Clear();
-            tomTextBoxar();
+            
             string namn = textBoxForestNamn.Text;
             string generellinfo = richTextBoxForestInf.Text;
             DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
             DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
+            bool open = false;
             int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
+            bool friplacering = false;
 
+            Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering);
 
+            Databasmetoder.HamtaForestallningLista();
+
+           // conn.Open();
+            
             //Databasmetoder.LaggTillNyForestallning(namn, generellinfo, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
-            Databasmetoder.LaggTillForestallning();
+            
+         
 
             //listBoxAdminForestallning.Items.Clear();
-            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+          //  listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
 
             //NpgsqlCommand command = new NpgsqlCommand("Select * from forestallning", conn);
             //NpgsqlDataReader dr = command.ExecuteReader();
@@ -138,7 +168,7 @@ namespace FirstTry
          }
 
 
-            private void tomTextBoxar()
+            private void tomTextBoxarAkt()
         {
             textBoxAktnamn.Clear();
             richTextBoxAktInf.Clear();
@@ -150,6 +180,16 @@ namespace FirstTry
             
         }
              
+        private void tomTextBoxarForestallning()
+        {
+            textBoxForestNamn.Clear();
+            richTextBoxForestInf.Clear();
+            textBoxForestStarttid.Clear();
+            textBoxForestSluttid.Clear();
+            textBoxVuxenpris.Clear();
+            textBoxUngdomspris.Clear();
+            textBoxBarnpris.Clear();
+        }
 
         /* richTextBoxAktInf.Text = valdAkt.
         textBoxForestStarttid.Text = valdforestallning.starttid.ToString();
@@ -177,6 +217,12 @@ namespace FirstTry
 
         private void btnSkapaForestallning_Click(object sender, EventArgs e)
         {
+            
+            buttonLaggTillForest.Enabled = true;
+            listBoxAdminForestallning.SelectionMode = SelectionMode.None;
+            tomTextBoxarForestallning();
+
+
             //listBoxAdminForestallning.Items.Clear();
             //tomTextBoxar();
             //listBoxAdminForestallning.SelectedIndex = -1;
@@ -216,6 +262,11 @@ namespace FirstTry
         }
 
         private void textBoxForestNamn_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonOppnaForest_Click(object sender, EventArgs e)
         {
 
         }
