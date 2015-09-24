@@ -243,7 +243,7 @@ namespace FirstTry
 
         private void uppdatera_Click(object sender, EventArgs e)
         {
-
+            //valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
             int id = valdforestallning.id;
             string namn = textBoxForestNamn.Text;
             string generellinfo = richTextBoxForestInf.Text;

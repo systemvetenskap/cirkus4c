@@ -287,7 +287,7 @@ namespace FirstTry
             try
             {
                 conn1.Open();
-                NpgsqlCommand command1 = new NpgsqlCommand(@"UPDATE forestallning SET namn = :nyNamn, generell_info = :nyGenerellInfo, open = :nyOpen, starttid = :nyStarttid, sluttid = :nySluttid, vuxenpris = :nyVuxenpris, ungdomspris = :nyUngdomspris, barnpris = :nyBarnpris, fri_placering = :nyFriplacering WHERE id = id", conn1);
+                NpgsqlCommand command1 = new NpgsqlCommand(@"UPDATE forestallning SET namn = :nyNamn, generell_info = :nyGenerellInfo, open = :nyOpen, starttid = :nyStarttid, sluttid = :nySluttid, vuxenpris = :nyVuxenpris, ungdomspris = :nyUngdomspris, barnpris = :nyBarnpris, fri_placering = :nyFriplacering WHERE id = :nyId", conn1);
 
 
                 
@@ -309,7 +309,11 @@ namespace FirstTry
                 command1.Parameters[7].Value = barnpris;
                 command1.Parameters.Add(new NpgsqlParameter("nyFriplacering", DbType.Boolean));
                 command1.Parameters[8].Value = friplacering;
-                
+                command1.Parameters.Add(new NpgsqlParameter("nyId", DbType.Int32));
+                command1.Parameters[9].Value = id;
+
+
+
                 int numberOfAffectedRows = command1.ExecuteNonQuery();
 
 
