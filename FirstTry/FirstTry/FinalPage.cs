@@ -17,6 +17,8 @@ namespace FirstTry
 {
     partial class FinalPage : Form
     {
+        string content = "";
+        Font printFont = new Font("Arial", 10);
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         PrintDocument pd = new PrintDocument();
         Tempkop tk = new Tempkop();
@@ -98,10 +100,7 @@ namespace FirstTry
 
             if (tk.biljett_id != null)
             {
-                //pd.PrintController = new StandardPrintController();
-                //pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
-                //pd.PrinterSettings.PrintToFile = true;
-                //pd.Print();
+                
 
                 foreach (Biljett bilj in tk.biljetter)
                 {
@@ -147,7 +146,7 @@ namespace FirstTry
         //    foreach (Biljett i in tk.biljetter)
         //    {
         //        Graphics g = e.Graphics;
-
+                
         //        Rectangle rect = new Rectangle(10, pointVar, 593, 343);
         //        Pen pen = new Pen(Brushes.Black);
         //        g.DrawRectangle(pen, rect);
@@ -157,10 +156,10 @@ namespace FirstTry
         //        Font fBody2 = new Font("Lucida Console", 9, FontStyle.Regular);
 
         //        SolidBrush sb = new SolidBrush(Color.Black);
-        //        g.DrawString("Föreställning: "+i.forestallning.ToString(), fBody1, sb, 10, strinPlacering);
-        //        g.DrawString("Akt: "+i.akter.namn, fBody1, sb, 10, strinPlacering + 20);
-        //        g.DrawString("Datum: "+i.forestallning.datum.ToShortDateString(), fBody1, sb, 10, strinPlacering + 40);
-        //        g.DrawString("Biljett Nr: "+i.ToString(), fBody1, sb, 10, strinPlacering + 60);
+        //        g.DrawString("Föreställning: " + i.forestallning.ToString(), fBody1, sb, 10, strinPlacering);
+        //        g.DrawString("Akt: " + i.akter.namn, fBody1, sb, 10, strinPlacering + 20);
+        //        g.DrawString("Datum: " + i.forestallning.datum.ToShortDateString(), fBody1, sb, 10, strinPlacering + 40);
+        //        g.DrawString("Biljett Nr: " + i.ToString(), fBody1, sb, 10, strinPlacering + 60);
         //        pointVar += 360;
         //        strinPlacering += 360;
         //        pd.Dispose();
@@ -173,9 +172,42 @@ namespace FirstTry
 
         }
 
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+
+        //    //richTextBox1.SaveFile("biljetttttttttttter.rtf");
+        //    //PrintDocument rtf = new PrintDocument();
+        //    //FileStream fs = new FileStream("biljetttttttttttter.rtf", FileMode.Open);
+        //    //StreamReader sr = new StreamReader(fs);
+        //    //sr.ToString();
+        //    ////pd.Print();
+        //    //pd.PrintController = new StandardPrintController();
+        //    //pd.PrintPage += new PrintPageEventHandler();
+        //    //////pd.PrinterSettings.PrintToFile = true;
+        //    ////pd.PrinterSettings.PrintToFile = true;
+        //    ////pd.Print();
+        //}
+        
         private void button2_Click(object sender, EventArgs e)
         {
-
+            richTextBox1.SaveFile("biljetttttttttttter.txt");
+            try
+            {
+                content = File.ReadAllText("biljetttttttttttter.txt");
+                PrintDocument pd = new PrintDocument();
+                pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
+                pd.PrinterSettings.PrintToFile = true;
+                pd.Print();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void pd_PrintPage(object sender, PrintPageEventArgs ev)
+        {
+            ev.Graphics.DrawString(content, printFont, Brushes.Black,
+                            ev.MarginBounds.Left, 0, new StringFormat());
         }
     }
 }
