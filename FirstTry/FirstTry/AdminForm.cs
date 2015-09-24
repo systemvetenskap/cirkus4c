@@ -14,7 +14,7 @@ namespace FirstTry
     public partial class AdminForm : Form
     {
         private Forestallning valdforestallning;
-        private Akt valdAkt;
+        private Akt valdakt;
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         
         public AdminForm()
@@ -69,12 +69,13 @@ namespace FirstTry
                 listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
                 textBoxForestNamn.Text = valdforestallning.namn;
                 richTextBoxForestInf.Text = valdforestallning.generellinfo;
-                textBoxForestStarttid.Text = valdforestallning.starttid.ToString();
-                textBoxForestSluttid.Text = valdforestallning.sluttid.ToString();
+                textBoxForestStarttid.Text = valdforestallning.starttid.ToShortTimeString();
+                textBoxForestSluttid.Text = valdforestallning.sluttid.ToShortTimeString();
                 textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
                 textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
                 textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
-                if (valdforestallning.friplacering == true)
+
+                if(valdforestallning.friplacering == true)
                 {
                     checkBoxfriPlacering.Checked = true;
                 }
@@ -88,9 +89,6 @@ namespace FirstTry
         private int laggTillForest(string namn, string generellinfo, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
         {
            
-           //// NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-            conn.Open();
-           // Forestallning laggtillforestallning = new Forestallning();
             string query = "INSERT INTO forestallning (namn, generell_info, starttid, sluttid, open, vuxenpris, ungdomspris, barnpris, fri_placering) VALUES(@namn, @generell_info, @starttid, @sluttid, @open, @vuxenpris, @ungdomspris, @barnpris, @fri_placering)";
 
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
@@ -109,10 +107,7 @@ namespace FirstTry
         }
         private void buttonLaggTillForest_Click(object sender, EventArgs e)
         {
-
-           // Forestallning tillagdfs = new Forestallning();
-            //listBoxAdminForestallning.Items.Clear();
-            
+           
             string namn = textBoxForestNamn.Text;
             string generellinfo = richTextBoxForestInf.Text;
             DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
@@ -129,32 +124,7 @@ namespace FirstTry
             }
 
             Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering);
-
-            //Databasmetoder.HamtaForestallningLista();
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
-
-            // conn.Open();
-
-            //Databasmetoder.LaggTillNyForestallning(namn, generellinfo, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
-
-
-
-            //listBoxAdminForestallning.Items.Clear();
-            //  listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
-
-            //NpgsqlCommand command = new NpgsqlCommand("Select * from forestallning", conn);
-            //NpgsqlDataReader dr = command.ExecuteReader();
-            //while (dr.Read())
-            //{
-            //    listBoxAdminForestallning.Items.Add(dr["namn"]);
-            //} 
-            //Databasmetoder.HamtaForestallningLista();
-
-            //foreach (Forestallning forest in forestallningslista)
-            //{
-            //    LaggTillForestallning();
-            //}
-            //forestallningslista.Add(fs);
 
             conn.Close();
 
@@ -162,25 +132,30 @@ namespace FirstTry
 
         private void listBoxAkter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //  listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
-            // Akt valdAkt = new Akt();
-            // Akt valdAkt = listBoxAkter.SelectedItem;
-            //if ((Akt)(listBoxAkter.SelectedItem) != null)
-            //{
-            Akt valdAkt = (Akt)(listBoxAkter.SelectedItem);
+            valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
+            if (valdforestallning != null)
+            {
+                listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+
+               
+                // Akt valdAkt = new Akt();
+                // Akt valdAkt = listBoxAkter.SelectedItem;
+                //if ((Akt)(listBoxAkter.SelectedItem) != null)
+                //{
+                Akt valdakt = (Akt)(listBoxAkter.SelectedItem);
 
 
-            textBoxAktnamn.Text = valdAkt.namn;
-            richTextBoxAktInf.Text = valdAkt.Aktinfo;
-            textBoxAktStarttid.Text = valdAkt.Starttid.ToString();
-            textBoxAktSluttid.Text = valdAkt.Sluttid.ToString(); 
-            textBoxAktVuxenpris.Text = valdAkt.vuxen.ToString();
-            textBoxAktUngdPris.Text = valdAkt.ungdom.ToString();
-            TextBoxAktBarnpris.Text = valdAkt.barn.ToString();
-        
-         }
+                textBoxAktnamn.Text = valdakt.namn;
+                richTextBoxAktInf.Text = valdakt.Aktinfo;
+                textBoxAktStarttid.Text = valdakt.Starttid.ToString();
+                textBoxAktSluttid.Text = valdakt.Sluttid.ToString();
+                textBoxAktVuxenpris.Text = valdakt.vuxen.ToString();
+                textBoxAktUngdPris.Text = valdakt.ungdom.ToString();
+                TextBoxAktBarnpris.Text = valdakt.barn.ToString();
 
+            }
 
+        }
             private void tomTextBoxarAkt()
         {
             textBoxAktnamn.Clear();
@@ -204,17 +179,26 @@ namespace FirstTry
             textBoxBarnpris.Clear();
         }
 
-        /* richTextBoxAktInf.Text = valdAkt.
-        textBoxForestStarttid.Text = valdforestallning.starttid.ToString();
-        textBoxForestSluttid.Text = valdforestallning.sluttid.ToString();
-        textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
-        textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
-        textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
-        //listBoxAkter.DataSource */
-    
+        
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            int id = valdakt.id;
+            string namn = textBoxAktnamn.Text;
+            string aktinfo = richTextBoxAktInf.Text;
+            DateTime starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
+            DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
+            int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
+            int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
+            int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
 
-    private void button1_Click_1(object sender, EventArgs e)
-    { }
+
+            Forestallning fs = new Forestallning();
+            fs = (Forestallning)listBoxAdminForestallning.SelectedItem;
+
+
+            Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
+            listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(fs.id);
+        }
 
         
 
@@ -243,7 +227,6 @@ namespace FirstTry
 
         private void uppdatera_Click(object sender, EventArgs e)
         {
-            //valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
             int id = valdforestallning.id;
             string namn = textBoxForestNamn.Text;
             string generellinfo = richTextBoxForestInf.Text;
@@ -254,10 +237,6 @@ namespace FirstTry
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
             bool friplacering = false;
-
-            //Forestallning fs = new Forestallning();
-            //fs = (Forestallning)listBoxAdminForestallning.SelectedItem;
-            
            
             Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering);
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();

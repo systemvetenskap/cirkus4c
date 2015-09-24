@@ -102,11 +102,11 @@ namespace FirstTry
                 akten.id = Convert.ToInt32(dr["id"]);
                 akten.namn = (string)dr["aktnamn"];
                 akten.Aktinfo  = (string)dr["aktinfo"];
-                //akten.Starttid = Convert.ToDateTime(dr["starttid"]);   //datumtid
-                //akten.Sluttid = Convert.ToDateTime(dr["sluttid"]);
-                akten.vuxen = Convert.ToInt32(dr["vuxenpris"]);
-                akten.ungdom = Convert.ToInt32(dr["ungdomspris"]);
-                akten.barn = Convert.ToInt32(dr["barnpris"]);
+                akten.Starttid = Convert.ToDateTime(dr["starttid"]);   //datumtid
+                akten.Sluttid = Convert.ToDateTime(dr["sluttid"]);
+                akten.vuxen = Convert.ToInt32(dr["vuxen"]);
+                akten.ungdom = Convert.ToInt32(dr["ungdom"]);
+                akten.barn = Convert.ToInt32(dr["barn"]);
 
 
                 //Akt akten = new Akt();
@@ -121,7 +121,7 @@ namespace FirstTry
                 //    barn = Convert.ToInt32(dr["barnpris"]),
 
                 //};
-                
+
                 aktlista.Add(akten);
             }
             conn.Close();
@@ -282,15 +282,12 @@ namespace FirstTry
         public static void UppdateraForestallning(int id, string namn, string generellinfo, bool open, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris, bool friplacering)
         {
             NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-           
-
+    
             try
             {
                 conn1.Open();
                 NpgsqlCommand command1 = new NpgsqlCommand(@"UPDATE forestallning SET namn = :nyNamn, generell_info = :nyGenerellInfo, open = :nyOpen, starttid = :nyStarttid, sluttid = :nySluttid, vuxenpris = :nyVuxenpris, ungdomspris = :nyUngdomspris, barnpris = :nyBarnpris, fri_placering = :nyFriplacering WHERE id = :nyId", conn1);
 
-
-                
                 command1.Parameters.Add(new NpgsqlParameter("nyNamn", DbType.String));
                 command1.Parameters[0].Value = namn;
                 command1.Parameters.Add(new NpgsqlParameter("nyGenerellinfo", DbType.String));
@@ -323,6 +320,48 @@ namespace FirstTry
             catch (NpgsqlException ex)
             {
                 
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                conn1.Close();
+            }
+        }
+
+
+        public static void UppdateraAkt(int id, string namn, string aktinfo, DateTime starttid, DateTime sluttid, int vuxen, int ungdom, int barn)
+        {
+            NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+
+            try
+            {
+                conn1.Open();
+                NpgsqlCommand command1 = new NpgsqlCommand(@"UPDATE akter SET namn = :nyNamn, aktinfo = :nyAktinfo, starttid = :nyStarttid, sluttid = :nySluttid, vuxen = :nyVuxen, ungdom = :nyUngdom, barn = :nyBarn WHERE id = :nyId", conn1);
+
+                command1.Parameters.Add(new NpgsqlParameter("nyNamn", DbType.String));
+                command1.Parameters[0].Value = namn;
+                command1.Parameters.Add(new NpgsqlParameter("nyAktinfo", DbType.String));
+                command1.Parameters[1].Value = aktinfo;
+                command1.Parameters.Add(new NpgsqlParameter("nyStarttid", DbType.DateTime));
+                command1.Parameters[2].Value = starttid;
+                command1.Parameters.Add(new NpgsqlParameter("nySluttid", DbType.DateTime));
+                command1.Parameters[3].Value = sluttid;
+                command1.Parameters.Add(new NpgsqlParameter("nyVuxen", DbType.Int32));
+                command1.Parameters[4].Value = vuxen;
+                command1.Parameters.Add(new NpgsqlParameter("nyUngdom", DbType.Int32));
+                command1.Parameters[5].Value = ungdom;
+                command1.Parameters.Add(new NpgsqlParameter("nyBarn", DbType.Int32));
+                command1.Parameters[6].Value = barn;
+                command1.Parameters.Add(new NpgsqlParameter("nyId", DbType.Int32));
+                command1.Parameters[7].Value = id;
+
+                int numberOfAffectedRows = command1.ExecuteNonQuery();
+
+            }
+
+            catch (NpgsqlException ex)
+            {
+
                 MessageBox.Show(ex.ToString());
             }
             finally
