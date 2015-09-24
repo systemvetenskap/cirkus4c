@@ -137,22 +137,17 @@ namespace FirstTry
             {
                 listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
 
-               
-                // Akt valdAkt = new Akt();
-                // Akt valdAkt = listBoxAkter.SelectedItem;
-                //if ((Akt)(listBoxAkter.SelectedItem) != null)
-                //{
-                Akt valdakt = (Akt)(listBoxAkter.SelectedItem);
-
-
-                textBoxAktnamn.Text = valdakt.namn;
-                richTextBoxAktInf.Text = valdakt.Aktinfo;
-                textBoxAktStarttid.Text = valdakt.Starttid.ToString();
-                textBoxAktSluttid.Text = valdakt.Sluttid.ToString();
-                textBoxAktVuxenpris.Text = valdakt.vuxen.ToString();
-                textBoxAktUngdPris.Text = valdakt.ungdom.ToString();
-                TextBoxAktBarnpris.Text = valdakt.barn.ToString();
-
+                valdakt = (Akt)(listBoxAkter.SelectedItem);
+                if (valdakt != null)
+                {
+                    textBoxAktnamn.Text = valdakt.namn;
+                    richTextBoxAktInf.Text = valdakt.Aktinfo;
+                    textBoxAktStarttid.Text = valdakt.Starttid.ToString();
+                    textBoxAktSluttid.Text = valdakt.Sluttid.ToString();
+                    textBoxAktVuxenpris.Text = valdakt.vuxen.ToString();
+                    textBoxAktUngdPris.Text = valdakt.ungdom.ToString();
+                    TextBoxAktBarnpris.Text = valdakt.barn.ToString();
+                }
             }
 
         }
@@ -182,6 +177,7 @@ namespace FirstTry
         
         private void button1_Click_1(object sender, EventArgs e)
         {
+            int fsid = valdforestallning.id;
             int id = valdakt.id;
             string namn = textBoxAktnamn.Text;
             string aktinfo = richTextBoxAktInf.Text;
@@ -214,18 +210,13 @@ namespace FirstTry
 
         private void btnSkapaForestallning_Click(object sender, EventArgs e)
         {
-            
+
             buttonLaggTillForest.Enabled = true;
             listBoxAdminForestallning.SelectionMode = SelectionMode.None;
             tomTextBoxarForestallning();
-
-
-            //listBoxAdminForestallning.Items.Clear();
-            //tomTextBoxar();
-            //listBoxAdminForestallning.SelectedIndex = -1;
         }
 
-        private void uppdatera_Click(object sender, EventArgs e)
+             private void uppdatera_Click(object sender, EventArgs e)
         {
             int id = valdforestallning.id;
             string namn = textBoxForestNamn.Text;
