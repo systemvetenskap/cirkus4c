@@ -32,6 +32,10 @@ namespace FirstTry
         {
             return biljett_id.ToString();
         }
+        public void platsnamn()
+        {
+
+        }
 
     }
 }

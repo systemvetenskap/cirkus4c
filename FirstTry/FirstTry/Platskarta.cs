@@ -266,8 +266,8 @@ namespace FirstTry
 
             //temp = tk.akter[tk.antal];
 
-            int id = tk.biljetter[tk.fuskIgen].akter.id;
-
+            //  int id = tk.biljetter[tk.fuskIgen].akter.id;
+            int id = akten.id;
             string query = "select * from biljett where akt_id = ";
             query += id.ToString();
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
@@ -398,9 +398,9 @@ namespace FirstTry
             
             if (tk.hela == true)
             {
-                foreach (Biljett item in tk.biljetter)
+                foreach (Akt item in tk.akter)
                 {
-                    backbone(item.akter);
+                    backbone(item);
                 }
             }
             else

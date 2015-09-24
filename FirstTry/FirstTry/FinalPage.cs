@@ -82,7 +82,14 @@ namespace FirstTry
 
                 foreach (Biljett bilj in tk.biljetter)
                 {
-                    richTextBox1.Text += " Biljett ID: " + bilj.ToString() + " \n Föreställningsnamn: " + bilj.forestallning.namn + " \n Akt: " + bilj.akter.namn + "\n Datum: " + bilj.forestallning.datum.ToShortDateString() + " \n Tid: " + tk.forestallning.tid.ToShortTimeString() + "\n Plats: " + bilj.plats_id.ToString() + "\n " + bilj.biljettyp + " \n  \n -------------------------------  \n \n";
+                    richTextBox1.Text += " Biljett ID: " + bilj.ToString();
+                    richTextBox1.Text += " \n Föreställningsnamn: " + bilj.forestallning.namn;
+                    richTextBox1.Text += " \n Akt: " + bilj.akter.namn;
+                    richTextBox1.Text += "\n Datum: " + bilj.forestallning.datum.ToShortDateString();
+                    richTextBox1.Text += " \n Tid: " + bilj.forestallning.tid.ToShortTimeString();
+                    richTextBox1.Text += "\n Plats: " + bilj.plats_id.ToString();
+                    richTextBox1.Text += "\n " + bilj.biljettyp + " \n  \n -------------------------------  \n \n";
+
                 }                           
 
             }

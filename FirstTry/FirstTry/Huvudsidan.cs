@@ -213,13 +213,22 @@ namespace FirstTry
         {
             skapaBiljetter();
             session.biljett_id = new List<int>();
-          //  session.platsnamn = new List<string>();
-           // session.typ = new List<string>();
+            //  session.platsnamn = new List<string>();
+            // session.typ = new List<string>();
+            int kollaOmDetarHela = 0;
 
             foreach (Akt akter in listBox_akter.SelectedItems)
             {
                 session.loopar++;
                 session.akter.Add(akter);
+            }
+            foreach (Akt item in listBox_akter.Items)
+            {
+                kollaOmDetarHela++;
+            }
+            if (session.loopar == kollaOmDetarHela)
+            {
+                session.hela = true;
             }
 
 
