@@ -16,8 +16,6 @@ namespace FirstTry
         public int barn { get; set; }
 
 
-
-
         public override string ToString()
         {
             return namn;

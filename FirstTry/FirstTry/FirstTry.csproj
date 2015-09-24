@@ -85,6 +85,7 @@
     <Compile Include="Huvudsidan.Designer.cs">
       <DependentUpon>Huvudsidan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kund.cs" />
     <Compile Include="Kunduppgifter.cs">
       <SubType>Form</SubType>
     </Compile>

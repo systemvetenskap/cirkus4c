@@ -62,7 +62,7 @@ namespace FirstTry
         {
             conn.Open();
             nyKund();
-            tk.kund_id = nyKundID();
+          //  tk.kund_id = nyKundID();
             conn.Close();
 
             this.Hide();

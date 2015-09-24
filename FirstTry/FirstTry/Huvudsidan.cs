@@ -50,7 +50,6 @@ namespace FirstTry
                   DateTime tid2 = new DateTime();
                   slutdatum = DateTime.Now;
                   tid2 = DateTime.Now;*/
-                
 
 
                 foreach (DataRow row in dt.Rows)
