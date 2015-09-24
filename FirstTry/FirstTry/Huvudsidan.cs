@@ -325,7 +325,7 @@ namespace FirstTry
                 b.resserverad = false;
 
                 session.biljetter.Add(b);
-
+                uppdateraPris();
                 // List<Akt> aktlista = new List<Akt>();
 
                 /*     foreach (Akt akt in listBox_akter.SelectedItems)
@@ -441,27 +441,30 @@ namespace FirstTry
             {
                 totalpris += b.pris;
             }
-       /*     if (session.hela == true)
-            {
-                totalpris += session.barn * session.forestallning.barn;
-                totalpris += session.ungdom * session.forestallning.ungdom;
-                totalpris += session.vuxna * session.forestallning.vuxen;
-            }
-            else
-            {
-                foreach (Akt item in session.biljetter)
-                {
-                    totalpris += session.barn * item.barn;
-                    totalpris += session.ungdom * item.ungdom;
-                    totalpris += session.vuxna * item.vuxen;
-                }
-            }
 
-            session.totalpris = totalpris;
             label2.Visible = true;
-            label2.Text = session.totalpris.ToString();
+            label2.Text = totalpris.ToString();
+            /*     if (session.hela == true)
+                 {
+                     totalpris += session.barn * session.forestallning.barn;
+                     totalpris += session.ungdom * session.forestallning.ungdom;
+                     totalpris += session.vuxna * session.forestallning.vuxen;
+                 }
+                 else
+                 {
+                     foreach (Akt item in session.biljetter)
+                     {
+                         totalpris += session.barn * item.barn;
+                         totalpris += session.ungdom * item.ungdom;
+                         totalpris += session.vuxna * item.vuxen;
+                     }
+                 }
 
-            */
+                 session.totalpris = totalpris;
+                 label2.Visible = true;
+                 label2.Text = session.totalpris.ToString();
+
+                 */
         }
         private void textBox_vuxen_TextChanged(object sender, EventArgs e)
         {
@@ -476,13 +479,9 @@ namespace FirstTry
                     for (int i = 0; i < antal; i++)
                     {
                         skapaTempkop("vuxen", akt, akt.vuxen);
-                    }
-                    
+                    }                   
                 }
-                foreach (Biljett b in session.biljetter)
-                {
-                    totalpris += totalpris;
-                }
+                
 
             }
             

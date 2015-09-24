@@ -74,7 +74,7 @@ namespace FirstTry
 
             if (radioButton_barn.Checked == true)
             {
-                tk.typ.Add("barn");
+               // tk.typ.Add("barn");
                 int x = Convert.ToInt32(label3.Text);
                 x--;
                 label3.Text = x.ToString();
@@ -86,7 +86,7 @@ namespace FirstTry
             }
             if (radioButton_ungdom.Checked == true)
             {
-                tk.typ.Add("ungdom");
+               // tk.typ.Add("ungdom");
                 int x = Convert.ToInt32(label2.Text);
                 x--;
                 label2.Text = x.ToString();
@@ -97,7 +97,7 @@ namespace FirstTry
             }
             if (radioButton_vuxen.Checked == true)
             {
-                tk.typ.Add("vuxen");
+                //tk.typ.Add("vuxen");
                 int x = Convert.ToInt32(label1.Text);
                 x--;
                 label1.Text = x.ToString();
