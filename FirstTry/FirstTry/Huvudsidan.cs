@@ -200,11 +200,11 @@ namespace FirstTry
                 }
                 for (int i = 0; i < antalu; i++)
                 {
-                    skapaTempkop("ungdom", akt, akt.vuxen);
+                    skapaTempkop("ungdom", akt, akt.ungdom);
                 }
                 for (int i = 0; i < antalb; i++)
                 {
-                    skapaTempkop("barn", akt, akt.vuxen);
+                    skapaTempkop("barn", akt, akt.barn);
                 }
 
             }
