@@ -11,11 +11,13 @@ using System.Web;
 using System.IO;
 using System.Net.Mail;
 using System.Drawing.Printing;
+using Npgsql;
 
 namespace FirstTry
 {
     partial class FinalPage : Form
     {
+        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         PrintDocument pd = new PrintDocument();
         Tempkop tk = new Tempkop();
         int x = 0;
@@ -87,13 +89,32 @@ namespace FirstTry
                     richTextBox1.Text += " \n Akt: " + bilj.akter.namn;
                     richTextBox1.Text += "\n Datum: " + bilj.forestallning.datum.ToShortDateString();
                     richTextBox1.Text += " \n Tid: " + bilj.forestallning.tid.ToShortTimeString();
-                    richTextBox1.Text += "\n Plats: " + bilj.plats_id.ToString();
+                    richTextBox1.Text += "\n Plats: " + platsnamn(bilj.plats_id.ToString());
                     richTextBox1.Text += "\n " + bilj.biljettyp + " \n  \n -------------------------------  \n \n";
 
                 }                           
 
             }
         }
+
+        public string platsnamn(string platsID)
+        {
+            string namn = "";
+            string query = "select nummer from platser where id = ";
+            query += platsID.ToString();
+            NpgsqlCommand cmd = new NpgsqlCommand();
+            try
+            {
+                namn = (string)cmd.ExecuteScalar();
+            }
+            catch (NpgsqlException ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            return namn;
+        }
+
         //private void pd_PrintPage(object sender, PrintPageEventArgs e)
         //{
         //    int pointVar = 10;
@@ -101,7 +122,7 @@ namespace FirstTry
         //    foreach (Biljett i in tk.biljetter)
         //    {
         //        Graphics g = e.Graphics;
-                
+
         //        Rectangle rect = new Rectangle(10, pointVar, 593, 343);
         //        Pen pen = new Pen(Brushes.Black);
         //        g.DrawRectangle(pen, rect);
