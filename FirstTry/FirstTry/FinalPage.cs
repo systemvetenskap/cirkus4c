@@ -100,7 +100,6 @@ namespace FirstTry
 
             if (tk.biljett_id != null)
             {
-                
 
                 foreach (Biljett bilj in tk.biljetter)
                 {

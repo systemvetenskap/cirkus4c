@@ -341,7 +341,7 @@ namespace FirstTry
         private void skapaTempkop(string biljettyp, Akt akt, int pris)
         {
 
-            if (listBox_akter.SelectedIndex != null && listBox_forestallning != null && antal_ar_siffror() == true)
+            if (listBox_akter.SelectedItem != null && listBox_forestallning != null && antal_ar_siffror() == true)
             {
                // int loopar = 0;
 
