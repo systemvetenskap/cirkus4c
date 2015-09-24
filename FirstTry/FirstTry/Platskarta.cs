@@ -128,10 +128,12 @@ namespace FirstTry
                 command.Parameters.AddWithValue("@reserverad", tk.biljetter[tk.fuskIgen].resserverad);
 
                 int x = (int)command.ExecuteScalar();
-
+                
                 //  biljett_id.Add(x);
                 //   tk.biljett_id.Add(x);
                 tk.biljetter[tk.fuskIgen].biljett_id = x;
+                tk.biljetter[tk.fuskIgen].plats_id = KnappId(kn);
+
                 tk.fuskIgen++;
                 radiokoll();
                 return x;

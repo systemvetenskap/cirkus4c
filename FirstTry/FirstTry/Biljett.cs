@@ -47,7 +47,6 @@ namespace FirstTry
 
             string namn = (string)cmd.ExecuteScalar();
             return namn;
-
         }    
 
     }

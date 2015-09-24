@@ -144,7 +144,6 @@ namespace FirstTry
                 label16.Text = fs.datum.ToShortDateString();
                 label15.Text = fs.tid.ToShortTimeString();               
             }
-           
 
             label5.Visible = false;
             label6.Visible = false;
