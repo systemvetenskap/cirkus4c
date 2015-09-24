@@ -185,9 +185,33 @@ namespace FirstTry
             //    MessageBox.Show(ex.Message);
             //}
         }
+        private void skapaBiljetter()
+        {
 
+            int antalv = Convert.ToInt32(textBox_vuxen.Text);
+            int antalu = Convert.ToInt32(textBox_ungdom.Text);
+            int antalb = Convert.ToInt32(textBox_ungdom.Text);
+
+            foreach (Akt akt in listBox_akter.SelectedItems)
+            {
+                for (int i = 0; i < antalv; i++)
+                {
+                    skapaTempkop("vuxen", akt, akt.vuxen);
+                }
+                for (int i = 0; i < antalu; i++)
+                {
+                    skapaTempkop("ungdom", akt, akt.vuxen);
+                }
+                for (int i = 0; i < antalb; i++)
+                {
+                    skapaTempkop("barn", akt, akt.vuxen);
+                }
+
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
+            skapaBiljetter();
             session.biljett_id = new List<int>();
           //  session.platsnamn = new List<string>();
            // session.typ = new List<string>();
@@ -308,7 +332,7 @@ namespace FirstTry
         private void skapaTempkop(string biljettyp, Akt akt, int pris)
         {
 
-            if (listBox_akter.SelectedIndex != null && listBox_forestallning != null)
+            if (listBox_akter.SelectedIndex != null && listBox_forestallning != null && antal_ar_siffror() == true)
             {
                // int loopar = 0;
 
@@ -316,7 +340,7 @@ namespace FirstTry
                 //       Tempkop s2 = new Tempkop();
                 //     session = s2;
                 Biljett b = new Biljett();
-
+                
                 b.hela= helaforestallningen();
                 b.akter = akt;
                 b.forestallning = (Forestallning)listBox_forestallning.SelectedItem;
@@ -325,7 +349,11 @@ namespace FirstTry
                 b.resserverad = false;
 
                 session.biljetter.Add(b);
-                uppdateraPris();
+
+
+                     
+
+             //   uppdateraPris();
                 // List<Akt> aktlista = new List<Akt>();
 
                 /*     foreach (Akt akt in listBox_akter.SelectedItems)
@@ -435,16 +463,28 @@ namespace FirstTry
         }
         private void uppdateraPris()
         {
-            int totalpris = 0;
-
-            foreach (Biljett b in session.biljetter)
+            if (antal_ar_siffror() == true)
             {
-                totalpris += b.pris;
+                int totalpris = 0;
+                int b = Convert.ToInt32(textBox_barn.Text);
+                int u = Convert.ToInt32(textBox_ungdom.Text);
+                int v = Convert.ToInt32(textBox_vuxen.Text);
+
+                foreach (Akt item in listBox_akter.SelectedItems)
+                {
+                    totalpris += item.barn * b;
+                    totalpris += item.ungdom * u;
+                    totalpris += item.vuxen * v;
+                }
+
+                label2.Visible = true;
+                label2.Text = totalpris.ToString();
+
             }
+            
 
-            label2.Visible = true;
-            label2.Text = totalpris.ToString();
 
+ 
 
             /*     if (session.hela == true)
                  {
@@ -473,21 +513,14 @@ namespace FirstTry
             //Ska vi dölja dem innan man valt akt och föreställning
             if ((Forestallning)listBox_forestallning.SelectedItem != null && (Akt)listBox_akter.SelectedItem != null && antal_ar_siffror() == true)
             {
-                //int totalpris = 0;
-                int antal = Convert.ToInt32(textBox_vuxen.Text);
 
-                foreach (Akt akt in listBox_akter.SelectedItems)
-                {
-                    for (int i = 0; i < antal; i++)
-                    {
-                        skapaTempkop("vuxen", akt, akt.vuxen);
-                    }                   
-                }
-                
+                uppdateraPris();
+
+                //int totalpris = 0;
 
             }
-            
-            
+
+
             /*
             Forestallning fs = (Forestallning)listBox_forestallning.SelectedItem;
             List<Akt> a = new List<Akt>();
@@ -542,6 +575,7 @@ namespace FirstTry
                     for (int i = 0; i < antal; i++)
                     {
                         skapaTempkop("barn", akt, akt.barn);
+
                     }
                 }
                 foreach (Biljett b in session.biljetter)
@@ -568,6 +602,7 @@ namespace FirstTry
                 label5.Text = akt.vuxen.ToString();
                 label6.Text = akt.ungdom.ToString();
                 label7.Text = akt.barn.ToString();
+
             }
             
 
