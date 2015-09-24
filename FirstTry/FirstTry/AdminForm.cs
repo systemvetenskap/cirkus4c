@@ -96,7 +96,7 @@ namespace FirstTry
             command.Parameters.AddWithValue("@vuxenpris", vuxenpris);
             command.Parameters.AddWithValue("@ungdomspris", ungdomspris);
             command.Parameters.AddWithValue("@barnpris", barnpris);
-            command.Parameters.AddWithValue(@"fri_placering", false);
+            command.Parameters.AddWithValue("@fri_placering", false);
 
             return command.ExecuteNonQuery();
         }
@@ -116,18 +116,24 @@ namespace FirstTry
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
             bool friplacering = false;
 
+            if (checkBoxfriPlacering.Checked == true)
+            {
+                friplacering = true;
+            }
+
             Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering);
 
-            Databasmetoder.HamtaForestallningLista();
+            //Databasmetoder.HamtaForestallningLista();
+            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
 
-           // conn.Open();
-            
+            // conn.Open();
+
             //Databasmetoder.LaggTillNyForestallning(namn, generellinfo, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
-            
-         
+
+
 
             //listBoxAdminForestallning.Items.Clear();
-          //  listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+            //  listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
 
             //NpgsqlCommand command = new NpgsqlCommand("Select * from forestallning", conn);
             //NpgsqlDataReader dr = command.ExecuteReader();
@@ -135,15 +141,15 @@ namespace FirstTry
             //{
             //    listBoxAdminForestallning.Items.Add(dr["namn"]);
             //} 
-                //Databasmetoder.HamtaForestallningLista();
+            //Databasmetoder.HamtaForestallningLista();
 
-                //foreach (Forestallning forest in forestallningslista)
-                //{
-                //    LaggTillForestallning();
-                //}
-                //forestallningslista.Add(fs);
+            //foreach (Forestallning forest in forestallningslista)
+            //{
+            //    LaggTillForestallning();
+            //}
+            //forestallningslista.Add(fs);
 
-                conn.Close();
+            conn.Close();
 
         }
 

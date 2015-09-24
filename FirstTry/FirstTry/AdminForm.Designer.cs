@@ -69,6 +69,7 @@
             this.btnSkapaForestallning = new System.Windows.Forms.Button();
             this.dateTimePickerTid = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
+            this.checkBoxfriPlacering = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // listBoxAdminForestallning
@@ -431,11 +432,22 @@
             this.label13.TabIndex = 43;
             this.label13.Text = "Sista försäljningsdag";
             // 
+            // checkBoxfriPlacering
+            // 
+            this.checkBoxfriPlacering.AutoSize = true;
+            this.checkBoxfriPlacering.Location = new System.Drawing.Point(35, 446);
+            this.checkBoxfriPlacering.Name = "checkBoxfriPlacering";
+            this.checkBoxfriPlacering.Size = new System.Drawing.Size(83, 17);
+            this.checkBoxfriPlacering.TabIndex = 44;
+            this.checkBoxfriPlacering.Text = "Fri placering";
+            this.checkBoxfriPlacering.UseVisualStyleBackColor = true;
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(924, 485);
+            this.Controls.Add(this.checkBoxfriPlacering);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dateTimePickerTid);
             this.Controls.Add(this.btnSkapaForestallning);
@@ -528,5 +540,6 @@
         private System.Windows.Forms.Button btnSkapaForestallning;
         private System.Windows.Forms.DateTimePicker dateTimePickerTid;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox checkBoxfriPlacering;
     }
 }
