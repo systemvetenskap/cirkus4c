@@ -243,6 +243,7 @@ namespace FirstTry
 
         private void uppdatera_Click(object sender, EventArgs e)
         {
+
             int id = valdforestallning.id;
             string namn = textBoxForestNamn.Text;
             string generellinfo = richTextBoxForestInf.Text;
@@ -254,9 +255,12 @@ namespace FirstTry
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
             bool friplacering = false;
 
-
+            //Forestallning fs = new Forestallning();
+            //fs = (Forestallning)listBoxAdminForestallning.SelectedItem;
+            
+           
             Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering);
-            Databasmetoder.HamtaForestallningLista();
+            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
         }
 
 

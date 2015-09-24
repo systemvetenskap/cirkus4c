@@ -287,10 +287,10 @@ namespace FirstTry
             try
             {
                 conn1.Open();
-                NpgsqlCommand command1 = new NpgsqlCommand(@"UPDATE forestallning SET namn = :nyNamn, generell_info = :nyGenerellInfo, open = :nyOpen, starttid = :nyStarttid, sluttid = :nySluttid, vuxenpris = :nyVuxenpris, ungdomspris = :nyUngdomspris, barnpris = :nyBarnpris, fri_placering = :nyFriplacering WHERE id = :id", conn1);
+                NpgsqlCommand command1 = new NpgsqlCommand(@"UPDATE forestallning SET namn = :nyNamn, generell_info = :nyGenerellInfo, open = :nyOpen, starttid = :nyStarttid, sluttid = :nySluttid, vuxenpris = :nyVuxenpris, ungdomspris = :nyUngdomspris, barnpris = :nyBarnpris, fri_placering = :nyFriplacering WHERE id = id", conn1);
 
 
-              
+                
                 command1.Parameters.Add(new NpgsqlParameter("nyNamn", DbType.String));
                 command1.Parameters[0].Value = namn;
                 command1.Parameters.Add(new NpgsqlParameter("nyGenerellinfo", DbType.String));
