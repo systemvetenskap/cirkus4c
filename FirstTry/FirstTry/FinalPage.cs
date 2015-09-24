@@ -31,34 +31,55 @@ namespace FirstTry
             InitializeComponent();
             
         }
+        private bool arDetMail()
+        {
+            string mail = textBox_epost.Text;
+            try
+            {
+                var test = new MailAddress(mail);
+                return true;
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Oj Oj Oj OJ, nu har du allt skrivit in en konstig mail adress!");
+                return false;
+                // wrong format for email
+            }
 
+
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             string user = "javlamoodle@hotmail.com";
             string password = "qwert12345";
 
-            //SendGmail(user, password, user, "sq.martin91@gmail.com","","MY SUBJECT","MY MESSAGE", true);
-            try
+            if (arDetMail() == true)
             {
-                MailMessage mail = new MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
+                //SendGmail(user, password, user, "sq.martin91@gmail.com","","MY SUBJECT","MY MESSAGE", true);
+                try
+                {
+                    MailMessage mail = new MailMessage();
+                    SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
 
-                mail.From = new MailAddress(user);
-                mail.To.Add("jili1400@student.miun.se");
-                mail.Subject = "Farligt mail med Virus i!!!";
-                mail.Body = "Vill du köpa biljetter jaja";
+                    mail.From = new MailAddress(user);
+                    mail.To.Add(textBox_epost.Text);
+                    mail.Subject = "Biljetter för föreställningen " + tk.biljetter[0].forestallning.namn;
+                    mail.Body = richTextBox1.Text;
 
-                SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential(user, password);
-                SmtpServer.EnableSsl = true;
+                    SmtpServer.Port = 587;
+                    SmtpServer.Credentials = new System.Net.NetworkCredential(user, password);
+                    SmtpServer.EnableSsl = true;
 
-                SmtpServer.Send(mail);
-                MessageBox.Show("mail Send");
+                    SmtpServer.Send(mail);
+                    MessageBox.Show("mail Send");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+
+
         }
         private void pdf()
         {
@@ -90,8 +111,8 @@ namespace FirstTry
                     richTextBox1.Text += "\n Datum: " + bilj.forestallning.datum.ToShortDateString();
                     richTextBox1.Text += " \n Tid: " + bilj.forestallning.tid.ToShortTimeString();
                     richTextBox1.Text += "\n Plats: " + platsnamn(bilj.plats_id.ToString());
+                    richTextBox1.Text += "\n Pris: " + bilj.pris.ToString();
                     richTextBox1.Text += "\n " + bilj.biljettyp + " \n  \n -------------------------------  \n \n";
-
                 }                           
 
             }
@@ -99,19 +120,23 @@ namespace FirstTry
 
         public string platsnamn(string platsID)
         {
+            conn.Open();
             string namn = "";
             string query = "select nummer from platser where id = ";
             query += platsID.ToString();
-            NpgsqlCommand cmd = new NpgsqlCommand();
-            try
-            {
-                namn = (string)cmd.ExecuteScalar();
-            }
-            catch (NpgsqlException ex)
-            {
+            // NpgsqlCommand cmd = new NpgsqlCommand();
+            DataTable dt = new DataTable();
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
 
-                MessageBox.Show(ex.Message);
+            da.Fill(dt);
+
+            DataTableReader dtr = new DataTableReader(dt);
+
+            while (dtr.Read())
+            {
+                namn = dtr[0].ToString();
             }
+            conn.Close();
             return namn;
         }
 
@@ -144,6 +169,11 @@ namespace FirstTry
 
         //}
         private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }

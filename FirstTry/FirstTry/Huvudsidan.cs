@@ -33,6 +33,7 @@ namespace FirstTry
 
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
+            conn.Open();
             session.totalpris = 0; //För att kolla vid button click att inget är vallt
             
             //listBox_akter.SelectedIndex = -1;
@@ -189,7 +190,7 @@ namespace FirstTry
 
             int antalv = Convert.ToInt32(textBox_vuxen.Text);
             int antalu = Convert.ToInt32(textBox_ungdom.Text);
-            int antalb = Convert.ToInt32(textBox_ungdom.Text);
+            int antalb = Convert.ToInt32(textBox_barn.Text);
 
             foreach (Akt akt in listBox_akter.SelectedItems)
             {

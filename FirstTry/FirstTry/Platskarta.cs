@@ -114,17 +114,21 @@ namespace FirstTry
         }
         private int ReserveraBiljett(string kn)
         {
+            conn.Close();
+            conn.Open();
             try
             {
                 string query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, plats_id, reserverad) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @plats_id, @reserverad) RETURNING id;";
                 Biljett biljetten = new Biljett();
                 NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
+                tk.biljetter[tk.fuskIgen].plats_id = KnappId(kn);
+
                 command.Parameters.AddWithValue("@pris", tk.biljetter[tk.fuskIgen].pris);
                 command.Parameters.AddWithValue("@forestallning_id", tk.biljetter[tk.fuskIgen].forestallning.id);
                 command.Parameters.AddWithValue("@akt_id", tk.biljetter[tk.fuskIgen].akter.id);
                 command.Parameters.AddWithValue("@biljettyp", tk.biljetter[tk.fuskIgen].biljettyp);
-                command.Parameters.AddWithValue("@plats_id", KnappId(kn));
+                command.Parameters.AddWithValue("@plats_id", tk.biljetter[tk.fuskIgen].plats_id);
                 command.Parameters.AddWithValue("@reserverad", tk.biljetter[tk.fuskIgen].resserverad);
 
                 int x = (int)command.ExecuteScalar();
@@ -132,7 +136,7 @@ namespace FirstTry
                 //  biljett_id.Add(x);
                 //   tk.biljett_id.Add(x);
                 tk.biljetter[tk.fuskIgen].biljett_id = x;
-                tk.biljetter[tk.fuskIgen].plats_id = KnappId(kn);
+                
 
                 tk.fuskIgen++;
                 radiokoll();
@@ -145,7 +149,7 @@ namespace FirstTry
                 return -1;
                 //throw;
             }
-
+            conn.Close();
 
 
             // nyssInlagdBiljett();
@@ -355,6 +359,7 @@ namespace FirstTry
                         gk(button_B8, fusk, vecka, platsid, id);
                    // }
                 }
+                dr.Close();
                 x++;
             }
         }
@@ -394,10 +399,10 @@ namespace FirstTry
         private void Platskarta_Load(object sender, EventArgs e)
         {
             label8.Text = tk.totalpris.ToString() + " Kr";
-           // DateTime dtr = new DateTime();
+            // DateTime dtr = new DateTime();
 
-           // dtr = kop_slut();
-            
+            // dtr = kop_slut();
+            conn.Open();
             if (tk.hela == true)
             {
                 foreach (Akt item in tk.akter)
@@ -414,7 +419,7 @@ namespace FirstTry
                 backbone(tk.biljetter[tk.fuskIgen].akter);
             }
 
-
+            conn.Close();
 
         }
 
