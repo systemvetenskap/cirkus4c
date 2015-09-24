@@ -74,7 +74,14 @@ namespace FirstTry
                 textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
                 textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
                 textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
-
+                if (valdforestallning.friplacering == true)
+                {
+                    checkBoxfriPlacering.Checked = true;
+                }
+                else
+                {
+                    checkBoxfriPlacering.Checked = false;
+                }
             }  
           }
        
@@ -239,14 +246,16 @@ namespace FirstTry
             int id = valdforestallning.id;
             string namn = textBoxForestNamn.Text;
             string generellinfo = richTextBoxForestInf.Text;
+            bool open = false;
             DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
             DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
             int vuxenpris = Convert.ToInt32(textBoxUngdomspris.Text);
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
+            bool friplacering = false;
 
 
-            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
+            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering);
             Databasmetoder.HamtaForestallningLista();
         }
 

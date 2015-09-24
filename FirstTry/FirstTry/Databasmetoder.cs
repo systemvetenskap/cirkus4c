@@ -277,57 +277,55 @@ namespace FirstTry
         }
 
 
+        
 
-             public static void UppdateraForestallning(int forestallningsid, string namn, string generellinfo, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
+        public static void UppdateraForestallning(int id, string namn, string generellinfo, bool open, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris, bool friplacering)
         {
-
             NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+           
 
-            
-            {
-
-            }
             try
             {
                 conn1.Open();
-                MessageBox.Show(conn1.State.ToString());
-               
-                NpgsqlCommand command1 = new NpgsqlCommand(@" UPDATE forestallning set namn = :uppdnamn, generell_info = :uppdgenerellinfo, starttid = :uppdstarttid, sluttid = :uppdsluttid, vuxenpris = :uppdvuxenpris, ungdomspris = :uppdungdomspris, barnpris = :uppdbarnpris 
-                                                            WHERE id = :uppdid", conn1);
+                NpgsqlCommand command1 = new NpgsqlCommand(@"UPDATE forestallning SET namn = :nyNamn, generell_info = :nyGenerellInfo, open = :nyOpen, starttid = :nyStarttid, sluttid = :nySluttid, vuxenpris = :nyVuxenpris, ungdomspris = :nyUngdomspris, barnpris = :nyBarnpris, fri_placering = :nyFriplacering WHERE id = :id", conn1);
 
-                command1.Parameters.Add(new NpgsqlParameter("uppdid", DbType.Int32));
-                command1.Parameters["id"].Value = forestallningsid;
-                command1.Parameters.Add(new NpgsqlParameter("uppdnamn", DbType.String));
-                command1.Parameters["namn"].Value = namn;
-                command1.Parameters.Add(new NpgsqlParameter("uppdgenerellinfo", DbType.String));
-                command1.Parameters["generell_info"].Value = generellinfo;
-                command1.Parameters.Add(new NpgsqlParameter("uppdstarttid", DbType.DateTime));
-                command1.Parameters["starttid"].Value = starttid;
-                command1.Parameters.Add(new NpgsqlParameter("uppdsluttid", DbType.DateTime));
-                command1.Parameters["sluttid"].Value = sluttid;
-                command1.Parameters.Add(new NpgsqlParameter("uppdvuxenpris", DbType.Int32));
-                command1.Parameters["vuxenpris"].Value = vuxenpris;
-                command1.Parameters.Add(new NpgsqlParameter("uppdungdomspris", DbType.Int32));
-                command1.Parameters["ungdomspris"].Value = ungdomspris;
-                command1.Parameters.Add(new NpgsqlParameter("uppdbarnpris", DbType.Int32));
-                command1.Parameters["barnpris"].Value = barnpris;
-               
 
+              
+                command1.Parameters.Add(new NpgsqlParameter("nyNamn", DbType.String));
+                command1.Parameters[0].Value = namn;
+                command1.Parameters.Add(new NpgsqlParameter("nyGenerellinfo", DbType.String));
+                command1.Parameters[1].Value = generellinfo;
+                command1.Parameters.Add(new NpgsqlParameter("nyOpen", DbType.Boolean));
+                command1.Parameters[2].Value = open;
+                command1.Parameters.Add(new NpgsqlParameter("nyStarttid", DbType.DateTime));
+                command1.Parameters[3].Value = starttid;
+                command1.Parameters.Add(new NpgsqlParameter("nySluttid", DbType.DateTime));
+                command1.Parameters[4].Value = sluttid;
+                command1.Parameters.Add(new NpgsqlParameter("nyVuxenpris", DbType.Int32));
+                command1.Parameters[5].Value = vuxenpris;
+                command1.Parameters.Add(new NpgsqlParameter("nyUngdomspris", DbType.Int32));
+                command1.Parameters[6].Value = ungdomspris;
+                command1.Parameters.Add(new NpgsqlParameter("nyBarnpris", DbType.Int32));
+                command1.Parameters[7].Value = barnpris;
+                command1.Parameters.Add(new NpgsqlParameter("nyFriplacering", DbType.Boolean));
+                command1.Parameters[8].Value = friplacering;
+                
                 int numberOfAffectedRows = command1.ExecuteNonQuery();
 
-                }
+
+              
+            }
 
             catch (NpgsqlException ex)
             {
-                MessageBox.Show("gör om gör rätt!");
-                return;
                 
+                MessageBox.Show(ex.ToString());
             }
             finally
             {
                 conn1.Close();
-            }       
-       }  
+            }
+        }
 
     }
 }
