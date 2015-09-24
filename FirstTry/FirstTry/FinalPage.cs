@@ -71,78 +71,53 @@ namespace FirstTry
             }
 
             int totalt = tk.vuxna + tk.ungdom + tk.barn;
-            //int x = 0;
-            //int y = 0;
 
 
             if (tk.biljett_id != null)
             {
-                //foreach (int biljett in tk.biljett_id)
-                //{
+                //pd.PrintController = new StandardPrintController();
+                //pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
+                //pd.PrinterSettings.PrintToFile = true;
+                //pd.Print();
 
-                //Print();
-                pd.PrintController = new StandardPrintController();
-                pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
-                pd.PrinterSettings.PrintToFile = true;
-                pd.Print();
+                foreach (Biljett bilj in tk.biljetter)
+                {
+                    richTextBox1.Text += " Biljett ID: " + bilj.ToString() + " \n Föreställningsnamn: " + bilj.forestallning.namn + " \n Akt: " + bilj.akter.namn + "\n Datum: " + bilj.forestallning.datum.ToShortDateString() + " \n Tid: " + tk.forestallning.tid.ToShortTimeString() + "\n Plats: " + bilj.plats_id.ToString() + "\n " + bilj.biljettyp + " \n  \n -------------------------------  \n \n";
+                }                           
+
+            }
+        }
+        //private void pd_PrintPage(object sender, PrintPageEventArgs e)
+        //{
+        //    int pointVar = 10;
+        //    int strinPlacering = 120;
+        //    foreach (Biljett i in tk.biljetter)
+        //    {
+        //        Graphics g = e.Graphics;
                 
+        //        Rectangle rect = new Rectangle(10, pointVar, 593, 343);
+        //        Pen pen = new Pen(Brushes.Black);
+        //        g.DrawRectangle(pen, rect);
+
+        //        Font fBody = new Font("Lucida Console", 15, FontStyle.Bold);
+        //        Font fBody1 = new Font("Lucida Console", 15, FontStyle.Regular);
+        //        Font fBody2 = new Font("Lucida Console", 9, FontStyle.Regular);
+
+        //        SolidBrush sb = new SolidBrush(Color.Black);
+        //        g.DrawString("Föreställning: "+i.forestallning.ToString(), fBody1, sb, 10, strinPlacering);
+        //        g.DrawString("Akt: "+i.akter.namn, fBody1, sb, 10, strinPlacering + 20);
+        //        g.DrawString("Datum: "+i.forestallning.datum.ToShortDateString(), fBody1, sb, 10, strinPlacering + 40);
+        //        g.DrawString("Biljett Nr: "+i.ToString(), fBody1, sb, 10, strinPlacering + 60);
+        //        pointVar += 360;
+        //        strinPlacering += 360;
+        //        pd.Dispose();
+        //    }
 
 
-
-                //richTextBox1.Text += " Biljett ID: " + biljett.ToString() + " \n Föreställningsnamn: " + tk.forestallning.namn +" \n Akt: " + tk.akter[y].namn +  "\n Datum: " + tk.forestallning.datum.ToShortDateString() + " \n Tid: " + tk.forestallning.tid.ToShortTimeString() + "\n Plats: " + tk.platsnamn[x].ToString()  + "\n " + tk.typ[x] + " \n  \n -------------------------------  \n \n";
-                //x++;
-                //if (x == (tk.antal * (y+1)))
-                //{
-                //  y++;
-                //}
-                //}
-
-            }
-        }
-        private void pd_PrintPage(object sender, PrintPageEventArgs e)
+        //}
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            int pointVar = 10;
-            int strinPlacering = 120;
-            foreach (int i in tk.biljett_id)
-            {
-                Graphics g = e.Graphics;
-                Rectangle rect = new Rectangle(10, pointVar, 593, 343);
-                Pen pen = new Pen(Brushes.Black);
-                g.DrawRectangle(pen, rect);
-
-                Font fBody = new Font("Lucida Console", 15, FontStyle.Bold);
-                Font fBody1 = new Font("Lucida Console", 15, FontStyle.Regular);
-                Font fBody2 = new Font("Lucida Console", 9, FontStyle.Regular);
-
-                SolidBrush sb = new SolidBrush(Color.Black);
-                g.DrawString(tk.forestallning.namn, fBody1, sb, 10, strinPlacering);
-                //g.DrawString(tk.akter[x].namn, fBody1, sb, 10, strinPlacering + 20);
-                g.DrawString(tk.forestallning.datum.ToShortDateString(), fBody1, sb, 10, strinPlacering + 40);
-                g.DrawString(i.ToString(), fBody1, sb, 10, strinPlacering + 60);
-
-                pointVar += 360;
-                strinPlacering += 360;
-                pd.Dispose();
-            }
-            
 
         }
-        private void Print()
-        {
-            
-            //PaperSize ps = new PaperSize("test", 583, 413);
-            //pd.PrinterSettings.DefaultPageSettings.PaperSize = ps;
-           
-                        
-            
-            //pd.DefaultPageSettings.Margins.Left = 50;
-            //pd.DefaultPageSettings.Margins.Right = 50;
-            //pd.DefaultPageSettings.Margins.Top = 50;
-            //pd.DefaultPageSettings.Margins.Bottom = 50;
-            
-            //pd.Dispose();
-        }
-
-
     }
 }
