@@ -255,7 +255,7 @@ namespace FirstTry
             label3.Text = tk.barn.ToString();
             label5.Text = tk.biljetter[tk.fuskIgen].forestallning.namn;
             label6.Text = tk.biljetter[tk.fuskIgen].akter.namn;
-            label8.Text = tk.totalpris.ToString() + " Kr";
+         //   label8.Text = tk.totalpris.ToString() + " Kr";
 
 
             radiokoll();

@@ -190,13 +190,22 @@ namespace FirstTry
         private void button1_Click(object sender, EventArgs e)
         {
             session.biljett_id = new List<int>();
-            session.platsnamn = new List<string>();
-            session.typ = new List<string>();
+          //  session.platsnamn = new List<string>();
+           // session.typ = new List<string>();
 
             foreach (Akt akter in listBox_akter.SelectedItems)
             {
                 session.loopar++;
                 session.akter.Add(akter);
+            }
+
+
+            foreach (Biljett b in session.biljetter)
+            {
+                if (checkBox1.Checked == true)
+                {
+                    b.resserverad = true;
+                }
             }
             session.antal = 0;
 
@@ -314,7 +323,7 @@ namespace FirstTry
                 b.forestallning = (Forestallning)listBox_forestallning.SelectedItem;
                 b.biljettyp = biljettyp;
                 b.pris = pris;
-                b.resserverad = checkBox1.Checked;
+                b.resserverad = false;
 
                 session.biljetter.Add(b);
 
