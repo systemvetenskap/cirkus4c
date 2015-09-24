@@ -476,7 +476,7 @@ namespace FirstTry
                     totalpris += item.ungdom * u;
                     totalpris += item.vuxen * v;
                 }
-
+                session.totalpris = totalpris;
                 label2.Visible = true;
                 label2.Text = totalpris.ToString();
 
@@ -547,7 +547,7 @@ namespace FirstTry
         {
             if ((Forestallning)listBox_forestallning.SelectedItem != null && (Akt)listBox_akter.SelectedItem != null)
             {
-                int totalpris = 0;
+                /*int totalpris = 0;
                 int antal = Convert.ToInt32(textBox_ungdom.Text);
                 foreach (Akt akt in listBox_akter.SelectedItems)
                 {
@@ -560,7 +560,8 @@ namespace FirstTry
                 foreach (Biljett b in session.biljetter)
                 {
                     totalpris += totalpris;
-                }
+                } */
+                uppdateraPris();
             }
         }
 
@@ -568,20 +569,21 @@ namespace FirstTry
         {
             if ((Forestallning)listBox_forestallning.SelectedItem != null && (Akt)listBox_akter.SelectedItem != null)
             {
-                int totalpris = 0;
-                int antal = Convert.ToInt32(textBox_barn.Text);
-                foreach (Akt akt in listBox_akter.SelectedItems)
-                {
-                    for (int i = 0; i < antal; i++)
-                    {
-                        skapaTempkop("barn", akt, akt.barn);
+                /* int totalpris = 0;
+                 int antal = Convert.ToInt32(textBox_barn.Text);
+                 foreach (Akt akt in listBox_akter.SelectedItems)
+                 {
+                     for (int i = 0; i < antal; i++)
+                     {
+                         skapaTempkop("barn", akt, akt.barn);
 
-                    }
-                }
-                foreach (Biljett b in session.biljetter)
-                {
-                    totalpris += totalpris;
-                }
+                     }
+                 }
+                 foreach (Biljett b in session.biljetter)
+                 {
+                     totalpris += totalpris;
+                 }*/
+                uppdateraPris();
             }
         }
 

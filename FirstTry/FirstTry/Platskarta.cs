@@ -391,7 +391,7 @@ namespace FirstTry
         */
         private void Platskarta_Load(object sender, EventArgs e)
         {
-
+            label8.Text = tk.totalpris.ToString() + " Kr";
            // DateTime dtr = new DateTime();
 
            // dtr = kop_slut();
