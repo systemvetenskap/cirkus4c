@@ -444,6 +444,8 @@ namespace FirstTry
 
             label2.Visible = true;
             label2.Text = totalpris.ToString();
+
+
             /*     if (session.hela == true)
                  {
                      totalpris += session.barn * session.forestallning.barn;
@@ -471,7 +473,7 @@ namespace FirstTry
             //Ska vi dölja dem innan man valt akt och föreställning
             if ((Forestallning)listBox_forestallning.SelectedItem != null && (Akt)listBox_akter.SelectedItem != null && antal_ar_siffror() == true)
             {
-                int totalpris = 0;
+                //int totalpris = 0;
                 int antal = Convert.ToInt32(textBox_vuxen.Text);
 
                 foreach (Akt akt in listBox_akter.SelectedItems)
