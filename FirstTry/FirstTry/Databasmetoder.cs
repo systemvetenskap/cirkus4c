@@ -72,10 +72,10 @@ namespace FirstTry
             return forestallningslista;
 
         }
-        public static List<Akt> HamtaAktLista(int fsid)
+        public static List<Akt> HamtaAktLista(int valdforestallningsid)
         {
             //List<Forestallning> forestallningslista = new List<Forestallning>();
-
+            int fsid = valdforestallningsid;
             List<Akt> aktlista = new List<Akt>();
             NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
             conn.Open();
@@ -85,7 +85,7 @@ namespace FirstTry
                                                  and forestallningsid = :fsid", conn);
 
              command.Parameters.Add(new NpgsqlParameter("fsid", DbType.Int32));
-             command.Parameters[0].Value = Convert.ToInt32(fsid);
+             command.Parameters[0].Value = fsid;
 
             NpgsqlDataReader dr = command.ExecuteReader();
 
@@ -98,9 +98,9 @@ namespace FirstTry
                 akten.Aktinfo  = (string)dr["aktinfo"];
                 akten.Starttid = Convert.ToDateTime(dr["starttid"]);   //datumtid
                 akten.Sluttid = Convert.ToDateTime(dr["sluttid"]);
-                //akten.vuxen = Convert.ToInt32(dr["vuxen"]);
-                //akten.ungdom = Convert.ToInt32(dr["ungdom"]);
-                //akten.barn = Convert.ToInt32(dr["barn"]);
+                akten.vuxen = Convert.ToInt32(dr["vuxenpris"]);
+                akten.ungdom = Convert.ToInt32(dr["ungdomspris"]);
+                akten.barn = Convert.ToInt32(dr["barnpris"]);
 
                 aktlista.Add(akten);
             }

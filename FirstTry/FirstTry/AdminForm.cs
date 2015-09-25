@@ -83,6 +83,15 @@ namespace FirstTry
                 {
                     checkBoxfriPlacering.Checked = false;
                 }
+
+                if (valdforestallning.open == true)
+                {
+                    lblforestallningoppen.Visible = true;
+                }
+                else
+                {
+                    lblforestallningoppen.Visible = false;
+                }
             }  
           }
        
@@ -210,7 +219,6 @@ namespace FirstTry
 
         private void btnSkapaForestallning_Click(object sender, EventArgs e)
         {
-
             buttonLaggTillForest.Enabled = true;
             listBoxAdminForestallning.SelectionMode = SelectionMode.None;
             tomTextBoxarForestallning();
@@ -242,7 +250,8 @@ namespace FirstTry
 
         private void dateTimePickerTid_ValueChanged(object sender, EventArgs e)
         {
-            buttonOppnaForest.Enabled = true;
+           
+            btnOK.Enabled = true;
         }
 
         private void dateTimePicker1_ValueChanged_1(object sender, EventArgs e)
@@ -256,6 +265,39 @@ namespace FirstTry
         }
 
         private void buttonOppnaForest_Click(object sender, EventArgs e)
+        {
+            dateTimePickerTid.Enabled = true;
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            
+            //Forestallning fs = new Forestallning();
+            //DateTime forsaljningsslut = fs.forsaljningsslut;
+          
+
+            //try
+            //{
+            //    conn.Open();
+            //    NpgsqlCommand command = new NpgsqlCommand(@"INSERT INTO forestallning(forsaljningsslut) VALUES(:forsaljningsslut) WHERE id = '" + valdforestallning.id + "')", conn);
+
+            //    command.Parameters.Add(new NpgsqlParameter("nyForsaljningsslut", DbType.DateTime).Value = dateTimePickerTid.Value);
+            //    command.Parameters[0].Value = forsaljningsslut;
+
+
+            //}
+            //catch (NpgsqlException ex)
+            //{
+            //       MessageBox.Show(ex.ToString());
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
         {
 
         }

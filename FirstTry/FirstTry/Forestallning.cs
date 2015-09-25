@@ -27,6 +27,7 @@ namespace FirstTry
         public int barn { get; set; }
         public DateTime datum { get; set; }
         public DateTime tid { get; set; }
+        public DateTime forsaljningsslut { get; set; }
 
 
         
