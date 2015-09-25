@@ -25,10 +25,10 @@ namespace FirstTry
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         DataTable dt = new DataTable();
         int antalk = 0;
-        
+
         //   int vilkenbiljett = 0;
 
-
+        int death = 0;
 
 
         private void generellknapp(Button knapp)
@@ -418,38 +418,44 @@ namespace FirstTry
             }
         }
 
-     /*  private DateTime kop_slut()
+        /*  private DateTime kop_slut()
+           {
+               DataTable dt2 = new DataTable();
+               string query = "select forsaljningslut from forestallning where id = ";
+               query += tk.forestallning.id.ToString();
+               NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+               da.Fill(dt2);
+
+               foreach (DataRow fslut in dt2.Rows)
+               {              
+                   return (DateTime)fslut["forsaljningslut"];
+               }
+
+               return DateTime.Now;
+           }
+
+           private DateTime tid_vid_kop()
+           {
+               DataTable dt2 = new DataTable();
+               string query = "SELECT biljett.tid_vid_kop, platser.nummer, platser.id FROM public.biljett, public.innehaller, public.platser WHERE innehaller.biljett_id = biljett.id AND innehaller.platser_id = platser.id;";
+               query += tk.forestallning.id.ToString();
+               NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+               da.Fill(dt2);
+
+               foreach (DataRow bslut in dt2.Rows)
+               {
+                   return (DateTime)bslut["tid_vid_kop"];
+               }
+
+               return DateTime.Now;
+           }
+           */
+        private void Platskarta_FormClosing(object sender, FormClosedEventArgs e)
         {
-            DataTable dt2 = new DataTable();
-            string query = "select forsaljningslut from forestallning where id = ";
-            query += tk.forestallning.id.ToString();
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
-            da.Fill(dt2);
-
-            foreach (DataRow fslut in dt2.Rows)
-            {              
-                return (DateTime)fslut["forsaljningslut"];
-            }
-
-            return DateTime.Now;
+            death = 666;
+         //   Application.Exit();
+           // Environment.Exit(0);
         }
-        
-        private DateTime tid_vid_kop()
-        {
-            DataTable dt2 = new DataTable();
-            string query = "SELECT biljett.tid_vid_kop, platser.nummer, platser.id FROM public.biljett, public.innehaller, public.platser WHERE innehaller.biljett_id = biljett.id AND innehaller.platser_id = platser.id;";
-            query += tk.forestallning.id.ToString();
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
-            da.Fill(dt2);
-            
-            foreach (DataRow bslut in dt2.Rows)
-            {
-                return (DateTime)bslut["tid_vid_kop"];
-            }
-
-            return DateTime.Now;
-        }
-        */
         private void Platskarta_Load(object sender, EventArgs e)
         {
             label8.Text = tk.totalpris.ToString() + " Kr";
@@ -464,6 +470,7 @@ namespace FirstTry
                 {
                     backbone(item);
                 }
+                label6.Text = "Alla akter";
             }
             else
             {
@@ -500,61 +507,66 @@ namespace FirstTry
                 x++;
             }
 
-       /*     if (tk.biljetter[tk.fuskIgen].biljettyp == "vuxen")
-            {
-                radioButton_vuxen.Checked = true;
-            }
-            else if (tk.biljetter[tk.fuskIgen].biljettyp == "ungdom")
-            {
-                radioButton_ungdom.Checked = true;
-            }
-            else if (tk.biljetter[tk.fuskIgen].biljettyp == "barn")
-            {
-                radioButton_barn.Checked = true;
-            }
+            /*     if (tk.biljetter[tk.fuskIgen].biljettyp == "vuxen")
+                 {
+                     radioButton_vuxen.Checked = true;
+                 }
+                 else if (tk.biljetter[tk.fuskIgen].biljettyp == "ungdom")
+                 {
+                     radioButton_ungdom.Checked = true;
+                 }
+                 else if (tk.biljetter[tk.fuskIgen].biljettyp == "barn")
+                 {
+                     radioButton_barn.Checked = true;
+                 }
 
-    */
-
+         */
+    
             if (x == 3)
             {
               
 
                     tk.antal++;
                     this.Hide();
-                    if (tk.antal < tk.loopar && tk.hela == false)
-                    {
+
+                if (tk.antal < tk.loopar && tk.hela == false)
+                {
                     Platskarta pk2 = new Platskarta(tk);
                     pk2.ShowDialog();
-                    
-                    }
-                    else
+
+                }
+                else if (death == 666)
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    DialogResult dialogResult = MessageBox.Show("Vill du Slutföra köpet?", "Bokning", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        DialogResult dialogResult = MessageBox.Show("Vill du Slutföra köpet?", "Bokning", MessageBoxButtons.YesNo);
-                        if (dialogResult == DialogResult.Yes)
-                        {
 
 
                         //biljettform ladda
                         FinalPage fp = new FinalPage(tk);
                         fp.ShowDialog();
 
+                        this.Close();
+
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+
+                        Huvudsidan hu = new Huvudsidan();
+                        hu.ShowDialog();
+
+                    }
 
 
-                        }
-                        else if (dialogResult == DialogResult.No)
-                        {
-                            
-                          Huvudsidan hu = new Huvudsidan();
-                          hu.ShowDialog();
-
-                        }
-
-                    
                 }
 
                
 
-                this.Close();
+                //this.Close();
                 
             }
 

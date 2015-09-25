@@ -272,7 +272,7 @@ namespace FirstTry
             else
             {
                 //Admin ska väll kunna ändra pris?
-                if (session.reservation == true)
+                if (checkBox1.Checked == true)
                 {
                     //this.Hide();
                     Kunduppgifter ku = new Kunduppgifter(session);
@@ -360,13 +360,29 @@ namespace FirstTry
                 foreach (Akt item in listBox_akter.SelectedItems)
                 {
                     skapaHelaTempkop("vuxen", item, item.vuxen, k);
-                }
-                  
+                }          
                 session.kunder.Add(k);
-              //  skapaTempkop("vuxen", akt, akt.vuxen);
             }
+            for (int i = 0; i < antalu; i++)
+            {
+                Kund k = new Kund();
 
+                foreach (Akt item in listBox_akter.SelectedItems)
+                {
+                    skapaHelaTempkop("ungdom", item, item.ungdom, k);
+                }
+                session.kunder.Add(k);
+            }
+            for (int i = 0; i < antalb; i++)
+            {
+                Kund k = new Kund();
 
+                foreach (Akt item in listBox_akter.SelectedItems)
+                {
+                    skapaHelaTempkop("barn", item, item.barn, k);
+                }
+                session.kunder.Add(k);
+            }
         }
         private void skapaHelaTempkop(string biljettyp, Akt akt, int pris, Kund k)
         {
@@ -533,12 +549,24 @@ namespace FirstTry
                 int u = Convert.ToInt32(textBox_ungdom.Text);
                 int v = Convert.ToInt32(textBox_vuxen.Text);
 
-                foreach (Akt item in listBox_akter.SelectedItems)
+                if (helaforestallningen() == true)
                 {
-                    totalpris += item.barn * b;
-                    totalpris += item.ungdom * u;
-                    totalpris += item.vuxen * v;
+                    Forestallning f = new Forestallning();
+                    f = (Forestallning)listBox_forestallning.SelectedItem;
+                    totalpris += f.vuxen * v;
+                    totalpris += f.ungdom * u;
+                    totalpris += f.barn * b;
                 }
+                else
+                {
+                    foreach (Akt item in listBox_akter.SelectedItems)
+                    {
+                        totalpris += item.barn * b;
+                        totalpris += item.ungdom * u;
+                        totalpris += item.vuxen * v;
+                    }
+                }
+
                 session.totalpris = totalpris;
                 label2.Visible = true;
                 label2.Text = totalpris.ToString();

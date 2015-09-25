@@ -90,7 +90,7 @@ namespace FirstTry
         }
         private void FinalPage_Load(object sender, EventArgs e)
         {
-            if (tk.reservation == true)
+            if (tk.biljetter[0].resserverad == true)
             {
                 textBox_epost.Text = tk.epost;
             }
@@ -102,24 +102,92 @@ namespace FirstTry
             {
                 if (tk.hela == true)
                 {
-                    for (int i = 0; i < totalt; i++)
+                    /* for (int i = 0; i < totalt; i++)
+                     {
+
+                         richTextBox1.Text += " Biljett ID: " + tk.biljetter[i].biljett_id;
+
+                         richTextBox1.Text += " \n Föreställningsnamn: " + tk.biljetter[0].forestallning.namn;
+                         richTextBox1.Text += " \n Alla akter";
+                         richTextBox1.Text += "\n Datum: " + tk.biljetter[0].forestallning.datum.ToShortDateString();
+                         richTextBox1.Text += " \n Tid: " + tk.biljetter[0].forestallning.tid.ToShortTimeString();
+                         richTextBox1.Text += "\n Plats: " + platsnamn(tk.biljetter[i + totalt].plats_id.ToString());
+                        // richTextBox1.Text += "\n Pris: " + tk.forestallning
+
+                         richTextBox1.Text += "\n " + tk.biljetter[i + totalt].biljettyp;
+
+                         if (tk.biljetter[i + totalt].biljettyp == "vuxen")
+                         {
+                             richTextBox1.Text += "\n Pris: " + tk.biljetter[0].forestallning.vuxen.ToString()  +" \n  \n -------------------------------  \n \n";
+                         }
+                         if (tk.biljetter[i + totalt].biljettyp == "ungdom")
+                         {
+                             richTextBox1.Text += "\n Pris: " + tk.biljetter[0].forestallning.ungdom.ToString() + " \n  \n -------------------------------  \n \n";
+                         }
+                         if (tk.biljetter[i + totalt].biljettyp == "barn")
+                         {
+                             richTextBox1.Text += "\n Pris: " + tk.biljetter[0].forestallning.barn.ToString() + " \n  \n -------------------------------  \n \n";
+                         }
+                     }*/
+
+                    foreach (Kund k in tk.kunder)
                     {
-
-                        richTextBox1.Text += " Biljett ID: " + tk.biljetter[i].biljett_id;
-
-                        richTextBox1.Text += " \n Föreställningsnamn: " + tk.biljetter[0].forestallning.namn;
-                        richTextBox1.Text += " \n Alla akter";
-                        richTextBox1.Text += "\n Datum: " + tk.biljetter[0].forestallning.datum.ToShortDateString();
-                        richTextBox1.Text += " \n Tid: " + tk.biljetter[0].forestallning.tid.ToShortTimeString();
-                        richTextBox1.Text += "\n Plats: " + platsnamn(tk.biljetter[i + totalt].plats_id.ToString());
-                       // richTextBox1.Text += "\n Pris: " + tk.forestallning
-                            
-                        richTextBox1.Text += "\n " + tk.biljetter[i + totalt].biljettyp;
-                        if (tk.biljetter[i + totalt].biljettyp == "vuxen")
+                        if (k.bilj[0].biljettyp == "vuxen")
                         {
-                            richTextBox1.Text += "\n Pris: " + tk.biljetter[0].forestallning.vuxen.ToString()  +" \n  \n -------------------------------  \n \n";
+                            richTextBox1.Text += " Biljett ID: ";
+                            for (int i = 0; i < k.bilj.Count; i++)
+                            {
+                                richTextBox1.Text += k.bilj[i].biljett_id + ", ";
+                            }
+                               
+                            richTextBox1.Text += " \n Föreställningsnamn: " + tk.biljetter[0].forestallning.namn;
+                            richTextBox1.Text += " \n Alla akter";
+                            richTextBox1.Text += "\n Datum: " + tk.biljetter[0].forestallning.datum.ToShortDateString();
+                            richTextBox1.Text += " \n Tid: " + tk.biljetter[0].forestallning.tid.ToShortTimeString();
+                            richTextBox1.Text += "\n Plats: " + platsnamn(k.bilj[0].plats_id.ToString());
+                            richTextBox1.Text += "\n Pris: " + k.bilj[0].forestallning.vuxen;
+                            richTextBox1.Text += "\n Vuxen";
                         }
+                        if (k.bilj[0].biljettyp == "ungdom")
+                        {
+                            richTextBox1.Text += " Biljett ID: ";
+                            for (int i = 0; i < k.bilj.Count; i++)
+                            {
+                                richTextBox1.Text += k.bilj[i].biljett_id + ", ";
+                            }
+
+                            richTextBox1.Text += " \n Föreställningsnamn: " + tk.biljetter[0].forestallning.namn;
+                            richTextBox1.Text += " \n Alla akter";
+                            richTextBox1.Text += "\n Datum: " + tk.biljetter[0].forestallning.datum.ToShortDateString();
+                            richTextBox1.Text += " \n Tid: " + tk.biljetter[0].forestallning.tid.ToShortTimeString();
+                            richTextBox1.Text += "\n Plats: " + platsnamn(k.bilj[0].plats_id.ToString());
+                            richTextBox1.Text += "\n Pris: " + k.bilj[0].forestallning.ungdom;
+                            richTextBox1.Text += "\n Ungdom";
+                        }
+                        if (k.bilj[0].biljettyp == "barn")
+                        {
+                            richTextBox1.Text += " Biljett ID: ";
+                            for (int i = 0; i < k.bilj.Count; i++)
+                            {
+                                richTextBox1.Text += k.bilj[i].biljett_id + ", ";
+                            }
+
+                            richTextBox1.Text += " \n Föreställningsnamn: " + tk.biljetter[0].forestallning.namn;
+                            richTextBox1.Text += " \n Alla akter";
+                            richTextBox1.Text += "\n Datum: " + tk.biljetter[0].forestallning.datum.ToShortDateString();
+                            richTextBox1.Text += " \n Tid: " + tk.biljetter[0].forestallning.tid.ToShortTimeString();
+                            richTextBox1.Text += "\n Plats: " + platsnamn(k.bilj[0].plats_id.ToString());
+                            richTextBox1.Text += "\n Pris: " + k.bilj[0].forestallning.barn;
+                            richTextBox1.Text += "\n Barn";
+                        }
+
+                        richTextBox1.Text += " \n  \n -------------------------------  \n \n";
+                        // richTextBox1.Text += "\n Pris: " + tk.forestallning
+
+
                     }
+                    
+
 
                 }
                 else
