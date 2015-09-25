@@ -96,22 +96,39 @@ namespace FirstTry
             }
 
             int totalt = tk.vuxna + tk.ungdom + tk.barn;
-
+            int antalAkter = tk.akter.Count;
 
             if (tk.biljett_id != null)
             {
-
-                foreach (Biljett bilj in tk.biljetter)
+                if (tk.hela == true)
                 {
-                    richTextBox1.Text += " Biljett ID: " + bilj.ToString();
-                    richTextBox1.Text += " \n Föreställningsnamn: " + bilj.forestallning.namn;
-                    richTextBox1.Text += " \n Akt: " + bilj.akter.namn;
-                    richTextBox1.Text += "\n Datum: " + bilj.forestallning.datum.ToShortDateString();
-                    richTextBox1.Text += " \n Tid: " + bilj.forestallning.tid.ToShortTimeString();
-                    richTextBox1.Text += "\n Plats: " + platsnamn(bilj.plats_id.ToString());
-                    richTextBox1.Text += "\n Pris: " + bilj.pris.ToString();
-                    richTextBox1.Text += "\n " + bilj.biljettyp + " \n  \n -------------------------------  \n \n";
-                }                           
+                    foreach (Biljett bilj in tk.biljetter)
+                    {
+                        richTextBox1.Text += " Biljett ID: " + bilj.ToString();
+                        richTextBox1.Text += " \n Föreställningsnamn: " + bilj.forestallning.namn;
+                        richTextBox1.Text += " \n Akt: " + bilj.akter.namn;
+                        richTextBox1.Text += "\n Datum: " + bilj.forestallning.datum.ToShortDateString();
+                        richTextBox1.Text += " \n Tid: " + bilj.forestallning.tid.ToShortTimeString();
+                        richTextBox1.Text += "\n Plats: " + platsnamn(bilj.plats_id.ToString());
+                        richTextBox1.Text += "\n Pris: " + bilj.pris.ToString();
+                        richTextBox1.Text += "\n " + bilj.biljettyp + " \n  \n -------------------------------  \n \n";
+                    }
+                }
+                else
+                {
+                    foreach (Biljett bilj in tk.biljetter)
+                    {
+                        richTextBox1.Text += " Biljett ID: " + bilj.ToString();
+                        richTextBox1.Text += " \n Föreställningsnamn: " + bilj.forestallning.namn;
+                        richTextBox1.Text += " \n Akt: " + bilj.akter.namn;
+                        richTextBox1.Text += "\n Datum: " + bilj.forestallning.datum.ToShortDateString();
+                        richTextBox1.Text += " \n Tid: " + bilj.forestallning.tid.ToShortTimeString();
+                        richTextBox1.Text += "\n Plats: " + platsnamn(bilj.plats_id.ToString());
+                        richTextBox1.Text += "\n Pris: " + bilj.pris.ToString();
+                        richTextBox1.Text += "\n " + bilj.biljettyp + " \n  \n -------------------------------  \n \n";
+                    }
+                }
+                                  
 
             }
         }
@@ -189,10 +206,17 @@ namespace FirstTry
         
         private void button2_Click(object sender, EventArgs e)
         {
-            richTextBox1.SaveFile("biljetttttttttttter.txt");
+            string namn = tk.biljetter[0].ToString();
+            File.AppendAllText(namn + ".txt", richTextBox1.Text);
+
+
+
+
+
+            //richTextBox1.SaveFile("biljetttttttttttter.txt");
             try
             {
-                content = File.ReadAllText("biljetttttttttttter.txt");
+                content = File.ReadAllText(namn + ".txt");
                 PrintDocument pd = new PrintDocument();
                 pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
                 pd.PrinterSettings.PrintToFile = true;
