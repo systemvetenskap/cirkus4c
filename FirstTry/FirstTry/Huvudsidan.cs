@@ -233,6 +233,7 @@ namespace FirstTry
             if (session.hela == true)
             {
                 biljetterForHela();
+                session.antalKunder = session.kunder.Count;
             }
             else
             {

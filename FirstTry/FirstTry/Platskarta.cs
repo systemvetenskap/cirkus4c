@@ -13,9 +13,9 @@ namespace FirstTry
     partial class Platskarta : Form
     {
         Tempkop tk = new Tempkop();
-      //  List<int> biljett_id = new List<int>();
-        
+        //  List<int> biljett_id = new List<int>();
 
+        
         public Platskarta(Tempkop tk2)
         {
             InitializeComponent();
@@ -24,10 +24,12 @@ namespace FirstTry
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         DataTable dt = new DataTable();
-     //   int vilkenbiljett = 0;
+        int antalk = 0;
+        
+        //   int vilkenbiljett = 0;
 
-        
-        
+
+
 
         private void generellknapp(Button knapp)
         {
@@ -40,10 +42,19 @@ namespace FirstTry
             }
             else if(tk.hela == true)
             {
-                foreach (Akt id in tk.akter)
+                /* foreach (Akt id in tk.akter)
+                 {
+                     bokaplats(knapp, id.id);
+                 }*/
+
+                for (int i = 0; i < tk.kunder[antalk].bilj.Count; i++)
                 {
-                    bokaplats(knapp, id.id);
+                    bokaplats(knapp, tk.kunder[antalk].bilj[i].akter.id);
                 }
+
+                labelkoll();
+                antalk++;
+                
                // radiokoll();
             }
             else
@@ -72,9 +83,21 @@ namespace FirstTry
             knapp.BackColor = Color.Red;
             knapp.Enabled = false;
 
+            if (tk.hela == true)
+            {
+
+            }
+            else
+            {
+                labelkoll();
+            }
+            
+        }
+        private void labelkoll()
+        {
             if (radioButton_barn.Checked == true)
             {
-               // tk.typ.Add("barn");
+                // tk.typ.Add("barn");
                 int x = Convert.ToInt32(label3.Text);
                 x--;
                 label3.Text = x.ToString();
@@ -82,11 +105,11 @@ namespace FirstTry
                 {
                     radiokoll();
                 }
-                
+
             }
             if (radioButton_ungdom.Checked == true)
             {
-               // tk.typ.Add("ungdom");
+                // tk.typ.Add("ungdom");
                 int x = Convert.ToInt32(label2.Text);
                 x--;
                 label2.Text = x.ToString();
@@ -430,6 +453,7 @@ namespace FirstTry
         private void Platskarta_Load(object sender, EventArgs e)
         {
             label8.Text = tk.totalpris.ToString() + " Kr";
+
             // DateTime dtr = new DateTime();
 
             // dtr = kop_slut();

@@ -33,6 +33,7 @@ namespace FirstTry
         public List<Biljett> biljetter { get; set; }
         public int fuskIgen{get;set;}
         public List <Kund> kunder { get; set; }
+        public int antalKunder { get; set; }
 
 
         public Tempkop()
