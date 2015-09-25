@@ -82,10 +82,12 @@ namespace FirstTry
 
             NpgsqlCommand command = new NpgsqlCommand(@"Select * from akter , forestallning
                                                   Where akter.forestallningsid = forestallning.id
-                                                 and forestallningsid = :fsid", conn);
+                                                 and akter.forestallningsid = :fsid", conn);
 
+            
              command.Parameters.Add(new NpgsqlParameter("fsid", DbType.Int32));
-             command.Parameters[0].Value = fsid;
+             command.Parameters[0].Value = valdforestallningsid;
+
 
             NpgsqlDataReader dr = command.ExecuteReader();
 
@@ -317,7 +319,7 @@ namespace FirstTry
             {
                 Forestallning fs = new Forestallning();
                 conn1.Open();
-                NpgsqlCommand command1 = new NpgsqlCommand(@"UPDATE akter SET namn = :nyNamn, aktinfo = :nyAktinfo, starttid = :nyStarttid, sluttid = :nySluttid, vuxen = :nyVuxen, ungdom = :nyUngdom, barn = :nyBarn WHERE id = :nyId", conn1);
+                NpgsqlCommand command1 = new NpgsqlCommand(@"UPDATE akter SET aktnamn = :nyNamn, aktinfo = :nyAktinfo, starttid = :nyStarttid, sluttid = :nySluttid, vuxenpris = :nyVuxen, ungdomspris = :nyUngdom, barnpris = :nyBarn WHERE forsaljning.id = nyId", conn1);
 
                 command1.Parameters.Add(new NpgsqlParameter("nyNamn", DbType.String));
                 command1.Parameters[0].Value = namn;

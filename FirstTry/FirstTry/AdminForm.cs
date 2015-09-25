@@ -144,23 +144,27 @@ namespace FirstTry
             valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
             if (valdforestallning != null)
             {
+                valdakt = (Akt)listBoxAkter.SelectedItem;
                 listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
 
-                valdakt = (Akt)(listBoxAkter.SelectedItem);
+                //valdakt = (Akt)listBoxAkter.SelectedItem;
                 if (valdakt != null)
                 {
-                    textBoxAktnamn.Text = valdakt.namn;
-                    richTextBoxAktInf.Text = valdakt.Aktinfo;
-                    textBoxAktStarttid.Text = valdakt.Starttid.ToString();
-                    textBoxAktSluttid.Text = valdakt.Sluttid.ToString();
+                    textBoxAktnamn.Text = valdakt.namn.ToString();
+                    richTextBoxAktInf.Text = valdakt.Aktinfo.ToString();
+                    textBoxAktStarttid.Text = valdakt.Starttid.ToShortTimeString();
+                    textBoxAktSluttid.Text = valdakt.Sluttid.ToShortTimeString();
                     textBoxAktVuxenpris.Text = valdakt.vuxen.ToString();
                     textBoxAktUngdPris.Text = valdakt.ungdom.ToString();
                     TextBoxAktBarnpris.Text = valdakt.barn.ToString();
                 }
+
             }
 
         }
-            private void tomTextBoxarAkt()
+
+
+        private void tomTextBoxarAkt()
         {
             textBoxAktnamn.Clear();
             richTextBoxAktInf.Clear();
@@ -202,7 +206,7 @@ namespace FirstTry
 
 
             Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
-            listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(fs.id);
+            listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
         }
 
         
