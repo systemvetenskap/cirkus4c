@@ -73,7 +73,7 @@ namespace FirstTry
                     SmtpServer.EnableSsl = true;
 
                     SmtpServer.Send(mail);
-                    MessageBox.Show("mail Send");
+                    MessageBox.Show("E-post skickat");
                 }
                 catch (Exception ex)
                 {
@@ -98,7 +98,7 @@ namespace FirstTry
             int totalt = tk.vuxna + tk.ungdom + tk.barn;
             int antalAkter = tk.akter.Count;
 
-            if (tk.biljett_id != null)
+            if (tk.biljetter != null)
             {
                 if (tk.hela == true)
                 {
@@ -107,13 +107,18 @@ namespace FirstTry
 
                         richTextBox1.Text += " Biljett ID: " + tk.biljetter[i].biljett_id;
 
-                        richTextBox1.Text += " \n Föreställningsnamn: " + tk.forestallning.namn;
-                        richTextBox1.Text += " \n Hela föreställningen ";
+                        richTextBox1.Text += " \n Föreställningsnamn: " + tk.biljetter[0].forestallning.namn;
+                        richTextBox1.Text += " \n Alla akter";
                         richTextBox1.Text += "\n Datum: " + tk.biljetter[0].forestallning.datum.ToShortDateString();
                         richTextBox1.Text += " \n Tid: " + tk.biljetter[0].forestallning.tid.ToShortTimeString();
                         richTextBox1.Text += "\n Plats: " + platsnamn(tk.biljetter[i + totalt].plats_id.ToString());
-                        richTextBox1.Text += "\n Pris: " + platsnamn(tk.biljetter[i + totalt].pris.ToString());
-                        richTextBox1.Text += "\n " + platsnamn(tk.biljetter[i + totalt].biljettyp) + " \n  \n -------------------------------  \n \n";
+                       // richTextBox1.Text += "\n Pris: " + tk.forestallning
+                            
+                        richTextBox1.Text += "\n " + tk.biljetter[i + totalt].biljettyp;
+                        if (tk.biljetter[i + totalt].biljettyp == "vuxen")
+                        {
+                            richTextBox1.Text += "\n Pris: " + tk.biljetter[0].forestallning.vuxen.ToString()  +" \n  \n -------------------------------  \n \n";
+                        }
                     }
 
                 }
