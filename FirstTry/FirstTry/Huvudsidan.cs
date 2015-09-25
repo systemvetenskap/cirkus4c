@@ -230,15 +230,19 @@ namespace FirstTry
             {
                 session.hela = true;
             }
-            if (session.hela == true)
+            if (antal_ar_siffror() == true)
             {
-                biljetterForHela();
-                session.antalKunder = session.kunder.Count;
+                if (session.hela == true)
+                {
+                    biljetterForHela();
+                    session.antalKunder = session.kunder.Count;
+                }
+                else
+                {
+                    skapaBiljetter();
+                }
             }
-            else
-            {
-                skapaBiljetter();
-            }
+          
             
            // session.biljett_id = new List<int>();
 
@@ -265,10 +269,10 @@ namespace FirstTry
                 }
 
             
-            else if (session.fullbokat(session) == true)
+           /* else if (session.fullbokat(session) == true)
             {
                 MessageBox.Show("Tyvärr så finns det inte tillräkligt med plats på de valda akterna");
-            }
+            } */
             else
             {
                 //Admin ska väll kunna ändra pris?
@@ -707,7 +711,7 @@ namespace FirstTry
             textBox_barn.Text = "0";
             textBox_vuxen.Text = "0";
             textBox_ungdom.Text = "0";
-
+            label2.Text = "0";
             session.totalpris = 0;
         }
         

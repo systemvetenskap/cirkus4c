@@ -52,7 +52,7 @@ namespace FirstTry
 
            // int id = akt_id;//akten.id;
 
-            string query = "select platser_id, tidsstampel, reserverad from innehaller where akter_id = ";
+            string query = "select count(*) from biljett where akt_id = ";
 
             if (tk.akter != null)
             {
@@ -61,7 +61,7 @@ namespace FirstTry
 
                 foreach (Akt item in tk.akter)
                 {
-                    query += item.id.ToString();
+                    query += item.id.ToString() + ";";
                     NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
 
@@ -69,6 +69,7 @@ namespace FirstTry
                     int x = 0;
                     x = tk.vuxna + tk.barn + tk.ungdom;
 
+                   // int y = (int)command.ExecuteScalar();
 
                     if (x >= 16)
                     {

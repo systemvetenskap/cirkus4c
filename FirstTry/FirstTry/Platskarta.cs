@@ -61,6 +61,7 @@ namespace FirstTry
             {
                 bokaplats(knapp, tk.akter[tk.antal].id);
             }
+            rk2();
             radiokoll();
         }
 
@@ -103,6 +104,7 @@ namespace FirstTry
                 label3.Text = x.ToString();
                 if (tk.hela == false)
                 {
+                    rk2();
                     radiokoll();
                 }
 
@@ -115,6 +117,7 @@ namespace FirstTry
                 label2.Text = x.ToString();
                 if (tk.hela == false)
                 {
+                    rk2();
                     radiokoll();
                 }
             }
@@ -126,6 +129,7 @@ namespace FirstTry
                 label1.Text = x.ToString();
                 if (tk.hela == false)
                 {
+                    rk2();
                     radiokoll();
                 }
             }
@@ -190,10 +194,10 @@ namespace FirstTry
                 //  biljett_id.Add(x);
                 //   tk.biljett_id.Add(x);
                 tk.biljetter[tk.fuskIgen].biljett_id = x;
-                
+                tk.biljetter[tk.fuskIgen].kopt = true;
 
                 tk.fuskIgen++;
-                radiokoll();
+                
                 return x;
             }
             catch (Exception ex)
@@ -315,10 +319,11 @@ namespace FirstTry
             label3.Text = tk.barn.ToString();
             label5.Text = tk.biljetter[tk.fuskIgen].forestallning.namn;
             label6.Text = tk.biljetter[tk.fuskIgen].akter.namn;
+            rk2();
          //   label8.Text = tk.totalpris.ToString() + " Kr";
 
 
-            radiokoll();
+        //    radiokoll(); den var här förut, funkade, beehövs den`?
 
 
 
@@ -484,8 +489,7 @@ namespace FirstTry
             conn.Close();
 
         }
-
-        private void radiokoll()
+        private void rk2()
         {
             int x = 0;
             if (Convert.ToInt32(label1.Text) <= 0)
@@ -506,6 +510,10 @@ namespace FirstTry
                 radioButton_barn.Checked = false;
                 x++;
             }
+        }
+        private void radiokoll()
+        {
+
 
             /*     if (tk.biljetter[tk.fuskIgen].biljettyp == "vuxen")
                  {
@@ -521,8 +529,25 @@ namespace FirstTry
                  }
 
          */
-    
-            if (x == 3)
+            bool kopt = true;
+            int antalkopta = 0;
+            int ai = tk.fuskIgen - 1;
+
+            foreach (Biljett b in tk.biljetter)
+            {
+                if (b.akter.id == tk.biljetter[ai].akter.id)
+                {
+                    if (b.kopt != true)
+                    {
+                        kopt = false;
+                    }
+                }
+            }
+
+
+
+
+            if (kopt == true)
             {
               
 
@@ -565,8 +590,8 @@ namespace FirstTry
                 }
 
                
-
-                //this.Close();
+                
+                this.Close();
                 
             }
 

@@ -19,6 +19,7 @@ namespace FirstTry
         public int plats_id { get; set; }
         public bool resserverad { get; set; }
         public bool hela { get; set; }
+        public bool kopt { get; set; }
         //datum
         //tid
 
@@ -27,8 +28,8 @@ namespace FirstTry
         /// </summary>
         public Biljett()
         {
+            kopt = false;
             
-
         }
         public override string ToString()
         {
