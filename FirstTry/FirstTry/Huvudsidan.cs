@@ -211,11 +211,11 @@ namespace FirstTry
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            skapaBiljetter();
-            session.biljett_id = new List<int>();
+            int kollaOmDetarHela = 0;
+            
             //  session.platsnamn = new List<string>();
             // session.typ = new List<string>();
-            int kollaOmDetarHela = 0;
+            
 
             foreach (Akt akter in listBox_akter.SelectedItems)
             {
@@ -230,7 +230,16 @@ namespace FirstTry
             {
                 session.hela = true;
             }
-
+            if (session.hela == true)
+            {
+                biljetterForHela();
+            }
+            else
+            {
+                skapaBiljetter();
+            }
+            
+           // session.biljett_id = new List<int>();
 
             foreach (Biljett b in session.biljetter)
             {
@@ -336,6 +345,50 @@ namespace FirstTry
             }
 
             return true;
+        }
+        private void biljetterForHela()
+        {
+            int antalv = Convert.ToInt32(textBox_vuxen.Text);
+            int antalu = Convert.ToInt32(textBox_ungdom.Text);
+            int antalb = Convert.ToInt32(textBox_barn.Text);
+
+            for (int i = 0; i < antalv; i++)
+            {
+                Kund k = new Kund();
+
+                foreach (Akt item in listBox_akter.SelectedItems)
+                {
+                    skapaHelaTempkop("vuxen", item, item.vuxen, k);
+                }
+                  
+                session.kunder.Add(k);
+              //  skapaTempkop("vuxen", akt, akt.vuxen);
+            }
+
+
+        }
+        private void skapaHelaTempkop(string biljettyp, Akt akt, int pris, Kund k)
+        {
+
+            if (listBox_akter.SelectedItem != null && listBox_forestallning != null && antal_ar_siffror() == true)
+            {
+                // int loopar = 0;
+
+
+                //       Tempkop s2 = new Tempkop();
+                //     session = s2;
+                Biljett b = new Biljett();
+
+                b.hela = helaforestallningen();
+                b.akter = akt;
+                b.forestallning = (Forestallning)listBox_forestallning.SelectedItem;
+                b.biljettyp = biljettyp;
+                b.pris = pris;
+                b.resserverad = false;
+
+                session.biljetter.Add(b);
+                k.bilj.Add(b);
+            }
         }
 
         private void skapaTempkop(string biljettyp, Akt akt, int pris)

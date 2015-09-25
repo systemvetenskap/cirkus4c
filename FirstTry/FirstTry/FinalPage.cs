@@ -102,17 +102,20 @@ namespace FirstTry
             {
                 if (tk.hela == true)
                 {
-                    foreach (Biljett bilj in tk.biljetter)
+                    for (int i = 0; i < totalt; i++)
                     {
-                        richTextBox1.Text += " Biljett ID: " + bilj.ToString();
-                        richTextBox1.Text += " \n Föreställningsnamn: " + bilj.forestallning.namn;
-                        richTextBox1.Text += " \n Akt: " + bilj.akter.namn;
-                        richTextBox1.Text += "\n Datum: " + bilj.forestallning.datum.ToShortDateString();
-                        richTextBox1.Text += " \n Tid: " + bilj.forestallning.tid.ToShortTimeString();
-                        richTextBox1.Text += "\n Plats: " + platsnamn(bilj.plats_id.ToString());
-                        richTextBox1.Text += "\n Pris: " + bilj.pris.ToString();
-                        richTextBox1.Text += "\n " + bilj.biljettyp + " \n  \n -------------------------------  \n \n";
+
+                        richTextBox1.Text += " Biljett ID: " + tk.biljetter[i].biljett_id;
+
+                        richTextBox1.Text += " \n Föreställningsnamn: " + tk.forestallning.namn;
+                        richTextBox1.Text += " \n Hela föreställningen ";
+                        richTextBox1.Text += "\n Datum: " + tk.biljetter[0].forestallning.datum.ToShortDateString();
+                        richTextBox1.Text += " \n Tid: " + tk.biljetter[0].forestallning.tid.ToShortTimeString();
+                        richTextBox1.Text += "\n Plats: " + platsnamn(tk.biljetter[i + totalt].plats_id.ToString());
+                        richTextBox1.Text += "\n Pris: " + platsnamn(tk.biljetter[i + totalt].pris.ToString());
+                        richTextBox1.Text += "\n " + platsnamn(tk.biljetter[i + totalt].biljettyp) + " \n  \n -------------------------------  \n \n";
                     }
+
                 }
                 else
                 {

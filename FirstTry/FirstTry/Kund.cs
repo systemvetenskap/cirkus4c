@@ -13,6 +13,12 @@ namespace FirstTry
         public string efternamn { get; set; }
         public string telefon { get; set; }
         public string epost { get; set; }
+        public List<Biljett> bilj { get; set; }
+
+        public Kund ()
+        {
+            bilj = new List<Biljett>();
+        }
 
 
     }

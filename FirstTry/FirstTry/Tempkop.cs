@@ -32,13 +32,14 @@ namespace FirstTry
         public string epost { get; set; }
         public List<Biljett> biljetter { get; set; }
         public int fuskIgen{get;set;}
-
+        public List <Kund> kunder { get; set; }
 
 
         public Tempkop()
         {
             biljetter = new List<Biljett>();
             akter = new List<Akt>();
+            kunder = new List<Kund>();
             fuskIgen = 0;
         }
 

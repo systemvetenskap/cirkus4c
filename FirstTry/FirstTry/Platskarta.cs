@@ -108,9 +108,40 @@ namespace FirstTry
             }
         }
 
-        private void skapaBiljettKlass()
+        private void skapakundKlass()
         {
             
+            int antal = tk.vuxna + tk.barn + tk.ungdom;
+            string namn = "k";
+
+
+
+            for (int i = 0; i < antal; i++)
+            {
+                for (int j = 0; j < tk.akter.Count; j++)
+                {
+                    Kund k = new Kund();
+                    
+
+                    tk.kunder.Add(k);
+                }
+                
+            }
+
+            for (int i = 0; i < tk.akter.Count; i++)
+            {
+                for (int j = 0; j < tk.biljetter.Count; j++)
+                {
+                    if (tk.biljetter[j].akter.id == tk.akter[i].id)
+                    {
+
+                    }
+                }
+            }
+
+
+
+
         }
         private int ReserveraBiljett(string kn)
         {
@@ -124,7 +155,7 @@ namespace FirstTry
 
                 tk.biljetter[tk.fuskIgen].plats_id = KnappId(kn);
 
-                command.Parameters.AddWithValue("@pris", tk.biljetter[tk.fuskIgen].pris);
+                command.Parameters.AddWithValue("@pris", tk.biljetter[tk.fuskIgen ].pris);
                 command.Parameters.AddWithValue("@forestallning_id", tk.biljetter[tk.fuskIgen].forestallning.id);
                 command.Parameters.AddWithValue("@akt_id", tk.biljetter[tk.fuskIgen].akter.id);
                 command.Parameters.AddWithValue("@biljettyp", tk.biljetter[tk.fuskIgen].biljettyp);
