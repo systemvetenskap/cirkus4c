@@ -66,7 +66,7 @@ namespace FirstTry
                 
                     
                 forestallningslista.Add(forestallning);
-                //}
+                
             }
             conn.Close();
             return forestallningslista;
@@ -350,7 +350,7 @@ namespace FirstTry
         public static void TaBortAkt(int valdaktid)
         {
             NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-
+            
             try
             {
                 Forestallning fs = new Forestallning();
@@ -372,7 +372,9 @@ namespace FirstTry
                 conn1.Close();
             }
 
-       }
+        }
+           
+    }
 
 
         // ta bort föreställning och/eller akt  
@@ -395,7 +397,7 @@ namespace FirstTry
         //'"+textbox+'"  '"+textbox+'" ON '"+textbox+'" FROM '"+textbox+'", conn1;  - https - beginner-sql-tutorial.com/sql-grant-revoke-privileges-roles.htm
 
     }
-}
+
 
 
 

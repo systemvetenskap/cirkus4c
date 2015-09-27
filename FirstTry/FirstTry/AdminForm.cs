@@ -213,61 +213,66 @@ namespace FirstTry
 
         private void button1_Click_2(object sender, EventArgs e)
         {
+            
+            TaBortAkt();
+        }
+
+        private void TaBortAkt()
+        {
 
             int groda = valdakt.id;
-            NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-            NpgsqlTransaction trans = null;
 
-            //string sql1 = @"DELETE *FROM akt WHERE id = :valdakt.id";// från akt ?? foreställningsid = :valdforestallning.id hade du skrivit
-            //string sql2 = @"DELETE * FROM forestallning WHERE forestallningsid = :valdforestallning.id";
-            //string sql5 = @"DELETE* FROM akter WHERE forestallnings_id = :valdforestallning.id";
-            //string sql4 = @"DELETE* FROM biljett WHERE akt_id = :valdakt.id AND forestallnings_id = valdforestallning.id";
-            string sql3 = @"DELETE FROM aktlista WHERE akt = '"+groda+"' ";
-            string sql6 = @"DELETE FROM innehaller WHERE akter_id = '" + groda + "' ";
-            string sql7 = @"DELETE FROM biljett WHERE akt_id = '" + groda + "' ";
-            string sql8 = @"DELETE FROM akter WHERE id = '" + groda + "' ";
+            
 
-            try
-            {
-                conn.Open();
-                trans = conn.BeginTransaction();
+                NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+                NpgsqlTransaction trans = null;
 
-                NpgsqlCommand command1 = new NpgsqlCommand(sql3, conn);
-                command1.Transaction = trans;
-                int numberOfAffectedRows1 = command1.ExecuteNonQuery();
-                MessageBox.Show(numberOfAffectedRows1 + " 1 rader har raderats");
+                string sql3 = @"DELETE FROM aktlista WHERE akt = '" + groda + "' ";
+                string sql6 = @"DELETE FROM innehaller WHERE akter_id = '" + groda + "' ";
+                string sql7 = @"DELETE FROM biljett WHERE akt_id = '" + groda + "' ";
+                string sql8 = @"DELETE FROM akter WHERE id = '" + groda + "' ";
 
-                NpgsqlCommand command2 = new NpgsqlCommand(sql6, conn);
-                command2.Transaction = trans;
-                int numberOfAffectedRows2 = command2.ExecuteNonQuery();
-                MessageBox.Show(numberOfAffectedRows2 + " 2 rader har raderats");
+                try
+                {
+                    conn.Open();
+                    trans = conn.BeginTransaction();
 
-                NpgsqlCommand command3 = new NpgsqlCommand(sql7, conn);
-                command3.Transaction = trans;
-                int numberOfAffectedRows3 = command3.ExecuteNonQuery();
-                MessageBox.Show(numberOfAffectedRows3 + " 3 rader har raderats");
+                    NpgsqlCommand command1 = new NpgsqlCommand(sql3, conn);
+                    command1.Transaction = trans;
+                    int numberOfAffectedRows1 = command1.ExecuteNonQuery();
+                    MessageBox.Show(numberOfAffectedRows1 + " 1 rader har raderats");
 
-                NpgsqlCommand command4 = new NpgsqlCommand(sql8, conn);
-                command4.Transaction = trans;
-                int numberOfAffectedRows4 = command4.ExecuteNonQuery();
-                MessageBox.Show(numberOfAffectedRows4 + " 4 rader har raderats");
- 
-                trans.Commit();
-                listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+                    NpgsqlCommand command2 = new NpgsqlCommand(sql6, conn);
+                    command2.Transaction = trans;
+                    int numberOfAffectedRows2 = command2.ExecuteNonQuery();
+                    MessageBox.Show(numberOfAffectedRows2 + " 2 rader har raderats");
 
+                    NpgsqlCommand command3 = new NpgsqlCommand(sql7, conn);
+                    command3.Transaction = trans;
+                    int numberOfAffectedRows3 = command3.ExecuteNonQuery();
+                    MessageBox.Show(numberOfAffectedRows3 + " 3 rader har raderats");
+
+                    NpgsqlCommand command4 = new NpgsqlCommand(sql8, conn);
+                    command4.Transaction = trans;
+                    int numberOfAffectedRows4 = command4.ExecuteNonQuery();
+                    MessageBox.Show(numberOfAffectedRows4 + " 4 rader har raderats");
+
+                    trans.Commit();
+                    listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+
+                }
+
+                catch (NpgsqlException exception)
+                {
+                    trans.Rollback();
+                    MessageBox.Show(exception.ToString());
+                }
+                finally
+                {
+                    conn.Close();
+                }
             }
-
-            catch (NpgsqlException exception)
-            {
-                trans.Rollback();
-                MessageBox.Show(exception.ToString());
-            }
-            finally
-            {
-                
-                conn.Close();
-            }
-        }
+        
 
         private void TextBoxAktBarnpris_TextChanged(object sender, EventArgs e)
         {
@@ -409,69 +414,62 @@ namespace FirstTry
         private void buttonTaBort_Click(object sender, EventArgs e)
         {
 
-            //NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-            //NpgsqlTransaction trans = null;
+            int padda = valdforestallning.id;
+            NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+            if (valdakt != null)
+            {
+                TaBortAkt();
+            }
+          
 
-            //string sql1 = @"DELETE *FROM akt WHERE id = :valdakt.id";// från akt ?? foreställningsid = :valdforestallning.id hade du skrivit
-            //string sql2 = @"DELETE * FROM forestallning WHERE forestallningsid = :valdforestallning.id";
-            //string sql5 = @"DELETE* FROM akter WHERE forestallnings_id = :valdforestallning.id";
-            //string sql4 = @"DELETE* FROM biljett WHERE akt_id = :valdakt.id AND forestallnings_id = valdforestallning.id";
-            //string sql3 = @"DELETE * FROM aktlista WHERE aktid = :valdakt.id";
-
-            //try
-            //{
-            //    conn.Open();
-            //    trans = conn.BeginTransaction();
-
-            //    NpgsqlCommand command1 = new NpgsqlCommand(sql3, conn);
-
-            //    command1.Parameters.Add(new NpgsqlParameter("nyAktNamn", DbType.String));
-            //    command1.Parameters[0].Value = namn;
-            //    command1.Parameters.Add(new NpgsqlParameter("nyAktinfo", DbType.String));
-            //    command1.Parameters[1].Value = aktinfo;
-            //    command1.Parameters.Add(new NpgsqlParameter("nyStarttid", DbType.DateTime));
-            //    command1.Parameters[2].Value = starttid;
-            //    command1.Parameters.Add(new NpgsqlParameter("nySluttid", DbType.DateTime));
-            //    command1.Parameters[3].Value = sluttid;
-            //    command1.Parameters.Add(new NpgsqlParameter("nyVuxen", DbType.Int32));
-            //    command1.Parameters[4].Value = vuxen;
-            //    command1.Parameters.Add(new NpgsqlParameter("nyUngdom", DbType.Int32));
-            //    command1.Parameters[5].Value = ungdom;
-            //    command1.Parameters.Add(new NpgsqlParameter("nyBarn", DbType.Int32));
-            //    command1.Parameters[6].Value = barn;
-            //    // command1.Transaction = trans;
-            //    int numberOfAffectedRows = command1.ExecuteNonQuery();
+            NpgsqlTransaction trans = null;
 
 
-            //    NpgsqlCommand command2 = new NpgsqlCommand(@"SELECT id FROM forestallning WHERE namn = :namn", conn1);
+            string sql1 = @"DELETE FROM tempkop WHERE forestallning = '" + padda + "' "; //från akt ?? foreställningsid = :valdforestallning.id hade du skrivit        
+            string sql2 = @"DELETE FROM biljett WHERE forestallning_id = '" + padda + "'";
+            string sql3 = "DELETE FROM akter WHERE forestallningsid = '" + padda + "'";
+            string sql4 = @"DELETE FROM forestallning WHERE id =  '" + padda + "'";
 
-            //    command2.Parameters.Add(new NpgsqlParameter("nyttNamn", DbType.String));
-            //    //command2.Parameters[0].Value = namn;
-            //    command2.Transaction = trans;
-            //    int id = (int)command2.ExecuteScalar();
+            try
+            {
+                conn.Open();
+                trans = conn.BeginTransaction();
 
+                NpgsqlCommand command1 = new NpgsqlCommand(sql1, conn);
+                command1.Transaction = trans;
+                int numberOfAffectedRows1 = command1.ExecuteNonQuery();
+                MessageBox.Show(numberOfAffectedRows1 + " 1 rader har raderats");
 
-            //    NpgsqlCommand command3 = new NpgsqlCommand(@"SELECT aktid FROM forestallning WHERE aktnamn = :aktnamn", conn1);
+                NpgsqlCommand command2 = new NpgsqlCommand(sql2, conn);
+                command2.Transaction = trans;
+                int numberOfAffectedRows2 = command2.ExecuteNonQuery();
+                MessageBox.Show(numberOfAffectedRows2 + " 2 rader har raderats");
 
-            //    command3.Parameters.Add(new NpgsqlParameter("nyttAktNamn", DbType.String));
-            //    command3.Parameters[0].Value = aktnamn;
+                NpgsqlCommand command3 = new NpgsqlCommand(sql3, conn);
+                command3.Transaction = trans;
+                int numberOfAffectedRows3 = command3.ExecuteNonQuery();
+                MessageBox.Show(numberOfAffectedRows3 + " 3 rader har raderats");
 
-            //    command3.Transaction = trans;
-            //    int aktid = (int)command3.ExecuteScalar();
+                NpgsqlCommand command4 = new NpgsqlCommand(sql4, conn);
+                command4.Transaction = trans;
+                int numberOfAffectedRows4 = command4.ExecuteNonQuery();
+                MessageBox.Show(numberOfAffectedRows3 + " 4 rader har raderats");
 
+                trans.Commit();
+                listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
 
-            //    trans.Commit();
-            //}
+            }
 
-            //catch (NpgsqlException exception)
-            //{
-            //    trans.Rollback();
-            //    MessageBox.Show(exception.ToString());
-            //}
-            //finally
-            //{
-            //    conn1.Close();
-            //}
+            catch (NpgsqlException exception)
+            {
+                trans.Rollback();
+                MessageBox.Show(exception.ToString());
+            }
+            finally
+            {
+
+                conn.Close();
+            }
         }
     }
 }
