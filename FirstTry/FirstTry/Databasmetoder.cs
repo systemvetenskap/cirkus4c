@@ -235,15 +235,7 @@ namespace FirstTry
                 //command3.Transaction = trans;
                 //int aktid = (int)command3.ExecuteScalar();
 
-                //NpgsqlCommand command4 = new NpgsqlCommand(@"INSERT INTO innehaller (id, aktid) VALUES(:id, :aktid)", conn1);
-
-                //command4.Parameters.Add(new NpgsqlParameter("aktid", DbType.Int32));
-                //command4.Parameters[0].Value = id;
-                //command4.Parameters.Add(new NpgsqlParameter("id", DbType.Int32));
-                //command4.Parameters[0].Value = aktid;
-
-                //command4.Transaction = trans;
-                //numberOfAffectedRows = command4.ExecuteNonQuery();
+                
                 //trans.Commit();
             }
 
@@ -367,7 +359,7 @@ namespace FirstTry
                 NpgsqlCommand command1 = new NpgsqlCommand(sql);
 
                 command1.Parameters.Add(new NpgsqlParameter("id", DbType.String));
-                command1.Parameters[0].Value = nyValdaktid;
+                command1.Parameters[0].Value = valdaktid; //ändrat till valdaktid eftersom den måste stämma med parameter däruppe. 
 
 
             }
@@ -385,15 +377,22 @@ namespace FirstTry
 
         // ta bort föreställning och/eller akt  
 
-            /* kopplingar till föreställning som behöver raderas innan vi kan radera akt och sedan föreställning.   
-            innehåller - akt_id,                        1  
-            tempkop- forestallning, 
-            biljett- forestallnings_id och akt_id,      1
-            aktlista - akt                              1
-            akter - forestallningsid
-            */
-        string sql1 = @"DELETE *FROM akt WHERE forestallningsid = :valdforesallingn.id";
-        string sql2 = @"DELETE * FROM forestallning WHERE foresallningsid = :valdforestallning.id";
+        /* kopplingar till föreställning som behöver raderas innan vi kan radera akt och sedan föreställning.
+        J - funkar det inte så att man bara behöver ta   
+        innehåller - akt_id,                        1  
+        tempkop- forestallning, 
+        biljett- forestallnings_id och akt_id,      1
+        aktlista - akt                              1
+        akter - forestallningsid
+        */
+        //string sql1 = @"DELETE *FROM akt WHERE id = :valdakt.id";// från akt ?? foreställningsid = :valdforestallning.id hade du skrivit
+        //string sql2 = @"DELETE * FROM forestallning WHERE forestallningsid = :valdforestallning.id";
+       
+        
+        //string sql5 = @"DELETE* FROM akter WHERE forestallnings_id = :valdforestallning.id";
+        //GRANT INSERT ON forestallning AND akter TO user1;??
+        //REVOKE INSERT ON forestallning FROM user1
+        //'"+textbox+'"  '"+textbox+'" ON '"+textbox+'" FROM '"+textbox+'", conn1;  - https - beginner-sql-tutorial.com/sql-grant-revoke-privileges-roles.htm
 
     }
 }

@@ -16,7 +16,7 @@ namespace FirstTry
         private Forestallning valdforestallning;
         private Akt valdakt;
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-        
+
         public AdminForm()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace FirstTry
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -44,26 +44,26 @@ namespace FirstTry
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            
+
             dateTimePickerTid.Enabled = true;
         }
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
-           
+
 
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
 
             dateTimePickerTid.Format = DateTimePickerFormat.Custom;
             dateTimePickerTid.CustomFormat = "yyyy-MM-dd  HH:mm";
-            
-           
+
+
 
         }
         private void listBoxAdminForestallning_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-                valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
+            valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
             if (valdforestallning != null)
             {
                 listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
@@ -75,7 +75,7 @@ namespace FirstTry
                 textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
                 textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
 
-                if(valdforestallning.friplacering == true)
+                if (valdforestallning.friplacering == true)
                 {
                     checkBoxfriPlacering.Checked = true;
                 }
@@ -92,12 +92,12 @@ namespace FirstTry
                 {
                     lblforestallningoppen.Visible = false;
                 }
-            }  
-          }
-       
+            }
+        }
+
         private int laggTillForest(string namn, string generellinfo, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
         {
-           
+
             string query = "INSERT INTO forestallning (namn, generell_info, starttid, sluttid, open, vuxenpris, ungdomspris, barnpris, fri_placering) VALUES(@namn, @generell_info, @starttid, @sluttid, @open, @vuxenpris, @ungdomspris, @barnpris, @fri_placering)";
 
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
@@ -116,7 +116,7 @@ namespace FirstTry
         }
         private void buttonLaggTillForest_Click(object sender, EventArgs e)
         {
-           
+
             string namn = textBoxForestNamn.Text;
             string generellinfo = richTextBoxForestInf.Text;
             DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
@@ -172,10 +172,10 @@ namespace FirstTry
             textBoxAktSluttid.Clear();
             textBoxAktVuxenpris.Clear();
             textBoxAktUngdPris.Clear();
-            TextBoxAktBarnpris.Clear(); 
-            
+            TextBoxAktBarnpris.Clear();
+
         }
-             
+
         private void tomTextBoxarForestallning()
         {
             textBoxForestNamn.Clear();
@@ -187,7 +187,7 @@ namespace FirstTry
             textBoxBarnpris.Clear();
         }
 
-        
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             int fsid = valdforestallning.id;
@@ -209,11 +209,64 @@ namespace FirstTry
             listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
         }
 
-        
+
 
         private void button1_Click_2(object sender, EventArgs e)
         {
 
+            int groda = valdakt.id;
+            NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+            NpgsqlTransaction trans = null;
+
+            //string sql1 = @"DELETE *FROM akt WHERE id = :valdakt.id";// från akt ?? foreställningsid = :valdforestallning.id hade du skrivit
+            //string sql2 = @"DELETE * FROM forestallning WHERE forestallningsid = :valdforestallning.id";
+            //string sql5 = @"DELETE* FROM akter WHERE forestallnings_id = :valdforestallning.id";
+            //string sql4 = @"DELETE* FROM biljett WHERE akt_id = :valdakt.id AND forestallnings_id = valdforestallning.id";
+            string sql3 = @"DELETE FROM aktlista WHERE akt = '"+groda+"' ";
+            string sql6 = @"DELETE FROM innehaller WHERE akter_id = '" + groda + "' ";
+            string sql7 = @"DELETE FROM biljett WHERE akt_id = '" + groda + "' ";
+            string sql8 = @"DELETE FROM akter WHERE id = '" + groda + "' ";
+
+            try
+            {
+                conn.Open();
+                trans = conn.BeginTransaction();
+
+                NpgsqlCommand command1 = new NpgsqlCommand(sql3, conn);
+                command1.Transaction = trans;
+                int numberOfAffectedRows1 = command1.ExecuteNonQuery();
+                MessageBox.Show(numberOfAffectedRows1 + " 1 rader har raderats");
+
+                NpgsqlCommand command2 = new NpgsqlCommand(sql6, conn);
+                command2.Transaction = trans;
+                int numberOfAffectedRows2 = command2.ExecuteNonQuery();
+                MessageBox.Show(numberOfAffectedRows2 + " 2 rader har raderats");
+
+                NpgsqlCommand command3 = new NpgsqlCommand(sql7, conn);
+                command3.Transaction = trans;
+                int numberOfAffectedRows3 = command3.ExecuteNonQuery();
+                MessageBox.Show(numberOfAffectedRows3 + " 3 rader har raderats");
+
+                NpgsqlCommand command4 = new NpgsqlCommand(sql8, conn);
+                command4.Transaction = trans;
+                int numberOfAffectedRows4 = command4.ExecuteNonQuery();
+                MessageBox.Show(numberOfAffectedRows4 + " 4 rader har raderats");
+ 
+                trans.Commit();
+                listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+
+            }
+
+            catch (NpgsqlException exception)
+            {
+                trans.Rollback();
+                MessageBox.Show(exception.ToString());
+            }
+            finally
+            {
+                
+                conn.Close();
+            }
         }
 
         private void TextBoxAktBarnpris_TextChanged(object sender, EventArgs e)
@@ -228,7 +281,7 @@ namespace FirstTry
             tomTextBoxarForestallning();
         }
 
-             private void uppdatera_Click(object sender, EventArgs e)
+        private void uppdatera_Click(object sender, EventArgs e)
         {
             int id = valdforestallning.id;
             string namn = textBoxForestNamn.Text;
@@ -240,7 +293,7 @@ namespace FirstTry
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
             bool friplacering = false;
-           
+
             Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering);
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
         }
@@ -254,7 +307,7 @@ namespace FirstTry
 
         private void dateTimePickerTid_ValueChanged(object sender, EventArgs e)
         {
-           
+
             btnOK.Enabled = true;
         }
 
@@ -275,10 +328,10 @@ namespace FirstTry
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            
+
             //Forestallning fs = new Forestallning();
             //DateTime forsaljningsslut = fs.forsaljningsslut;
-          
+
 
             //try
             //{
@@ -305,8 +358,128 @@ namespace FirstTry
         {
 
         }
+
+        private void btnbehorigheter_Click(object sender, EventArgs e)
+        {
+            NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+
+            try
+            {
+                conn.Open();
+                // dropdown command = new NpgsqlCommand(@"GRANT '" + txtObjektBehorighet + "' '" + txtObjektBehorighet + "' ON '" + txtTabell + "' FROM '" + txtAnvandare + "')", conn);
+
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+
+        private void btnTaBortBehorighet_Click(object sender, EventArgs e)
+        {
+            NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+
+            try
+            {
+                conn.Open();
+                // dropdown NpgsqlCommand command = new NpgsqlCommand(@"REVOKE '" + txtObjektBehorighet + "' '" + txtObjektBehorighet + "' ON '" + txtTabell + "' FROM '" + txtAnvandare + "')", conn);
+
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void buttonTaBort_Click(object sender, EventArgs e)
+        {
+
+            //NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+            //NpgsqlTransaction trans = null;
+
+            //string sql1 = @"DELETE *FROM akt WHERE id = :valdakt.id";// från akt ?? foreställningsid = :valdforestallning.id hade du skrivit
+            //string sql2 = @"DELETE * FROM forestallning WHERE forestallningsid = :valdforestallning.id";
+            //string sql5 = @"DELETE* FROM akter WHERE forestallnings_id = :valdforestallning.id";
+            //string sql4 = @"DELETE* FROM biljett WHERE akt_id = :valdakt.id AND forestallnings_id = valdforestallning.id";
+            //string sql3 = @"DELETE * FROM aktlista WHERE aktid = :valdakt.id";
+
+            //try
+            //{
+            //    conn.Open();
+            //    trans = conn.BeginTransaction();
+
+            //    NpgsqlCommand command1 = new NpgsqlCommand(sql3, conn);
+
+            //    command1.Parameters.Add(new NpgsqlParameter("nyAktNamn", DbType.String));
+            //    command1.Parameters[0].Value = namn;
+            //    command1.Parameters.Add(new NpgsqlParameter("nyAktinfo", DbType.String));
+            //    command1.Parameters[1].Value = aktinfo;
+            //    command1.Parameters.Add(new NpgsqlParameter("nyStarttid", DbType.DateTime));
+            //    command1.Parameters[2].Value = starttid;
+            //    command1.Parameters.Add(new NpgsqlParameter("nySluttid", DbType.DateTime));
+            //    command1.Parameters[3].Value = sluttid;
+            //    command1.Parameters.Add(new NpgsqlParameter("nyVuxen", DbType.Int32));
+            //    command1.Parameters[4].Value = vuxen;
+            //    command1.Parameters.Add(new NpgsqlParameter("nyUngdom", DbType.Int32));
+            //    command1.Parameters[5].Value = ungdom;
+            //    command1.Parameters.Add(new NpgsqlParameter("nyBarn", DbType.Int32));
+            //    command1.Parameters[6].Value = barn;
+            //    // command1.Transaction = trans;
+            //    int numberOfAffectedRows = command1.ExecuteNonQuery();
+
+
+            //    NpgsqlCommand command2 = new NpgsqlCommand(@"SELECT id FROM forestallning WHERE namn = :namn", conn1);
+
+            //    command2.Parameters.Add(new NpgsqlParameter("nyttNamn", DbType.String));
+            //    //command2.Parameters[0].Value = namn;
+            //    command2.Transaction = trans;
+            //    int id = (int)command2.ExecuteScalar();
+
+
+            //    NpgsqlCommand command3 = new NpgsqlCommand(@"SELECT aktid FROM forestallning WHERE aktnamn = :aktnamn", conn1);
+
+            //    command3.Parameters.Add(new NpgsqlParameter("nyttAktNamn", DbType.String));
+            //    command3.Parameters[0].Value = aktnamn;
+
+            //    command3.Transaction = trans;
+            //    int aktid = (int)command3.ExecuteScalar();
+
+
+            //    trans.Commit();
+            //}
+
+            //catch (NpgsqlException exception)
+            //{
+            //    trans.Rollback();
+            //    MessageBox.Show(exception.ToString());
+            //}
+            //finally
+            //{
+            //    conn1.Close();
+            //}
+        }
     }
 }
+
+
+
+
+
 
 
 
