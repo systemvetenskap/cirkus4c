@@ -354,6 +354,47 @@ namespace FirstTry
             }
         }
 
+        //ta bort akt
+        public static void TaBortAkt(int valdaktid)
+        {
+            NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+
+            try
+            {
+                Forestallning fs = new Forestallning();
+                conn1.Open();
+                string sql = "DELETE * FROM akt WHERE id = :valdaktid";
+                NpgsqlCommand command1 = new NpgsqlCommand(sql);
+
+                command1.Parameters.Add(new NpgsqlParameter("id", DbType.String));
+                command1.Parameters[0].Value = nyValdaktid;
+
+
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                conn1.Close();
+            }
+
+       }
+
+
+        // ta bort föreställning och/eller akt  
+
+            /* kopplingar till föreställning som behöver raderas innan vi kan radera akt och sedan föreställning.   
+            innehåller - akt_id,                        1  
+            tempkop- forestallning, 
+            biljett- forestallnings_id och akt_id,      1
+            aktlista - akt                              1
+            akter - forestallningsid
+            */
+        string sql1 = @"DELETE *FROM akt WHERE forestallningsid = :valdforesallingn.id";
+        string sql2 = @"DELETE * FROM forestallning WHERE foresallningsid = :valdforestallning.id";
+
     }
 }
 
