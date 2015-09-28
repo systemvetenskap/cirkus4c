@@ -463,6 +463,9 @@ namespace FirstTry
         }
         private void Platskarta_Load(object sender, EventArgs e)
         {
+
+
+
             label8.Text = tk.totalpris.ToString() + " Kr";
 
             // DateTime dtr = new DateTime();
@@ -560,9 +563,12 @@ namespace FirstTry
                     pk2.ShowDialog();
 
                 }
-                else if (death == 666)
+                else if (tk.fardig == true)
                 {
-                    Application.Exit();
+                    Huvudsidan hu = new Huvudsidan();
+                    hu.ShowDialog();
+                    this.Close();
+                    //  Application.Exit();
                 }
                 else
                 {
@@ -576,6 +582,8 @@ namespace FirstTry
                         fp.ShowDialog();
 
                         this.Close();
+                       // this.Dispose();
+
 
                     }
                     else if (dialogResult == DialogResult.No)

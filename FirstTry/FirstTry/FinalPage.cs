@@ -90,6 +90,7 @@ namespace FirstTry
         }
         private void FinalPage_Load(object sender, EventArgs e)
         {
+            tk.fardig = true;
             if (tk.biljetter[0].resserverad == true)
             {
                 textBox_epost.Text = tk.epost;
@@ -307,6 +308,14 @@ namespace FirstTry
         {
             ev.Graphics.DrawString(content, printFont, Brushes.Black,
                             ev.MarginBounds.Left, 0, new StringFormat());
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Huvudsidan hs = new Huvudsidan();
+            hs.ShowDialog();
+            this.Close();
         }
     }
 }

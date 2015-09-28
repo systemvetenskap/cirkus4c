@@ -34,7 +34,7 @@ namespace FirstTry
         public int fuskIgen{get;set;}
         public List <Kund> kunder { get; set; }
         public int antalKunder { get; set; }
-
+        public bool fardig { get; set; }
 
         public Tempkop()
         {
@@ -42,6 +42,7 @@ namespace FirstTry
             akter = new List<Akt>();
             kunder = new List<Kund>();
             fuskIgen = 0;
+            fardig = false;
         }
 
 
@@ -52,20 +53,21 @@ namespace FirstTry
 
            // int id = akt_id;//akten.id;
 
-            string query = "select count(*) from biljett where akt_id = ";
+            
 
             if (tk.akter != null)
             {
 
 
-
                 foreach (Akt item in tk.akter)
                 {
-                    query += item.id.ToString() + ";";
+                    string query = "select * from biljett where akt_id = ";
+                    query += item.id.ToString();
                     NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
 
                     da.Fill(dt);
+
                     int x = 0;
                     x = tk.vuxna + tk.barn + tk.ungdom;
 
@@ -87,8 +89,8 @@ namespace FirstTry
                         {
                             // MessageBox.Show("Tyvärr finns inte tillräkligt med plats, innanför");
                             //this.Hide();
-                            Huvudsidan hu = new Huvudsidan();
-                            hu.ShowDialog();
+                           // Huvudsidan hu = new Huvudsidan();
+                            //hu.ShowDialog();
                             //Close();
                             return true;
                         }

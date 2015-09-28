@@ -14,6 +14,7 @@ namespace FirstTry
 {
     public partial class Huvudsidan : Form
     {
+        
         public Huvudsidan()
         {
             InitializeComponent();
@@ -22,17 +23,24 @@ namespace FirstTry
         {
             InitializeComponent();
         }
+        Tempkop session;
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         
-        Tempkop session = new Tempkop();
+        
         
 
         
         int antalakter = 0;
 
+        private void Form1_Shown(object sender, EventArgs e)
+        {
 
+            session = new Tempkop();
+
+        }
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
+            session = new Tempkop();
             conn.Open();
             session.totalpris = 0; //För att kolla vid button click att inget är vallt
             
@@ -212,10 +220,10 @@ namespace FirstTry
         private void button1_Click(object sender, EventArgs e)
         {
             int kollaOmDetarHela = 0;
-            
+
             //  session.platsnamn = new List<string>();
             // session.typ = new List<string>();
-            
+            session.hela = false; //låg kvar som true om man gick tillbaka från platskartan
 
             foreach (Akt akter in listBox_akter.SelectedItems)
             {
@@ -269,20 +277,20 @@ namespace FirstTry
                 }
 
             
-           /* else if (session.fullbokat(session) == true)
+           else if (session.fullbokat(session) == true)
             {
                 MessageBox.Show("Tyvärr så finns det inte tillräkligt med plats på de valda akterna");
-            } */
+            }
             else
             {
                 //Admin ska väll kunna ändra pris?
                 if (checkBox1.Checked == true)
                 {
-                    //this.Hide();
+                    this.Hide();
                     Kunduppgifter ku = new Kunduppgifter(session);
                     ku.ShowDialog();
 
-                    //this.Close();
+                    this.Close();
                 }
                 else if (session.biljetter[0].forestallning.friplacering == true)
                 {
@@ -291,10 +299,10 @@ namespace FirstTry
                 }
                 else
                 {
-                    //this.Hide();
+                    this.Hide();
                     Platskarta pk = new Platskarta(session);
                     pk.ShowDialog();
-                   // this.Close();
+                    this.Close();
                 }
             }
 
