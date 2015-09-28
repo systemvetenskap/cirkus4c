@@ -74,7 +74,7 @@ namespace FirstTry
 
                         if (Convert.ToInt32(row["aktortyp_id"]) == 6)
                         {
-                            AdminForm af = new AdminForm();
+                            AdminForm af = new AdminForm(aktortyper);
                             af.ShowDialog();
                         }
                         else if(Convert.ToInt32(row["aktortyp_id"]) == 3)
@@ -99,6 +99,9 @@ namespace FirstTry
         private void Loginform_Load(object sender, EventArgs e)
         {
             textBox_losenord.UseSystemPasswordChar = true;
+            
+            
+            
             /*
                         dateTimePicker2.Format = DateTimePickerFormat.Custom;
                         dateTimePicker2.CustomFormat = "HH mm";

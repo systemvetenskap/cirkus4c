@@ -71,11 +71,7 @@
             this.checkBoxfriPlacering = new System.Windows.Forms.CheckBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.lblforestallningoppen = new System.Windows.Forms.Label();
-            this.btnbehorigheter = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.btnTaBortBehorighet = new System.Windows.Forms.Button();
+            this.btnAndraTaBortBeh = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxAdminForestallning
@@ -256,7 +252,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(48, 267);
+            this.label7.Location = new System.Drawing.Point(47, 267);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 17);
@@ -266,7 +262,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(48, 314);
+            this.label8.Location = new System.Drawing.Point(46, 314);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(47, 17);
@@ -275,7 +271,7 @@
             // 
             // textBoxForestStarttid
             // 
-            this.textBoxForestStarttid.Location = new System.Drawing.Point(51, 288);
+            this.textBoxForestStarttid.Location = new System.Drawing.Point(47, 288);
             this.textBoxForestStarttid.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxForestStarttid.Name = "textBoxForestStarttid";
             this.textBoxForestStarttid.Size = new System.Drawing.Size(132, 22);
@@ -283,7 +279,7 @@
             // 
             // textBoxForestSluttid
             // 
-            this.textBoxForestSluttid.Location = new System.Drawing.Point(52, 335);
+            this.textBoxForestSluttid.Location = new System.Drawing.Point(46, 335);
             this.textBoxForestSluttid.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxForestSluttid.Name = "textBoxForestSluttid";
             this.textBoxForestSluttid.Size = new System.Drawing.Size(132, 22);
@@ -291,7 +287,7 @@
             // 
             // buttonOppnaForest
             // 
-            this.buttonOppnaForest.Location = new System.Drawing.Point(1052, 504);
+            this.buttonOppnaForest.Location = new System.Drawing.Point(1052, 474);
             this.buttonOppnaForest.Margin = new System.Windows.Forms.Padding(4);
             this.buttonOppnaForest.Name = "buttonOppnaForest";
             this.buttonOppnaForest.Size = new System.Drawing.Size(167, 33);
@@ -324,7 +320,7 @@
             // 
             // textBoxVuxenpris
             // 
-            this.textBoxVuxenpris.Location = new System.Drawing.Point(47, 401);
+            this.textBoxVuxenpris.Location = new System.Drawing.Point(47, 390);
             this.textBoxVuxenpris.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxVuxenpris.Name = "textBoxVuxenpris";
             this.textBoxVuxenpris.Size = new System.Drawing.Size(132, 22);
@@ -332,7 +328,7 @@
             // 
             // textBoxUngdomspris
             // 
-            this.textBoxUngdomspris.Location = new System.Drawing.Point(47, 448);
+            this.textBoxUngdomspris.Location = new System.Drawing.Point(47, 444);
             this.textBoxUngdomspris.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxUngdomspris.Name = "textBoxUngdomspris";
             this.textBoxUngdomspris.Size = new System.Drawing.Size(132, 22);
@@ -340,7 +336,7 @@
             // 
             // textBoxBarnpris
             // 
-            this.textBoxBarnpris.Location = new System.Drawing.Point(47, 494);
+            this.textBoxBarnpris.Location = new System.Drawing.Point(47, 492);
             this.textBoxBarnpris.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxBarnpris.Name = "textBoxBarnpris";
             this.textBoxBarnpris.Size = new System.Drawing.Size(132, 22);
@@ -349,7 +345,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(49, 474);
+            this.label3.Location = new System.Drawing.Point(47, 471);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 17);
@@ -359,7 +355,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(48, 427);
+            this.label9.Location = new System.Drawing.Point(45, 422);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(91, 17);
@@ -369,7 +365,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(48, 377);
+            this.label10.Location = new System.Drawing.Point(48, 368);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(70, 17);
@@ -450,10 +446,10 @@
             // 
             this.dateTimePickerTid.CustomFormat = "";
             this.dateTimePickerTid.Enabled = false;
-            this.dateTimePickerTid.Location = new System.Drawing.Point(771, 558);
+            this.dateTimePickerTid.Location = new System.Drawing.Point(1052, 435);
             this.dateTimePickerTid.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerTid.Name = "dateTimePickerTid";
-            this.dateTimePickerTid.Size = new System.Drawing.Size(265, 22);
+            this.dateTimePickerTid.Size = new System.Drawing.Size(201, 22);
             this.dateTimePickerTid.TabIndex = 42;
             this.dateTimePickerTid.Value = new System.DateTime(2015, 9, 23, 10, 18, 53, 0);
             this.dateTimePickerTid.ValueChanged += new System.EventHandler(this.dateTimePickerTid_ValueChanged);
@@ -461,7 +457,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(767, 537);
+            this.label13.Location = new System.Drawing.Point(1050, 408);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(139, 17);
@@ -482,7 +478,7 @@
             // btnOK
             // 
             this.btnOK.Enabled = false;
-            this.btnOK.Location = new System.Drawing.Point(1052, 549);
+            this.btnOK.Location = new System.Drawing.Point(1052, 514);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(167, 36);
             this.btnOK.TabIndex = 45;
@@ -503,63 +499,22 @@
             this.lblforestallningoppen.Visible = false;
             this.lblforestallningoppen.Click += new System.EventHandler(this.label14_Click);
             // 
-            // btnbehorigheter
+            // btnAndraTaBortBeh
             // 
-            this.btnbehorigheter.Location = new System.Drawing.Point(1052, 283);
-            this.btnbehorigheter.Name = "btnbehorigheter";
-            this.btnbehorigheter.Size = new System.Drawing.Size(140, 48);
-            this.btnbehorigheter.TabIndex = 47;
-            this.btnbehorigheter.Text = "Lägg till behörigheter";
-            this.btnbehorigheter.UseVisualStyleBackColor = true;
-            this.btnbehorigheter.Click += new System.EventHandler(this.btnbehorigheter_Click);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(1048, 51);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(77, 17);
-            this.label14.TabIndex = 51;
-            this.label14.Text = "Behörighet";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(1049, 116);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(47, 17);
-            this.label15.TabIndex = 52;
-            this.label15.Text = "Tabell";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(1049, 178);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(77, 17);
-            this.label16.TabIndex = 53;
-            this.label16.Text = "Användare";
-            // 
-            // btnTaBortBehorighet
-            // 
-            this.btnTaBortBehorighet.Location = new System.Drawing.Point(1052, 345);
-            this.btnTaBortBehorighet.Name = "btnTaBortBehorighet";
-            this.btnTaBortBehorighet.Size = new System.Drawing.Size(140, 45);
-            this.btnTaBortBehorighet.TabIndex = 54;
-            this.btnTaBortBehorighet.Text = "Ta bort behörighet";
-            this.btnTaBortBehorighet.UseVisualStyleBackColor = true;
-            this.btnTaBortBehorighet.Click += new System.EventHandler(this.btnTaBortBehorighet_Click);
+            this.btnAndraTaBortBeh.Location = new System.Drawing.Point(1047, 50);
+            this.btnAndraTaBortBeh.Name = "btnAndraTaBortBeh";
+            this.btnAndraTaBortBeh.Size = new System.Drawing.Size(172, 43);
+            this.btnAndraTaBortBeh.TabIndex = 47;
+            this.btnAndraTaBortBeh.Text = "Ändra behörigheter";
+            this.btnAndraTaBortBeh.UseVisualStyleBackColor = true;
+            this.btnAndraTaBortBeh.Click += new System.EventHandler(this.btnAndraTaBortBeh_Click);
             // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1327, 597);
-            this.Controls.Add(this.btnTaBortBehorighet);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.btnbehorigheter);
+            this.Controls.Add(this.btnAndraTaBortBeh);
             this.Controls.Add(this.lblforestallningoppen);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.checkBoxfriPlacering);
@@ -657,10 +612,6 @@
         private System.Windows.Forms.CheckBox checkBoxfriPlacering;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Label lblforestallningoppen;
-        private System.Windows.Forms.Button btnbehorigheter;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button btnTaBortBehorighet;
+        private System.Windows.Forms.Button btnAndraTaBortBeh;
     }
 }
