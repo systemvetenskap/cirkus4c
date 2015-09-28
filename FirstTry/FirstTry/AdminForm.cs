@@ -172,9 +172,8 @@ namespace FirstTry
             if (valdforestallning != null)
             {
                 valdakt = (Akt)listBoxAkter.SelectedItem;
-                //listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+                
 
-                //valdakt = (Akt)listBoxAkter.SelectedItem;
                 if (valdakt != null)
                 {
                     textBoxAktnamn.Text = valdakt.namn.ToString();
@@ -610,7 +609,19 @@ namespace FirstTry
 
         private void buttonLaggTillAktInfo_Click(object sender, EventArgs e)
         {
+          
+            string namn = textBoxAktnamn.Text;
+            string aktinfo = richTextBoxAktInf.Text;
+            DateTime starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
+            DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
+            int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
+            int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
+            int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
 
+            Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
+            listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+
+            conn.Close();
         }
 
         private void btnAkt_Click(object sender, EventArgs e)

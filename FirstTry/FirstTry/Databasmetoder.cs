@@ -74,18 +74,18 @@ namespace FirstTry
         }
         public static List<Akt> HamtaAktLista(int valdforestallningsid)
         {
-            //List<Forestallning> forestallningslista = new List<Forestallning>();
-            int fsid = valdforestallningsid;
+           
+            //int fsid = valdforestallningsid;
             List<Akt> aktlista = new List<Akt>();
             NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
             conn.Open();
 
             NpgsqlCommand command = new NpgsqlCommand(@"Select * from akter , forestallning
                                                   Where akter.forestallningsid = forestallning.id
-                                                 and akter.forestallningsid = :fsid", conn);
+                                                 and akter.forestallningsid = :nyValdforestallningsid", conn);
 
             
-             command.Parameters.Add(new NpgsqlParameter("fsid", DbType.Int32));
+             command.Parameters.Add(new NpgsqlParameter("nyValdforestallningsid", DbType.Int32));
              command.Parameters[0].Value = valdforestallningsid;
 
 
@@ -94,8 +94,7 @@ namespace FirstTry
             while (dr.Read())
             {
                 Akt akten = new Akt();
-
-                akten.id = Convert.ToInt32(dr["id"]);
+           
                 akten.namn = (string)dr["aktnamn"];
                 akten.Aktinfo  = (string)dr["aktinfo"];
                 akten.Starttid = Convert.ToDateTime(dr["starttid"]);   //datumtid
@@ -103,6 +102,8 @@ namespace FirstTry
                 akten.vuxen = Convert.ToInt32(dr["vuxenpris"]);
                 akten.ungdom = Convert.ToInt32(dr["ungdomspris"]);
                 akten.barn = Convert.ToInt32(dr["barnpris"]);
+                akten.id = Convert.ToInt32(dr["id"]);
+
 
                 aktlista.Add(akten);
             }
@@ -199,7 +200,7 @@ namespace FirstTry
                 conn1.Open();
                // trans = conn1.BeginTransaction();
 
-                NpgsqlCommand command1 = new NpgsqlCommand(@"INSERT INTO forestallning(aktnamn, aktinfo, starttid, sluttid, vuxen, ungdom, barn) VALUES (:nyAktNamn, :nyAktInfo, :nyStarttid, :nySluttid, nyVuxenpris, :nyUngdomspris, :nyBarnpris)", conn1);
+                NpgsqlCommand command1 = new NpgsqlCommand(@"INSERT INTO forestallning(aktnamn, aktinfo, starttid, sluttid, vuxen, ungdom, barn) VALUES (:nyAktNamn, :nyAktInfo, :nyStarttid, :nySluttid, :nyVuxenpris, :nyUngdomspris, :nyBarnpris)", conn1);
 
                 command1.Parameters.Add(new NpgsqlParameter("nyAktNamn", DbType.String));
                 command1.Parameters[0].Value = namn;
