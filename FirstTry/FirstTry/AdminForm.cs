@@ -368,28 +368,28 @@ namespace FirstTry
         private void btnOK_Click(object sender, EventArgs e)
         {
 
-            Forestallning fs = new Forestallning();
-            //DateTime forsaljningsslut = fs.forsaljningsslut;
-            DateTime forsaljningsslut = Convert.ToDateTime (textBoxForsaljningsslut.Text + ":00+");//dateTimePickerTid.Value;
+            //Forestallning fs = new Forestallning();
+            ////DateTime forsaljningsslut = fs.forsaljningsslut;
+            ////DateTime forsaljningsslut = Convert.ToDateTime (textBoxForsaljningsslut.Text + ":00+");//dateTimePickerTid.Value;
 
-            try
-            {
-                conn.Open();
-                NpgsqlCommand command = new NpgsqlCommand(@"INSERT INTO forestallning(forsaljningsslut) VALUES(:forsaljningsslut) WHERE id = '" + valdforestallning.id + "')", conn);
+            //try
+            //{
+            //    conn.Open();
+            //    NpgsqlCommand command = new NpgsqlCommand(@"INSERT INTO forestallning(forsaljningsslut) VALUES(:forsaljningsslut) WHERE id = '" + valdforestallning.id + "')", conn);
 
-                command.Parameters.Add(new NpgsqlParameter("nyForsaljningsslut", DbType.DateTime).Value);
-                command.Parameters[0].Value = forsaljningsslut;
+            //    command.Parameters.Add(new NpgsqlParameter("nyForsaljningsslut", DbType.DateTime).Value);
+            //    command.Parameters[0].Value = forsaljningsslut;
 
 
-            }
-            catch (NpgsqlException ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
+        //    }
+        //    catch (NpgsqlException ex)
+        //    {
+        //        MessageBox.Show(ex.ToString());
+        //    }
+        //    finally
+        //    {
+        //        conn.Close();
+        //    }
 
         }
 
