@@ -71,7 +71,7 @@ namespace FirstTry
         }
         private void listBoxAdminForestallning_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            textBoxForsaljningsslut.Clear();
             valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
             if (valdforestallning != null)
             {
@@ -96,7 +96,23 @@ namespace FirstTry
                 if (valdforestallning.open == true)
                 {
                     lblforestallningoppen.Visible = true;
-                }
+                 
+                    string sqlforsaljningslut = (@"SELECT forsaljningslut FROM forestallning WHERE id ='" + valdforestallning.id + "'");
+                    
+                    conn.Open();
+                    NpgsqlCommand command = new NpgsqlCommand(sqlforsaljningslut, conn);
+                    
+                    NpgsqlDataReader dr = command.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        valdforestallning.forsaljningsslut = Convert.ToDateTime(dr["forsaljningslut"]);
+                    }
+                    conn.Close();
+                    textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString() + " " +valdforestallning.forsaljningsslut.ToShortTimeString();
+                  
+
+                       
+                    }
                 else
                 {
                     lblforestallningoppen.Visible = false;
@@ -345,7 +361,8 @@ namespace FirstTry
 
         private void buttonOppnaForest_Click(object sender, EventArgs e)
         {
-            dateTimePickerTid.Enabled = true;
+            textBoxForsaljningsslut.Visible = true;
+           // dateTimePickerTid.Enabled = true;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -353,7 +370,7 @@ namespace FirstTry
 
             Forestallning fs = new Forestallning();
             //DateTime forsaljningsslut = fs.forsaljningsslut;
-            DateTime forsaljningsslut = dateTimePickerTid.Value;
+            DateTime forsaljningsslut = Convert.ToDateTime (textBoxForsaljningsslut.Text + ":00+");//dateTimePickerTid.Value;
 
             try
             {
@@ -584,6 +601,11 @@ namespace FirstTry
             //    btnAndraTaBortBeh.Enabled;
             //}
 
+        }
+
+        private void textBoxForsaljningsslut_TextChanged(object sender, EventArgs e)
+        {
+            btnOK.Enabled = true;
         }
     }
 
