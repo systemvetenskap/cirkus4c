@@ -478,7 +478,7 @@
             // btnOK
             // 
             this.btnOK.Enabled = false;
-            this.btnOK.Location = new System.Drawing.Point(1052, 514);
+            this.btnOK.Location = new System.Drawing.Point(1052, 516);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(167, 36);
             this.btnOK.TabIndex = 45;

@@ -156,7 +156,7 @@ namespace FirstTry
             if (valdforestallning != null)
             {
                 valdakt = (Akt)listBoxAkter.SelectedItem;
-                listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+                //listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
 
                 //valdakt = (Akt)listBoxAkter.SelectedItem;
                 if (valdakt != null)
@@ -351,28 +351,28 @@ namespace FirstTry
         private void btnOK_Click(object sender, EventArgs e)
         {
 
-            //Forestallning fs = new Forestallning();
+            Forestallning fs = new Forestallning();
             //DateTime forsaljningsslut = fs.forsaljningsslut;
+            DateTime forsaljningsslut = dateTimePickerTid.Value;
+
+            try
+            {
+                conn.Open();
+                NpgsqlCommand command = new NpgsqlCommand(@"INSERT INTO forestallning(forsaljningsslut) VALUES(:forsaljningsslut) WHERE id = '" + valdforestallning.id + "')", conn);
+
+                command.Parameters.Add(new NpgsqlParameter("nyForsaljningsslut", DbType.DateTime).Value);
+                command.Parameters[0].Value = forsaljningsslut;
 
 
-            //try
-            //{
-            //    conn.Open();
-            //    NpgsqlCommand command = new NpgsqlCommand(@"INSERT INTO forestallning(forsaljningsslut) VALUES(:forsaljningsslut) WHERE id = '" + valdforestallning.id + "')", conn);
-
-            //    command.Parameters.Add(new NpgsqlParameter("nyForsaljningsslut", DbType.DateTime).Value = dateTimePickerTid.Value);
-            //    command.Parameters[0].Value = forsaljningsslut;
-
-
-            //}
-            //catch (NpgsqlException ex)
-            //{
-            //       MessageBox.Show(ex.ToString());
-            //}
-            //finally
-            //{
-            //    conn.Close();
-            //}
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
 
         }
 
