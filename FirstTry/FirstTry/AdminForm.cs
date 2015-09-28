@@ -219,10 +219,8 @@ namespace FirstTry
 
         private void TaBortAkt()
         {
-
-            int groda = valdakt.id;
-
-            
+       
+                int groda = valdakt.id;
 
                 NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
                 NpgsqlTransaction trans = null;
@@ -240,27 +238,25 @@ namespace FirstTry
                     NpgsqlCommand command1 = new NpgsqlCommand(sql3, conn);
                     command1.Transaction = trans;
                     int numberOfAffectedRows1 = command1.ExecuteNonQuery();
-                    MessageBox.Show(numberOfAffectedRows1 + " 1 rader har raderats");
 
                     NpgsqlCommand command2 = new NpgsqlCommand(sql6, conn);
                     command2.Transaction = trans;
                     int numberOfAffectedRows2 = command2.ExecuteNonQuery();
-                    MessageBox.Show(numberOfAffectedRows2 + " 2 rader har raderats");
-
+ 
                     NpgsqlCommand command3 = new NpgsqlCommand(sql7, conn);
                     command3.Transaction = trans;
                     int numberOfAffectedRows3 = command3.ExecuteNonQuery();
-                    MessageBox.Show(numberOfAffectedRows3 + " 3 rader har raderats");
 
                     NpgsqlCommand command4 = new NpgsqlCommand(sql8, conn);
                     command4.Transaction = trans;
                     int numberOfAffectedRows4 = command4.ExecuteNonQuery();
-                    MessageBox.Show(numberOfAffectedRows4 + " 4 rader har raderats");
+                   
 
                     trans.Commit();
                     listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+                    MessageBox.Show("Föreställningen har raderats");
 
-                }
+            }
 
                 catch (NpgsqlException exception)
                 {
@@ -269,7 +265,8 @@ namespace FirstTry
                 }
                 finally
                 {
-                    conn.Close();
+
+                conn.Close();
                 }
             }
         
@@ -387,22 +384,25 @@ namespace FirstTry
 
         private void btnTaBortBehorighet_Click(object sender, EventArgs e)
         {
-            NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+            
+            MessageBox.Show(MessageBoxButtons.YesNo.ToString());
+            
+            // NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
 
-            try
-            {
-                conn.Open();
-                // dropdown NpgsqlCommand command = new NpgsqlCommand(@"REVOKE '" + txtObjektBehorighet + "' '" + txtObjektBehorighet + "' ON '" + txtTabell + "' FROM '" + txtAnvandare + "')", conn);
+            //try
+            //{
+            //    conn.Open();
+            //    // dropdown NpgsqlCommand command = new NpgsqlCommand(@"REVOKE '" + txtObjektBehorighet + "' '" + txtObjektBehorighet + "' ON '" + txtTabell + "' FROM '" + txtAnvandare + "')", conn);
 
-            }
-            catch (NpgsqlException ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
+            //}
+            //catch (NpgsqlException ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
