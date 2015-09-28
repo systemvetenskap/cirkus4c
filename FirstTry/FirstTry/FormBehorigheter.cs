@@ -66,10 +66,10 @@ namespace FirstTry
 
         private void listBoxBehorighet_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
-            //if (valdforestallning != null)
+            //valdbehorighet = (Behorigheter)listBoxBehorigheter.SelectedItem;
+            //if (valdbehorighet != null)
             //{
-            //    listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+            //    listBoxBehorigheter.DataSource = Databasmetoder.HamtaAkttypLista(valdbehorighet.id);
             //}
         }
     }
