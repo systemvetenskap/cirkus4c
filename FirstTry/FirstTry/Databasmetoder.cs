@@ -311,7 +311,7 @@ namespace FirstTry
             {
                 Forestallning fs = new Forestallning();
                 conn1.Open();
-                NpgsqlCommand command1 = new NpgsqlCommand(@"UPDATE akter SET aktnamn = :nyNamn, aktinfo = :nyAktinfo, starttid = :nyStarttid, sluttid = :nySluttid, vuxenpris = :nyVuxen, ungdomspris = :nyUngdom, barnpris = :nyBarn WHERE forsaljning.id = nyId", conn1);
+                NpgsqlCommand command1 = new NpgsqlCommand(@"UPDATE akter SET aktnamn = :nyNamn, aktinfo = :nyAktinfo, starttid = :nyStarttid, sluttid = :nySluttid, vuxenpris = :nyVuxen, ungdomspris = :nyUngdom, barnpris = :nyBarn WHERE id = :nyId", conn1);
 
                 command1.Parameters.Add(new NpgsqlParameter("nyNamn", DbType.String));
                 command1.Parameters[0].Value = namn;
