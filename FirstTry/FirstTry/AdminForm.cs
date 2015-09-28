@@ -607,6 +607,18 @@ namespace FirstTry
         {
             btnOK.Enabled = true;
         }
+
+        private void buttonLaggTillAktInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAkt_Click(object sender, EventArgs e)
+        {
+            buttonLaggTillAktInfo.Enabled = true;
+            listBoxAkter.SelectionMode = SelectionMode.None;
+            tomTextBoxarAkt();
+        }
     }
 
 }
