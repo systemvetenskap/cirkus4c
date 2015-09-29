@@ -285,7 +285,7 @@ namespace FirstTry
         {
             string namn = tk.biljetter[0].ToString();
             File.AppendAllText(namn + ".txt", richTextBox1.Text);
-
+            
 
 
 
@@ -297,7 +297,6 @@ namespace FirstTry
                 PrintDocument pd = new PrintDocument();
                 pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
                 pd.PrinterSettings.PrintToFile = true;
-                pd.DefaultPageSettings.PrinterSettings.ToPage = 2;
                 pd.Print();
             }
             catch (Exception ex)
