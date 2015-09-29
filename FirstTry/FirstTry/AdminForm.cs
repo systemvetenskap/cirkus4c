@@ -360,35 +360,17 @@ namespace FirstTry
 
         private void buttonOppnaForest_Click(object sender, EventArgs e)
         {
-            textBoxForsaljningsslut.Visible = true;
-           // dateTimePickerTid.Enabled = true;
+           textBoxForsaljningsslut.Visible = true;
+           dateTimePickerTid.Visible = true;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            int id = valdforestallning.id;
+            DateTime forsaljningsslut = Convert.ToDateTime(dateTimePickerTid.Text);
+            Databasmetoder.UppdateraDateTimePicker(id, forsaljningsslut);
 
-            //Forestallning fs = new Forestallning();
-            ////DateTime forsaljningsslut = fs.forsaljningsslut;
-            ////DateTime forsaljningsslut = Convert.ToDateTime (textBoxForsaljningsslut.Text + ":00+");//dateTimePickerTid.Value;
-
-            //try
-            //{
-            //    conn.Open();
-            //    NpgsqlCommand command = new NpgsqlCommand(@"INSERT INTO forestallning(forsaljningsslut) VALUES(:forsaljningsslut) WHERE id = '" + valdforestallning.id + "')", conn);
-
-            //    command.Parameters.Add(new NpgsqlParameter("nyForsaljningsslut", DbType.DateTime).Value);
-            //    command.Parameters[0].Value = forsaljningsslut;
-
-
-        //    }
-        //    catch (NpgsqlException ex)
-        //    {
-        //        MessageBox.Show(ex.ToString());
-        //    }
-        //    finally
-        //    {
-        //        conn.Close();
-        //    }
+           
 
         }
 

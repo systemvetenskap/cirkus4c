@@ -347,6 +347,38 @@ namespace FirstTry
             }
         }
 
+        public static void UppdateraDateTimePicker(int id, DateTime forsaljningsslut)
+        {
+           
+            NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+
+            try
+            { 
+                Forestallning fs = new Forestallning();
+                conn.Open();
+                NpgsqlCommand command = new NpgsqlCommand(@"UPDATE forestallning SET forsaljningsslut = :nyForsaljningsslut WHERE id = :nyId", conn);
+
+                command.Parameters.Add(new NpgsqlParameter("nyForsaljningsslut", DbType.DateTime).Value);
+                command.Parameters[0].Value = forsaljningsslut;
+                command.Parameters.Add(new NpgsqlParameter("nyId", DbType.Int32));
+                command.Parameters[9].Value = id;
+
+                int numberOfAffectedRows = command.ExecuteNonQuery();
+
+            }
+
+            catch (NpgsqlException ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+
         //ta bort akt
         public static void TaBortAkt(int valdaktid)
         {
