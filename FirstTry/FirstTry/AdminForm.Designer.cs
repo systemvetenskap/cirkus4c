@@ -74,6 +74,19 @@
             this.btnAndraTaBortBeh = new System.Windows.Forms.Button();
             this.textBoxForsaljningsslut = new System.Windows.Forms.TextBox();
             this.btnAkt = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBoxAdminForestallning
@@ -496,11 +509,143 @@
             this.btnAkt.UseVisualStyleBackColor = true;
             this.btnAkt.Click += new System.EventHandler(this.btnAkt_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(54, 516);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(89, 13);
+            this.label14.TabIndex = 50;
+            this.label14.Text = "Föreställning total";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(163, 516);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(37, 13);
+            this.label15.TabIndex = 51;
+            this.label15.Text = "Vuxna";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(210, 516);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(56, 13);
+            this.label16.TabIndex = 52;
+            this.label16.Text = "Ungdomar";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(272, 516);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(29, 13);
+            this.label17.TabIndex = 53;
+            this.label17.Text = "Barn";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(13, 566);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(38, 13);
+            this.label18.TabIndex = 54;
+            this.label18.Text = "Kronor";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(54, 529);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(331, 13);
+            this.label19.TabIndex = 55;
+            this.label19.Text = "---------------------------------------------------------------------------------" +
+    "---------------------------";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(57, 546);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(41, 13);
+            this.label20.TabIndex = 56;
+            this.label20.Text = "label20";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(163, 546);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(41, 13);
+            this.label21.TabIndex = 57;
+            this.label21.Text = "label21";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(211, 546);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(41, 13);
+            this.label22.TabIndex = 58;
+            this.label22.Text = "label22";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(272, 546);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(41, 13);
+            this.label23.TabIndex = 59;
+            this.label23.Text = "label23";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(57, 566);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(41, 13);
+            this.label25.TabIndex = 64;
+            this.label25.Text = "label25";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(13, 489);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(147, 16);
+            this.label24.TabIndex = 65;
+            this.label24.Text = "Försäljningsrapport:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(154, 491);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(89, 13);
+            this.label26.TabIndex = 66;
+            this.label26.Text = "Föreställning total";
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1031, 624);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.btnAkt);
             this.Controls.Add(this.textBoxForsaljningsslut);
             this.Controls.Add(this.btnAndraTaBortBeh);
@@ -603,5 +748,18 @@
         private System.Windows.Forms.Button btnAndraTaBortBeh;
         private System.Windows.Forms.TextBox textBoxForsaljningsslut;
         private System.Windows.Forms.Button btnAkt;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label26;
     }
 }

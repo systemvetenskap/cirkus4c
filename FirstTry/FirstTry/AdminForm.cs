@@ -117,8 +117,41 @@ namespace FirstTry
                 {
                     lblforestallningoppen.Visible = false;
                 }
+                Rapport();
             }
+            
         }
+
+
+
+        private void Rapport()
+        {
+            string sql = "SELECT coalesce (sum(case when id IS NOT NULL then 1 else 0 end), 0) as totalt, coalesce (sum(case when biljettyp = 'vuxen' then 1 else 0 end), 0) as vuxen, coalesce (sum(case when biljettyp = 'ungdom' then 1 else 0 end), 0) as ungdom, coalesce (sum(case when biljettyp = 'barn' then 1 else 0 end), 0) as barn, coalesce (sum(pris), 0) as totaltKr FROM biljett WHERE forestallning_id = " + valdforestallning.id;
+            conn.Open();
+
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+            
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    int vuxen = Convert.ToInt32(dr["vuxen"]);
+                    int ungdom = Convert.ToInt32(dr["ungdom"]);
+                    int barn = Convert.ToInt32(dr["barn"]);
+                    int totalt = Convert.ToInt32(dr["totalt"]);
+                    int totaltKr = Convert.ToInt32(dr["totaltkr"]);
+                    label20.Text = totalt.ToString() + " st";
+                    label21.Text = vuxen.ToString() + " st";
+                    label22.Text = ungdom.ToString() + " st";
+                    label23.Text = barn.ToString() + " st";
+                    label25.Text = totaltKr.ToString() + " kr";
+                    label14.Text = "Antal besökare";
+                    label26.Text = valdforestallning.namn;
+                }  
+            
+            conn.Close();
+        }
+
 
         private int laggTillForest(string namn, string generellinfo, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
         {
