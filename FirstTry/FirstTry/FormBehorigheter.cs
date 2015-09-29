@@ -31,7 +31,30 @@ namespace FirstTry
             laggTillBehorighet();
             conn.Close();
         }
+        private void taBortfranBehorighetsListan(string aktortyp_id)
+        {
+            List<Behorigheter> be = new List<Behorigheter>();
 
+
+
+            foreach (Behorigheter b in listBoxTabell.Items)
+            {
+                if (aktortyp_id != b.Id)
+                {
+                    be.Add(b);
+                }
+            }
+
+            listBoxTabell.Items.Clear();
+
+            foreach (Behorigheter b in be)
+            {
+                listBoxTabell.Items.Add(b);
+            }
+
+
+
+        }
         private int laggTillBehorighet()
         {
           
@@ -50,7 +73,8 @@ namespace FirstTry
 
                 command.Parameters.AddWithValue("@aktortyp_id", b.Id);
                 command.Parameters.AddWithValue("@inlog_id", p.Id);
-                
+
+                taBortfranBehorighetsListan(b.Id);
                 listBoxBehorighet.Items.Add(b);
                 return command.ExecuteNonQuery();
                 //  biljett_id.Add(x);
@@ -186,6 +210,7 @@ namespace FirstTry
                     beho.Typ = b["typ"].ToString();
                     beho.Id = b["id"].ToString();
                     listBoxTabell.Items.Add(beho);
+                    behorigheter.Add(beho);
                 }
             }
             catch (Exception ex)
@@ -198,7 +223,7 @@ namespace FirstTry
 
         private void listBoxAnvandare_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listBoxBehorighet.Items.Clear();
+            /*listBoxBehorighet.Items.Clear();
 
             Personal p = (Personal)listBoxAnvandare.SelectedItem;
 
@@ -214,7 +239,43 @@ namespace FirstTry
                         listBoxTabell.Items.RemoveAt(n);
                     }
                 }
+            }*/
+
+            listBoxTabell.Items.Clear();
+
+            foreach (Behorigheter b in behorigheter)
+            {
+                listBoxTabell.Items.Add(b);
             }
+
+            listBoxBehorighet.Items.Clear();
+
+
+
+            List<int> behoID = new List<int>();
+
+            Personal p = (Personal)listBoxAnvandare.SelectedItem;
+
+            foreach (Behorigheter b in p.behorigheter)
+            {
+                behoID.Add(Convert.ToInt32(b.Id));
+                listBoxBehorighet.Items.Add(b);
+
+                for (int n = listBoxTabell.Items.Count - 1; n >= 0; --n)
+                {
+                    Behorigheter removelistitem = b;
+                    if (listBoxTabell.Items[n].ToString().Contains(b.ToString()))
+                    {
+                        listBoxTabell.Items.RemoveAt(n);
+                    }
+                }
+            }
+
+
+
+
+
+
         }
 
 
