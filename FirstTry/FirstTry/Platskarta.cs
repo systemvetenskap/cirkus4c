@@ -13,22 +13,28 @@ namespace FirstTry
     partial class Platskarta : Form
     {
         Tempkop tk = new Tempkop();
+        //  List<int> biljett_id = new List<int>();
 
+        
         public Platskarta(Tempkop tk2)
         {
             InitializeComponent();
             tk = tk2;
-
         }
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         DataTable dt = new DataTable();
+        int antalk = 0;
+
+        //   int vilkenbiljett = 0;
+
+        int death = 0;
 
 
         private void generellknapp(Button knapp)
         {
 
-
+            
 
             if (radioButton_ungdom.Checked == false && radioButton_barn.Checked == false && radioButton_vuxen.Checked == false)
             {
@@ -36,16 +42,27 @@ namespace FirstTry
             }
             else if(tk.hela == true)
             {
-                foreach (Akt id in tk.akter)
+                /* foreach (Akt id in tk.akter)
+                 {
+                     bokaplats(knapp, id.id);
+                 }*/
+
+                for (int i = 0; i < tk.kunder[antalk].bilj.Count; i++)
                 {
-                    bokaplats(knapp, id.id);
+                    bokaplats(knapp, tk.kunder[antalk].bilj[i].akter.id);
                 }
-                radiokoll();
+
+                labelkoll();
+                antalk++;
+                
+               // radiokoll();
             }
             else
             {
                 bokaplats(knapp, tk.akter[tk.antal].id);
             }
+            rk2();
+            radiokoll();
         }
 
         private void bokaplats(Button knapp, int id)
@@ -53,8 +70,8 @@ namespace FirstTry
             conn.Open();
             //dubbelkolla igen först så den inte är bokad
 
-            // ReserveraBiljett();
-            if (Innehaller(id, knapp.Text) == -1)
+          //  ReserveraBiljett();
+            if (ReserveraBiljett(knapp.Text) == -1)
             {
                 this.Hide();
                 Platskarta pk2 = new Platskarta(tk);
@@ -67,49 +84,134 @@ namespace FirstTry
             knapp.BackColor = Color.Red;
             knapp.Enabled = false;
 
+            if (tk.hela == true)
+            {
+
+            }
+            else
+            {
+                labelkoll();
+            }
+            
+        }
+        private void labelkoll()
+        {
             if (radioButton_barn.Checked == true)
             {
+                // tk.typ.Add("barn");
                 int x = Convert.ToInt32(label3.Text);
                 x--;
                 label3.Text = x.ToString();
                 if (tk.hela == false)
                 {
+                    rk2();
                     radiokoll();
                 }
-                
+
             }
             if (radioButton_ungdom.Checked == true)
             {
+                // tk.typ.Add("ungdom");
                 int x = Convert.ToInt32(label2.Text);
                 x--;
                 label2.Text = x.ToString();
                 if (tk.hela == false)
                 {
+                    rk2();
                     radiokoll();
                 }
             }
             if (radioButton_vuxen.Checked == true)
             {
+                //tk.typ.Add("vuxen");
                 int x = Convert.ToInt32(label1.Text);
                 x--;
                 label1.Text = x.ToString();
                 if (tk.hela == false)
                 {
+                    rk2();
                     radiokoll();
                 }
             }
         }
 
-        private int ReserveraBiljett()
+        private void skapakundKlass()
         {
+            
+            int antal = tk.vuxna + tk.barn + tk.ungdom;
+            string namn = "k";
 
 
-            string query = "INSERT INTO biljett (totalpris) VALUES(@totalpris)";
-            Biljett biljetten = new Biljett();
-            NpgsqlCommand command = new NpgsqlCommand(query, conn);
-            command.Parameters.AddWithValue("@totalpris", 66);
 
-            return command.ExecuteNonQuery();
+            for (int i = 0; i < antal; i++)
+            {
+                for (int j = 0; j < tk.akter.Count; j++)
+                {
+                    Kund k = new Kund();
+                    
+
+                    tk.kunder.Add(k);
+                }
+                
+            }
+
+            for (int i = 0; i < tk.akter.Count; i++)
+            {
+                for (int j = 0; j < tk.biljetter.Count; j++)
+                {
+                    if (tk.biljetter[j].akter.id == tk.akter[i].id)
+                    {
+
+                    }
+                }
+            }
+
+
+
+
+        }
+        private int ReserveraBiljett(string kn)
+        {
+            conn.Close();
+            conn.Open();
+            try
+            {
+                string query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, plats_id, reserverad) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @plats_id, @reserverad) RETURNING id;";
+                Biljett biljetten = new Biljett();
+                NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+                tk.biljetter[tk.fuskIgen].plats_id = KnappId(kn);
+
+                command.Parameters.AddWithValue("@pris", tk.biljetter[tk.fuskIgen ].pris);
+                command.Parameters.AddWithValue("@forestallning_id", tk.biljetter[tk.fuskIgen].forestallning.id);
+                command.Parameters.AddWithValue("@akt_id", tk.biljetter[tk.fuskIgen].akter.id);
+                command.Parameters.AddWithValue("@biljettyp", tk.biljetter[tk.fuskIgen].biljettyp);
+                command.Parameters.AddWithValue("@plats_id", tk.biljetter[tk.fuskIgen].plats_id);
+                command.Parameters.AddWithValue("@reserverad", tk.biljetter[tk.fuskIgen].resserverad);
+
+                int x = (int)command.ExecuteScalar();
+                
+                //  biljett_id.Add(x);
+                //   tk.biljett_id.Add(x);
+                tk.biljetter[tk.fuskIgen].biljett_id = x;
+                tk.biljetter[tk.fuskIgen].kopt = true;
+
+                tk.fuskIgen++;
+                
+                return x;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Tyvärr blev platsen precis bokad" + ex.ToString());
+
+                return -1;
+                //throw;
+            }
+            conn.Close();
+
+
+            // nyssInlagdBiljett();
+
 
 
 
@@ -118,13 +220,27 @@ namespace FirstTry
             //command.Parameters.AddWithValue("@tid", session.ungdom);
 
         }
+        private void nyssInlagdBiljett()
+        {
+            string query = "SELECT CURRVAL('biljett','id')";
+
+            DataTable dt = new DataTable();
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+            da.Fill(dt);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                tk.biljett_id.Add(Convert.ToInt32(item["id"]));
+            }
+        }
 
         private int Innehaller(int aktint, string kn)
         {
+            //ReserveraBiljett(kn);
+            //tk.platsnamn.Add(kn);
+            return -1;
 
-            ReserveraBiljett();
-
-            if (tk.reservation == true)
+          /*  if (tk.reservation == true)
             {
                 string query2 = "INSERT INTO innehaller (akter_id, platser_id, biljett_id, tidsstampel, reserverad, kund_id) VALUES(@akter_id, @platser_id, (select max(id) from biljett), @tidsstampel, @reserverad, @kund_id)";
 
@@ -174,7 +290,7 @@ namespace FirstTry
                     //throw;
                 }
 
-            }
+            } */
 
         }
 
@@ -201,43 +317,45 @@ namespace FirstTry
             label1.Text = tk.vuxna.ToString();
             label2.Text = tk.ungdom.ToString();
             label3.Text = tk.barn.ToString();
-            label5.Text = tk.forestallning.namn;
-            label6.Text = tk.akter[tk.antal].namn;
-            label8.Text = tk.totalpris.ToString() + " Kr";
+            label5.Text = tk.biljetter[tk.fuskIgen].forestallning.namn;
+            label6.Text = tk.biljetter[tk.fuskIgen].akter.namn;
+            rk2();
+         //   label8.Text = tk.totalpris.ToString() + " Kr";
 
 
-            radiokoll();
+        //    radiokoll(); den var här förut, funkade, beehövs den`?
 
-            
+
 
             //Akt temp = new Akt();
 
             //temp = tk.akter[tk.antal];
-            
-            int id = akten.id;
 
-            string query = "select platser_id, tidsstampel, reserverad from innehaller where akter_id = ";
+            //  int id = tk.biljetter[tk.fuskIgen].akter.id;
+            int id = akten.id;
+            string query = "select * from biljett where akt_id = ";
             query += id.ToString();
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
             da.Fill(dt);
             int x = 0;
             x = tk.vuxna + tk.barn + tk.ungdom;
 
-            if (x >= 8)
+           /* if (x >= 8)
             {
                 MessageBox.Show("Tyvärr finns inte tillräkligt med plats, utanför");
                 this.Hide();
                 Huvudsidan hu = new Huvudsidan();
                 hu.ShowDialog();
-                Close();
-            }
+                Close(); 
+            }*/
+            //Här ska tk metoden ligga, kanske :p
 
             foreach (DataRow row in dt.Rows)
             {
 
 
 
-                if (x >= 8)
+             /*   if (x >= 8)
                 {
                     MessageBox.Show("Tyvärr finns inte tillräkligt med plats, innanför");
                     this.Hide();
@@ -246,11 +364,11 @@ namespace FirstTry
                     Close();
                 }
                 else
-                {
-                    string platsid = row["platser_id"].ToString();
+                { */
+                    string platsid = row["plats_id"].ToString();
                     bool vecka = false;
 
-                    if ((bool)row["reserverad"] == true)
+                /*    if ((bool)row["reserverad"] == true)
                     {
                         DateTime dat = (DateTime)row["tidsstampel"];
                         DateTime nu = DateTime.Now;
@@ -262,7 +380,7 @@ namespace FirstTry
                             vecka = true;
                         }
                     }
-
+                    */
                     string query2 = "select nummer from platser where id =" + platsid;
 
 
@@ -289,35 +407,92 @@ namespace FirstTry
                         gk(button_A6, fusk, vecka, platsid, id);
                         gk(button_A7, fusk, vecka, platsid, id);
                         gk(button_A8, fusk, vecka, platsid, id);
-                    }
+
+                        gk(button_B1, fusk, vecka, platsid, id);
+                        gk(button_B2, fusk, vecka, platsid, id);
+                        gk(button_B3, fusk, vecka, platsid, id);
+                        gk(button_B4, fusk, vecka, platsid, id);
+                        gk(button_B5, fusk, vecka, platsid, id);
+                        gk(button_B6, fusk, vecka, platsid, id);
+                        gk(button_B7, fusk, vecka, platsid, id);
+                        gk(button_B8, fusk, vecka, platsid, id);
+                   // }
                 }
+                dr.Close();
                 x++;
             }
         }
 
+        /*  private DateTime kop_slut()
+           {
+               DataTable dt2 = new DataTable();
+               string query = "select forsaljningslut from forestallning where id = ";
+               query += tk.forestallning.id.ToString();
+               NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+               da.Fill(dt2);
 
+               foreach (DataRow fslut in dt2.Rows)
+               {              
+                   return (DateTime)fslut["forsaljningslut"];
+               }
+
+               return DateTime.Now;
+           }
+
+           private DateTime tid_vid_kop()
+           {
+               DataTable dt2 = new DataTable();
+               string query = "SELECT biljett.tid_vid_kop, platser.nummer, platser.id FROM public.biljett, public.innehaller, public.platser WHERE innehaller.biljett_id = biljett.id AND innehaller.platser_id = platser.id;";
+               query += tk.forestallning.id.ToString();
+               NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+               da.Fill(dt2);
+
+               foreach (DataRow bslut in dt2.Rows)
+               {
+                   return (DateTime)bslut["tid_vid_kop"];
+               }
+
+               return DateTime.Now;
+           }
+           */
+        private void Platskarta_FormClosing(object sender, FormClosedEventArgs e)
+        {
+            death = 666;
+         //   Application.Exit();
+           // Environment.Exit(0);
+        }
         private void Platskarta_Load(object sender, EventArgs e)
         {
+
+
+
+            label8.Text = tk.totalpris.ToString() + " Kr";
+
+            // DateTime dtr = new DateTime();
+
+            // dtr = kop_slut();
+            conn.Open();
             if (tk.hela == true)
             {
                 foreach (Akt item in tk.akter)
                 {
                     backbone(item);
                 }
+                label6.Text = "Alla akter";
             }
             else
             {
                 //Akt temp = new Akt();
 
-               // temp = tk.akter[tk.antal];
-                backbone(tk.akter[tk.antal]);
+                // temp = tk.akter[tk.antal];
+                // här är den som funkade förut backbone(tk.akter[tk.antal]);
+                backbone(tk.biljetter[tk.fuskIgen].akter);
             }
 
-
+            conn.Close();
 
         }
-
-        private void radiokoll()
+        private void rk2()
         {
             int x = 0;
             if (Convert.ToInt32(label1.Text) <= 0)
@@ -338,44 +513,92 @@ namespace FirstTry
                 radioButton_barn.Checked = false;
                 x++;
             }
-            if (x == 3)
+        }
+        private void radiokoll()
+        {
+
+
+            /*     if (tk.biljetter[tk.fuskIgen].biljettyp == "vuxen")
+                 {
+                     radioButton_vuxen.Checked = true;
+                 }
+                 else if (tk.biljetter[tk.fuskIgen].biljettyp == "ungdom")
+                 {
+                     radioButton_ungdom.Checked = true;
+                 }
+                 else if (tk.biljetter[tk.fuskIgen].biljettyp == "barn")
+                 {
+                     radioButton_barn.Checked = true;
+                 }
+
+         */
+            bool kopt = true;
+            int antalkopta = 0;
+            int ai = tk.fuskIgen - 1;
+
+            foreach (Biljett b in tk.biljetter)
+            {
+                if (b.akter.id == tk.biljetter[ai].akter.id)
+                {
+                    if (b.kopt != true)
+                    {
+                        kopt = false;
+                    }
+                }
+            }
+
+
+
+
+            if (kopt == true)
             {
               
 
                     tk.antal++;
                     this.Hide();
-                    if (tk.antal < tk.loopar && tk.hela == false)
-                    {                        
-                        Platskarta pk2 = new Platskarta(tk);
-                        pk2.ShowDialog();
-                    }
-                    else
+
+                if (tk.antal < tk.loopar && tk.hela == false)
+                {
+                    Platskarta pk2 = new Platskarta(tk);
+                    pk2.ShowDialog();
+
+                }
+                else if (tk.fardig == true)
+                {
+                    Huvudsidan hu = new Huvudsidan();
+                    hu.ShowDialog();
+                    this.Close();
+                    //  Application.Exit();
+                }
+                else
+                {
+                    DialogResult dialogResult = MessageBox.Show("Vill du Slutföra köpet?", "Bokning", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        DialogResult dialogResult = MessageBox.Show("Vill du Slutföra köpet?", "Bokning", MessageBoxButtons.YesNo);
-                        if (dialogResult == DialogResult.Yes)
-                        {
 
 
-                            //biljettform ladda
-                            Huvudsidan hu = new Huvudsidan();
-                            hu.ShowDialog();
+                        //biljettform ladda
+                        FinalPage fp = new FinalPage(tk);
+                        fp.ShowDialog();
+
+                        this.Close();
+                       // this.Dispose();
 
 
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
 
-                        }
-                        else if (dialogResult == DialogResult.No)
-                        {
-                            //ej krav?!
-                            Huvudsidan hu = new Huvudsidan();
-                            hu.ShowDialog();
-                            //ta bort från innehåller och biljett
-                        }
+                        Huvudsidan hu = new Huvudsidan();
+                        hu.ShowDialog();
 
-                    
+                    }
+
+
                 }
 
                
-
+                
                 this.Close();
                 
             }
@@ -406,6 +629,17 @@ namespace FirstTry
                     bt.BackColor = Color.Red;
                 }
             }
+        }
+        private void avbrytkop()
+        {
+            foreach (int bid in tk.biljett_id)
+            {
+                string dquery = "delete from innehaller where biljett_id = " + bid;
+
+                NpgsqlCommand command = new NpgsqlCommand(dquery, conn);
+                command.ExecuteNonQuery();
+            }
+
         }
 
         private void button_A1_Click(object sender, EventArgs e)
@@ -450,10 +684,54 @@ namespace FirstTry
 
         private void button1_Click(object sender, EventArgs e)
         {
+            conn.Open();
+            avbrytkop();
+            conn.Close();
+
             this.Hide();
             Huvudsidan hs = new Huvudsidan();
             hs.ShowDialog();
             this.Close();
+        }
+
+        private void button_B1_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_B1);
+        }
+
+        private void button_B2_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_B2);
+        }
+
+        private void button_B3_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_B3);
+        }
+
+        private void button_B4_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_B4);
+        }
+
+        private void button_B5_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_B5);
+        }
+
+        private void button_B6_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_B6);
+        }
+
+        private void button_B7_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_B7);
+        }
+
+        private void button_B8_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_B8);
         }
     }
 }

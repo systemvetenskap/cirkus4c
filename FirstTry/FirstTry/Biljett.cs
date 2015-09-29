@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Npgsql;
+using System.Data;
 
 namespace FirstTry
 {
@@ -10,11 +12,42 @@ namespace FirstTry
     {
 
         public Forestallning forestallning { get; set; }
-        public List<Akt> akter { get; set; }
+        public Akt akter { get; set; }
         public int pris { get; set; }
-        public DateTime tid { get; set; }
         public string biljettyp { get; set; }
-        public int biljettnummer { get; set; }
-        
+        public int biljett_id { get; set; }
+        public int plats_id { get; set; }
+        public bool resserverad { get; set; }
+        public bool hela { get; set; }
+        public bool kopt { get; set; }
+        //datum
+        //tid
+
+        /// <summary>
+        /// Make life hell.
+        /// </summary>
+        public Biljett()
+        {
+            kopt = false;
+            
+        }
+        public override string ToString()
+        {
+            return biljett_id.ToString();
+        }
+        //public string platsnamn(string platsID)
+        //{
+        //    NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+
+        //    DataTable dt = new DataTable();
+        //    string query = "select nummer from platser where id = ";
+        //    query += platsID.ToString();
+        //    NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+        //    da.Fill(dt);
+        //    NpgsqlCommand cmd = new NpgsqlCommand();
+
+        //    return (string)cmd.ExecuteScalar();
+        //}    
+
     }
 }
