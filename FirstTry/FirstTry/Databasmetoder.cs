@@ -284,7 +284,7 @@ namespace FirstTry
 
             catch (NpgsqlException ex)
             {
-                
+                MessageBox.Show("Tyvärr uppstod ett fel! Vänligen kontrollera så att alla textboxar är korrekt ifyllda, se exempelkoden i textboxarna.");
                 MessageBox.Show(ex.ToString());
             }
             finally
