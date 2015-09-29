@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace FirstTry
 {
@@ -26,12 +27,13 @@ namespace FirstTry
         public int barn { get; set; }
         public DateTime datum { get; set; }
         public DateTime tid { get; set; }
+        public DateTime forsaljningsslut { get; set; }
 
 
-
+        
         public override string ToString()
         {
-            return namn;
+            return namn + "\t \t" + starttid.ToShortDateString() + " " + starttid.ToShortTimeString();
         }
 
     }

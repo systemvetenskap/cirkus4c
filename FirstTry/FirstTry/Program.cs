@@ -16,7 +16,11 @@ namespace FirstTry
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             Application.Run(new Huvudsidan());
+=======
+            Application.Run(new AdminForm());
+>>>>>>> merge2-dev
         }
     }
 }

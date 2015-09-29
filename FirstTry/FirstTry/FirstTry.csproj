@@ -59,7 +59,9 @@
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Akt.cs" />
+    <Compile Include="Behorigheter.cs" />
     <Compile Include="Biljett.cs" />
+<<<<<<< HEAD
     <Compile Include="FinalForm2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,12 +74,21 @@
     <Compile Include="FinalPage.Designer.cs">
       <DependentUpon>FinalPage.cs</DependentUpon>
     </Compile>
+=======
+    <Compile Include="Databasmetoder.cs" />
+>>>>>>> merge2-dev
     <Compile Include="Forestallning.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBehorigheter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBehorigheter.Designer.cs">
+      <DependentUpon>FormBehorigheter.cs</DependentUpon>
     </Compile>
     <Compile Include="Huvudsidan.cs">
       <SubType>Form</SubType>
@@ -98,6 +109,7 @@
     <Compile Include="Loginform.Designer.cs">
       <DependentUpon>Loginform.cs</DependentUpon>
     </Compile>
+    <Compile Include="Personal.cs" />
     <Compile Include="Platskarta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBehorigheter.resx">
+      <DependentUpon>FormBehorigheter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Huvudsidan.resx">
       <DependentUpon>Huvudsidan.cs</DependentUpon>
