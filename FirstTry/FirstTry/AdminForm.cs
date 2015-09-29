@@ -560,8 +560,7 @@ namespace FirstTry
                         {
                             MessageBox.Show("Akten har fel pris!");
                         }
-                        //if (vuxen < valdforestallning.vuxenpris && ungdom < valdforestallning.ungdomspris && barn < valdforestallning.barnpris)
-                      
+                                              
                     }
                     else
                     {
@@ -571,7 +570,7 @@ namespace FirstTry
                 else
                 {
                     MessageBox.Show("Akten måste ha en tid som passar föreställningen!");
-                    // textBoxAktStarttid.TabStop = Select.  //behöver sätta tabstoppet på starttidstextboxen.
+                   
                 }
 
             }
@@ -614,6 +613,11 @@ namespace FirstTry
         }
 
         private void checkBoxForestallning_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBoxAktInf_TextChanged(object sender, EventArgs e)
         {
 
         }
