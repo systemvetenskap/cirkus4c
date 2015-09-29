@@ -54,19 +54,13 @@ namespace FirstTry
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
-            dateTimePickerTid.Enabled = true;
+
         }
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
 
-
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
-
-            dateTimePickerTid.Format = DateTimePickerFormat.Custom;
-            dateTimePickerTid.CustomFormat = "yyyy-MM-dd  HH:mm";
-
-
 
         }
         private void listBoxAdminForestallning_SelectedIndexChanged(object sender, EventArgs e)
@@ -78,11 +72,16 @@ namespace FirstTry
                 listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
                 textBoxForestNamn.Text = valdforestallning.namn;
                 richTextBoxForestInf.Text = valdforestallning.generellinfo;
+                textBoxForestDatum.Text = valdforestallning.datum.ToShortDateString();
                 textBoxForestStarttid.Text = valdforestallning.starttid.ToShortTimeString();
                 textBoxForestSluttid.Text = valdforestallning.sluttid.ToShortTimeString();
                 textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
                 textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
                 textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
+                textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString();
+                lblSistaForsaljningsdag.Text = valdforestallning.forsaljningsslut.ToShortDateString();
+
+
 
                 if (valdforestallning.friplacering == true)
                 {
@@ -96,20 +95,20 @@ namespace FirstTry
                 if (valdforestallning.open == true)
                 {
                     lblforestallningoppen.Visible = true;
-                    
 
-                    string sqlforsaljningslut = (@"SELECT forsaljningslut FROM forestallning WHERE id ='" + valdforestallning.id + "'");
 
-                    conn.Open();
-                    NpgsqlCommand command = new NpgsqlCommand(sqlforsaljningslut, conn);
+                    //string sqlforsaljningslut = (@"SELECT forsaljningslut FROM forestallning WHERE id ='" + valdforestallning.id + "'");
 
-                    NpgsqlDataReader dr = command.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        valdforestallning.forsaljningsslut = Convert.ToDateTime(dr["forsaljningslut"]);
-                    }
+                    //conn.Open();
+                    //NpgsqlCommand command = new NpgsqlCommand(sqlforsaljningslut, conn);
+
+                    //NpgsqlDataReader dr = command.ExecuteReader();
+                    //while (dr.Read())
+                    //{
+                    //    valdforestallning.forsaljningsslut = Convert.ToDateTime(dr["forsaljningslut"]);
+                    //}
                     conn.Close();
-                    textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString() + " " + valdforestallning.forsaljningsslut.ToShortTimeString();
+                    //textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString() + " " + valdforestallning.forsaljningsslut.ToShortTimeString();
 
 
 
@@ -124,7 +123,7 @@ namespace FirstTry
         private int laggTillForest(string namn, string generellinfo, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
         {
 
-            string query = "INSERT INTO forestallning (namn, generell_info, starttid, sluttid, open, vuxenpris, ungdomspris, barnpris, fri_placering) VALUES(@namn, @generell_info, @starttid, @sluttid, @open, @vuxenpris, @ungdomspris, @barnpris, @fri_placering)";
+            string query = "INSERT INTO forestallning (namn, generell_info, datum, starttid, sluttid, open, vuxenpris, ungdomspris, barnpris, fri_placering) VALUES(@namn, @generell_info, @starttid, @sluttid, @open, @vuxenpris, @ungdomspris, @barnpris, @fri_placering)";
 
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
@@ -147,6 +146,7 @@ namespace FirstTry
 
             string namn = textBoxForestNamn.Text;
             string generellinfo = richTextBoxForestInf.Text;
+            DateTime datum = Convert.ToDateTime(textBoxForestDatum.Text);
             DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
             DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
             bool open = false;
@@ -154,14 +154,19 @@ namespace FirstTry
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
             bool friplacering = false;
-            DateTime forsaljningsslut = Convert.ToDateTime(lblSistaForsaljningsdag.Text);
+            DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
             if (checkBoxfriPlacering.Checked == true)
             {
                 friplacering = true;
             }
 
-            Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
+            if (checkBoxForestallning.Checked == true)
+            {
+                open = true;
+            }
+
+            Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
 
             conn.Close();
@@ -174,7 +179,7 @@ namespace FirstTry
             if (valdforestallning != null)
             {
                 valdakt = (Akt)listBoxAkter.SelectedItem;
-                
+
 
                 if (valdakt != null)
                 {
@@ -246,13 +251,13 @@ namespace FirstTry
             {
                 TaBortAkt();
             }
-        
+
             else if (dialogResult == DialogResult.No)
             {
                 Refresh();
 
-    }
-}
+            }
+        }
 
         private void TaBortAkt()
         {
@@ -326,16 +331,28 @@ namespace FirstTry
             string namn = textBoxForestNamn.Text;
             string generellinfo = richTextBoxForestInf.Text;
             bool open = false;
+            DateTime datum = Convert.ToDateTime(textBoxForestDatum.Text);
             DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
             DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
             int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
             bool friplacering = false;
-            DateTime forsaljningsslut = Convert.ToDateTime(lblSistaForsaljningsdag.Text); 
-            
+            DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
-            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
+
+            if (checkBoxForestallning.Checked == true)
+            {
+                open = true;
+            }
+
+
+            if (valdforestallning.open == true)
+            {
+                lblforestallningoppen.Visible = true;
+            }
+
+                Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
         }
 
@@ -349,7 +366,7 @@ namespace FirstTry
         private void dateTimePickerTid_ValueChanged(object sender, EventArgs e)
         {
 
-            btnOK.Enabled = true;
+
         }
 
         private void dateTimePicker1_ValueChanged_1(object sender, EventArgs e)
@@ -364,24 +381,14 @@ namespace FirstTry
 
         private void buttonOppnaForest_Click(object sender, EventArgs e)
         {
-           textBoxForsaljningsslut.Visible = true;
-           dateTimePickerTid.Visible = true;
+
         }
 
         private void btnOK_Click(object sender, EventArgs e)
-        {
-            int id = valdforestallning.id;
-            DateTime forsaljningsslut = Convert.ToDateTime(dateTimePickerTid.Text);
-            Databasmetoder.UppdateraDateTimePicker(id, forsaljningsslut);
-
-           
-
-        }
-
+        { }
+                   
         private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
+        { }
 
         private void btnbehorigheter_Click(object sender, EventArgs e)
         {
@@ -409,22 +416,7 @@ namespace FirstTry
 
             MessageBox.Show(MessageBoxButtons.YesNo.ToString());
 
-            // NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-
-            //try
-            //{
-            //    conn.Open();
-            //    // dropdown NpgsqlCommand command = new NpgsqlCommand(@"REVOKE '" + txtObjektBehorighet + "' '" + txtObjektBehorighet + "' ON '" + txtTabell + "' FROM '" + txtAnvandare + "')", conn);
-
-            //}
-            //catch (NpgsqlException ex)
-            //{
-            //    MessageBox.Show(ex.ToString());
-            //}
-            //finally
-            //{
-            //    conn.Close();
-            //}
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -508,61 +500,7 @@ namespace FirstTry
 
 
 
-        ////    //int padda = valdforestallning.id;
-        ////    //NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-
-
-        ////    if (valdakt != null)
-        ////    {
-        ////        TaBortAkt();
-        ////    }
-
-        ////    string sql1 = @"DELETE FROM tempkop WHERE forestallning = '" + padda + "' "; //från akt ?? foreställningsid = :valdforestallning.id hade du skrivit        
-        ////    string sql2 = @"DELETE FROM biljett WHERE forestallning_id = '" + padda + "'";
-        ////    string sql3 = "DELETE FROM akter WHERE forestallningsid = '" + padda + "'";
-        ////    string sql4 = @"DELETE FROM forestallning WHERE id =  '" + padda + "'";
-
-        ////    try
-        ////    {
-        ////        conn.Open();
-        ////        trans = conn.BeginTransaction();
-
-        ////        NpgsqlCommand command1 = new NpgsqlCommand(sql1, conn);
-        ////        command1.Transaction = trans;
-        ////        int numberOfAffectedRows1 = command1.ExecuteNonQuery();
-        ////        MessageBox.Show(numberOfAffectedRows1 + " 1 rader har raderats");
-
-        ////        NpgsqlCommand command2 = new NpgsqlCommand(sql2, conn);
-        ////        command2.Transaction = trans;
-        ////        int numberOfAffectedRows2 = command2.ExecuteNonQuery();
-        ////        MessageBox.Show(numberOfAffectedRows2 + " 2 rader har raderats");
-
-        ////        NpgsqlCommand command3 = new NpgsqlCommand(sql3, conn);
-        ////        command3.Transaction = trans;
-        ////        int numberOfAffectedRows3 = command3.ExecuteNonQuery();
-        ////        MessageBox.Show(numberOfAffectedRows3 + " 3 rader har raderats");
-
-        ////        NpgsqlCommand command4 = new NpgsqlCommand(sql4, conn);
-        ////        command4.Transaction = trans;
-        ////        int numberOfAffectedRows4 = command4.ExecuteNonQuery();
-        ////        MessageBox.Show(numberOfAffectedRows3 + " 4 rader har raderats");
-
-        ////        trans.Commit();
-        ////        listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
-
-        ////    }
-
-        ////    catch (NpgsqlException exception)
-        ////    {
-        ////        trans.Rollback();
-        ////        MessageBox.Show(exception.ToString());
-        ////    }
-        ////    finally
-        ////    {
-
-        ////        conn.Close();
-        ////    }
-        ////}
+        
 
         private void label14_Click_1(object sender, EventArgs e)
         {
@@ -589,10 +527,7 @@ namespace FirstTry
         }
 
         private void textBoxForsaljningsslut_TextChanged(object sender, EventArgs e)
-        {
-            btnOK.Enabled = true;
-        }
-
+        {}
         private void buttonLaggTillAktInfo_Click(object sender, EventArgs e)
         {
           
@@ -629,6 +564,11 @@ namespace FirstTry
             tomTextBoxarAkt();
             tomTextBoxarForestallning();
             Databasmetoder.HamtaForestallningLista();
+        }
+
+        private void textBoxForestStarttid_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
