@@ -593,15 +593,16 @@ namespace FirstTry
         {
           
             string namn = textBoxAktnamn.Text;
-            //string aktinfo = richTextBoxAktInf.Text;
-            //DateTime starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
-            //DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
-            //int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
-            //int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
-            //int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
+            string aktinfo = richTextBoxAktInf.Text;
+            DateTime starttid = (Convert.ToDateTime(textBoxAktStarttid.Text));
+            DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
+            int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
+            int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
+            int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
 
-            Databasmetoder.LaggTillNyAkt(namn);  //, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
+            Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);  //, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
             listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+            
 
             conn.Close();
         }
