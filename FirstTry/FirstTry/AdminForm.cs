@@ -151,6 +151,30 @@ namespace FirstTry
             
             conn.Close();
 
+            string sql1 = "SELECT coalesce (sum(case when id IS NOT NULL then 1 else 0 end), 0) as totalt, coalesce (sum(case when biljettyp = 'vuxen' then 1 else 0 end), 0) as vuxen, coalesce (sum(case when biljettyp = 'ungdom' then 1 else 0 end), 0) as ungdom, coalesce (sum(case when biljettyp = 'barn' then 1 else 0 end), 0) as barn, coalesce (sum(pris), 0) as totaltKr FROM biljett;";
+            conn.Open();
+
+            NpgsqlCommand cmd1 = new NpgsqlCommand(sql1, conn);
+
+            NpgsqlDataReader dr1 = cmd1.ExecuteReader();
+
+            while (dr1.Read())
+            {
+                int vuxen = Convert.ToInt32(dr1["vuxen"]);
+                int ungdom = Convert.ToInt32(dr1["ungdom"]);
+                int barn = Convert.ToInt32(dr1["barn"]);
+                int totalt = Convert.ToInt32(dr1["totalt"]);
+                int totaltKr = Convert.ToInt32(dr1["totaltkr"]);
+                label39.Text = totalt.ToString() + " st";
+                label38.Text = vuxen.ToString() + " st";
+                label37.Text = ungdom.ToString() + " st";
+                label36.Text = barn.ToString() + " st";
+                label35.Text = totaltKr.ToString() + " kr";
+                label14.Text = "Antal besökare";
+            }
+
+            conn.Close();
+
             //string sql1 = "SELECT sum(pris) FROM biljett WHERE biljettyp = 'vuxen' UNION SELECT sum(pris) FROM biljett WHERE biljettyp = 'ungdom' UNION SELECT sum(pris) FROM biljett WHERE biljettyp = 'barn'";
             //conn.Open();
             //NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql1, conn);
@@ -163,15 +187,15 @@ namespace FirstTry
             //foreach (DataRow item in dt.Rows)
             //{
             //    int vuxen1 = Convert.ToInt32(dr1[0]);
-                
+
             //    int barn1 = Convert.ToInt32(dr1[1]);
             //    int ungdom1 = Convert.ToInt32(dr1[2]);
             //    label27.Text = vuxen1.ToString() + " kr";
             //    label28.Text = ungdom1.ToString() + " kr";
             //    label29.Text = barn1.ToString() + " kr";
             //}
-            
-                
+
+
 
 
             //conn.Close();
@@ -653,6 +677,10 @@ namespace FirstTry
 
         private void btnAndraTaBortBeh_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            FormBehorigheter fbh = new FormBehorigheter();
+            fbh.ShowDialog();
+            this.Close();
             //if (aktorlistaId != 6)
             //{
             //    btnAndraTaBortBeh.Enabled;
