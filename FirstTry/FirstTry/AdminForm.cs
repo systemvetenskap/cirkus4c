@@ -239,7 +239,7 @@ namespace FirstTry
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Vill du radera alla akter?", "Akter", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Vill du radera denna akt?", "Akter", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 TaBortAkt();
@@ -326,7 +326,7 @@ namespace FirstTry
             bool open = false;
             DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
             DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
-            int vuxenpris = Convert.ToInt32(textBoxUngdomspris.Text);
+            int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
             bool friplacering = false;
@@ -593,14 +593,14 @@ namespace FirstTry
         {
           
             string namn = textBoxAktnamn.Text;
-            string aktinfo = richTextBoxAktInf.Text;
-            DateTime starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
-            DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
-            int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
-            int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
-            int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
+            //string aktinfo = richTextBoxAktInf.Text;
+            //DateTime starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
+            //DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
+            //int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
+            //int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
+            //int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
 
-            Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
+            Databasmetoder.LaggTillNyAkt(namn);  //, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
             listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
 
             conn.Close();
