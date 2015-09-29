@@ -79,10 +79,10 @@ namespace FirstTry
             List<Akt> aktlista = new List<Akt>();
             NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
             conn.Open();
+            string sql1 = @"SELECT * FROM akter , forestallning WHERE akter.forestallningsid = forestallning.id
+                                                 and akter.forestallningsid = :nyValdforestallningsid";
 
-            NpgsqlCommand command = new NpgsqlCommand(@"Select * from akter , forestallning
-                                                  Where akter.forestallningsid = forestallning.id
-                                                 and akter.forestallningsid = :nyValdforestallningsid", conn);
+            NpgsqlCommand command = new NpgsqlCommand(sql1, conn);
 
             
              command.Parameters.Add(new NpgsqlParameter("nyValdforestallningsid", DbType.Int32));
@@ -110,6 +110,37 @@ namespace FirstTry
             conn.Close();
             return aktlista;
         }
+
+        /*  List<Forestallning> forestallningslista = new List<Forestallning>();
+            NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+            conn.Open();
+            NpgsqlCommand command = new NpgsqlCommand("Select * from forestallning ORDER BY namn", conn);
+            NpgsqlDataReader dr = command.ExecuteReader();
+
+            while (dr.Read())
+            {
+               
+                Forestallning forestallning = new Forestallning();
+
+
+                   forestallning.id = Convert.ToInt32(dr["id"]);
+                   forestallning.namn = (string)dr["namn"];
+                   forestallning.generellinfo = (string)dr["generell_info"];
+                   forestallning.open = (bool)dr["open"];
+                   forestallning.starttid = Convert.ToDateTime(dr["starttid"]);
+                   forestallning.sluttid = Convert.ToDateTime(dr["sluttid"]);
+                   forestallning.vuxenpris = Convert.ToInt32(dr["vuxenpris"]);
+                   forestallning.ungdomspris = Convert.ToInt32(dr["ungdomspris"]);
+                   forestallning.barnpris = Convert.ToInt32(dr["barnpris"]);
+                   forestallning.friplacering = (bool)dr["fri_placering"];
+
+                   forestallningslista.Add(forestallning);
+                
+            }
+            conn.Close();
+            return forestallningslista;   */
+
+
 
         public static void LaggTillNyForestallning(string namn, string generellinfo, bool open ,DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris, bool friplacering, DateTime forsaljningsslut)
         {
@@ -192,7 +223,7 @@ namespace FirstTry
             }       
        }
 
-        public static void LaggTillNyAkt(string namn, string aktinfo, DateTime starttid, DateTime sluttid, int vuxen, int ungdom, int barn)  ///*, string aktinfo, DateTime starttid, DateTime sluttid, int vuxen, int ungdom, int barn*/
+        public static void LaggTillNyAkt(string namn, string aktinfo, DateTime starttid, DateTime sluttid, int vuxen, int ungdom, int barn, int forestallningsid)  ///*, string aktinfo, DateTime starttid, DateTime sluttid, int vuxen, int ungdom, int barn*/
         {
             NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
             //NpgsqlTransaction trans = null;
@@ -203,7 +234,7 @@ namespace FirstTry
                 conn1.Open();
                // trans = conn1.BeginTransaction();
 
-                NpgsqlCommand command1 = new NpgsqlCommand(@"INSERT INTO akter(aktnamn, aktinfo, starttid, sluttid, vuxenpris, ungdomspris, barnpris) VALUES (:nyAktNamn, :nyAktInfo, :nyStarttid, :nySluttid, :nyVuxenpris, :nyUngdomspris, :nyBarnpris)", conn1);
+                NpgsqlCommand command1 = new NpgsqlCommand(@"INSERT INTO akter(aktnamn, aktinfo, starttid, sluttid, vuxenpris, ungdomspris, barnpris, forestallningsid) VALUES (:nyAktNamn, :nyAktInfo, :nyStarttid, :nySluttid, :nyVuxenpris, :nyUngdomspris, :nyBarnpris, :nyForestallningsid)", conn1);
 
                 /*, aktinfo, starttid, sluttid, vuxen, ungdom, barnpris*/  /*, :nyAktInfo, :nyStarttid, :nySluttid, :nyVuxenpris, :nyUngdomspris, :nyBarnpris*/
 
@@ -222,6 +253,8 @@ namespace FirstTry
                 command1.Parameters[5].Value = ungdom;
                 command1.Parameters.Add(new NpgsqlParameter("nyBarnpris", DbType.Int32));
                 command1.Parameters[6].Value = barn;
+                command1.Parameters.Add(new NpgsqlParameter("nyForestallningsid", DbType.Int32));
+                command1.Parameters[7].Value = forestallningsid;
                 //command1.Transaction = trans;
                 int numberOfAffectedRows = command1.ExecuteNonQuery();
 

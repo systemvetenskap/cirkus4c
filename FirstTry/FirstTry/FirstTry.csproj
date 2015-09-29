@@ -61,6 +61,7 @@
     <Compile Include="Akt.cs" />
     <Compile Include="Behorigheter.cs" />
     <Compile Include="Biljett.cs" />
+    <Compile Include="Databasmetoder.cs" />
     <Compile Include="FinalForm2.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -603,8 +603,9 @@ namespace FirstTry
             int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
             int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
             int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
+            int forestallningsid = Convert.ToInt32(valdforestallning.id);
 
-            Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);  //, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
+            Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn, forestallningsid);  //, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
             listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
             
 
@@ -621,6 +622,13 @@ namespace FirstTry
         private void label13_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            tomTextBoxarAkt();
+            tomTextBoxarForestallning();
+            Databasmetoder.HamtaForestallningLista();
         }
     }
 
