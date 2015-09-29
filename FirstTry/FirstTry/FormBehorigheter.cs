@@ -15,6 +15,8 @@ namespace FirstTry
     {
         private Personal valdpersonal;
         private Behorigheter valdbehorighet;
+        private List<Personal> personallista = new List<Personal>();
+        
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
 
         public FormBehorigheter()
@@ -71,6 +73,90 @@ namespace FirstTry
             //{
             //    listBoxBehorigheter.DataSource = Databasmetoder.HamtaAkttypLista(valdbehorighet.id);
             //}
+        }
+
+        private void FormBehorigheter_Load(object sender, EventArgs e)
+        {
+            hamtaPersonal();
+            hamtaBehorighet();
+        }
+
+        private void hamtaPersonal()
+        {
+
+            DataTable dt = new DataTable();
+            string query = "select * from inlog";
+
+            try
+            {
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+                da.Fill(dt);
+
+                foreach (DataRow anvandare in dt.Rows)
+                {
+                    Personal tempp = new Personal();
+                    tempp.Id = Convert.ToInt32(anvandare["id"]);
+                    //  tempp. anvandarnamn = anvandare["anvandarnamn"].ToString();
+                    // string losenord = anvandare["losenord"].ToString();
+                    tempp.Fornamn = anvandare["fornamn"].ToString();
+                    tempp.Efternamn = anvandare["efternamn"].ToString();
+                    tempp.Personnr = anvandare["personnr"].ToString();
+
+                    DataTable dt2 = new DataTable();
+                    string query2 = "SELECT aktortyp.typ, aktortyplist.inlog_id, aktortyplist.aktortyp_id FROM public.aktortyp, public.aktortyplist, public.inlog WHERE aktortyp.id = aktortyplist.aktortyp_id AND aktortyplist.inlog_id = inlog.id AND inlog.id = ";
+                    //   Personal p = (Personal)listBoxAnvandare.SelectedItem;
+                    //  query2 += p.Id.ToString();
+                    query2 += tempp.Id.ToString();
+
+                    try
+                    {
+                        NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
+                        da2.Fill(dt2);
+
+                        foreach (DataRow b in dt2.Rows)
+                        {
+                            Behorigheter beho = new Behorigheter();
+                            beho.Typ = b["typ"].ToString();
+                            beho.Id = b["aktortyp_id"].ToString();
+                            tempp.behorigheter.Add(beho);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        throw;
+                    }
+
+
+                    listBoxAnvandare.Items.Add(tempp);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+        }
+
+        private void hamtaBehorighet()
+        {
+           
+        }
+
+
+        private void listBoxAnvandare_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBoxBehorighet.Items.Clear();
+
+            Personal p = (Personal)listBoxAnvandare.SelectedItem;
+
+            foreach (Behorigheter b in p.behorigheter)
+            {
+                listBoxBehorighet.Items.Add(b.Typ);
+
+            }
+
         }
     }
 }

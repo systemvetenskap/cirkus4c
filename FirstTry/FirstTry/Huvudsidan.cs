@@ -69,7 +69,7 @@ namespace FirstTry
                     if ((bool)row["open"] == true )
                     {
                         DateTime slutdatum = (DateTime)row["forsaljningslut"];
-                        if (slutdatum > DateTime.Now)
+                       // if (slutdatum > DateTime.Now)
                     {
                         string namn = row["namn"].ToString();
                         string id = row["id"].ToString();

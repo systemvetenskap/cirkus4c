@@ -41,36 +41,38 @@
             // listBoxBehorighet
             // 
             this.listBoxBehorighet.FormattingEnabled = true;
-            this.listBoxBehorighet.ItemHeight = 16;
-            this.listBoxBehorighet.Location = new System.Drawing.Point(79, 66);
+            this.listBoxBehorighet.Location = new System.Drawing.Point(65, 58);
+            this.listBoxBehorighet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBoxBehorighet.Name = "listBoxBehorighet";
-            this.listBoxBehorighet.Size = new System.Drawing.Size(150, 180);
+            this.listBoxBehorighet.Size = new System.Drawing.Size(114, 147);
             this.listBoxBehorighet.TabIndex = 0;
             this.listBoxBehorighet.SelectedIndexChanged += new System.EventHandler(this.listBoxBehorighet_SelectedIndexChanged);
             // 
             // listBoxTabell
             // 
             this.listBoxTabell.FormattingEnabled = true;
-            this.listBoxTabell.ItemHeight = 16;
-            this.listBoxTabell.Location = new System.Drawing.Point(329, 66);
+            this.listBoxTabell.Location = new System.Drawing.Point(253, 58);
+            this.listBoxTabell.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBoxTabell.Name = "listBoxTabell";
-            this.listBoxTabell.Size = new System.Drawing.Size(150, 180);
+            this.listBoxTabell.Size = new System.Drawing.Size(114, 147);
             this.listBoxTabell.TabIndex = 1;
             // 
             // listBoxAnvandare
             // 
             this.listBoxAnvandare.FormattingEnabled = true;
-            this.listBoxAnvandare.ItemHeight = 16;
-            this.listBoxAnvandare.Location = new System.Drawing.Point(593, 66);
+            this.listBoxAnvandare.Location = new System.Drawing.Point(426, 58);
+            this.listBoxAnvandare.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBoxAnvandare.Name = "listBoxAnvandare";
-            this.listBoxAnvandare.Size = new System.Drawing.Size(150, 180);
+            this.listBoxAnvandare.Size = new System.Drawing.Size(227, 147);
             this.listBoxAnvandare.TabIndex = 2;
+            this.listBoxAnvandare.SelectedIndexChanged += new System.EventHandler(this.listBoxAnvandare_SelectedIndexChanged);
             // 
             // btnLaggTillBeh
             // 
-            this.btnLaggTillBeh.Location = new System.Drawing.Point(593, 275);
+            this.btnLaggTillBeh.Location = new System.Drawing.Point(65, 231);
+            this.btnLaggTillBeh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLaggTillBeh.Name = "btnLaggTillBeh";
-            this.btnLaggTillBeh.Size = new System.Drawing.Size(150, 29);
+            this.btnLaggTillBeh.Size = new System.Drawing.Size(114, 24);
             this.btnLaggTillBeh.TabIndex = 3;
             this.btnLaggTillBeh.Text = "Lägg till behörigheter";
             this.btnLaggTillBeh.UseVisualStyleBackColor = true;
@@ -78,9 +80,10 @@
             // 
             // btnTaBortBeh
             // 
-            this.btnTaBortBeh.Location = new System.Drawing.Point(593, 319);
+            this.btnTaBortBeh.Location = new System.Drawing.Point(253, 231);
+            this.btnTaBortBeh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTaBortBeh.Name = "btnTaBortBeh";
-            this.btnTaBortBeh.Size = new System.Drawing.Size(150, 31);
+            this.btnTaBortBeh.Size = new System.Drawing.Size(114, 25);
             this.btnTaBortBeh.TabIndex = 4;
             this.btnTaBortBeh.Text = "Ta bort behörigheter";
             this.btnTaBortBeh.UseVisualStyleBackColor = true;
@@ -89,35 +92,38 @@
             // lblBehorighet
             // 
             this.lblBehorighet.AutoSize = true;
-            this.lblBehorighet.Location = new System.Drawing.Point(76, 34);
+            this.lblBehorighet.Location = new System.Drawing.Point(63, 32);
+            this.lblBehorighet.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBehorighet.Name = "lblBehorighet";
-            this.lblBehorighet.Size = new System.Drawing.Size(77, 17);
+            this.lblBehorighet.Size = new System.Drawing.Size(58, 13);
             this.lblBehorighet.TabIndex = 52;
             this.lblBehorighet.Text = "Behörighet";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(329, 34);
+            this.label1.Location = new System.Drawing.Point(253, 32);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 17);
+            this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 53;
             this.label1.Text = "Tabell";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(593, 34);
+            this.label2.Location = new System.Drawing.Point(514, 32);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 17);
+            this.label2.Size = new System.Drawing.Size(59, 13);
             this.label2.TabIndex = 54;
             this.label2.Text = "Användare";
             // 
             // FormBehorigheter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(802, 393);
+            this.ClientSize = new System.Drawing.Size(756, 319);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblBehorighet);
@@ -126,8 +132,10 @@
             this.Controls.Add(this.listBoxAnvandare);
             this.Controls.Add(this.listBoxTabell);
             this.Controls.Add(this.listBoxBehorighet);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormBehorigheter";
             this.Text = "FormBehorigheter";
+            this.Load += new System.EventHandler(this.FormBehorigheter_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

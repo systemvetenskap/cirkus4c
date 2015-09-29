@@ -11,6 +11,7 @@ namespace FirstTry
 
        // public List<Aktorstyp> aktorstyper { get; set; }
         public string Typ { get; set; }
+        public string Id { get; set; }
 
 
         public override string ToString()
