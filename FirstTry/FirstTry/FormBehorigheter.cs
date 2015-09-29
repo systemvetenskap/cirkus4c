@@ -50,7 +50,9 @@ namespace FirstTry
 
                 command.Parameters.AddWithValue("@aktortyp_id", b.Id);
                 command.Parameters.AddWithValue("@inlog_id", p.Id);
-
+                
+                listBoxBehorighet.Items.Add(b);
+                listBoxTabell.Items.Remove(b);
                 return command.ExecuteNonQuery();
                 //  biljett_id.Add(x);
                 //   tk.biljett_id.Add(x);
@@ -62,7 +64,7 @@ namespace FirstTry
 
                 //throw;
             }
-
+            
             return -1;
             
         }
@@ -168,8 +170,8 @@ namespace FirstTry
             string query2 = "select * from aktortyp";
             //   Personal p = (Personal)listBoxAnvandare.SelectedItem;
             //  query2 += p.Id.ToString();
-          
 
+        
             try
             {
                 NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
@@ -200,7 +202,19 @@ namespace FirstTry
             foreach (Behorigheter b in p.behorigheter)
             {
                 listBoxBehorighet.Items.Add(b);
+
+                for (int n = listBoxTabell.Items.Count - 1; n >= 0; --n)
+                {
+                    Behorigheter removelistitem = b;
+                    if (listBoxTabell.Items[n].ToString().Contains(b.ToString()))
+                    {
+                        listBoxTabell.Items.RemoveAt(n);
+                    }
+                }
             }
+
+
+
 
         }
     }
