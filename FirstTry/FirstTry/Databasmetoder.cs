@@ -12,7 +12,7 @@ namespace FirstTry
 
     class Databasmetoder
     {
-        public int x { get; set; }
+       // public int x { get; set; }
 
 
 
@@ -189,7 +189,7 @@ namespace FirstTry
             }       
        }
 
-        public static void LaggTillNyAkt(string namn, string aktinfo, DateTime starttid, DateTime sluttid, int vuxen, int ungdom, int barn)
+        public static void LaggTillNyAkt(string namn)  ///*, string aktinfo, DateTime starttid, DateTime sluttid, int vuxen, int ungdom, int barn*/
         {
             NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
             //NpgsqlTransaction trans = null;
@@ -200,23 +200,26 @@ namespace FirstTry
                 conn1.Open();
                // trans = conn1.BeginTransaction();
 
-                NpgsqlCommand command1 = new NpgsqlCommand(@"INSERT INTO forestallning(aktnamn, aktinfo, starttid, sluttid, vuxen, ungdom, barn) VALUES (:nyAktNamn, :nyAktInfo, :nyStarttid, :nySluttid, :nyVuxenpris, :nyUngdomspris, :nyBarnpris)", conn1);
+                NpgsqlCommand command1 = new NpgsqlCommand(@"INSERT INTO akter(aktnamn) VALUES (:nyAktNamn)", conn1);
+
+                /*, aktinfo, starttid, sluttid, vuxen, ungdom, barn*/  /*, :nyAktInfo, :nyStarttid, :nySluttid, :nyVuxenpris, :nyUngdomspris, :nyBarnpris*/
+
 
                 command1.Parameters.Add(new NpgsqlParameter("nyAktNamn", DbType.String));
                 command1.Parameters[0].Value = namn;
-                command1.Parameters.Add(new NpgsqlParameter("nyAktinfo", DbType.String));
-                command1.Parameters[1].Value = aktinfo;
-                command1.Parameters.Add(new NpgsqlParameter("nyStarttid", DbType.DateTime));
-                command1.Parameters[2].Value = starttid;
-                command1.Parameters.Add(new NpgsqlParameter("nySluttid", DbType.DateTime));
-                command1.Parameters[3].Value = sluttid;
-                command1.Parameters.Add(new NpgsqlParameter("nyVuxen", DbType.Int32));
-                command1.Parameters[4].Value = vuxen;
-                command1.Parameters.Add(new NpgsqlParameter("nyUngdom", DbType.Int32));
-                command1.Parameters[5].Value = ungdom;
-                command1.Parameters.Add(new NpgsqlParameter("nyBarn", DbType.Int32));
-                command1.Parameters[6].Value = barn;
-               // command1.Transaction = trans;
+                //command1.Parameters.Add(new NpgsqlParameter("nyAktinfo", DbType.String));
+                //command1.Parameters[1].Value = aktinfo;
+                //command1.Parameters.Add(new NpgsqlParameter("nyStarttid", DbType.DateTime));
+                //command1.Parameters[2].Value = starttid;
+                //command1.Parameters.Add(new NpgsqlParameter("nySluttid", DbType.DateTime));
+                //command1.Parameters[3].Value = sluttid;
+                //command1.Parameters.Add(new NpgsqlParameter("nyVuxen", DbType.Int32));
+                //command1.Parameters[4].Value = vuxen;
+                //command1.Parameters.Add(new NpgsqlParameter("nyUngdom", DbType.Int32));
+                //command1.Parameters[5].Value = ungdom;
+                //command1.Parameters.Add(new NpgsqlParameter("nyBarn", DbType.Int32));
+                //command1.Parameters[6].Value = barn;
+                //command1.Transaction = trans;
                 int numberOfAffectedRows = command1.ExecuteNonQuery();
 
 
