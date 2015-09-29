@@ -101,6 +101,7 @@ namespace FirstTry
 
         private void FormBehorigheter_Load(object sender, EventArgs e)
         {
+            textBox5.UseSystemPasswordChar = true;
             hamtaPersonal();
             hamtaBehorighet();
         }
@@ -217,45 +218,6 @@ namespace FirstTry
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     private int laggTillAnvandare()
         {
 
@@ -301,65 +263,24 @@ namespace FirstTry
 
 
         }
-        private void button1_Click_1(object sender, EventArgs e)
+       /* private void button1_Click_1(object sender, EventArgs e)
+        {
+            conn.Open();
+            laggTillAnvandare();
+            conn.Close();
+        }*/
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
         {
             conn.Open();
             laggTillAnvandare();
             conn.Close();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
     }
 
