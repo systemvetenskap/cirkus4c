@@ -249,7 +249,7 @@ namespace FirstTry
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Tyvärr blev platsen precis bokad" + ex.ToString());
+                MessageBox.Show("Hopsan  " + ex.ToString());
 
                 return -1;
                 //throw;
@@ -277,9 +277,23 @@ namespace FirstTry
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            conn.Open();
-            laggTillAnvandare();
-            conn.Close();
+            DialogResult dialogResult = MessageBox.Show("Vill du verkligen skapa en ny användare?", "Ny användare", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                conn.Open();
+                laggTillAnvandare();
+                conn.Close();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
     }
