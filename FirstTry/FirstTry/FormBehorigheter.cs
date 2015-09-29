@@ -52,7 +52,6 @@ namespace FirstTry
                 command.Parameters.AddWithValue("@inlog_id", p.Id);
                 
                 listBoxBehorighet.Items.Add(b);
-                listBoxTabell.Items.Remove(b);
                 return command.ExecuteNonQuery();
                 //  biljett_id.Add(x);
                 //   tk.biljett_id.Add(x);
