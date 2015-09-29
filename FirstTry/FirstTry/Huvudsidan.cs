@@ -334,30 +334,44 @@ namespace FirstTry
         }
         private bool antal_ar_siffror()
         {
-            int u = 0;
-            int v = 0;
-            int b = 0;
+            int u;
+            int v;
+            int b;
             
 
-            if (int.TryParse(textBox_ungdom.Text, out u) == true)
-            {
-                session.ungdom = u;
-            }
-            if (int.TryParse(textBox_vuxen.Text, out v) == true)
-            {
-                session.vuxna = v;
-            }
-            if (int.TryParse(textBox_barn.Text, out b) == true)
-            {
-                session.barn = b;
-            }
-
-            if ((u + v + b) == 0)
+            if (int.TryParse(textBox_ungdom.Text, out u) == false)
             {
                 return false;
+                //session.ungdom = u;
             }
+            else if (int.TryParse(textBox_vuxen.Text, out v) == false)
+            {
+                return false;
+                //session.vuxna = v;
+            }
+            else if (int.TryParse(textBox_barn.Text, out b) == false)
+            {
+                return false;
+                //session.barn = b;
+            }
+            else
+            {
+                return true;
+            }
+            //if (u != 0 || v != 0 || b != 0)
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
+            //if ((u + v + b) == 0)
+            //{
+            //    return false;
+            //}
 
-            return true;
+            
         }
         private void biljetterForHela()
         {
