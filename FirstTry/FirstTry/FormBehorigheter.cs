@@ -16,6 +16,7 @@ namespace FirstTry
         private Personal valdpersonal;
         private Behorigheter valdbehorighet;
         private List<Personal> personallista = new List<Personal>();
+        private List<Behorigheter> behorigheter = new List<Behorigheter>();
         
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
 
@@ -141,7 +142,30 @@ namespace FirstTry
 
         private void hamtaBehorighet()
         {
-           
+            DataTable dt2 = new DataTable();
+            string query2 = "select * from aktortyp";
+            //   Personal p = (Personal)listBoxAnvandare.SelectedItem;
+            //  query2 += p.Id.ToString();
+          
+
+            try
+            {
+                NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
+                da2.Fill(dt2);
+
+                foreach (DataRow b in dt2.Rows)
+                {
+                    Behorigheter beho = new Behorigheter();
+                    beho.Typ = b["typ"].ToString();
+                    beho.Id = b["id"].ToString();
+                    listBoxTabell.Items.Add(beho);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
         }
 
 
@@ -153,8 +177,7 @@ namespace FirstTry
 
             foreach (Behorigheter b in p.behorigheter)
             {
-                listBoxBehorighet.Items.Add(b.Typ);
-
+                listBoxBehorighet.Items.Add(b);
             }
 
         }

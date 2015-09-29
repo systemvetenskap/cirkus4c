@@ -69,7 +69,7 @@
             // 
             // btnLaggTillBeh
             // 
-            this.btnLaggTillBeh.Location = new System.Drawing.Point(65, 231);
+            this.btnLaggTillBeh.Location = new System.Drawing.Point(253, 224);
             this.btnLaggTillBeh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLaggTillBeh.Name = "btnLaggTillBeh";
             this.btnLaggTillBeh.Size = new System.Drawing.Size(114, 24);
@@ -80,7 +80,7 @@
             // 
             // btnTaBortBeh
             // 
-            this.btnTaBortBeh.Location = new System.Drawing.Point(253, 231);
+            this.btnTaBortBeh.Location = new System.Drawing.Point(65, 223);
             this.btnTaBortBeh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTaBortBeh.Name = "btnTaBortBeh";
             this.btnTaBortBeh.Size = new System.Drawing.Size(114, 25);
