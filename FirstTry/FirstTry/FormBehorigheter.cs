@@ -211,10 +211,155 @@ namespace FirstTry
                     }
                 }
             }
+        }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    private int laggTillAnvandare()
+        {
+
+            try
+            {
+                string query = "INSERT INTO inlog (anvandarnamn, losenord, fornamn, efternamn, personnr) VALUES(@anvandarnamn, @losenord, @fornamn, @efternamn, @personnr) RETURNING id;";
+                Biljett biljetten = new Biljett();
+                NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+
+
+                command.Parameters.AddWithValue("@anvandarnamn", textBox4.Text);
+                command.Parameters.AddWithValue("@losenord", textBox5.Text);
+                command.Parameters.AddWithValue("@fornamn", textBox1.Text);
+                command.Parameters.AddWithValue("@efternamn", textBox2.Text);
+                command.Parameters.AddWithValue("@personnr", textBox3.Text);
+
+
+                int x = (int)command.ExecuteScalar();
+
+                //  biljett_id.Add(x);
+                //   tk.biljett_id.Add(x);
+                //      tk.biljetter[tk.fuskIgen].biljett_id = x;
+                //       tk.biljetter[tk.fuskIgen].kopt = true;
+
+                //       tk.fuskIgen++;
+
+                //      return x;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Tyvärr blev platsen precis bokad" + ex.ToString());
+
+                return -1;
+                //throw;
+            }
+
+
+
+
+
+            return -1;
 
 
         }
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            conn.Open();
+            laggTillAnvandare();
+            conn.Close();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
-}
+    }
+
