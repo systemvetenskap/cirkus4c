@@ -8,14 +8,22 @@ namespace FirstTry
 {
     class Akt
     {
+
         public string namn { get; set; }
         public int id { get; set; }
-        public DateTime datumTid { get; set; }
+        public DateTime datumTid { get; set; } 
+        public int vuxen { get; set; } 
+        public int ungdom { get; set; }
+        public int barn { get; set; }
+        public string Aktinfo { get; set; }
+        public DateTime Starttid { get; set; }
+        public DateTime Sluttid { get; set; }
+
 
 
         public override string ToString()
         {
-            return namn;
+            return namn + "\t " + Starttid.ToShortDateString()+ " " + Starttid.ToShortTimeString();
         }
     }
 }

@@ -37,22 +37,23 @@
             // 
             // textBox_anvandarnamn
             // 
-            this.textBox_anvandarnamn.Location = new System.Drawing.Point(118, 49);
+            this.textBox_anvandarnamn.Location = new System.Drawing.Point(61, 49);
             this.textBox_anvandarnamn.Name = "textBox_anvandarnamn";
             this.textBox_anvandarnamn.Size = new System.Drawing.Size(100, 20);
             this.textBox_anvandarnamn.TabIndex = 0;
             // 
             // textBox_losenord
             // 
-            this.textBox_losenord.Location = new System.Drawing.Point(118, 86);
+            this.textBox_losenord.Location = new System.Drawing.Point(61, 86);
             this.textBox_losenord.Name = "textBox_losenord";
             this.textBox_losenord.Size = new System.Drawing.Size(100, 20);
             this.textBox_losenord.TabIndex = 1;
+            this.textBox_losenord.TextChanged += new System.EventHandler(this.textBox_losenord_TextChanged);
             // 
             // label_anvandarnamn
             // 
             this.label_anvandarnamn.AutoSize = true;
-            this.label_anvandarnamn.Location = new System.Drawing.Point(118, 30);
+            this.label_anvandarnamn.Location = new System.Drawing.Point(61, 30);
             this.label_anvandarnamn.Name = "label_anvandarnamn";
             this.label_anvandarnamn.Size = new System.Drawing.Size(79, 13);
             this.label_anvandarnamn.TabIndex = 2;
@@ -61,7 +62,7 @@
             // label_losenord
             // 
             this.label_losenord.AutoSize = true;
-            this.label_losenord.Location = new System.Drawing.Point(118, 70);
+            this.label_losenord.Location = new System.Drawing.Point(61, 70);
             this.label_losenord.Name = "label_losenord";
             this.label_losenord.Size = new System.Drawing.Size(51, 13);
             this.label_losenord.TabIndex = 3;
@@ -69,7 +70,7 @@
             // 
             // button_login
             // 
-            this.button_login.Location = new System.Drawing.Point(118, 113);
+            this.button_login.Location = new System.Drawing.Point(61, 113);
             this.button_login.Name = "button_login";
             this.button_login.Size = new System.Drawing.Size(75, 23);
             this.button_login.TabIndex = 4;
@@ -81,7 +82,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(338, 171);
+            this.ClientSize = new System.Drawing.Size(222, 174);
             this.Controls.Add(this.button_login);
             this.Controls.Add(this.label_losenord);
             this.Controls.Add(this.label_anvandarnamn);
@@ -89,6 +90,7 @@
             this.Controls.Add(this.textBox_anvandarnamn);
             this.Name = "Loginform";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Loginform_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
