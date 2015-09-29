@@ -361,6 +361,8 @@ namespace FirstTry
         }
         private void biljetterForHela()
         {
+            Forestallning fore = new Forestallning();
+            fore = (Forestallning)listBox_forestallning.SelectedItem;
             int antalv = Convert.ToInt32(textBox_vuxen.Text);
             int antalu = Convert.ToInt32(textBox_ungdom.Text);
             int antalb = Convert.ToInt32(textBox_barn.Text);
@@ -371,7 +373,7 @@ namespace FirstTry
 
                 foreach (Akt item in listBox_akter.SelectedItems)
                 {
-                    skapaHelaTempkop("vuxen", item, item.vuxen, k);
+                    skapaHelaTempkop("vuxen", item, fore.vuxen, k);
                 }          
                 session.kunder.Add(k);
             }
@@ -381,7 +383,7 @@ namespace FirstTry
 
                 foreach (Akt item in listBox_akter.SelectedItems)
                 {
-                    skapaHelaTempkop("ungdom", item, item.ungdom, k);
+                    skapaHelaTempkop("ungdom", item, fore.ungdom, k);
                 }
                 session.kunder.Add(k);
             }
@@ -391,7 +393,7 @@ namespace FirstTry
 
                 foreach (Akt item in listBox_akter.SelectedItems)
                 {
-                    skapaHelaTempkop("barn", item, item.barn, k);
+                    skapaHelaTempkop("barn", item, fore.barn, k);
         }
                 session.kunder.Add(k);
             }

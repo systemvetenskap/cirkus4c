@@ -150,6 +150,31 @@ namespace FirstTry
                 }  
             
             conn.Close();
+
+            //string sql1 = "SELECT sum(pris) FROM biljett WHERE biljettyp = 'vuxen' UNION SELECT sum(pris) FROM biljett WHERE biljettyp = 'ungdom' UNION SELECT sum(pris) FROM biljett WHERE biljettyp = 'barn'";
+            //conn.Open();
+            //NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql1, conn);
+            //DataTable dt = new DataTable();
+            //da.Fill(dt);
+            //DataTableReader dr1 = new DataTableReader(dt);
+            ////NpgsqlCommand cmd1 = new NpgsqlCommand(sql1, conn);
+
+            ////NpgsqlDataReader dr1 = cmd1.ExecuteReader();
+            //foreach (DataRow item in dt.Rows)
+            //{
+            //    int vuxen1 = Convert.ToInt32(dr1[0]);
+                
+            //    int barn1 = Convert.ToInt32(dr1[1]);
+            //    int ungdom1 = Convert.ToInt32(dr1[2]);
+            //    label27.Text = vuxen1.ToString() + " kr";
+            //    label28.Text = ungdom1.ToString() + " kr";
+            //    label29.Text = barn1.ToString() + " kr";
+            //}
+            
+                
+
+
+            //conn.Close();
         }
 
 

@@ -87,6 +87,9 @@
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBoxAdminForestallning
@@ -412,7 +415,7 @@
             // btnSkapaForestallning
             // 
             this.btnSkapaForestallning.Location = new System.Drawing.Point(190, 327);
-            this.btnSkapaForestallning.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSkapaForestallning.Margin = new System.Windows.Forms.Padding(2);
             this.btnSkapaForestallning.Name = "btnSkapaForestallning";
             this.btnSkapaForestallning.Size = new System.Drawing.Size(178, 21);
             this.btnSkapaForestallning.TabIndex = 40;
@@ -455,7 +458,7 @@
             // 
             this.btnOK.Enabled = false;
             this.btnOK.Location = new System.Drawing.Point(789, 419);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(125, 29);
             this.btnOK.TabIndex = 45;
@@ -480,7 +483,7 @@
             // btnAndraTaBortBeh
             // 
             this.btnAndraTaBortBeh.Location = new System.Drawing.Point(785, 41);
-            this.btnAndraTaBortBeh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAndraTaBortBeh.Margin = new System.Windows.Forms.Padding(2);
             this.btnAndraTaBortBeh.Name = "btnAndraTaBortBeh";
             this.btnAndraTaBortBeh.Size = new System.Drawing.Size(129, 35);
             this.btnAndraTaBortBeh.TabIndex = 47;
@@ -501,7 +504,7 @@
             // btnAkt
             // 
             this.btnAkt.Location = new System.Drawing.Point(546, 327);
-            this.btnAkt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAkt.Margin = new System.Windows.Forms.Padding(2);
             this.btnAkt.Name = "btnAkt";
             this.btnAkt.Size = new System.Drawing.Size(178, 21);
             this.btnAkt.TabIndex = 49;
@@ -624,15 +627,45 @@
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(154, 491);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(89, 13);
+            this.label26.Size = new System.Drawing.Size(66, 13);
             this.label26.TabIndex = 66;
-            this.label26.Text = "Föreställning total";
+            this.label26.Text = "Föreställning";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(163, 566);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(41, 13);
+            this.label27.TabIndex = 67;
+            this.label27.Text = "label27";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(211, 566);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(41, 13);
+            this.label28.TabIndex = 68;
+            this.label28.Text = "label28";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(272, 566);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(41, 13);
+            this.label29.TabIndex = 69;
+            this.label29.Text = "label29";
             // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1031, 624);
+            this.Controls.Add(this.label29);
+            this.Controls.Add(this.label28);
+            this.Controls.Add(this.label27);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label25);
@@ -761,5 +794,8 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
     }
 }
