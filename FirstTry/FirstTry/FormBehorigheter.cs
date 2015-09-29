@@ -22,27 +22,49 @@ namespace FirstTry
 
         public FormBehorigheter()
         {
-            InitializeComponent();
+           InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            conn.Open();
+            laggTillBehorighet();
+            conn.Close();
+        }
 
+        private int laggTillBehorighet()
+        {
+          
             try
             {
-                conn.Open();
-                // dropdown command = new NpgsqlCommand(@"GRANT '" + txtObjektBehorighet + "' '" + txtObjektBehorighet + "' ON '" + txtTabell + "' FROM '" + txtAnvandare + "')", conn);
+                string query = "INSERT INTO aktortyplist(aktortyp_id, inlog_id) VALUES(@aktortyp_id, @inlog_id) ";
 
+                NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+                Personal p = new Personal();
+                p = (Personal)listBoxAnvandare.SelectedItem;
+
+                Behorigheter b = new Behorigheter();
+                b = (Behorigheter)listBoxTabell.SelectedItem;
+
+
+                command.Parameters.AddWithValue("@aktortyp_id", b.Id);
+                command.Parameters.AddWithValue("@inlog_id", p.Id);
+
+                return command.ExecuteNonQuery();
+                //  biljett_id.Add(x);
+                //   tk.biljett_id.Add(x);
             }
-            catch (NpgsqlException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Tyvärr blev platsen precis bokad" + ex.ToString());
+
+
+                //throw;
             }
-            finally
-            {
-                conn.Close();
-            }
+
+            return -1;
+            
         }
 
         private void btnTaBortBeh_Click(object sender, EventArgs e)
