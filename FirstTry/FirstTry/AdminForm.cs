@@ -96,23 +96,24 @@ namespace FirstTry
                 if (valdforestallning.open == true)
                 {
                     lblforestallningoppen.Visible = true;
-                 
-                    string sqlforsaljningslut = (@"SELECT forsaljningslut FROM forestallning WHERE id ='" + valdforestallning.id + "'");
                     
+
+                    string sqlforsaljningslut = (@"SELECT forsaljningslut FROM forestallning WHERE id ='" + valdforestallning.id + "'");
+
                     conn.Open();
                     NpgsqlCommand command = new NpgsqlCommand(sqlforsaljningslut, conn);
-                    
+
                     NpgsqlDataReader dr = command.ExecuteReader();
                     while (dr.Read())
                     {
                         valdforestallning.forsaljningsslut = Convert.ToDateTime(dr["forsaljningslut"]);
                     }
                     conn.Close();
-                    textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString() + " " +valdforestallning.forsaljningsslut.ToShortTimeString();
-                  
+                    textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString() + " " + valdforestallning.forsaljningsslut.ToShortTimeString();
 
-                       
-                    }
+
+
+                }
                 else
                 {
                     lblforestallningoppen.Visible = false;
@@ -153,13 +154,14 @@ namespace FirstTry
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
             bool friplacering = false;
+            DateTime forsaljningsslut = Convert.ToDateTime(lblSistaForsaljningsdag.Text);
 
             if (checkBoxfriPlacering.Checked == true)
             {
                 friplacering = true;
             }
 
-            Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering);
+            Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
 
             conn.Close();
@@ -330,8 +332,10 @@ namespace FirstTry
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
             bool friplacering = false;
+            DateTime forsaljningsslut = Convert.ToDateTime(lblSistaForsaljningsdag.Text); 
+            
 
-            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering);
+            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
         }
 
@@ -612,6 +616,11 @@ namespace FirstTry
             buttonLaggTillAktInfo.Enabled = true;
             listBoxAkter.SelectionMode = SelectionMode.None;
             tomTextBoxarAkt();
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

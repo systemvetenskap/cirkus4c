@@ -74,6 +74,7 @@
             this.btnAndraTaBortBeh = new System.Windows.Forms.Button();
             this.textBoxForsaljningsslut = new System.Windows.Forms.TextBox();
             this.btnAkt = new System.Windows.Forms.Button();
+            this.lblSistaForsaljningsdag = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBoxAdminForestallning
@@ -461,12 +462,13 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(1051, 368);
+            this.label13.Location = new System.Drawing.Point(1049, 299);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(139, 17);
             this.label13.TabIndex = 43;
             this.label13.Text = "Sista försäljningsdag";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // checkBoxfriPlacering
             // 
@@ -537,11 +539,21 @@
             this.btnAkt.UseVisualStyleBackColor = true;
             this.btnAkt.Click += new System.EventHandler(this.btnAkt_Click);
             // 
+            // lblSistaForsaljningsdag
+            // 
+            this.lblSistaForsaljningsdag.AutoSize = true;
+            this.lblSistaForsaljningsdag.Location = new System.Drawing.Point(1052, 335);
+            this.lblSistaForsaljningsdag.Name = "lblSistaForsaljningsdag";
+            this.lblSistaForsaljningsdag.Size = new System.Drawing.Size(54, 17);
+            this.lblSistaForsaljningsdag.TabIndex = 50;
+            this.lblSistaForsaljningsdag.Text = "label14";
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1327, 597);
+            this.Controls.Add(this.lblSistaForsaljningsdag);
             this.Controls.Add(this.btnAkt);
             this.Controls.Add(this.textBoxForsaljningsslut);
             this.Controls.Add(this.btnAndraTaBortBeh);
@@ -645,5 +657,6 @@
         private System.Windows.Forms.Button btnAndraTaBortBeh;
         private System.Windows.Forms.TextBox textBoxForsaljningsslut;
         private System.Windows.Forms.Button btnAkt;
+        private System.Windows.Forms.Label lblSistaForsaljningsdag;
     }
 }
