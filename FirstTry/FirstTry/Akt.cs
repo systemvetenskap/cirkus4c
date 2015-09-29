@@ -20,7 +20,6 @@ namespace FirstTry
         public DateTime Sluttid { get; set; }
 
 
-
         public override string ToString()
         {
             return namn + "\t " + Starttid.ToShortDateString()+ " " + Starttid.ToShortTimeString();

@@ -9,10 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 
+
 namespace FirstTry
 {
     public partial class Huvudsidan : Form
     {
+        
         public Huvudsidan()
         {
             InitializeComponent();
@@ -21,16 +23,27 @@ namespace FirstTry
         {
             InitializeComponent();
         }
+        Tempkop session;
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         
-        Tempkop session = new Tempkop();
 
-        int totalpris = 0;
+        
+
+        
         int antalakter = 0;
 
+        private void Form1_Shown(object sender, EventArgs e)
+        {
 
+            session = new Tempkop();
+
+        }
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
+            session = new Tempkop();
+            conn.Open();
+            session.totalpris = 0; //För att kolla vid button click att inget är vallt
+            
             //listBox_akter.SelectedIndex = -1;
             //listBox_forestallning.SelectedIndex = -1;
             DataTable dt = new DataTable();
@@ -48,13 +61,15 @@ namespace FirstTry
                   tid2 = DateTime.Now;*/
                 
 
-
                 foreach (DataRow row in dt.Rows)
                 {
-                    DateTime slutdatum = (DateTime)row["forsaljningslut"];
+                    
                    
 
-                    if ((bool)row["open"] == true && slutdatum > DateTime.Now)
+                    if ((bool)row["open"] == true )
+                    {
+                        DateTime slutdatum = (DateTime)row["forsaljningslut"];
+                        if (slutdatum > DateTime.Now)
                     {
                         string namn = row["namn"].ToString();
                         string id = row["id"].ToString();
@@ -66,6 +81,7 @@ namespace FirstTry
                         DateTime tid = (DateTime)row["starttid"];
                         Forestallning fs = new Forestallning();
                         fs.akter = new List<Akt>();
+
                         fs.namn = namn;
                         fs.id = Convert.ToInt32(id);
                         fs.friplacering = fri;
@@ -99,6 +115,10 @@ namespace FirstTry
                             akt.barn = barn2;
                             fs.akter.Add(akt);
                         }
+                        
+
+ 
+                    }
                     }
 
 
@@ -134,7 +154,6 @@ namespace FirstTry
                 label15.Text = fs.tid.ToShortTimeString();               
             }
            
-
             label5.Visible = false;
             label6.Visible = false;
             label7.Visible = false;
@@ -174,22 +193,106 @@ namespace FirstTry
             //    MessageBox.Show(ex.Message);
             //}
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void skapaBiljetter()
         {
 
+            int antalv = Convert.ToInt32(textBox_vuxen.Text);
+            int antalu = Convert.ToInt32(textBox_ungdom.Text);
+            int antalb = Convert.ToInt32(textBox_barn.Text);
 
-           ///asdf
+            foreach (Akt akt in listBox_akter.SelectedItems)
+            {
+                for (int i = 0; i < antalv; i++)
+                {
+                    skapaTempkop("vuxen", akt, akt.vuxen);
+                }
+                for (int i = 0; i < antalu; i++)
+                {
+                    skapaTempkop("ungdom", akt, akt.ungdom);
+                }
+                for (int i = 0; i < antalb; i++)
+                {
+                    skapaTempkop("barn", akt, akt.barn);
+                }
+
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int kollaOmDetarHela = 0;
+
+            //  session.platsnamn = new List<string>();
+            // session.typ = new List<string>();
+            session.hela = false; //låg kvar som true om man gick tillbaka från platskartan
+
+            foreach (Akt akter in listBox_akter.SelectedItems)
+            {
+                session.loopar++;
+                session.akter.Add(akter);
+            }
+            foreach (Akt item in listBox_akter.Items)
+            {
+                kollaOmDetarHela++;
+            }
+            if (session.loopar == kollaOmDetarHela)
+            {
+                session.hela = true;
+            }
+            if (antal_ar_siffror() == true)
+            {
+                if (session.hela == true)
+                {
+                    biljetterForHela();
+                    session.antalKunder = session.kunder.Count;
+                }
+                else
+                {
+                    skapaBiljetter();
+                }
+            }
+          
+            
+           // session.biljett_id = new List<int>();
+
+            foreach (Biljett b in session.biljetter)
+            {
+                if (checkBox1.Checked == true)
+                {
+                    b.resserverad = true;
+                }
+            }
+            session.antal = 0;
+
+            if (antal_ar_siffror() == false)
+            {
+                    MessageBox.Show("Hoppsan! Du fyllde i antalet besökare felaktigt.");
+            }
+                else if ((Forestallning)listBox_forestallning.SelectedItem == null)
+                {
+                    MessageBox.Show("Hoppsan! Du glömde visst att välja en föreställning");
+                }
+                else if ((Akt)listBox_akter.SelectedItem == null)
+                {
+                    MessageBox.Show("Hoppsan! Du glömde visst att välja akt");
+                }
+
         
+           else if (session.fullbokat(session) == true)
+            {
+                MessageBox.Show("Tyvärr så finns det inte tillräkligt med plats på de valda akterna");
+            }
+            else
+            {
             //Admin ska väll kunna ändra pris?
-           if (session.reservation == true)
+                if (checkBox1.Checked == true)
             {
                 this.Hide();
                 Kunduppgifter ku = new Kunduppgifter(session);
                 ku.ShowDialog();
+
                 this.Close();
             }
-            else if (session.forestallning.friplacering == true)
+                else if (session.biljetter[0].forestallning.friplacering == true)
             {
                 //ladda biljett stuff direkt
                 MessageBox.Show("ITS WORKING");
@@ -201,10 +304,10 @@ namespace FirstTry
                 pk.ShowDialog();
                 this.Close();
             }
-
+            }
 
         }
-        private void helaforestallningen()
+        private bool helaforestallningen()
         {
             int xh = 0;
             int l = 0;
@@ -221,62 +324,154 @@ namespace FirstTry
             if (xh == l)
             {
                 //då har vill man boka hela förestälningen
-                session.hela = true;
+                return true;
             }
             else
             {
-                session.hela = false;
+                return false;
             }
 
         }
-        private void skapaTempkop()
+        private bool antal_ar_siffror()
+        {
+            int u = 0;
+            int v = 0;
+            int b = 0;
+            
+
+            if (int.TryParse(textBox_ungdom.Text, out u) == true)
+            {
+                session.ungdom = u;
+            }
+            if (int.TryParse(textBox_vuxen.Text, out v) == true)
+            {
+                session.vuxna = v;
+            }
+            if (int.TryParse(textBox_barn.Text, out b) == true)
+            {
+                session.barn = b;
+            }
+
+            if ((u + v + b) == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        private void biljetterForHela()
+        {
+            int antalv = Convert.ToInt32(textBox_vuxen.Text);
+            int antalu = Convert.ToInt32(textBox_ungdom.Text);
+            int antalb = Convert.ToInt32(textBox_barn.Text);
+
+            for (int i = 0; i < antalv; i++)
+            {
+                Kund k = new Kund();
+
+                foreach (Akt item in listBox_akter.SelectedItems)
+                {
+                    skapaHelaTempkop("vuxen", item, item.vuxen, k);
+                }          
+                session.kunder.Add(k);
+            }
+            for (int i = 0; i < antalu; i++)
+            {
+                Kund k = new Kund();
+
+                foreach (Akt item in listBox_akter.SelectedItems)
+                {
+                    skapaHelaTempkop("ungdom", item, item.ungdom, k);
+                }
+                session.kunder.Add(k);
+            }
+            for (int i = 0; i < antalb; i++)
+            {
+                Kund k = new Kund();
+
+                foreach (Akt item in listBox_akter.SelectedItems)
+                {
+                    skapaHelaTempkop("barn", item, item.barn, k);
+        }
+                session.kunder.Add(k);
+            }
+        }
+        private void skapaHelaTempkop(string biljettyp, Akt akt, int pris, Kund k)
         {
 
+            if (listBox_akter.SelectedItem != null && listBox_forestallning != null && antal_ar_siffror() == true)
+        {
+                // int loopar = 0;
+
             
-            int loopar = 0;
+                //       Tempkop s2 = new Tempkop();
+                //     session = s2;
+                Biljett b = new Biljett();
 
-            Tempkop s2 = new Tempkop();
-            session = s2;
-            List<Akt> aktlista = new List<Akt>();
+                b.hela = helaforestallningen();
+                b.akter = akt;
+                b.forestallning = (Forestallning)listBox_forestallning.SelectedItem;
+                b.biljettyp = biljettyp;
+                b.pris = pris;
+                b.resserverad = false;
 
-            foreach (Akt akt in listBox_akter.SelectedItems)
+                session.biljetter.Add(b);
+                k.bilj.Add(b);
+            }
+        }
+
+        private void skapaTempkop(string biljettyp, Akt akt, int pris)
+        {
+
+            if (listBox_akter.SelectedItem != null && listBox_forestallning != null && antal_ar_siffror() == true)
+            {
+               // int loopar = 0;
+
+
+                //       Tempkop s2 = new Tempkop();
+                //     session = s2;
+                Biljett b = new Biljett();
+                
+                b.hela= helaforestallningen();
+                b.akter = akt;
+                b.forestallning = (Forestallning)listBox_forestallning.SelectedItem;
+                b.biljettyp = biljettyp;
+                b.pris = pris;
+                b.resserverad = false;
+
+                session.biljetter.Add(b);
+
+
+                     
+
+             //   uppdateraPris();
+                // List<Akt> aktlista = new List<Akt>();
+
+                /*     foreach (Akt akt in listBox_akter.SelectedItems)
             {
                 aktlista.Add(akt);
                 loopar++;           
             }
-            int u = 0;
-            int v = 0;
-            int b = 0;
 
-            if (int.TryParse(textBox_ungdom.Text,out u) == true && int.TryParse(textBox_vuxen.Text, out v) == true && int.TryParse(textBox_barn.Text, out b) == true)
-            {
-                helaforestallningen();
+                 */
+
+
+                /*
                 session.akter = aktlista;
                 session.forestallning = (Forestallning)listBox_forestallning.SelectedItem;
-                session.vuxna = v; //lägg i ensklid if tryparse på varje
-                session.ungdom = u;
-                session.barn = b;
                 session.reservation = checkBox1.Checked;
                 session.antal = 0;
                 session.loopar = loopar;
 
+            */
+                //      antal_ar_siffror();
 
-                conn.Open();
+                /*   conn.Open();
                 LaggTillTempkop(); //behövs den?
                 conn.Close();
-
-
-                /*
-                string query = "SELECT biljettyp.rabattsats, biljettyp FROM public.biljettyp;";
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
                 */
 
-            }
-
-            int totalpris = 0;
+                /*  int totalpris = 0;
 
             if (session.hela == true)
             {
@@ -297,6 +492,11 @@ namespace FirstTry
             session.totalpris = totalpris;
             label2.Visible = true;
             label2.Text = session.totalpris.ToString();
+                  */
+
+
+            }
+
 
         }
 
@@ -352,10 +552,77 @@ namespace FirstTry
             // Gör om så vi arbetar mot idnummer.
 
         }
+        private void uppdateraPris()
+        {
+            if (antal_ar_siffror() == true)
+            {
+                int totalpris = 0;
+                int b = Convert.ToInt32(textBox_barn.Text);
+                int u = Convert.ToInt32(textBox_ungdom.Text);
+                int v = Convert.ToInt32(textBox_vuxen.Text);
 
+                if (helaforestallningen() == true)
+                {
+                    Forestallning f = new Forestallning();
+                    f = (Forestallning)listBox_forestallning.SelectedItem;
+                    totalpris += f.vuxen * v;
+                    totalpris += f.ungdom * u;
+                    totalpris += f.barn * b;
+                }
+                else
+                {
+                    foreach (Akt item in listBox_akter.SelectedItems)
+                    {
+                        totalpris += item.barn * b;
+                        totalpris += item.ungdom * u;
+                        totalpris += item.vuxen * v;
+                    }
+                }
+
+                session.totalpris = totalpris;
+                label2.Visible = true;
+                label2.Text = totalpris.ToString();
+
+            }
+            
+
+
+ 
+
+            /*     if (session.hela == true)
+                 {
+                     totalpris += session.barn * session.forestallning.barn;
+                     totalpris += session.ungdom * session.forestallning.ungdom;
+                     totalpris += session.vuxna * session.forestallning.vuxen;
+                 }
+                 else
+                 {
+                     foreach (Akt item in session.biljetter)
+                     {
+                         totalpris += session.barn * item.barn;
+                         totalpris += session.ungdom * item.ungdom;
+                         totalpris += session.vuxna * item.vuxen;
+                     }
+                 }
+
+                 session.totalpris = totalpris;
+                 label2.Visible = true;
+                 label2.Text = session.totalpris.ToString();
+
+                 */
+        }
         private void textBox_vuxen_TextChanged(object sender, EventArgs e)
         {
-            skapaTempkop();
+            //Ska vi dölja dem innan man valt akt och föreställning
+            if ((Forestallning)listBox_forestallning.SelectedItem != null && (Akt)listBox_akter.SelectedItem != null && antal_ar_siffror() == true)
+            {
+
+                uppdateraPris();
+
+                //int totalpris = 0;
+
+            }
+
             
             /*
             Forestallning fs = (Forestallning)listBox_forestallning.SelectedItem;
@@ -381,12 +648,46 @@ namespace FirstTry
 
         private void textBox_ungdom_TextChanged(object sender, EventArgs e)
         {
-            skapaTempkop();
+            if ((Forestallning)listBox_forestallning.SelectedItem != null && (Akt)listBox_akter.SelectedItem != null)
+            {
+                /*int totalpris = 0;
+                int antal = Convert.ToInt32(textBox_ungdom.Text);
+                foreach (Akt akt in listBox_akter.SelectedItems)
+                {
+                    for (int i = 0; i < antal; i++)
+                    {
+                        skapaTempkop("ungdom", akt, akt.ungdom);
+                    }
+                    
+                }
+                foreach (Biljett b in session.biljetter)
+                {
+                    totalpris += totalpris;
+                } */
+                uppdateraPris();
+            }
         }
 
         private void textBox_barn_TextChanged(object sender, EventArgs e)
         {
-            skapaTempkop();
+            if ((Forestallning)listBox_forestallning.SelectedItem != null && (Akt)listBox_akter.SelectedItem != null)
+            {
+                /* int totalpris = 0;
+                 int antal = Convert.ToInt32(textBox_barn.Text);
+                 foreach (Akt akt in listBox_akter.SelectedItems)
+                 {
+                     for (int i = 0; i < antal; i++)
+                     {
+                         skapaTempkop("barn", akt, akt.barn);
+
+                     }
+                 }
+                 foreach (Biljett b in session.biljetter)
+                 {
+                     totalpris += totalpris;
+                 }*/
+                uppdateraPris();
+            }
         }
 
         private void listBox_akter_SelectedIndexChanged(object sender, EventArgs e)
@@ -406,6 +707,7 @@ namespace FirstTry
                 label5.Text = akt.vuxen.ToString();
                 label6.Text = akt.ungdom.ToString();
                 label7.Text = akt.barn.ToString();
+
             }
             
 
@@ -417,7 +719,7 @@ namespace FirstTry
             textBox_barn.Text = "0";
             textBox_vuxen.Text = "0";
             textBox_ungdom.Text = "0";
-
+            label2.Text = "0";
             session.totalpris = 0;
         }
         
