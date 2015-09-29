@@ -143,33 +143,73 @@ namespace FirstTry
 
         private void buttonLaggTillForest_Click(object sender, EventArgs e)
         {
-
-            string namn = textBoxForestNamn.Text;
-            string generellinfo = richTextBoxForestInf.Text;
-            DateTime datum = Convert.ToDateTime(textBoxForestDatum.Text);
-            DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
-            DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
-            bool open = false;
-            int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
-            int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
-            int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
-            bool friplacering = false;
-            DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
-
-            if (checkBoxfriPlacering.Checked == true)
+            try
             {
-                friplacering = true;
-            }
+                
+                string namn = textBoxForestNamn.Text;
+                string generellinfo = richTextBoxForestInf.Text;
+                DateTime datum = Convert.ToDateTime(textBoxForestDatum.Text);
+                DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
+                DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
+                bool open = false;
+                int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
+                int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
+                int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
+                bool friplacering = false;
+                DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
-            if (checkBoxForestallning.Checked == true)  //behövs denna
+                if (checkBoxfriPlacering.Checked == true)
+                {
+                    friplacering = true;
+                }
+
+                if (checkBoxForestallning.Checked == true)  //behövs denna
+                {
+                    open = true;
+                }
+
+                if (datum.Date >= DateTime.Now.Date)
+                {
+                    if (starttid.TimeOfDay < sluttid.TimeOfDay)
+                    {
+                        if (vuxenpris >= ungdomspris && vuxenpris >= barnpris && ungdomspris >= barnpris)
+                        {
+                            Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
+                            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+                            buttonLaggTillForest.Enabled = false;
+                            listBoxAdminForestallning.SelectionMode = SelectionMode.One;
+                            
+                            conn.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
+                        }
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Föreställningen är för kort!");
+                    }
+               
+                }
+                else
+                {
+                    MessageBox.Show("Sätt ett senare datum!");
+                }
+               
+            }
+            catch (Exception)
             {
-                open = true;
+
+                MessageBox.Show("Alla textboxar måste vara korrekt ifyllda!");
             }
+            
+            
+           
 
-            Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
-            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+           
 
-            conn.Close();
 
         }
 
@@ -213,11 +253,13 @@ namespace FirstTry
         {
             textBoxForestNamn.Clear();
             richTextBoxForestInf.Clear();
+            textBoxForestDatum.Clear();
             textBoxForestStarttid.Clear();
             textBoxForestSluttid.Clear();
             textBoxVuxenpris.Clear();
             textBoxUngdomspris.Clear();
             textBoxBarnpris.Clear();
+            textBoxForsaljningsslut.Clear();
         }
 
 
@@ -618,6 +660,16 @@ namespace FirstTry
         }
 
         private void richTextBoxAktInf_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxForestSluttid_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxVuxenpris_TextChanged(object sender, EventArgs e)
         {
 
         }

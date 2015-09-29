@@ -268,6 +268,7 @@
             this.textBoxForestSluttid.Name = "textBoxForestSluttid";
             this.textBoxForestSluttid.Size = new System.Drawing.Size(100, 20);
             this.textBoxForestSluttid.TabIndex = 5;
+            this.textBoxForestSluttid.TextChanged += new System.EventHandler(this.textBoxForestSluttid_TextChanged);
             // 
             // uppdatera
             // 
@@ -295,6 +296,7 @@
             this.textBoxVuxenpris.Name = "textBoxVuxenpris";
             this.textBoxVuxenpris.Size = new System.Drawing.Size(100, 20);
             this.textBoxVuxenpris.TabIndex = 6;
+            this.textBoxVuxenpris.TextChanged += new System.EventHandler(this.textBoxVuxenpris_TextChanged);
             // 
             // textBoxUngdomspris
             // 
