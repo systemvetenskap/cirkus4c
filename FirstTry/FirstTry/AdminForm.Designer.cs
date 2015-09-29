@@ -74,6 +74,7 @@
             this.btnAndraTaBortBeh = new System.Windows.Forms.Button();
             this.textBoxForsaljningsslut = new System.Windows.Forms.TextBox();
             this.btnAkt = new System.Windows.Forms.Button();
+            this.lblSistaForsaljningsdag = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBoxAdminForestallning
@@ -81,7 +82,7 @@
             this.listBoxAdminForestallning.FormattingEnabled = true;
             this.listBoxAdminForestallning.ItemHeight = 16;
             this.listBoxAdminForestallning.Location = new System.Drawing.Point(248, 55);
-            this.listBoxAdminForestallning.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxAdminForestallning.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxAdminForestallning.Name = "listBoxAdminForestallning";
             this.listBoxAdminForestallning.Size = new System.Drawing.Size(271, 340);
             this.listBoxAdminForestallning.TabIndex = 0;
@@ -90,7 +91,7 @@
             // textBoxForestNamn
             // 
             this.textBoxForestNamn.Location = new System.Drawing.Point(52, 71);
-            this.textBoxForestNamn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxForestNamn.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxForestNamn.Name = "textBoxForestNamn";
             this.textBoxForestNamn.Size = new System.Drawing.Size(179, 22);
             this.textBoxForestNamn.TabIndex = 1;
@@ -111,7 +112,7 @@
             // 
             this.buttonLaggTillForest.Enabled = false;
             this.buttonLaggTillForest.Location = new System.Drawing.Point(252, 442);
-            this.buttonLaggTillForest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLaggTillForest.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLaggTillForest.Name = "buttonLaggTillForest";
             this.buttonLaggTillForest.Size = new System.Drawing.Size(237, 28);
             this.buttonLaggTillForest.TabIndex = 3;
@@ -124,7 +125,7 @@
             this.listBoxAkter.FormattingEnabled = true;
             this.listBoxAkter.ItemHeight = 16;
             this.listBoxAkter.Location = new System.Drawing.Point(728, 50);
-            this.listBoxAkter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxAkter.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxAkter.Name = "listBoxAkter";
             this.listBoxAkter.Size = new System.Drawing.Size(281, 340);
             this.listBoxAkter.TabIndex = 4;
@@ -134,7 +135,7 @@
             // 
             this.buttonLaggTillAktInfo.Enabled = false;
             this.buttonLaggTillAktInfo.Location = new System.Drawing.Point(728, 444);
-            this.buttonLaggTillAktInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLaggTillAktInfo.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLaggTillAktInfo.Name = "buttonLaggTillAktInfo";
             this.buttonLaggTillAktInfo.Size = new System.Drawing.Size(201, 28);
             this.buttonLaggTillAktInfo.TabIndex = 6;
@@ -156,7 +157,7 @@
             // richTextBoxAktInf
             // 
             this.richTextBoxAktInf.Location = new System.Drawing.Point(532, 135);
-            this.richTextBoxAktInf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBoxAktInf.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBoxAktInf.Name = "richTextBoxAktInf";
             this.richTextBoxAktInf.Size = new System.Drawing.Size(155, 85);
             this.richTextBoxAktInf.TabIndex = 8;
@@ -165,7 +166,7 @@
             // richTextBoxForestInf
             // 
             this.richTextBoxForestInf.Location = new System.Drawing.Point(52, 137);
-            this.richTextBoxForestInf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBoxForestInf.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBoxForestInf.Name = "richTextBoxForestInf";
             this.richTextBoxForestInf.Size = new System.Drawing.Size(179, 102);
             this.richTextBoxForestInf.TabIndex = 9;
@@ -194,7 +195,7 @@
             // textBoxAktnamn
             // 
             this.textBoxAktnamn.Location = new System.Drawing.Point(532, 71);
-            this.textBoxAktnamn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAktnamn.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAktnamn.Name = "textBoxAktnamn";
             this.textBoxAktnamn.Size = new System.Drawing.Size(155, 22);
             this.textBoxAktnamn.TabIndex = 13;
@@ -202,7 +203,7 @@
             // textBoxAktStarttid
             // 
             this.textBoxAktStarttid.Location = new System.Drawing.Point(535, 261);
-            this.textBoxAktStarttid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAktStarttid.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAktStarttid.Name = "textBoxAktStarttid";
             this.textBoxAktStarttid.Size = new System.Drawing.Size(132, 22);
             this.textBoxAktStarttid.TabIndex = 14;
@@ -220,7 +221,7 @@
             // textBoxAktSluttid
             // 
             this.textBoxAktSluttid.Location = new System.Drawing.Point(533, 318);
-            this.textBoxAktSluttid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAktSluttid.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAktSluttid.Name = "textBoxAktSluttid";
             this.textBoxAktSluttid.Size = new System.Drawing.Size(132, 22);
             this.textBoxAktSluttid.TabIndex = 16;
@@ -238,7 +239,7 @@
             // textBoxAktVuxenpris
             // 
             this.textBoxAktVuxenpris.Location = new System.Drawing.Point(536, 372);
-            this.textBoxAktVuxenpris.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAktVuxenpris.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAktVuxenpris.Name = "textBoxAktVuxenpris";
             this.textBoxAktVuxenpris.Size = new System.Drawing.Size(132, 22);
             this.textBoxAktVuxenpris.TabIndex = 18;
@@ -276,7 +277,7 @@
             // textBoxForestStarttid
             // 
             this.textBoxForestStarttid.Location = new System.Drawing.Point(47, 288);
-            this.textBoxForestStarttid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxForestStarttid.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxForestStarttid.Name = "textBoxForestStarttid";
             this.textBoxForestStarttid.Size = new System.Drawing.Size(132, 22);
             this.textBoxForestStarttid.TabIndex = 22;
@@ -284,7 +285,7 @@
             // textBoxForestSluttid
             // 
             this.textBoxForestSluttid.Location = new System.Drawing.Point(45, 335);
-            this.textBoxForestSluttid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxForestSluttid.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxForestSluttid.Name = "textBoxForestSluttid";
             this.textBoxForestSluttid.Size = new System.Drawing.Size(132, 22);
             this.textBoxForestSluttid.TabIndex = 23;
@@ -292,7 +293,7 @@
             // buttonOppnaForest
             // 
             this.buttonOppnaForest.Location = new System.Drawing.Point(1052, 474);
-            this.buttonOppnaForest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonOppnaForest.Margin = new System.Windows.Forms.Padding(4);
             this.buttonOppnaForest.Name = "buttonOppnaForest";
             this.buttonOppnaForest.Size = new System.Drawing.Size(167, 33);
             this.buttonOppnaForest.TabIndex = 25;
@@ -303,7 +304,7 @@
             // uppdatera
             // 
             this.uppdatera.Location = new System.Drawing.Point(252, 485);
-            this.uppdatera.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.uppdatera.Margin = new System.Windows.Forms.Padding(4);
             this.uppdatera.Name = "uppdatera";
             this.uppdatera.Size = new System.Drawing.Size(237, 28);
             this.uppdatera.TabIndex = 26;
@@ -314,7 +315,7 @@
             // buttonTaBort
             // 
             this.buttonTaBort.Location = new System.Drawing.Point(252, 530);
-            this.buttonTaBort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonTaBort.Margin = new System.Windows.Forms.Padding(4);
             this.buttonTaBort.Name = "buttonTaBort";
             this.buttonTaBort.Size = new System.Drawing.Size(237, 28);
             this.buttonTaBort.TabIndex = 27;
@@ -325,7 +326,7 @@
             // textBoxVuxenpris
             // 
             this.textBoxVuxenpris.Location = new System.Drawing.Point(47, 390);
-            this.textBoxVuxenpris.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxVuxenpris.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxVuxenpris.Name = "textBoxVuxenpris";
             this.textBoxVuxenpris.Size = new System.Drawing.Size(132, 22);
             this.textBoxVuxenpris.TabIndex = 28;
@@ -333,7 +334,7 @@
             // textBoxUngdomspris
             // 
             this.textBoxUngdomspris.Location = new System.Drawing.Point(47, 444);
-            this.textBoxUngdomspris.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxUngdomspris.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxUngdomspris.Name = "textBoxUngdomspris";
             this.textBoxUngdomspris.Size = new System.Drawing.Size(132, 22);
             this.textBoxUngdomspris.TabIndex = 29;
@@ -341,7 +342,7 @@
             // textBoxBarnpris
             // 
             this.textBoxBarnpris.Location = new System.Drawing.Point(47, 492);
-            this.textBoxBarnpris.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxBarnpris.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxBarnpris.Name = "textBoxBarnpris";
             this.textBoxBarnpris.Size = new System.Drawing.Size(132, 22);
             this.textBoxBarnpris.TabIndex = 30;
@@ -379,7 +380,7 @@
             // buttonUppdateraAkt
             // 
             this.buttonUppdateraAkt.Location = new System.Drawing.Point(728, 489);
-            this.buttonUppdateraAkt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonUppdateraAkt.Margin = new System.Windows.Forms.Padding(4);
             this.buttonUppdateraAkt.Name = "buttonUppdateraAkt";
             this.buttonUppdateraAkt.Size = new System.Drawing.Size(201, 28);
             this.buttonUppdateraAkt.TabIndex = 34;
@@ -390,7 +391,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(728, 530);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(201, 28);
             this.button1.TabIndex = 35;
@@ -421,7 +422,7 @@
             // textBoxAktUngdPris
             // 
             this.textBoxAktUngdPris.Location = new System.Drawing.Point(535, 434);
-            this.textBoxAktUngdPris.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAktUngdPris.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAktUngdPris.Name = "textBoxAktUngdPris";
             this.textBoxAktUngdPris.Size = new System.Drawing.Size(132, 22);
             this.textBoxAktUngdPris.TabIndex = 38;
@@ -429,7 +430,7 @@
             // TextBoxAktBarnpris
             // 
             this.TextBoxAktBarnpris.Location = new System.Drawing.Point(540, 494);
-            this.TextBoxAktBarnpris.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TextBoxAktBarnpris.Margin = new System.Windows.Forms.Padding(4);
             this.TextBoxAktBarnpris.Name = "TextBoxAktBarnpris";
             this.TextBoxAktBarnpris.Size = new System.Drawing.Size(132, 22);
             this.TextBoxAktBarnpris.TabIndex = 39;
@@ -449,9 +450,8 @@
             // dateTimePickerTid
             // 
             this.dateTimePickerTid.CustomFormat = "";
-            this.dateTimePickerTid.Enabled = false;
             this.dateTimePickerTid.Location = new System.Drawing.Point(1052, 394);
-            this.dateTimePickerTid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePickerTid.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerTid.Name = "dateTimePickerTid";
             this.dateTimePickerTid.Size = new System.Drawing.Size(201, 22);
             this.dateTimePickerTid.TabIndex = 42;
@@ -462,18 +462,19 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(1051, 368);
+            this.label13.Location = new System.Drawing.Point(1049, 299);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(139, 17);
             this.label13.TabIndex = 43;
             this.label13.Text = "Sista försäljningsdag";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // checkBoxfriPlacering
             // 
             this.checkBoxfriPlacering.AutoSize = true;
             this.checkBoxfriPlacering.Location = new System.Drawing.Point(47, 549);
-            this.checkBoxfriPlacering.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxfriPlacering.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxfriPlacering.Name = "checkBoxfriPlacering";
             this.checkBoxfriPlacering.Size = new System.Drawing.Size(108, 21);
             this.checkBoxfriPlacering.TabIndex = 44;
@@ -483,7 +484,7 @@
             // btnOK
             // 
             this.btnOK.Enabled = false;
-            this.btnOK.Location = new System.Drawing.Point(1052, 516);
+            this.btnOK.Location = new System.Drawing.Point(1052, 519);
             this.btnOK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(167, 36);
@@ -519,7 +520,7 @@
             // textBoxForsaljningsslut
             // 
             this.textBoxForsaljningsslut.Location = new System.Drawing.Point(1052, 434);
-            this.textBoxForsaljningsslut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxForsaljningsslut.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxForsaljningsslut.Name = "textBoxForsaljningsslut";
             this.textBoxForsaljningsslut.Size = new System.Drawing.Size(201, 22);
             this.textBoxForsaljningsslut.TabIndex = 48;
@@ -538,11 +539,21 @@
             this.btnAkt.UseVisualStyleBackColor = true;
             this.btnAkt.Click += new System.EventHandler(this.btnAkt_Click);
             // 
+            // lblSistaForsaljningsdag
+            // 
+            this.lblSistaForsaljningsdag.AutoSize = true;
+            this.lblSistaForsaljningsdag.Location = new System.Drawing.Point(1052, 335);
+            this.lblSistaForsaljningsdag.Name = "lblSistaForsaljningsdag";
+            this.lblSistaForsaljningsdag.Size = new System.Drawing.Size(54, 17);
+            this.lblSistaForsaljningsdag.TabIndex = 50;
+            this.lblSistaForsaljningsdag.Text = "label14";
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1327, 597);
+            this.Controls.Add(this.lblSistaForsaljningsdag);
             this.Controls.Add(this.btnAkt);
             this.Controls.Add(this.textBoxForsaljningsslut);
             this.Controls.Add(this.btnAndraTaBortBeh);
@@ -589,7 +600,7 @@
             this.Controls.Add(this.labelForestNamn);
             this.Controls.Add(this.textBoxForestNamn);
             this.Controls.Add(this.listBoxAdminForestallning);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdminForm";
             this.Text = "AdminForm";
             this.Load += new System.EventHandler(this.AdminForm_Load);
@@ -646,5 +657,6 @@
         private System.Windows.Forms.Button btnAndraTaBortBeh;
         private System.Windows.Forms.TextBox textBoxForsaljningsslut;
         private System.Windows.Forms.Button btnAkt;
+        private System.Windows.Forms.Label lblSistaForsaljningsdag;
     }
 }

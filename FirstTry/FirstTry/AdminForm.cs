@@ -96,23 +96,24 @@ namespace FirstTry
                 if (valdforestallning.open == true)
                 {
                     lblforestallningoppen.Visible = true;
-                 
-                    string sqlforsaljningslut = (@"SELECT forsaljningslut FROM forestallning WHERE id ='" + valdforestallning.id + "'");
                     
+
+                    string sqlforsaljningslut = (@"SELECT forsaljningslut FROM forestallning WHERE id ='" + valdforestallning.id + "'");
+
                     conn.Open();
                     NpgsqlCommand command = new NpgsqlCommand(sqlforsaljningslut, conn);
-                    
+
                     NpgsqlDataReader dr = command.ExecuteReader();
                     while (dr.Read())
                     {
                         valdforestallning.forsaljningsslut = Convert.ToDateTime(dr["forsaljningslut"]);
                     }
                     conn.Close();
-                    textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString() + " " +valdforestallning.forsaljningsslut.ToShortTimeString();
-                  
+                    textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString() + " " + valdforestallning.forsaljningsslut.ToShortTimeString();
 
-                       
-                    }
+
+
+                }
                 else
                 {
                     lblforestallningoppen.Visible = false;
@@ -153,13 +154,14 @@ namespace FirstTry
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
             bool friplacering = false;
+            DateTime forsaljningsslut = Convert.ToDateTime(lblSistaForsaljningsdag.Text);
 
             if (checkBoxfriPlacering.Checked == true)
             {
                 friplacering = true;
             }
 
-            Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering);
+            Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
 
             conn.Close();
@@ -330,8 +332,10 @@ namespace FirstTry
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
             bool friplacering = false;
+            DateTime forsaljningsslut = Convert.ToDateTime(lblSistaForsaljningsdag.Text); 
+            
 
-            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering);
+            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
         }
 
@@ -360,35 +364,17 @@ namespace FirstTry
 
         private void buttonOppnaForest_Click(object sender, EventArgs e)
         {
-            textBoxForsaljningsslut.Visible = true;
-           // dateTimePickerTid.Enabled = true;
+           textBoxForsaljningsslut.Visible = true;
+           dateTimePickerTid.Visible = true;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            int id = valdforestallning.id;
+            DateTime forsaljningsslut = Convert.ToDateTime(dateTimePickerTid.Text);
+            Databasmetoder.UppdateraDateTimePicker(id, forsaljningsslut);
 
-            //Forestallning fs = new Forestallning();
-            ////DateTime forsaljningsslut = fs.forsaljningsslut;
-            ////DateTime forsaljningsslut = Convert.ToDateTime (textBoxForsaljningsslut.Text + ":00+");//dateTimePickerTid.Value;
-
-            //try
-            //{
-            //    conn.Open();
-            //    NpgsqlCommand command = new NpgsqlCommand(@"INSERT INTO forestallning(forsaljningsslut) VALUES(:forsaljningsslut) WHERE id = '" + valdforestallning.id + "')", conn);
-
-            //    command.Parameters.Add(new NpgsqlParameter("nyForsaljningsslut", DbType.DateTime).Value);
-            //    command.Parameters[0].Value = forsaljningsslut;
-
-
-        //    }
-        //    catch (NpgsqlException ex)
-        //    {
-        //        MessageBox.Show(ex.ToString());
-        //    }
-        //    finally
-        //    {
-        //        conn.Close();
-        //    }
+           
 
         }
 
@@ -611,15 +597,16 @@ namespace FirstTry
         {
           
             string namn = textBoxAktnamn.Text;
-            //string aktinfo = richTextBoxAktInf.Text;
-            //DateTime starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
-            //DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
-            //int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
-            //int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
-            //int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
+            string aktinfo = richTextBoxAktInf.Text;
+            DateTime starttid = (Convert.ToDateTime(textBoxAktStarttid.Text));
+            DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
+            int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
+            int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
+            int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
 
-            Databasmetoder.LaggTillNyAkt(namn);  //, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
+            Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);  //, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
             listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+            
 
             conn.Close();
         }
@@ -629,6 +616,11 @@ namespace FirstTry
             buttonLaggTillAktInfo.Enabled = true;
             listBoxAkter.SelectionMode = SelectionMode.None;
             tomTextBoxarAkt();
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
