@@ -94,31 +94,22 @@ namespace FirstTry
 
                 if (valdforestallning.open == true)
                 {
+                    checkBoxForestallning.Checked = true;
                     lblforestallningoppen.Visible = true;
-
-
-                    //string sqlforsaljningslut = (@"SELECT forsaljningslut FROM forestallning WHERE id ='" + valdforestallning.id + "'");
-
-                    //conn.Open();
-                    //NpgsqlCommand command = new NpgsqlCommand(sqlforsaljningslut, conn);
-
-                    //NpgsqlDataReader dr = command.ExecuteReader();
-                    //while (dr.Read())
-                    //{
-                    //    valdforestallning.forsaljningsslut = Convert.ToDateTime(dr["forsaljningslut"]);
-                    //}
-                    conn.Close();
-                    //textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString() + " " + valdforestallning.forsaljningsslut.ToShortTimeString();
-
-
-
                 }
                 else
                 {
+                    checkBoxForestallning.Checked = false;
                     lblforestallningoppen.Visible = false;
                 }
+
+
+
+                conn.Close();
+
+                }
             }
-        }
+        
 
         private int laggTillForest(string namn, string generellinfo, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
         {
@@ -199,6 +190,7 @@ namespace FirstTry
                 }
                
             }
+<<<<<<< HEAD
             catch (Exception)
             {
 
@@ -210,7 +202,16 @@ namespace FirstTry
 
            
 
+=======
 
+
+
+                Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
+                listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+>>>>>>> origin/nettest2-dev
+
+                conn.Close();
+            
         }
 
         private void listBoxAkter_SelectedIndexChanged(object sender, EventArgs e)
@@ -365,6 +366,7 @@ namespace FirstTry
             buttonLaggTillForest.Enabled = true;
             listBoxAdminForestallning.SelectionMode = SelectionMode.None;
             tomTextBoxarForestallning();
+
         }
 
         private void uppdatera_Click(object sender, EventArgs e)
@@ -385,17 +387,19 @@ namespace FirstTry
 
             if (checkBoxForestallning.Checked == true)
             {
-                open = true;
-            }
-
-
-            if (valdforestallning.open == true)
-            {
                 lblforestallningoppen.Visible = true;
+                valdforestallning.open = true;
+            }
+            else
+            {
+                checkBoxForestallning.Checked = false;
+                lblforestallningoppen.Visible = false;
             }
 
-                Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
+
+            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+            MessageBox.Show("Föreställningen har nu uppdaterats");
         }
 
 
@@ -515,12 +519,14 @@ namespace FirstTry
 
                     trans.Commit();
                     listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+                    MessageBox.Show("Föreställningen har nu raderats");
                 }
 
 
                 catch (NpgsqlException exception)
                 {
                     trans.Rollback();
+                    MessageBox.Show("Tyvärr uppstod ett fel! Vänligen kontrollera så att alla textboxar är korrekt ifyllda, se exempelkoden i textboxarna.");
                     MessageBox.Show(exception.ToString());
                 }
                 finally
@@ -635,7 +641,24 @@ namespace FirstTry
             buttonLaggTillAktInfo.Enabled = true;
             listBoxAkter.SelectionMode = SelectionMode.None;
             tomTextBoxarAkt();
+           exempelkodakt();
+        }           
+            private void exempelkodforest()
+        {
+            //textBoxForestDatum.Text = "yyyy-mm-dd";
+            //textBoxForsaljningsslut .Text = "00:00";
+            //textBoxForestStarttid.Text = "00:00";
+            //textBoxForsaljningsslut.Text = "yyyy-mm-dd HH:mm";
+            
         }
+
+        private void exempelkodakt()
+        {
+
+        }
+
+
+    
 
         private void label13_Click(object sender, EventArgs e)
         {
@@ -656,12 +679,12 @@ namespace FirstTry
 
         private void checkBoxForestallning_CheckedChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void richTextBoxAktInf_TextChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void textBoxForestSluttid_TextChanged(object sender, EventArgs e)
