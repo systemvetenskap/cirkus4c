@@ -92,6 +92,9 @@ namespace FirstTry
 
         private void listBoxBehorighet_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+       
+            
             //valdbehorighet = (Behorigheter)listBoxBehorigheter.SelectedItem;
             //if (valdbehorighet != null)
             //{
@@ -282,6 +285,10 @@ namespace FirstTry
             {
                 conn.Open();
                 laggTillAnvandare();
+
+                listBoxAnvandare.Items.Clear();
+
+                hamtaPersonal();
                 conn.Close();
             }
             else if (dialogResult == DialogResult.No)
@@ -293,7 +300,15 @@ namespace FirstTry
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            AdminForm af = new AdminForm();
+            af.ShowDialog();
+            this.Close();
+        }
 
+        private void listBoxTabell_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
         }
     }
     }

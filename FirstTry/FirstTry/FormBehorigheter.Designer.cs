@@ -64,6 +64,7 @@
             this.listBoxTabell.Name = "listBoxTabell";
             this.listBoxTabell.Size = new System.Drawing.Size(114, 147);
             this.listBoxTabell.TabIndex = 1;
+            this.listBoxTabell.SelectedIndexChanged += new System.EventHandler(this.listBoxTabell_SelectedIndexChanged);
             // 
             // listBoxAnvandare
             // 
