@@ -356,6 +356,9 @@ namespace FirstTry
             }
             else
             {
+                session.ungdom = u;
+                session.vuxna = v;
+                session.barn = b;
                 return true;
             }
             //if (u != 0 || v != 0 || b != 0)
