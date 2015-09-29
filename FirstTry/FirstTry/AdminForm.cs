@@ -161,7 +161,7 @@ namespace FirstTry
                 friplacering = true;
             }
 
-            if (checkBoxForestallning.Checked == true)
+            if (checkBoxForestallning.Checked == true)  //behövs denna
             {
                 open = true;
             }
@@ -530,21 +530,63 @@ namespace FirstTry
         {}
         private void buttonLaggTillAktInfo_Click(object sender, EventArgs e)
         {
-          
-            string namn = textBoxAktnamn.Text;
-            string aktinfo = richTextBoxAktInf.Text;
-            DateTime starttid = (Convert.ToDateTime(textBoxAktStarttid.Text));
-            DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
-            int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
-            int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
-            int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
-            int forestallningsid = Convert.ToInt32(valdforestallning.id);
+            try
+            {
+                string namn = textBoxAktnamn.Text;
+                string aktinfo = richTextBoxAktInf.Text;
+                DateTime starttid = (Convert.ToDateTime(textBoxAktStarttid.Text));
+                DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
+                int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
+                int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
+                int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
+                int forestallningsid = Convert.ToInt32(valdforestallning.id);
 
-            Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn, forestallningsid); 
-            listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+                DateTime forestStart = valdforestallning.starttid;
+                
+                if (starttid.TimeOfDay >= forestStart.TimeOfDay  &&  sluttid.TimeOfDay <= valdforestallning.sluttid.TimeOfDay)
+                {
+                    if (starttid.TimeOfDay < sluttid.TimeOfDay)
+                    {
+                        if (vuxen <= valdforestallning.vuxenpris && ungdom <= valdforestallning.ungdomspris && barn <= valdforestallning.barnpris)
+                        {
+                            Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn, forestallningsid);
+                            listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+                            listBoxAkter.SelectionMode = SelectionMode.One;
+                            buttonLaggTillAktInfo.Enabled = false;
+
+                            conn.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Akten har fel pris!");
+                        }
+                        //if (vuxen < valdforestallning.vuxenpris && ungdom < valdforestallning.ungdomspris && barn < valdforestallning.barnpris)
+                      
+                    }
+                    else
+                    {
+                        MessageBox.Show("Akten är för kort!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Akten måste ha en tid som passar föreställningen!");
+                    // textBoxAktStarttid.TabStop = Select.  //behöver sätta tabstoppet på starttidstextboxen.
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Alla textboxar måste vara korrekt ifyllda!");
+                
+            }
+
+
+
             
 
-            conn.Close();
+
+           
         }
 
         private void btnAkt_Click(object sender, EventArgs e)
@@ -567,6 +609,11 @@ namespace FirstTry
         }
 
         private void textBoxForestStarttid_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxForestallning_CheckedChanged(object sender, EventArgs e)
         {
 
         }
