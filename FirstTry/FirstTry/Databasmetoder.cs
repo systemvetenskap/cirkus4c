@@ -221,8 +221,6 @@ namespace FirstTry
 
                 int numberOfAffectedRows = command1.ExecuteNonQuery();
 
-
-
             }
 
             catch (NpgsqlException ex1)
@@ -236,9 +234,6 @@ namespace FirstTry
 
             }
         }
-
-
-
 
         public static void UppdateraForestallning(int id, string namn, string generellinfo, bool open, DateTime datum, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris, bool friplacering, DateTime forsaljningsslut)
         {

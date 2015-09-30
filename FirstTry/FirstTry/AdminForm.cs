@@ -80,9 +80,6 @@ namespace FirstTry
                 textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
                 textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString();
 
-
-
-
                 if (valdforestallning.friplacering == true)
                 {
                     checkBoxfriPlacering.Checked = true;
@@ -306,14 +303,12 @@ namespace FirstTry
             if (dialogResult == DialogResult.Yes)
             {
                 TaBortAkt();
-
             }
 
             else if (dialogResult == DialogResult.No)
             {
                 Refresh();
                 MessageBox.Show("Vill du endast göra ändringar, vänligen tryck på knappen Uppdatera akt");
-
             }
         }
 
@@ -350,7 +345,6 @@ namespace FirstTry
                 NpgsqlCommand command4 = new NpgsqlCommand(sql8, conn);
                 command4.Transaction = trans;
                 int numberOfAffectedRows4 = command4.ExecuteNonQuery();
-
 
                 trans.Commit();
                 listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
@@ -406,9 +400,10 @@ namespace FirstTry
                 DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
 
-                if (checkBoxForestallning.Checked == true)
+                if (valdforestallning.open == true)
                 {
                     valdforestallning.open = true;
+                    checkBoxForestallning.Checked = true;
                 }
 
                 else
