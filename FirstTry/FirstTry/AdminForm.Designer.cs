@@ -805,6 +805,7 @@
             this.btn_Huvud.TabIndex = 88;
             this.btn_Huvud.Text = "Tillbaka till Huvudsidan";
             this.btn_Huvud.UseVisualStyleBackColor = true;
+            this.btn_Huvud.Click += new System.EventHandler(this.btn_Huvud_Click);
             // 
             // AdminForm
             // 

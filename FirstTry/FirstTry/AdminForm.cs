@@ -756,7 +756,7 @@ private void Rapport()
         private void btnAndraTaBortBeh_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FormBehorigheter fbh = new FormBehorigheter();
+            FormBehorigheter fbh = new FormBehorigheter(aktorlistaId);
             fbh.ShowDialog();
             this.Close();
             //if (aktorlistaId != 6)
@@ -890,6 +890,14 @@ private void Rapport()
         private void textBoxVuxenpris_TextChanged(object sender, EventArgs e)
         {
                           
+        }
+
+        private void btn_Huvud_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Huvudsidan hs = new Huvudsidan(aktorlistaId);
+            hs.ShowDialog();
+            this.Close();
         }
     }
 

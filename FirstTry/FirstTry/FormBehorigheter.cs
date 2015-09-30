@@ -13,6 +13,7 @@ namespace FirstTry
 {
     public partial class FormBehorigheter : Form
     {
+        private List<int> aktortyper;
         private Personal valdpersonal;
         private Behorigheter valdbehorighet;
         private List<Personal> personallista = new List<Personal>();
@@ -20,9 +21,10 @@ namespace FirstTry
         
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
 
-        public FormBehorigheter()
+        public FormBehorigheter(List<int> aktortypID)
         {
            InitializeComponent();
+            aktortyper = aktortypID;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -534,7 +536,7 @@ namespace FirstTry
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            AdminForm af = new AdminForm();
+            AdminForm af = new AdminForm(aktortyper);
             af.ShowDialog();
             this.Close();
         }
