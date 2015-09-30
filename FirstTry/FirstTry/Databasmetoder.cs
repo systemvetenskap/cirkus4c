@@ -354,6 +354,7 @@ namespace FirstTry
             }
             finally
             {
+
                 conn1.Close();
             }
 

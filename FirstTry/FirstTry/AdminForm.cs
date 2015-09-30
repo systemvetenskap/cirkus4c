@@ -70,6 +70,7 @@ namespace FirstTry
                 textBoxVuxenpris.Enabled = true;
                 textBoxUngdomspris.Enabled = true;
                 textBoxBarnpris.Enabled = true;
+                label13.Text = "Sista försäljningsdag \n YYYY-mm-dd HH:mm";
             }
             if (aktorlistaId.Contains(5) == true || aktorlistaId.Contains(7) == true)
             {
@@ -313,9 +314,10 @@ private void Rapport()
             catch (Exception)
             {
 
-                MessageBox.Show("Alla textboxar måste vara korrekt ifyllda!");
+                MessageBox.Show("Vänligen observera att alla textfält måste vara ifyllda korrekt, se exempelkod. Kontrollera även så att du inte glömt att fylla i ett textfält.");
             }
 
+            MessageBox.Show("Föreställningen är nu tillagd i föreställningslistan.");
             conn.Close();
 
         }
@@ -447,6 +449,7 @@ private void Rapport()
             if (dialogResult == DialogResult.Yes)
             {
                 TaBortAkt();
+                MessageBox.Show("Akten har raderats");
             }
         
             else if (dialogResult == DialogResult.No)
@@ -492,7 +495,7 @@ private void Rapport()
 
                 trans.Commit();
                 listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
-                MessageBox.Show("Akten har raderats");
+               
 
             }
 
@@ -821,10 +824,14 @@ private void Rapport()
             }
             catch (Exception)
             {
-                MessageBox.Show("Alla textboxar måste vara korrekt ifyllda!");
+                MessageBox.Show("Vänligen observera att alla textfält måste vara ifyllda korrekt, se exempelkod. Kontrollera även så att du inte glömt att fylla i ett textfält.");
 
             }
-
+            finally
+            {
+                MessageBox.Show("Akten är nu tillagd i aktlistan.");
+                conn.Close();
+            }
         }
 
         private void btnAkt_Click(object sender, EventArgs e)
@@ -839,17 +846,17 @@ private void Rapport()
         }           
             private void exempelkodforest()
         {
-            textBoxForestDatum1.Text = "yyyy-mm-dd";
-            textBoxForsaljningsslut.Text = "00:00";
-            textBoxForestStarttid.Text = "00:00";
-            textBoxForsaljningsslut.Text = "yyyy-mm-dd HH:mm";
+            textBoxForestDatum1.Text = "YYYY-mm-dd";
+            textBoxForsaljningsslut.Text = "HH:mm";
+            textBoxForestStarttid.Text = "HH:mm";
+            textBoxForsaljningsslut.Text = "YYYY-mm-dd HH:mm";
 
         }
 
         private void exempelkodakt()
             {
-            textBoxAktStarttid.Text = "00:00";
-            textBoxAktSluttid.Text = "00:00";
+            textBoxAktStarttid.Text = "HH:mm";
+            textBoxAktSluttid.Text = "HH:mm";
 
         }
                    
