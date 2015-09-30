@@ -793,20 +793,27 @@ private void Rapport()
                     {
                         if (vuxen <= valdforestallning.vuxenpris && ungdom <= valdforestallning.ungdomspris && barn <= valdforestallning.barnpris)
                         {
+                            if (vuxen >= ungdom && vuxen >= barn && ungdom >= barn)
+                            {
                             Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn, forestallningsid);
-            listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+                            listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
                             listBoxAkter.SelectionMode = SelectionMode.One;
                             btnAkt.Enabled = true;
                             btnAkt.Visible = true;
                             buttonLaggTillAktInfo.Enabled = false;
                             buttonLaggTillAktInfo.Visible = false;
 
-            conn.Close();
+                             conn.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
+                            }
 
                         }
                         else
                         {
-                            MessageBox.Show("Akten har fel pris!");
+                            MessageBox.Show("Akten bör inte vara dyrare än föreställningen!");
         }
 
                     }
