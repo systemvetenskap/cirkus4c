@@ -12,34 +12,34 @@ namespace FirstTry
 
     class Databasmetoder
     {
-       
 
 
 
-        public static int LaggTillForestallning(Forestallning laggtillforestallning)
-        {
-            NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-            conn.Open();
-            
-            string query = "INSERT INTO forestallning (namn, generell_info, starttid, sluttid, open, vuxenpris, ungdomspris, barnpris, fri_placering) VALUES(@namn, @generell_info, @starttid, @sluttid, @open, @vuxenpris, @ungdomspris, @barnpris, @fri_placering)";
 
-            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+        //public static int LaggTillForestallning(Forestallning laggtillforestallning)
+        //{
+        //    NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+        //    conn.Open();
 
-            command.Parameters.AddWithValue("@namn", laggtillforestallning.namn);
-            command.Parameters.AddWithValue("@generell_info", laggtillforestallning.generellinfo);
-            command.Parameters.AddWithValue("@starttid", laggtillforestallning.starttid);
-            command.Parameters.AddWithValue("@sluttid", laggtillforestallning.sluttid);
-            command.Parameters.AddWithValue("@open", false);//false tills öppnad
-            command.Parameters.AddWithValue("@vuxenpris", laggtillforestallning.vuxenpris);
-            command.Parameters.AddWithValue("@ungdomspris", laggtillforestallning.ungdomspris);
-            command.Parameters.AddWithValue("@barnpris", laggtillforestallning.barnpris);
-            command.Parameters.AddWithValue(@"fri_placering", false);
+        //    string query = "INSERT INTO forestallning (namn, generell_info, starttid, sluttid, open, vuxenpris, ungdomspris, barnpris, fri_placering) VALUES(@namn, @generell_info, @starttid, @sluttid, @open, @vuxenpris, @ungdomspris, @barnpris, @fri_placering)";
 
-            return command.ExecuteNonQuery();
-            
-        }
+        //    NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
-       
+        //    command.Parameters.AddWithValue("@namn", laggtillforestallning.namn);
+        //    command.Parameters.AddWithValue("@generell_info", laggtillforestallning.generellinfo);
+        //    command.Parameters.AddWithValue("@starttid", laggtillforestallning.starttid);
+        //    command.Parameters.AddWithValue("@sluttid", laggtillforestallning.sluttid);
+        //    command.Parameters.AddWithValue("@open", false);//false tills öppnad
+        //    command.Parameters.AddWithValue("@vuxenpris", laggtillforestallning.vuxenpris);
+        //    command.Parameters.AddWithValue("@ungdomspris", laggtillforestallning.ungdomspris);
+        //    command.Parameters.AddWithValue("@barnpris", laggtillforestallning.barnpris);
+        //    command.Parameters.AddWithValue(@"fri_placering", false);
+
+        //    return command.ExecuteNonQuery();
+
+        //}
+
+
         public static List<Forestallning> HamtaForestallningLista()
         {
             List<Forestallning> forestallningslista = new List<Forestallning>();
@@ -95,13 +95,13 @@ namespace FirstTry
             }
             conn.Close();
             return forestallningslista;
-            }
+        }
 
 
         public static List<Akt> HamtaAktLista(int valdforestallningsid)
         {
-           
-           
+
+
             List<Akt> aktlista = new List<Akt>();
             NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
             conn.Open();
@@ -110,9 +110,9 @@ namespace FirstTry
 
             NpgsqlCommand command = new NpgsqlCommand(sql1, conn);
 
-            
-             command.Parameters.Add(new NpgsqlParameter("nyValdforestallningsid", DbType.Int32));
-             command.Parameters[0].Value = valdforestallningsid;
+
+            command.Parameters.Add(new NpgsqlParameter("nyValdforestallningsid", DbType.Int32));
+            command.Parameters[0].Value = valdforestallningsid;
 
 
             NpgsqlDataReader dr = command.ExecuteReader();
@@ -120,9 +120,9 @@ namespace FirstTry
             while (dr.Read())
             {
                 Akt akten = new Akt();
-           
+
                 akten.namn = (string)dr["aktnamn"];
-                akten.Aktinfo  = (string)dr["aktinfo"];
+                akten.Aktinfo = (string)dr["aktinfo"];
                 akten.Starttid = Convert.ToDateTime(dr["starttid"]);   //datumtid
                 akten.Sluttid = Convert.ToDateTime(dr["sluttid"]);
                 akten.vuxen = Convert.ToInt32(dr["vuxenpris"]);
@@ -139,14 +139,14 @@ namespace FirstTry
 
 
 
-        public static void LaggTillNyForestallning(string namn, string generellinfo, bool open , DateTime datum, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris, bool friplacering, DateTime forsaljningsslut)
+        public static void LaggTillNyForestallning(string namn, string generellinfo, bool open, DateTime datum, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris, bool friplacering, DateTime forsaljningsslut)
         {
             NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-           
+
             try
             {
                 conn1.Open();
-               
+
                 NpgsqlCommand command1 = new NpgsqlCommand(@"INSERT INTO forestallning(namn, generell_info, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, fri_placering, forsaljningslut) VALUES (:nyNamn, :nyGenerellInfo,:nyOpen , :nyDatum, :nyStarttid, :nySluttid, :nyVuxenpris, :nyUngdomspris, :nyBarnpris, :nyFriplacering, :nyForsaljningsslut)", conn1);
 
 
@@ -173,9 +173,9 @@ namespace FirstTry
                 command1.Parameters.Add(new NpgsqlParameter("nyForsaljningsslut", DbType.DateTime));
                 command1.Parameters[10].Value = forsaljningsslut;
 
-                
+
                 int numberOfAffectedRows = command1.ExecuteNonQuery();
-         
+
             }
 
             catch (NpgsqlException ex)
@@ -185,23 +185,23 @@ namespace FirstTry
             finally
             {
                 conn1.Close();
-            }       
-       }
+            }
+        }
 
         public static void LaggTillNyAkt(string namn, string aktinfo, DateTime starttid, DateTime sluttid, int vuxen, int ungdom, int barn, int forestallningsid)  ///*, string aktinfo, DateTime starttid, DateTime sluttid, int vuxen, int ungdom, int barn*/
         {
             NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-           
+
 
 
             try
             {
                 conn1.Open();
-             
+
 
                 NpgsqlCommand command1 = new NpgsqlCommand(@"INSERT INTO akter(aktnamn, aktinfo, starttid, sluttid, vuxenpris, ungdomspris, barnpris, forestallningsid) VALUES (:nyAktNamn, :nyAktInfo, :nyStarttid, :nySluttid, :nyVuxenpris, :nyUngdomspris, :nyBarnpris, :nyForestallningsid)", conn1);
 
-               
+
                 command1.Parameters.Add(new NpgsqlParameter("nyAktNamn", DbType.String));
                 command1.Parameters[0].Value = namn;
                 command1.Parameters.Add(new NpgsqlParameter("nyAktInfo", DbType.String));
@@ -218,32 +218,32 @@ namespace FirstTry
                 command1.Parameters[6].Value = barn;
                 command1.Parameters.Add(new NpgsqlParameter("nyForestallningsid", DbType.Int32));
                 command1.Parameters[7].Value = forestallningsid;
-              
+
                 int numberOfAffectedRows = command1.ExecuteNonQuery();
 
 
-              
+
             }
 
             catch (NpgsqlException ex1)
             {
-                
+
                 MessageBox.Show("akt" + ex1);
             }
             finally
             {
                 conn1.Close();
-               
+
             }
         }
 
 
-        
+
 
         public static void UppdateraForestallning(int id, string namn, string generellinfo, bool open, DateTime datum, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris, bool friplacering, DateTime forsaljningsslut)
         {
             NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-    
+
             try
             {
                 conn1.Open();
@@ -279,7 +279,7 @@ namespace FirstTry
                 int numberOfAffectedRows = command1.ExecuteNonQuery();
 
 
-              
+
             }
 
             catch (NpgsqlException ex)
@@ -320,7 +320,7 @@ namespace FirstTry
                 command1.Parameters[6].Value = barn;
                 command1.Parameters.Add(new NpgsqlParameter("nyId", DbType.Int32));
                 command1.Parameters[7].Value = id;
-                
+
 
                 int numberOfAffectedRows = command1.ExecuteNonQuery();
 
@@ -328,7 +328,7 @@ namespace FirstTry
 
             catch (NpgsqlException ex)
             {
-
+                MessageBox.Show("Tyvärr uppstod ett fel! Vänligen kontrollera så att alla textboxar är korrekt ifyllda, se exempelkoden i textboxarna.");
                 MessageBox.Show(ex.ToString());
             }
             finally
@@ -337,42 +337,11 @@ namespace FirstTry
             }
         }
 
-        public static void UppdateraForsaljningsslut(int id, DateTime forsaljningsslut)
-        {
-           
-            //NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
 
-            //try
-            //{ 
-            //    Forestallning fs = new Forestallning();
-            //    conn.Open();
-            //    NpgsqlCommand command = new NpgsqlCommand(@"UPDATE forestallning SET forsaljningslut = :nyForsaljningsslut WHERE id = :nyId", conn);
-
-            //    command.Parameters.Add(new NpgsqlParameter("nyForsaljningsslut", DbType.DateTime));
-            //    command.Parameters[0].Value = forsaljningsslut;
-            //    command.Parameters.Add(new NpgsqlParameter("nyId", DbType.Int32));
-            //    command.Parameters[9].Value = id;
-
-            //    int numberOfAffectedRows = command.ExecuteNonQuery();
-
-            //}
-
-            //catch (NpgsqlException ex)
-            //{
-
-            //    MessageBox.Show(ex.ToString());
-            //}
-            //finally
-            //{
-            //    conn.Close();
-            //}
-
-        }
-
-              public static void TaBortAkt(int valdaktid)
+        public static void TaBortAkt(int valdaktid)
         {
             NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-            
+
             try
             {
                 Forestallning fs = new Forestallning();
@@ -381,8 +350,7 @@ namespace FirstTry
                 NpgsqlCommand command1 = new NpgsqlCommand(sql);
 
                 command1.Parameters.Add(new NpgsqlParameter("id", DbType.String));
-                command1.Parameters[0].Value = valdaktid; 
-
+                command1.Parameters[0].Value = valdaktid;
 
             }
             catch
@@ -395,12 +363,10 @@ namespace FirstTry
             }
 
         }
-           
-    }
 
+    }
+}
     
-
-    }
 
 
 
