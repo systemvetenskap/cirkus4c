@@ -422,10 +422,19 @@ private void Rapport()
                     {
                         if (vuxen <= valdforestallning.vuxenpris && ungdom <= valdforestallning.ungdomspris && barn <= valdforestallning.barnpris)
                         {
+                            if (vuxen >= ungdom && vuxen >= barn && ungdom >= barn)
+                            {
                             Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
                             listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
 
                             conn.Close();
+                            MessageBox.Show("Akten är nu uppdaterad!");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
+                            }
+                               
                         }
                         else
                         {
@@ -536,6 +545,8 @@ private void Rapport()
             buttonLaggTillForest.Visible = true;
             btnSkapaForestallning.Enabled = false;
             btnSkapaForestallning.Visible = false;
+            btn_Avbryt.Enabled = true;
+            btn_Avbryt.Visible = true;
             listBoxAdminForestallning.SelectionMode = SelectionMode.None;
             tomTextBoxarForestallning();
             tomTextBoxarAkt();
@@ -858,6 +869,8 @@ private void Rapport()
             buttonLaggTillAktInfo.Visible = true;
             btnAkt.Enabled = false;
             btnAkt.Visible = false;
+            btn_Avbryt.Enabled = true;
+            btn_Avbryt.Visible = true;
             listBoxAkter.SelectionMode = SelectionMode.None;
             tomTextBoxarAkt();
            exempelkodakt();
