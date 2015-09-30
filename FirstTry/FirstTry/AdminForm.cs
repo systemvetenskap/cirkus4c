@@ -242,61 +242,62 @@ namespace FirstTry
 
             //Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
             //listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
-        }
 
-         try
+
+            try
+            {
+                int fsid = valdforestallning.id;
+                int id = valdakt.id;
+                string namn = textBoxAktnamn.Text;
+                string aktinfo = richTextBoxAktInf.Text;
+                DateTime starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
+                DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
+                int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
+                int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
+                int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
+
+                DateTime forestStart = valdforestallning.starttid;
+
+                if (starttid.TimeOfDay >= forestStart.TimeOfDay && sluttid.TimeOfDay <= valdforestallning.sluttid.TimeOfDay)
+                {
+                    if (starttid.TimeOfDay < sluttid.TimeOfDay)
                     {
-                        int fsid = valdforestallning.id;
-                        int id = valdakt.id;
-                        string namn = textBoxAktnamn.Text;
-                        string aktinfo = richTextBoxAktInf.Text;
-                        DateTime starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
-                        DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
-                        int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
-                        int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
-                        int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
-
-                        DateTime forestStart = valdforestallning.starttid;
-
-                        if (starttid.TimeOfDay >= forestStart.TimeOfDay  &&  sluttid.TimeOfDay <= valdforestallning.sluttid.TimeOfDay)
+                        if (vuxen <= valdforestallning.vuxenpris && ungdom <= valdforestallning.ungdomspris && barn <= valdforestallning.barnpris)
                         {
-                            if (starttid.TimeOfDay < sluttid.TimeOfDay)
-                            {
-                                if (vuxen <= valdforestallning.vuxenpris && ungdom <= valdforestallning.ungdomspris && barn <= valdforestallning.barnpris)
-                                {
-                                    Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
-                                    listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
-                                    
-            //Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn, forestallningsid);
-                                    //listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
-                                    //listBoxAkter.SelectionMode = SelectionMode.One;
-                                    //buttonLaggTillAktInfo.Enabled = false;
+                            Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
+                            listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
 
-                                    conn.Close();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Akten har fel pris!");
-                                }
+                            //Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn, forestallningsid);
+                            //listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+                            //listBoxAkter.SelectionMode = SelectionMode.One;
+                            //buttonLaggTillAktInfo.Enabled = false;
 
-                            }
-                            else
-                            {
-                                MessageBox.Show("Akten är för kort!");
-                            }
+                            conn.Close();
                         }
                         else
                         {
-                            MessageBox.Show("Akten måste ha en tid som passar föreställningen!");
-
+                            MessageBox.Show("Akten har fel pris!");
                         }
 
                     }
-                    catch (Exception)
+                    else
                     {
-                        MessageBox.Show("Alla textboxar måste vara korrekt ifyllda!");
-
+                        MessageBox.Show("Akten är för kort!");
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Akten måste ha en tid som passar föreställningen!");
+
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Alla textboxar måste vara korrekt ifyllda!");
+
+            }
+        }
          
 
         private void button1_Click_2(object sender, EventArgs e)
@@ -361,6 +362,7 @@ namespace FirstTry
             {
                 trans.Rollback();
                 MessageBox.Show(exception.ToString());
+
             }
             finally
             {
@@ -368,6 +370,8 @@ namespace FirstTry
                 conn.Close();
             }
         }
+
+
 
 
         private void TextBoxAktBarnpris_TextChanged(object sender, EventArgs e)
@@ -580,11 +584,6 @@ namespace FirstTry
         }
 
 
-
-
-
-        
-
         private void label14_Click_1(object sender, EventArgs e)
         {
 
@@ -662,12 +661,6 @@ namespace FirstTry
                 MessageBox.Show("Alla textboxar måste vara korrekt ifyllda!");
                 
             }
-
-
-
-            
-
-
            
         }
 
