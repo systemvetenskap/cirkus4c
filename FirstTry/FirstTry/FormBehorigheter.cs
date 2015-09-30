@@ -29,9 +29,19 @@ namespace FirstTry
 
         private void button1_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            laggTillBehorighet();
-            conn.Close();
+           
+            if (listBoxAnvandare.SelectedIndex < 0)
+            {
+                MessageBox.Show("Hoppsan, du glömde visst välja användare");
+            }
+            else
+            {
+                conn.Open();
+                laggTillBehorighet();
+                conn.Close();
+            }
+
+ 
         }
         private void updateraPersonalensBehorighet(string aktortyp_id)
         {
@@ -182,10 +192,8 @@ namespace FirstTry
 
 
         }
-        private void btnTaBortBeh_Click(object sender, EventArgs e)
+        private void taBortBehorighet()
         {
-            conn.Open();
-
 
             Personal p = (Personal)listBoxAnvandare.SelectedItem;
             Behorigheter b = (Behorigheter)listBoxBehorighet.SelectedItem;
@@ -222,10 +230,22 @@ namespace FirstTry
 
                 // throw;
             }
-            conn.Close();
+        }
+        private void btnTaBortBeh_Click(object sender, EventArgs e)
+        {
+
+            if (listBoxAnvandare.SelectedIndex < 0)
+            {
+                MessageBox.Show("Hoppsan, du glömde visst välja användare");
+            }
+            else
+            {
+                conn.Open();
+                taBortBehorighet();
+                conn.Close();
+            }
 
 
-            
             // MessageBox.Show(MessageBoxButtons.YesNo.ToString());
 
 
@@ -286,7 +306,7 @@ namespace FirstTry
                     // string losenord = anvandare["losenord"].ToString();
                     tempp.Fornamn = anvandare["fornamn"].ToString();
                     tempp.Efternamn = anvandare["efternamn"].ToString();
-                    tempp.Personnr = anvandare["personnr"].ToString();
+                  //  tempp.Personnr = anvandare["personnr"].ToString();
 
                     DataTable dt2 = new DataTable();
                     string query2 = "SELECT aktortyp.typ, aktortyplist.inlog_id, aktortyplist.aktortyp_id FROM public.aktortyp, public.aktortyplist, public.inlog WHERE aktortyp.id = aktortyplist.aktortyp_id AND aktortyplist.inlog_id = inlog.id AND inlog.id = ";

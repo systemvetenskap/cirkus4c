@@ -100,6 +100,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "Kunduppgifter";
             this.Text = "Kunduppgifter";
+            this.Load += new System.EventHandler(this.Kunduppgifter_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

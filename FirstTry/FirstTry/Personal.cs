@@ -13,7 +13,7 @@ namespace FirstTry
         public string Fornamn { get; set; }
         public string Efternamn { get; set; }
         public int Inlog_id { get; set; }
-        public string Personnr { get; set; }
+    //    public string Personnr { get; set; }
         public string losenord { get; set; }
         public string anvandarnamn { get; set; }
         public List<Behorigheter> behorigheter { get; set; }
@@ -26,7 +26,7 @@ namespace FirstTry
 
         public override string ToString()
         {
-            return Fornamn + " " + Efternamn + " " + Personnr;
+            return Fornamn + " " + Efternamn /*+ " " + Personnr*/;
         }
     }
 }

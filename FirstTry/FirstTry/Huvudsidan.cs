@@ -361,6 +361,10 @@ namespace FirstTry
                 return false;
                 //session.barn = b;
             }
+            else if ((u + v + b) == 0)
+            {
+                return false;
+            }
             else
             {
                 session.ungdom = u;

@@ -26,18 +26,27 @@ namespace FirstTry
 
         private int nyKund()
         {
-            string query = "INSERT INTO kund(namn, telefon, mail, efternamn) VALUES (@namn, @telefon, @mail, @efternamn);";
+            try
+            {
+                string query = "INSERT INTO kund(namn, telefon, mail, efternamn) VALUES (@namn, @telefon, @mail, @efternamn);";
 
-            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+                NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
-            command.Parameters.AddWithValue("@namn", textBox1.Text);
-            command.Parameters.AddWithValue("@efternamn", textBox2.Text);
-            command.Parameters.AddWithValue("@telefon", textBox3.Text);
-            command.Parameters.AddWithValue("@mail", textBox4.Text);
+                command.Parameters.AddWithValue("@namn", textBox1.Text);
+                command.Parameters.AddWithValue("@efternamn", textBox2.Text);
+                command.Parameters.AddWithValue("@telefon", textBox3.Text);
+                command.Parameters.AddWithValue("@mail", textBox4.Text);
 
-            tk.epost = textBox4.Text;
+                tk.epost = textBox4.Text;
 
-            return command.ExecuteNonQuery();
+                return command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Hoppsan, något gick fel");
+                throw;
+            }
+
         }
 
         private int nyKundID()
@@ -60,15 +69,31 @@ namespace FirstTry
 
         private void button1_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            nyKund();
-          //  tk.kund_id = nyKundID();
-            conn.Close();
 
-            this.Hide();
-            Platskarta pk = new Platskarta(tk);
-            pk.ShowDialog();
-            this.Close();
+            int x;
+
+            if (int.TryParse(textBox3.Text, out x) == true && textBox3.Text.Count() < 14 && textBox3.Text.Count() > 7)
+            {
+                conn.Open();
+                nyKund();
+                //  tk.kund_id = nyKundID();
+                conn.Close();
+
+                this.Hide();
+                Platskarta pk = new Platskarta(tk);
+                pk.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Hoppsan, du skrev in telefonnummeret felaktigt");
+            }
+
+        }
+
+        private void Kunduppgifter_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
