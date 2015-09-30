@@ -416,7 +416,26 @@ namespace FirstTry
                         gk(button_B6, fusk, vecka, platsid, id);
                         gk(button_B7, fusk, vecka, platsid, id);
                         gk(button_B8, fusk, vecka, platsid, id);
-                   // }
+
+                        gk(button_D1, fusk, vecka, platsid, id);
+                        gk(button_D2, fusk, vecka, platsid, id);
+                        gk(button_D3, fusk, vecka, platsid, id);
+                        gk(button_D4, fusk, vecka, platsid, id);
+                        gk(button_D5, fusk, vecka, platsid, id);
+                        gk(button_D6, fusk, vecka, platsid, id);
+                        gk(button_D7, fusk, vecka, platsid, id);
+                        gk(button_D8, fusk, vecka, platsid, id);
+
+                        gk(button_F1, fusk, vecka, platsid, id);
+                        gk(button_F2, fusk, vecka, platsid, id);
+                        gk(button_F3, fusk, vecka, platsid, id);
+                        gk(button_F4, fusk, vecka, platsid, id);
+                        gk(button_F5, fusk, vecka, platsid, id);
+                        gk(button_F6, fusk, vecka, platsid, id);
+                        gk(button_F7, fusk, vecka, platsid, id);
+                        gk(button_F8, fusk, vecka, platsid, id);
+
+                    // }
                 }
                 dr.Close();
                 x++;
@@ -732,6 +751,126 @@ namespace FirstTry
         private void button_B8_Click(object sender, EventArgs e)
         {
             generellknapp(button_B8);
+        }
+
+        private void button_D1_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_D1);
+        }
+
+        private void button_D2_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_D2);
+        }
+
+        private void button_D3_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_D3);
+        }
+
+        private void button_D4_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_D4);
+        }
+
+        private void button_D5_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_D5);
+        }
+
+        private void button_D6_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_D6);
+        }
+
+        private void button_D7_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_D7);
+        }
+
+        private void button_D8_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_D8);
+        }
+
+        private void button_F1_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_F1);
+        }
+
+        private void button_F2_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_F2);
+        }
+
+        private void button_F3_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_F3);
+        }
+
+        private void button_F4_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_F4);
+        }
+
+        private void button_F5_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_F5);
+        }
+
+        private void button_F6_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_F6);
+        }
+
+        private void button_F7_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_F7);
+        }
+
+        private void button_F8_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_F8);
+        }
+
+        private void button_H1_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_H1);
+        }
+
+        private void button_H2_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_H2);
+        }
+
+        private void button_H3_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_H3);
+        }
+
+        private void button_H4_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_H4);
+        }
+
+        private void button_H5_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_H5);
+        }
+
+        private void button_H6_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_H6);
+        }
+
+        private void button_H7_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_H7);
+        }
+
+        private void button_H8_Click(object sender, EventArgs e)
+        {
+            generellknapp(button_H8);
         }
     }
 }
