@@ -35,6 +35,7 @@ namespace FirstTry
         public List <Kund> kunder { get; set; }
         public int antalKunder { get; set; }
         public bool fardig { get; set; }
+      //  public string kundID { get; set; }
 
         public Tempkop()
         {

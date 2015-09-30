@@ -33,6 +33,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.textBox_epost = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.listBox_kunder = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -83,11 +84,23 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // listBox_kunder
+            // 
+            this.listBox_kunder.FormattingEnabled = true;
+            this.listBox_kunder.Location = new System.Drawing.Point(14, 143);
+            this.listBox_kunder.Name = "listBox_kunder";
+            this.listBox_kunder.ScrollAlwaysVisible = true;
+            this.listBox_kunder.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.listBox_kunder.Size = new System.Drawing.Size(177, 225);
+            this.listBox_kunder.TabIndex = 5;
+            this.listBox_kunder.Visible = false;
+            // 
             // FinalPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 563);
+            this.Controls.Add(this.listBox_kunder);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox_epost);
             this.Controls.Add(this.button2);
@@ -108,5 +121,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox_epost;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ListBox listBox_kunder;
     }
 }

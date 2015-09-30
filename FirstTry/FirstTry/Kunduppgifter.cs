@@ -23,12 +23,18 @@ namespace FirstTry
             tk = tk2;
 
         }
-
+        private void kundIDBiljetter(int x)
+        {
+            foreach (Biljett b in tk.biljetter)
+            {
+                b.kund_id = x;
+            }
+        }
         private int nyKund()
         {
             try
             {
-                string query = "INSERT INTO kund(namn, telefon, mail, efternamn) VALUES (@namn, @telefon, @mail, @efternamn);";
+                string query = "INSERT INTO kund(namn, telefon, mail, efternamn) VALUES (@namn, @telefon, @mail, @efternamn) RETURNING id;";
 
                 NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
@@ -39,11 +45,15 @@ namespace FirstTry
 
                 tk.epost = textBox4.Text;
 
-                return command.ExecuteNonQuery();
+                int x = (int)command.ExecuteScalar();
+                kundIDBiljetter(x);
+                return x;
+                //  return command.ExecuteNonQuery();
             }
             catch (Exception)
             {
                 MessageBox.Show("Hoppsan, något gick fel");
+                return -1;
                 throw;
             }
 

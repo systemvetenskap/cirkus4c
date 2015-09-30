@@ -770,5 +770,13 @@ namespace FirstTry
             af.ShowDialog();
             this.Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FinalPage fp = new FinalPage();
+            fp.ShowDialog();
+            this.Close();
+        }
     }
 }

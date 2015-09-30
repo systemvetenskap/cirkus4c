@@ -176,8 +176,16 @@ namespace FirstTry
             conn.Open();
             try
             {
-                string query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, plats_id, reserverad) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @plats_id, @reserverad) RETURNING id;";
+                string query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, plats_id, reserverad, tidsstampel) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @plats_id, @reserverad, @tidsstampel) RETURNING id;";
                 Biljett biljetten = new Biljett();
+
+
+                if (tk.biljetter[tk.fuskIgen].resserverad == true)
+                {
+                    query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, plats_id, reserverad, tidsstampel, kund_id) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @plats_id, @reserverad, @tidsstampel, @kund_id) RETURNING id;";
+                }
+
+
                 NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
                 tk.biljetter[tk.fuskIgen].plats_id = KnappId(kn);
@@ -188,6 +196,13 @@ namespace FirstTry
                 command.Parameters.AddWithValue("@biljettyp", tk.biljetter[tk.fuskIgen].biljettyp);
                 command.Parameters.AddWithValue("@plats_id", tk.biljetter[tk.fuskIgen].plats_id);
                 command.Parameters.AddWithValue("@reserverad", tk.biljetter[tk.fuskIgen].resserverad);
+                command.Parameters.AddWithValue("@tidsstampel", DateTime.Now);
+
+                if (tk.biljetter[tk.fuskIgen].resserverad == true)
+                {
+                    command.Parameters.AddWithValue("@kund_id", tk.biljetter[tk.fuskIgen].kund_id);
+                }
+
 
                 int x = (int)command.ExecuteScalar();
                 

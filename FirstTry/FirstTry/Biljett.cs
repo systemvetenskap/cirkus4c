@@ -20,6 +20,7 @@ namespace FirstTry
         public bool resserverad { get; set; }
         public bool hela { get; set; }
         public bool kopt { get; set; }
+        public int kund_id { get; set; }
         //datum
         //tid
 
