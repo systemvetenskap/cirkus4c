@@ -97,6 +97,9 @@
             this.label44 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
+            this.checkBoxForestallning1 = new System.Windows.Forms.CheckBox();
+            this.textBoxForestDatum1 = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBoxAdminForestallning
@@ -463,6 +466,7 @@
             // 
             // btnAndraTaBortBeh
             // 
+            this.btnAndraTaBortBeh.Enabled = false;
             this.btnAndraTaBortBeh.Location = new System.Drawing.Point(785, 41);
             this.btnAndraTaBortBeh.Margin = new System.Windows.Forms.Padding(2);
             this.btnAndraTaBortBeh.Name = "btnAndraTaBortBeh";
@@ -470,7 +474,6 @@
             this.btnAndraTaBortBeh.TabIndex = 28;
             this.btnAndraTaBortBeh.Text = "Ändra behörigheter";
             this.btnAndraTaBortBeh.UseVisualStyleBackColor = true;
-            this.btnAndraTaBortBeh.Visible = false;
             this.btnAndraTaBortBeh.Click += new System.EventHandler(this.btnAndraTaBortBeh_Click);
             // 
             // textBoxForsaljningsslut
@@ -496,7 +499,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(259, 516);
+            this.label15.Location = new System.Drawing.Point(323, 516);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(37, 13);
             this.label15.TabIndex = 51;
@@ -505,7 +508,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(306, 516);
+            this.label16.Location = new System.Drawing.Point(370, 516);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(56, 13);
             this.label16.TabIndex = 52;
@@ -514,7 +517,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(368, 516);
+            this.label17.Location = new System.Drawing.Point(432, 516);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(29, 13);
             this.label17.TabIndex = 53;
@@ -523,7 +526,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(109, 546);
+            this.label18.Location = new System.Drawing.Point(173, 546);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(38, 13);
             this.label18.TabIndex = 54;
@@ -532,7 +535,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(150, 529);
+            this.label19.Location = new System.Drawing.Point(214, 529);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(331, 13);
             this.label19.TabIndex = 55;
@@ -542,7 +545,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(153, 546);
+            this.label20.Location = new System.Drawing.Point(217, 546);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(41, 13);
             this.label20.TabIndex = 56;
@@ -551,7 +554,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(259, 546);
+            this.label21.Location = new System.Drawing.Point(323, 546);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(41, 13);
             this.label21.TabIndex = 57;
@@ -560,7 +563,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(307, 546);
+            this.label22.Location = new System.Drawing.Point(371, 546);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(41, 13);
             this.label22.TabIndex = 58;
@@ -569,7 +572,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(368, 546);
+            this.label23.Location = new System.Drawing.Point(432, 546);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(41, 13);
             this.label23.TabIndex = 59;
@@ -578,7 +581,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(153, 566);
+            this.label25.Location = new System.Drawing.Point(217, 566);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(41, 13);
             this.label25.TabIndex = 64;
@@ -588,7 +591,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(102, 602);
+            this.label24.Location = new System.Drawing.Point(173, 488);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(147, 16);
             this.label24.TabIndex = 65;
@@ -597,7 +600,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(250, 491);
+            this.label26.Location = new System.Drawing.Point(314, 491);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(66, 13);
             this.label26.TabIndex = 66;
@@ -725,17 +728,46 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(153, 516);
+            this.label27.Location = new System.Drawing.Point(217, 516);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(78, 13);
             this.label27.TabIndex = 83;
             this.label27.Text = "Antal besökare";
+            // 
+            // checkBoxForestallning1
+            // 
+            this.checkBoxForestallning1.AutoSize = true;
+            this.checkBoxForestallning1.Location = new System.Drawing.Point(32, 512);
+            this.checkBoxForestallning1.Name = "checkBoxForestallning1";
+            this.checkBoxForestallning1.Size = new System.Drawing.Size(117, 17);
+            this.checkBoxForestallning1.TabIndex = 84;
+            this.checkBoxForestallning1.Text = "Öppna föreställning";
+            this.checkBoxForestallning1.UseVisualStyleBackColor = true;
+            // 
+            // textBoxForestDatum1
+            // 
+            this.textBoxForestDatum1.Location = new System.Drawing.Point(37, 203);
+            this.textBoxForestDatum1.Name = "textBoxForestDatum1";
+            this.textBoxForestDatum1.Size = new System.Drawing.Size(100, 20);
+            this.textBoxForestDatum1.TabIndex = 85;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(39, 184);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(38, 13);
+            this.label28.TabIndex = 86;
+            this.label28.Text = "Datum";
             // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1089, 689);
+            this.Controls.Add(this.label28);
+            this.Controls.Add(this.textBoxForestDatum1);
+            this.Controls.Add(this.checkBoxForestallning1);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label33);
             this.Controls.Add(this.label34);
@@ -889,5 +921,8 @@
         //private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox checkBoxForestallning;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.CheckBox checkBoxForestallning1;
+        private System.Windows.Forms.TextBox textBoxForestDatum1;
+        private System.Windows.Forms.Label label28;
     }
 }

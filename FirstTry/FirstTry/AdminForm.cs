@@ -107,7 +107,7 @@ namespace FirstTry
                 listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
                 textBoxForestNamn.Text = valdforestallning.namn;
                 richTextBoxForestInf.Text = valdforestallning.generellinfo;
-               // textBoxForestDatum.Text = valdforestallning.datum.ToShortDateString();
+                textBoxForestDatum1.Text = valdforestallning.datum.ToShortDateString();
                 textBoxForestStarttid.Text = valdforestallning.starttid.ToShortTimeString();
                 textBoxForestSluttid.Text = valdforestallning.sluttid.ToShortTimeString();
                 textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
@@ -126,12 +126,12 @@ namespace FirstTry
 
                 if (valdforestallning.open == true)
                 {
-                    //checkBoxForestallning.Checked = true;
+                    checkBoxForestallning1.Checked = true;
                 }
                 else
-                    {
-                    //checkBoxForestallning.Checked = false;
-                    }
+                {
+                    checkBoxForestallning1.Checked = false;
+                }
 
                     conn.Close();
                   
@@ -232,7 +232,7 @@ private void Rapport()
 
             string namn = textBoxForestNamn.Text;
             string generellinfo = richTextBoxForestInf.Text;
-                DateTime datum = Convert.ToDateTime(textBoxForestDatum.Text);
+                DateTime datum = Convert.ToDateTime(textBoxForestDatum1.Text);
             DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
             DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
             bool open = false;
@@ -337,7 +337,7 @@ private void Rapport()
         {
             textBoxForestNamn.Clear();
             richTextBoxForestInf.Clear();
-            textBoxForestDatum.Clear();
+            textBoxForestDatum1.Clear();
             textBoxForestStarttid.Clear();
             textBoxForestSluttid.Clear();
             textBoxVuxenpris.Clear();
@@ -515,7 +515,7 @@ private void Rapport()
             string namn = textBoxForestNamn.Text;
             string generellinfo = richTextBoxForestInf.Text;
             bool open = false;
-                DateTime datum = Convert.ToDateTime(textBoxForestDatum.Text);
+                DateTime datum = Convert.ToDateTime(textBoxForestDatum1.Text);
             DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
             DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
             int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
@@ -528,12 +528,12 @@ private void Rapport()
                 if (valdforestallning.open == true)
                 {
                     valdforestallning.open = true;
-                    checkBoxForestallning.Checked = true;
+                    checkBoxForestallning1.Checked = true;
                 }
 
                 else
                 {
-                    checkBoxForestallning.Checked = false;
+                    checkBoxForestallning1.Checked = false;
                 }
 
                 if (datum.Date >= DateTime.Now.Date)
@@ -816,7 +816,7 @@ private void Rapport()
         }           
             private void exempelkodforest()
         {
-            textBoxForestDatum.Text = "yyyy-mm-dd";
+            textBoxForestDatum1.Text = "yyyy-mm-dd";
             textBoxForsaljningsslut.Text = "00:00";
             textBoxForestStarttid.Text = "00:00";
             textBoxForsaljningsslut.Text = "yyyy-mm-dd HH:mm";
