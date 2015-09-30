@@ -154,10 +154,60 @@ namespace FirstTry
             return -1;
             
         }
+        private void tabortPeronalBehorighet(int pID, string bId)
+        {
 
+            //   personallista[pID].behorigheter.Remove()
+            int bindex = listBoxBehorighet.SelectedIndex;
+            int pindex = listBoxAnvandare.SelectedIndex;
+            /*  if (personallista[pID].behorigheter[bindex].Id == bId)
+              {
+                  personallista[pID].behorigheter.RemoveAt(bindex);
+              }
+              */
+            personallista[pindex].behorigheter.RemoveAt(bindex);
+
+            updateraBehorighetsListorna();
+
+
+        }
         private void btnTaBortBeh_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(MessageBoxButtons.YesNo.ToString());
+            conn.Open();
+
+
+            Personal p = (Personal)listBoxAnvandare.SelectedItem;
+            Behorigheter b = (Behorigheter)listBoxBehorighet.SelectedItem;
+            try
+            {
+                string query = "delete from aktortyplist where inlog_id = ";
+                query += p.Id + " and aktortyp_id = " + b.Id;
+
+
+
+                
+
+
+
+
+
+                NpgsqlCommand command = new NpgsqlCommand(query, conn);
+                command.ExecuteNonQuery(); //this line here??
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            conn.Close();
+
+
+            tabortPeronalBehorighet(p.Id, b.Id);
+            // MessageBox.Show(MessageBoxButtons.YesNo.ToString());
+
+
 
             // NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
 
