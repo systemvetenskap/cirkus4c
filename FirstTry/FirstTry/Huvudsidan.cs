@@ -42,7 +42,7 @@ namespace FirstTry
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
             
-            if (aktortyper.Contains(8) == false)
+            if (aktortyper.Contains(6) == true)
             {
                 this.button3.Enabled = true;
                 this.button3.Visible = true;
@@ -762,7 +762,7 @@ namespace FirstTry
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            AdminForm af = new AdminForm();
+            AdminForm af = new AdminForm(aktortyper);
             af.ShowDialog();
             this.Close();
         }
