@@ -34,7 +34,7 @@ namespace FirstTry
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-
+            
             session = new Tempkop();
 
         }
