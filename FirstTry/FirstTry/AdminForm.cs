@@ -59,7 +59,43 @@ namespace FirstTry
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
-
+            if (aktorlistaId.Contains(4) == false)
+            {
+                textBoxForestNamn.Enabled = false;
+                richTextBoxForestInf.Enabled = false;
+                textBoxForestStarttid.Enabled = false;
+                textBoxForestSluttid.Enabled = false;
+                textBoxAktnamn.Enabled = false;
+                richTextBoxAktInf.Enabled = false;
+                textBoxAktStarttid.Enabled = false;
+                textBoxAktSluttid.Enabled = false;
+            }
+            if (aktorlistaId.Contains(5) == true || aktorlistaId.Contains(7) == true)
+            {
+                this.btnAndraTaBortBeh.Enabled = true;
+                this.btnAndraTaBortBeh.Visible = true;
+            }
+            if (aktorlistaId.Contains(3) == true)
+            {
+                //Föreställning edit
+                this.buttonLaggTillForest.Enabled = true;
+                this.buttonLaggTillForest.Visible = true;
+                this.btnSkapaForestallning.Enabled = true;
+                this.btnSkapaForestallning.Visible = true;
+                this.uppdatera.Enabled = true;
+                this.uppdatera.Visible = true;
+                this.buttonTaBort.Enabled = true;
+                this.buttonTaBort.Visible = true;
+                //Akt edit
+                this.btnAkt.Enabled = true;
+                this.btnAkt.Visible = true;
+                this.buttonLaggTillAktInfo.Enabled = true;
+                this.buttonLaggTillAktInfo.Visible = true;
+                this.buttonUppdateraAkt.Enabled = true;
+                this.buttonUppdateraAkt.Visible = true;
+                this.button1.Enabled = true;
+                this.button1.Visible = true;
+            }
 
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
 
