@@ -442,7 +442,7 @@
             // 
             this.btnSkapaForestallning.Enabled = false;
             this.btnSkapaForestallning.Location = new System.Drawing.Point(192, 383);
-            this.btnSkapaForestallning.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSkapaForestallning.Margin = new System.Windows.Forms.Padding(2);
             this.btnSkapaForestallning.Name = "btnSkapaForestallning";
             this.btnSkapaForestallning.Size = new System.Drawing.Size(178, 21);
             this.btnSkapaForestallning.TabIndex = 12;
@@ -489,7 +489,7 @@
             // 
             this.btnAndraTaBortBeh.Enabled = false;
             this.btnAndraTaBortBeh.Location = new System.Drawing.Point(188, 11);
-            this.btnAndraTaBortBeh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAndraTaBortBeh.Margin = new System.Windows.Forms.Padding(2);
             this.btnAndraTaBortBeh.Name = "btnAndraTaBortBeh";
             this.btnAndraTaBortBeh.Size = new System.Drawing.Size(129, 35);
             this.btnAndraTaBortBeh.TabIndex = 28;
@@ -511,7 +511,7 @@
             // 
             this.btnAkt.Enabled = false;
             this.btnAkt.Location = new System.Drawing.Point(552, 387);
-            this.btnAkt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAkt.Margin = new System.Windows.Forms.Padding(2);
             this.btnAkt.Name = "btnAkt";
             this.btnAkt.Size = new System.Drawing.Size(178, 21);
             this.btnAkt.TabIndex = 24;
@@ -790,18 +790,19 @@
             // 
             this.btn_Avbryt.Enabled = false;
             this.btn_Avbryt.Location = new System.Drawing.Point(552, 524);
-            this.btn_Avbryt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Avbryt.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Avbryt.Name = "btn_Avbryt";
             this.btn_Avbryt.Size = new System.Drawing.Size(178, 20);
             this.btn_Avbryt.TabIndex = 87;
             this.btn_Avbryt.Text = "Avbryt";
             this.btn_Avbryt.UseVisualStyleBackColor = true;
             this.btn_Avbryt.Visible = false;
+            this.btn_Avbryt.Click += new System.EventHandler(this.btn_Avbryt_Click);
             // 
             // btn_Huvud
             // 
             this.btn_Huvud.Location = new System.Drawing.Point(35, 11);
-            this.btn_Huvud.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Huvud.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Huvud.Name = "btn_Huvud";
             this.btn_Huvud.Size = new System.Drawing.Size(129, 35);
             this.btn_Huvud.TabIndex = 88;

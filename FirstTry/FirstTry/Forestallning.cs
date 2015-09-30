@@ -41,11 +41,11 @@ namespace FirstTry
 
             if (antalChar >9)
             {
-                return namn + "\t" + starttid.ToShortDateString() + " " + starttid.ToShortTimeString();
+                return namn + "\t" + datum.ToShortDateString() + " " + starttid.ToShortTimeString();
             }
             else
             {
-                return namn + "\t" + "\t" + starttid.ToShortDateString() + " " + starttid.ToShortTimeString();
+                return namn + "\t" + "\t" + datum.ToShortDateString() + " " + starttid.ToShortTimeString();
             }
         }
 
