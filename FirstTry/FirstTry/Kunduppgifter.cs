@@ -48,7 +48,18 @@ namespace FirstTry
             }
 
         }
-
+        bool kollarEpost()
+        {
+            try
+            {
+                var test = new System.Net.Mail.MailAddress(textBox4.Text);
+                return test.Address == textBox4.Text;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         private int nyKundID()
         {
             string query = "SELECT currval(pg_get_serial_sequence('kund','id'));";
@@ -72,8 +83,29 @@ namespace FirstTry
 
             int x;
 
-            if (int.TryParse(textBox3.Text, out x) == true && textBox3.Text.Count() < 14 && textBox3.Text.Count() > 7)
+            if (textBox1.Text == "Förnamn:" || textBox1.Text.Count() < 2)
             {
+                MessageBox.Show("Hoppsan, du skrev in förnamn felaktigt");
+
+            }
+            else if (textBox2.Text == "Efternamn:" || textBox2.Text.Count() < 2)
+            {
+                MessageBox.Show("Hoppsan, du skrev in efternamn felaktigt");
+            }
+            else if (int.TryParse(textBox3.Text, out x) == false && textBox3.Text.Count() > 14 && textBox3.Text.Count() < 7)
+            {
+                MessageBox.Show("Hoppsan, du skrev in telefonnummeret felaktigt");
+            }
+            else if (kollarEpost() == false)
+            {
+                MessageBox.Show("Hoppsan, du skrev in epost adressen felaktigt");
+
+            }
+            else
+            {
+                
+
+
                 conn.Open();
                 nyKund();
                 //  tk.kund_id = nyKundID();
@@ -83,10 +115,6 @@ namespace FirstTry
                 Platskarta pk = new Platskarta(tk);
                 pk.ShowDialog();
                 this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Hoppsan, du skrev in telefonnummeret felaktigt");
             }
 
         }
