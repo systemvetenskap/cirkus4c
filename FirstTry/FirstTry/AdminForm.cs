@@ -135,15 +135,22 @@ namespace FirstTry
                     {
                         if (vuxenpris >= ungdomspris && vuxenpris >= barnpris && ungdomspris >= barnpris)
                         {
-                            Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
-                            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
-                            buttonLaggTillForest.Enabled = false;
-                            listBoxAdminForestallning.SelectionMode = SelectionMode.One;
+                            if (forsaljningsslut.Date >= datum.Date )
+                            {
+                                Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
+                                listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+                                buttonLaggTillForest.Enabled = false;
+                                listBoxAdminForestallning.SelectionMode = SelectionMode.One;
                             
                             conn.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Du bör inte sälja biljetter efter att föreställningen spelats klart.");
+                            }
                         }
                         else
-                        {
+                        
                             MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
                         }
                         
@@ -371,6 +378,9 @@ namespace FirstTry
         private void btnSkapaForestallning_Click(object sender, EventArgs e)
         {
             buttonLaggTillForest.Enabled = true;
+            buttonLaggTillForest.Visible = true;
+            btnSkapaForestallning.Enabled = false;
+            btnSkapaForestallning.Visible = false;
             listBoxAdminForestallning.SelectionMode = SelectionMode.None;
             tomTextBoxarForestallning();
             exempelkodforest();
@@ -613,6 +623,7 @@ namespace FirstTry
         {}
         private void buttonLaggTillAktInfo_Click(object sender, EventArgs e)
         {
+           
             try
             {
                 string namn = textBoxAktnamn.Text;
@@ -635,9 +646,13 @@ namespace FirstTry
                             Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn, forestallningsid);
                             listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
                             listBoxAkter.SelectionMode = SelectionMode.One;
+                            btnAkt.Enabled = true;
+                            btnAkt.Visible = true;
                             buttonLaggTillAktInfo.Enabled = false;
+                            buttonLaggTillAktInfo.Visible = false;
 
                             conn.Close();
+
                         }
                         else
                         {
@@ -668,6 +683,9 @@ namespace FirstTry
         private void btnAkt_Click(object sender, EventArgs e)
         {
             buttonLaggTillAktInfo.Enabled = true;
+            buttonLaggTillAktInfo.Visible = true;
+            btnAkt.Enabled = false;
+            btnAkt.Visible = false;
             listBoxAkter.SelectionMode = SelectionMode.None;
             tomTextBoxarAkt();
            exempelkodakt();
@@ -698,9 +716,8 @@ namespace FirstTry
 
         private void button2_Click(object sender, EventArgs e)
         {
-            tomTextBoxarAkt();
-            tomTextBoxarForestallning();
-            Databasmetoder.HamtaForestallningLista();
+            Refresh();
+           // Databasmetoder.HamtaForestallningLista();
         }
 
         private void textBoxForestStarttid_TextChanged(object sender, EventArgs e)
