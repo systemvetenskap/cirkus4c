@@ -50,47 +50,23 @@ namespace FirstTry
 
             while (dr.Read())
             {
-                if ((bool)dr["open"] == true)
-                {
 
-                    Forestallning forestallning = new Forestallning();
+                Forestallning forestallning = new Forestallning();
 
-                    forestallning.id = Convert.ToInt32(dr["id"]);
-                    forestallning.namn = (string)dr["namn"];
-                    forestallning.generellinfo = (string)dr["generell_info"];
-                    forestallning.open = (bool)dr["open"];
-                    forestallning.datum = Convert.ToDateTime(dr["datum"]);
-                    forestallning.starttid = Convert.ToDateTime(dr["starttid"]);
-                    forestallning.sluttid = Convert.ToDateTime(dr["sluttid"]);
-                    forestallning.vuxenpris = Convert.ToInt32(dr["vuxenpris"]);
-                    forestallning.ungdomspris = Convert.ToInt32(dr["ungdomspris"]);
-                    forestallning.barnpris = Convert.ToInt32(dr["barnpris"]);
-                    forestallning.friplacering = (bool)dr["fri_placering"];
-                    forestallning.forsaljningsslut = Convert.ToDateTime(dr["forsaljningslut"]);
+                forestallning.id = Convert.ToInt32(dr["id"]);
+                forestallning.namn = (string)dr["namn"];
+                forestallning.generellinfo = (string)dr["generell_info"];
+                forestallning.open = (bool)dr["open"];
+                forestallning.datum = Convert.ToDateTime(dr["datum"]);
+                forestallning.starttid = Convert.ToDateTime(dr["starttid"]);
+                forestallning.sluttid = Convert.ToDateTime(dr["sluttid"]);
+                forestallning.vuxenpris = Convert.ToInt32(dr["vuxenpris"]);
+                forestallning.ungdomspris = Convert.ToInt32(dr["ungdomspris"]);
+                forestallning.barnpris = Convert.ToInt32(dr["barnpris"]);
+                forestallning.friplacering = (bool)dr["fri_placering"];
+                forestallning.forsaljningsslut = Convert.ToDateTime(dr["forsaljningslut"]);
 
-                    forestallningslista.Add(forestallning);
-                }
-                else
-                {
-
-                    Forestallning forestallning = new Forestallning();
-
-
-                    forestallning.id = Convert.ToInt32(dr["id"]);
-                    forestallning.namn = (string)dr["namn"];
-                    forestallning.generellinfo = (string)dr["generell_info"];
-                    forestallning.open = (bool)dr["open"];
-                    forestallning.datum = Convert.ToDateTime(dr["datum"]);
-                    forestallning.starttid = Convert.ToDateTime(dr["starttid"]);
-                    forestallning.sluttid = Convert.ToDateTime(dr["sluttid"]);
-                    forestallning.vuxenpris = Convert.ToInt32(dr["vuxenpris"]);
-                    forestallning.ungdomspris = Convert.ToInt32(dr["ungdomspris"]);
-                    forestallning.barnpris = Convert.ToInt32(dr["barnpris"]);
-                    forestallning.friplacering = (bool)dr["fri_placering"];
-                    forestallning.forsaljningsslut = Convert.ToDateTime("2010-10-29 23:00:00");
-
-                    forestallningslista.Add(forestallning);
-                }
+                forestallningslista.Add(forestallning);
             }
             conn.Close();
             return forestallningslista;
@@ -122,7 +98,7 @@ namespace FirstTry
 
                 akten.namn = (string)dr["aktnamn"];
                 akten.Aktinfo = (string)dr["aktinfo"];
-                akten.Starttid = Convert.ToDateTime(dr["starttid"]);   //datumtid
+                akten.Starttid = Convert.ToDateTime(dr["starttid"]);   
                 akten.Sluttid = Convert.ToDateTime(dr["sluttid"]);
                 akten.vuxen = Convert.ToInt32(dr["vuxenpris"]);
                 akten.ungdom = Convert.ToInt32(dr["ungdomspris"]);
@@ -190,8 +166,6 @@ namespace FirstTry
         public static void LaggTillNyAkt(string namn, string aktinfo, DateTime starttid, DateTime sluttid, int vuxen, int ungdom, int barn, int forestallningsid)  ///*, string aktinfo, DateTime starttid, DateTime sluttid, int vuxen, int ungdom, int barn*/
         {
             NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-
-
 
             try
             {

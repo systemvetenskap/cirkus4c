@@ -148,7 +148,7 @@ namespace FirstTry
                     checkBoxfriPlacering.Checked = false;
                 }
 
-                if (valdforestallning.open == true)
+                    if (valdforestallning.open == true)
                 {
                     checkBoxForestallning1.Checked = true;
                 }
@@ -268,9 +268,9 @@ private void Rapport()
                 {
                     friplacering = true;
                 }
-                if (valdforestallning.open == true)
+                if (checkBoxForestallning1.Checked == true)
                 {
-                    checkBoxForestallning1.Checked = true;
+                    valdforestallning.open = true;
                 }
                 else
                 {
@@ -561,21 +561,20 @@ private void Rapport()
             int id = valdforestallning.id;
             string namn = textBoxForestNamn.Text;
             string generellinfo = richTextBoxForestInf.Text;
-            bool open = false;
-                DateTime datum = Convert.ToDateTime(textBoxForestDatum1.Text);
+            bool open = checkBoxForestallning1.Checked;
+            DateTime datum = Convert.ToDateTime(textBoxForestDatum1.Text);
             DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
             DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
             int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
             bool friplacering = false;
-                DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
+            DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
 
-                if (valdforestallning.open == true)
+                if (checkBoxForestallning1.Checked == true)
                 {
                     valdforestallning.open = true;
-                    checkBoxForestallning1.Checked = true;
                 }
 
                 else
