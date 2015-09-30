@@ -150,7 +150,7 @@ namespace FirstTry
                             }
                         }
                         else
-                        
+                        { 
                             MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
                         }
                         
@@ -383,6 +383,7 @@ namespace FirstTry
             btnSkapaForestallning.Visible = false;
             listBoxAdminForestallning.SelectionMode = SelectionMode.None;
             tomTextBoxarForestallning();
+            tomTextBoxarAkt();
             exempelkodforest();
 
         }
