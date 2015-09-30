@@ -107,7 +107,7 @@ namespace FirstTry
                 listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
                 textBoxForestNamn.Text = valdforestallning.namn;
                 richTextBoxForestInf.Text = valdforestallning.generellinfo;
-                textBoxForestDatum.Text = valdforestallning.datum.ToShortDateString();
+               // textBoxForestDatum.Text = valdforestallning.datum.ToShortDateString();
                 textBoxForestStarttid.Text = valdforestallning.starttid.ToShortTimeString();
                 textBoxForestSluttid.Text = valdforestallning.sluttid.ToShortTimeString();
                 textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
@@ -126,25 +126,26 @@ namespace FirstTry
 
                 if (valdforestallning.open == true)
                 {
-                    checkBoxForestallning.Checked = true;
+                    //checkBoxForestallning.Checked = true;
                 }
                 else
                     {
-                    checkBoxForestallning.Checked = false;
+                    //checkBoxForestallning.Checked = false;
                     }
 
                     conn.Close();
                   
                     }
-                }
-                Rapport();
-            }
-            
+            Rapport();
         }
+                
+//    }
+
+//}
 
 
 
-        private void Rapport()
+private void Rapport()
         {
             string sql = "SELECT coalesce (sum(case when id IS NOT NULL then 1 else 0 end), 0) as totalt, coalesce (sum(case when biljettyp = 'vuxen' then 1 else 0 end), 0) as vuxen, coalesce (sum(case when biljettyp = 'ungdom' then 1 else 0 end), 0) as ungdom, coalesce (sum(case when biljettyp = 'barn' then 1 else 0 end), 0) as barn, coalesce (sum(pris), 0) as totaltKr FROM biljett WHERE forestallning_id = " + valdforestallning.id;
             conn.Open();
@@ -165,7 +166,7 @@ namespace FirstTry
                     label22.Text = ungdom.ToString() + " st";
                     label23.Text = barn.ToString() + " st";
                     label25.Text = totaltKr.ToString() + " kr";
-                    label14.Text = "Antal besökare";
+                    //label14.Text = "Antal besökare";
                     label26.Text = valdforestallning.namn;
                 }  
             
@@ -190,7 +191,7 @@ namespace FirstTry
                 label37.Text = ungdom.ToString() + " st";
                 label36.Text = barn.ToString() + " st";
                 label35.Text = totaltKr.ToString() + " kr";
-                label14.Text = "Antal besökare";
+               // label14.Text = "Antal besökare";
             }
 
             conn.Close();
@@ -840,8 +841,8 @@ namespace FirstTry
         private void button2_Click(object sender, EventArgs e)
         {
             Refresh();
-           // Databasmetoder.HamtaForestallningLista();
-                }
+            // Databasmetoder.HamtaForestallningLista();
+        }
 
         private void textBoxForestStarttid_TextChanged(object sender, EventArgs e)
             {

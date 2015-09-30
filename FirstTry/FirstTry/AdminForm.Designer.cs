@@ -71,7 +71,6 @@
             this.btnAndraTaBortBeh = new System.Windows.Forms.Button();
             this.textBoxForsaljningsslut = new System.Windows.Forms.TextBox();
             this.btnAkt = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -97,6 +96,7 @@
             this.label43 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBoxAdminForestallning
@@ -419,7 +419,7 @@
             // btnSkapaForestallning
             // 
             this.btnSkapaForestallning.Location = new System.Drawing.Point(190, 327);
-            this.btnSkapaForestallning.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSkapaForestallning.Margin = new System.Windows.Forms.Padding(2);
             this.btnSkapaForestallning.Name = "btnSkapaForestallning";
             this.btnSkapaForestallning.Size = new System.Drawing.Size(178, 21);
             this.btnSkapaForestallning.TabIndex = 12;
@@ -440,7 +440,7 @@
             // checkBoxfriPlacering
             // 
             this.checkBoxfriPlacering.AutoSize = true;
-            this.checkBoxfriPlacering.Location = new System.Drawing.Point(21, 492);
+            this.checkBoxfriPlacering.Location = new System.Drawing.Point(32, 491);
             this.checkBoxfriPlacering.Name = "checkBoxfriPlacering";
             this.checkBoxfriPlacering.Size = new System.Drawing.Size(83, 17);
             this.checkBoxfriPlacering.TabIndex = 10;
@@ -464,7 +464,7 @@
             // btnAndraTaBortBeh
             // 
             this.btnAndraTaBortBeh.Location = new System.Drawing.Point(785, 41);
-            this.btnAndraTaBortBeh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAndraTaBortBeh.Margin = new System.Windows.Forms.Padding(2);
             this.btnAndraTaBortBeh.Name = "btnAndraTaBortBeh";
             this.btnAndraTaBortBeh.Size = new System.Drawing.Size(129, 35);
             this.btnAndraTaBortBeh.TabIndex = 28;
@@ -485,7 +485,7 @@
             // btnAkt
             // 
             this.btnAkt.Location = new System.Drawing.Point(546, 327);
-            this.btnAkt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAkt.Margin = new System.Windows.Forms.Padding(2);
             this.btnAkt.Name = "btnAkt";
             this.btnAkt.Size = new System.Drawing.Size(178, 21);
             this.btnAkt.TabIndex = 24;
@@ -493,19 +493,10 @@
             this.btnAkt.UseVisualStyleBackColor = true;
             this.btnAkt.Click += new System.EventHandler(this.btnAkt_Click);
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(54, 516);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(78, 13);
-            this.label14.TabIndex = 50;
-            this.label14.Text = "Antal besökare";
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(163, 516);
+            this.label15.Location = new System.Drawing.Point(259, 516);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(37, 13);
             this.label15.TabIndex = 51;
@@ -514,7 +505,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(210, 516);
+            this.label16.Location = new System.Drawing.Point(306, 516);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(56, 13);
             this.label16.TabIndex = 52;
@@ -523,7 +514,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(272, 516);
+            this.label17.Location = new System.Drawing.Point(368, 516);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(29, 13);
             this.label17.TabIndex = 53;
@@ -532,7 +523,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(13, 566);
+            this.label18.Location = new System.Drawing.Point(109, 546);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(38, 13);
             this.label18.TabIndex = 54;
@@ -541,7 +532,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(54, 529);
+            this.label19.Location = new System.Drawing.Point(150, 529);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(331, 13);
             this.label19.TabIndex = 55;
@@ -551,7 +542,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(57, 546);
+            this.label20.Location = new System.Drawing.Point(153, 546);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(41, 13);
             this.label20.TabIndex = 56;
@@ -560,7 +551,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(163, 546);
+            this.label21.Location = new System.Drawing.Point(259, 546);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(41, 13);
             this.label21.TabIndex = 57;
@@ -569,7 +560,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(211, 546);
+            this.label22.Location = new System.Drawing.Point(307, 546);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(41, 13);
             this.label22.TabIndex = 58;
@@ -578,7 +569,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(272, 546);
+            this.label23.Location = new System.Drawing.Point(368, 546);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(41, 13);
             this.label23.TabIndex = 59;
@@ -587,7 +578,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(57, 566);
+            this.label25.Location = new System.Drawing.Point(153, 566);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(41, 13);
             this.label25.TabIndex = 64;
@@ -597,7 +588,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(13, 489);
+            this.label24.Location = new System.Drawing.Point(102, 602);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(147, 16);
             this.label24.TabIndex = 65;
@@ -606,7 +597,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(154, 491);
+            this.label26.Location = new System.Drawing.Point(250, 491);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(66, 13);
             this.label26.TabIndex = 66;
@@ -731,48 +722,21 @@
             this.label45.TabIndex = 70;
             this.label45.Text = "Antal besökare";
             // 
-            // button2
+            // label27
             // 
-            this.button2.Location = new System.Drawing.Point(832, 484);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(151, 29);
-            this.button2.TabIndex = 29;
-            this.button2.Text = "Avbryt";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // textBoxForestDatum
-            // 
-            this.textBoxForestDatum.Location = new System.Drawing.Point(35, 205);
-            this.textBoxForestDatum.Name = "textBoxForestDatum";
-            this.textBoxForestDatum.Size = new System.Drawing.Size(129, 20);
-            this.textBoxForestDatum.TabIndex = 3;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(37, 188);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(38, 13);
-            this.label14.TabIndex = 53;
-            this.label14.Text = "Datum";
-            // 
-            // checkBoxForestallning
-            // 
-            this.checkBoxForestallning.AutoSize = true;
-            this.checkBoxForestallning.Location = new System.Drawing.Point(108, 492);
-            this.checkBoxForestallning.Name = "checkBoxForestallning";
-            this.checkBoxForestallning.Size = new System.Drawing.Size(129, 17);
-            this.checkBoxForestallning.TabIndex = 54;
-            this.checkBoxForestallning.Text = "Öppna föreställningen";
-            this.checkBoxForestallning.UseVisualStyleBackColor = true;
-            this.checkBoxForestallning.CheckedChanged += new System.EventHandler(this.checkBoxForestallning_CheckedChanged);
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(153, 516);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(78, 13);
+            this.label27.TabIndex = 83;
+            this.label27.Text = "Antal besökare";
             // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1031, 624);
+            this.ClientSize = new System.Drawing.Size(1089, 689);
+            this.Controls.Add(this.label27);
             this.Controls.Add(this.label33);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.label35);
@@ -798,12 +762,6 @@
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
-            this.ClientSize = new System.Drawing.Size(1089, 524);
-            this.Controls.Add(this.checkBoxForestallning);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.textBoxForestDatum);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnAkt);
             this.Controls.Add(this.textBoxForsaljningsslut);
             this.Controls.Add(this.btnAndraTaBortBeh);
@@ -928,7 +886,8 @@
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBoxForestDatum;
-        private System.Windows.Forms.Label label14;
+        //private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox checkBoxForestallning;
+        private System.Windows.Forms.Label label27;
     }
 }
