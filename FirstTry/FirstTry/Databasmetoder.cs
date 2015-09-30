@@ -55,7 +55,6 @@ namespace FirstTry
 
                     Forestallning forestallning = new Forestallning();
 
-
                     forestallning.id = Convert.ToInt32(dr["id"]);
                     forestallning.namn = (string)dr["namn"];
                     forestallning.generellinfo = (string)dr["generell_info"];
