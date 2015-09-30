@@ -45,7 +45,7 @@ namespace FirstTry
             List<Forestallning> forestallningslista = new List<Forestallning>();
             NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
             conn.Open();
-            NpgsqlCommand command = new NpgsqlCommand("Select * from forestallning ORDER BY namn", conn);
+            NpgsqlCommand command = new NpgsqlCommand("Select * from forestallning ORDER BY namn ASC", conn);
             NpgsqlDataReader dr = command.ExecuteReader();
 
             while (dr.Read())
@@ -81,7 +81,7 @@ namespace FirstTry
             NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
             conn.Open();
             string sql1 = @"SELECT * FROM akter , forestallning WHERE akter.forestallningsid = forestallning.id
-                                                 and akter.forestallningsid = :nyValdforestallningsid";
+                                                 and akter.forestallningsid = :nyValdforestallningsid ORDER BY akter.starttid ASC";
 
             NpgsqlCommand command = new NpgsqlCommand(sql1, conn);
 
