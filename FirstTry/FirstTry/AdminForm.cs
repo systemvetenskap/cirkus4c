@@ -105,11 +105,11 @@ namespace FirstTry
 
 
 
-                conn.Close();
+                    conn.Close();
 
                 }
-            }
-        
+                }
+
 
         private int laggTillForest(string namn, string generellinfo, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
         {
@@ -136,28 +136,24 @@ namespace FirstTry
         {
             try
             {
-                
-                string namn = textBoxForestNamn.Text;
-                string generellinfo = richTextBoxForestInf.Text;
-                DateTime datum = Convert.ToDateTime(textBoxForestDatum.Text);
-                DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
-                DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
-                bool open = false;
-                int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
-                int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
-                int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
-                bool friplacering = false;
-                DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
-                if (checkBoxfriPlacering.Checked == true)
-                {
-                    friplacering = true;
-                }
+            string namn = textBoxForestNamn.Text;
+            string generellinfo = richTextBoxForestInf.Text;
+            DateTime datum = Convert.ToDateTime(textBoxForestDatum.Text);
+            DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
+            DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
+            bool open = false;
+            int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
+            int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
+            int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
+            bool friplacering = false;
+            DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
-                if (checkBoxForestallning.Checked == true)  //behövs denna
-                {
-                    open = true;
-                }
+            if (checkBoxfriPlacering.Checked == true)
+            {
+                friplacering = true;
+            }
+
 
                 if (datum.Date >= DateTime.Now.Date)
                 {
@@ -165,12 +161,12 @@ namespace FirstTry
                     {
                         if (vuxenpris >= ungdomspris && vuxenpris >= barnpris && ungdomspris >= barnpris)
                         {
-                            Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
-                            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+            Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
+            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
                             buttonLaggTillForest.Enabled = false;
                             listBoxAdminForestallning.SelectionMode = SelectionMode.One;
-                            
-                            conn.Close();
+
+            conn.Close();
                         }
                         else
                         {
@@ -190,7 +186,6 @@ namespace FirstTry
                 }
                
             }
-<<<<<<< HEAD
             catch (Exception)
             {
 
@@ -202,16 +197,7 @@ namespace FirstTry
 
            
 
-=======
 
-
-
-                Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
-                listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
->>>>>>> origin/nettest2-dev
-
-                conn.Close();
-            
         }
 
         private void listBoxAkter_SelectedIndexChanged(object sender, EventArgs e)
@@ -397,7 +383,7 @@ namespace FirstTry
             }
 
 
-            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
+                Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
             MessageBox.Show("Föreställningen har nu uppdaterats");
         }
@@ -679,12 +665,12 @@ namespace FirstTry
 
         private void checkBoxForestallning_CheckedChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void richTextBoxAktInf_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void textBoxForestSluttid_TextChanged(object sender, EventArgs e)
