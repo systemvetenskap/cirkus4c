@@ -103,9 +103,9 @@ namespace FirstTry
 
                 conn.Close();
 
+                }
             }
-        }
-
+        
 
 
 
@@ -113,7 +113,7 @@ namespace FirstTry
         {
             try
             {
-
+                
                 string namn = textBoxForestNamn.Text;
                 string generellinfo = richTextBoxForestInf.Text;
                 DateTime datum = Convert.ToDateTime(textBoxForestDatum.Text);
@@ -142,26 +142,26 @@ namespace FirstTry
                             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
                             buttonLaggTillForest.Enabled = false;
                             listBoxAdminForestallning.SelectionMode = SelectionMode.One;
-
+                            
                             conn.Close();
                         }
                         else
                         {
                             MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
                         }
-
+                        
                     }
                     else
                     {
                         MessageBox.Show("Föreställningen är för kort!");
                     }
-
+               
                 }
                 else
                 {
                     MessageBox.Show("Sätt ett senare datum!");
                 }
-
+               
             }
 
             catch (Exception)
@@ -169,7 +169,7 @@ namespace FirstTry
 
                 MessageBox.Show("Alla textboxar måste vara korrekt ifyllda!");
             }
-
+            
             conn.Close();
 
         }
@@ -226,25 +226,78 @@ namespace FirstTry
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            int fsid = valdforestallning.id;
-            int id = valdakt.id;
-            string namn = textBoxAktnamn.Text;
-            string aktinfo = richTextBoxAktInf.Text;
-            DateTime starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
-            DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
-            int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
-            int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
-            int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
+            //int fsid = valdforestallning.id;
+            //int id = valdakt.id;
+            //string namn = textBoxAktnamn.Text;
+            //string aktinfo = richTextBoxAktInf.Text;
+            //DateTime starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
+            //DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
+            //int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
+            //int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
+            //int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
 
 
-            Forestallning fs = new Forestallning();
-            fs = (Forestallning)listBoxAdminForestallning.SelectedItem;
+            //Forestallning fs = new Forestallning();  //använder vi denna?????
+            //fs = (Forestallning)listBoxAdminForestallning.SelectedItem;
 
-            Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
-            listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+            //Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
+            //listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
         }
 
+         try
+                    {
+                        int fsid = valdforestallning.id;
+                        int id = valdakt.id;
+                        string namn = textBoxAktnamn.Text;
+                        string aktinfo = richTextBoxAktInf.Text;
+                        DateTime starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
+                        DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
+                        int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
+                        int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
+                        int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
 
+                        DateTime forestStart = valdforestallning.starttid;
+
+                        if (starttid.TimeOfDay >= forestStart.TimeOfDay  &&  sluttid.TimeOfDay <= valdforestallning.sluttid.TimeOfDay)
+                        {
+                            if (starttid.TimeOfDay < sluttid.TimeOfDay)
+                            {
+                                if (vuxen <= valdforestallning.vuxenpris && ungdom <= valdforestallning.ungdomspris && barn <= valdforestallning.barnpris)
+                                {
+                                    Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
+                                    listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+                                    
+            //Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn, forestallningsid);
+                                    //listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+                                    //listBoxAkter.SelectionMode = SelectionMode.One;
+                                    //buttonLaggTillAktInfo.Enabled = false;
+
+                                    conn.Close();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Akten har fel pris!");
+                                }
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Akten är för kort!");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Akten måste ha en tid som passar föreställningen!");
+
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Alla textboxar måste vara korrekt ifyllda!");
+
+                    }
+         
 
         private void button1_Click_2(object sender, EventArgs e)
         {
@@ -363,10 +416,10 @@ namespace FirstTry
                 {
                     if (vuxenpris >= ungdomspris && vuxenpris >= barnpris && ungdomspris >= barnpris)
                     {
-                        Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
-                        listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
-                        MessageBox.Show("Föreställningen har nu uppdaterats");
-                    }
+            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
+            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+            MessageBox.Show("Föreställningen har nu uppdaterats");
+        }
                     else
                     {
                         MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
@@ -384,13 +437,13 @@ namespace FirstTry
                 MessageBox.Show("Sätt ett senare datum!");
                 }
         }
-    
-
- 
 
 
 
-private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+
+
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
         }
@@ -631,14 +684,14 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
             textBoxForsaljningsslut.Text = "00:00";
             textBoxForestStarttid.Text = "00:00";
             textBoxForsaljningsslut.Text = "yyyy-mm-dd HH:mm";
-
+            
         }
 
         private void exempelkodakt()
         {
             textBoxAktStarttid.Text = "00:00";
             textBoxAktSluttid.Text = "00:00";
-            
+
         }
 
 
