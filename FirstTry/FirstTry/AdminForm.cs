@@ -59,16 +59,14 @@ namespace FirstTry
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
-            if (aktorlistaId.Contains(4) == false)
+            if (aktorlistaId.Contains(4) == true)
             {
-                textBoxForestNamn.Enabled = false;
-                richTextBoxForestInf.Enabled = false;
-                textBoxForestStarttid.Enabled = false;
-                textBoxForestSluttid.Enabled = false;
-                textBoxAktnamn.Enabled = false;
-                richTextBoxAktInf.Enabled = false;
-                textBoxAktStarttid.Enabled = false;
-                textBoxAktSluttid.Enabled = false;
+                textBoxAktVuxenpris.Enabled = true;
+                textBoxAktUngdPris.Enabled = true;
+                TextBoxAktBarnpris.Enabled = true;
+                textBoxVuxenpris.Enabled = true;
+                textBoxUngdomspris.Enabled = true;
+                textBoxBarnpris.Enabled = true;
             }
             if (aktorlistaId.Contains(5) == true || aktorlistaId.Contains(7) == true)
             {

@@ -113,6 +113,7 @@
             // 
             // textBoxForestNamn
             // 
+            this.textBoxForestNamn.Enabled = false;
             this.textBoxForestNamn.Location = new System.Drawing.Point(39, 58);
             this.textBoxForestNamn.Name = "textBoxForestNamn";
             this.textBoxForestNamn.Size = new System.Drawing.Size(135, 20);
@@ -172,6 +173,7 @@
             // 
             // richTextBoxAktInf
             // 
+            this.richTextBoxAktInf.Enabled = false;
             this.richTextBoxAktInf.Location = new System.Drawing.Point(399, 110);
             this.richTextBoxAktInf.Name = "richTextBoxAktInf";
             this.richTextBoxAktInf.Size = new System.Drawing.Size(117, 70);
@@ -180,6 +182,7 @@
             // 
             // richTextBoxForestInf
             // 
+            this.richTextBoxForestInf.Enabled = false;
             this.richTextBoxForestInf.Location = new System.Drawing.Point(39, 111);
             this.richTextBoxForestInf.Name = "richTextBoxForestInf";
             this.richTextBoxForestInf.Size = new System.Drawing.Size(135, 84);
@@ -206,6 +209,7 @@
             // 
             // textBoxAktnamn
             // 
+            this.textBoxAktnamn.Enabled = false;
             this.textBoxAktnamn.Location = new System.Drawing.Point(399, 58);
             this.textBoxAktnamn.Name = "textBoxAktnamn";
             this.textBoxAktnamn.Size = new System.Drawing.Size(117, 20);
@@ -213,6 +217,7 @@
             // 
             // textBoxAktStarttid
             // 
+            this.textBoxAktStarttid.Enabled = false;
             this.textBoxAktStarttid.Location = new System.Drawing.Point(401, 212);
             this.textBoxAktStarttid.Name = "textBoxAktStarttid";
             this.textBoxAktStarttid.Size = new System.Drawing.Size(100, 20);
@@ -229,6 +234,7 @@
             // 
             // textBoxAktSluttid
             // 
+            this.textBoxAktSluttid.Enabled = false;
             this.textBoxAktSluttid.Location = new System.Drawing.Point(400, 258);
             this.textBoxAktSluttid.Name = "textBoxAktSluttid";
             this.textBoxAktSluttid.Size = new System.Drawing.Size(100, 20);
@@ -245,6 +251,7 @@
             // 
             // textBoxAktVuxenpris
             // 
+            this.textBoxAktVuxenpris.Enabled = false;
             this.textBoxAktVuxenpris.Location = new System.Drawing.Point(402, 302);
             this.textBoxAktVuxenpris.Name = "textBoxAktVuxenpris";
             this.textBoxAktVuxenpris.Size = new System.Drawing.Size(100, 20);
@@ -279,6 +286,7 @@
             // 
             // textBoxForestStarttid
             // 
+            this.textBoxForestStarttid.Enabled = false;
             this.textBoxForestStarttid.Location = new System.Drawing.Point(35, 234);
             this.textBoxForestStarttid.Name = "textBoxForestStarttid";
             this.textBoxForestStarttid.Size = new System.Drawing.Size(100, 20);
@@ -286,6 +294,7 @@
             // 
             // textBoxForestSluttid
             // 
+            this.textBoxForestSluttid.Enabled = false;
             this.textBoxForestSluttid.Location = new System.Drawing.Point(34, 272);
             this.textBoxForestSluttid.Name = "textBoxForestSluttid";
             this.textBoxForestSluttid.Size = new System.Drawing.Size(100, 20);
@@ -303,6 +312,7 @@
             // 
             // uppdatera
             // 
+            this.uppdatera.Enabled = false;
             this.uppdatera.Location = new System.Drawing.Point(189, 394);
             this.uppdatera.Name = "uppdatera";
             this.uppdatera.Size = new System.Drawing.Size(178, 23);
@@ -313,6 +323,7 @@
             // 
             // buttonTaBort
             // 
+            this.buttonTaBort.Enabled = false;
             this.buttonTaBort.Location = new System.Drawing.Point(189, 431);
             this.buttonTaBort.Name = "buttonTaBort";
             this.buttonTaBort.Size = new System.Drawing.Size(178, 23);
@@ -323,6 +334,7 @@
             // 
             // textBoxVuxenpris
             // 
+            this.textBoxVuxenpris.Enabled = false;
             this.textBoxVuxenpris.Location = new System.Drawing.Point(35, 317);
             this.textBoxVuxenpris.Name = "textBoxVuxenpris";
             this.textBoxVuxenpris.Size = new System.Drawing.Size(100, 20);
@@ -330,6 +342,7 @@
             // 
             // textBoxUngdomspris
             // 
+            this.textBoxUngdomspris.Enabled = false;
             this.textBoxUngdomspris.Location = new System.Drawing.Point(35, 361);
             this.textBoxUngdomspris.Name = "textBoxUngdomspris";
             this.textBoxUngdomspris.Size = new System.Drawing.Size(100, 20);
@@ -337,6 +350,7 @@
             // 
             // textBoxBarnpris
             // 
+            this.textBoxBarnpris.Enabled = false;
             this.textBoxBarnpris.Location = new System.Drawing.Point(35, 400);
             this.textBoxBarnpris.Name = "textBoxBarnpris";
             this.textBoxBarnpris.Size = new System.Drawing.Size(100, 20);
@@ -371,6 +385,7 @@
             // 
             // buttonUppdateraAkt
             // 
+            this.buttonUppdateraAkt.Enabled = false;
             this.buttonUppdateraAkt.Location = new System.Drawing.Point(546, 397);
             this.buttonUppdateraAkt.Name = "buttonUppdateraAkt";
             this.buttonUppdateraAkt.Size = new System.Drawing.Size(151, 23);
@@ -381,6 +396,7 @@
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(546, 431);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(151, 23);
@@ -409,6 +425,7 @@
             // 
             // textBoxAktUngdPris
             // 
+            this.textBoxAktUngdPris.Enabled = false;
             this.textBoxAktUngdPris.Location = new System.Drawing.Point(401, 353);
             this.textBoxAktUngdPris.Name = "textBoxAktUngdPris";
             this.textBoxAktUngdPris.Size = new System.Drawing.Size(100, 20);
@@ -416,6 +433,7 @@
             // 
             // TextBoxAktBarnpris
             // 
+            this.TextBoxAktBarnpris.Enabled = false;
             this.TextBoxAktBarnpris.Location = new System.Drawing.Point(405, 401);
             this.TextBoxAktBarnpris.Name = "TextBoxAktBarnpris";
             this.TextBoxAktBarnpris.Size = new System.Drawing.Size(100, 20);
@@ -424,6 +442,7 @@
             // 
             // btnSkapaForestallning
             // 
+            this.btnSkapaForestallning.Enabled = false;
             this.btnSkapaForestallning.Location = new System.Drawing.Point(190, 327);
             this.btnSkapaForestallning.Margin = new System.Windows.Forms.Padding(2);
             this.btnSkapaForestallning.Name = "btnSkapaForestallning";
@@ -515,6 +534,7 @@
             // 
             // btnAkt
             // 
+            this.btnAkt.Enabled = false;
             this.btnAkt.Location = new System.Drawing.Point(546, 327);
             this.btnAkt.Margin = new System.Windows.Forms.Padding(2);
             this.btnAkt.Name = "btnAkt";
