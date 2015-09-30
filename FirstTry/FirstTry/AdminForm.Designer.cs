@@ -146,7 +146,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(528, 116);
+            this.label1.Location = new System.Drawing.Point(528, 98);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 17);
@@ -156,7 +156,7 @@
             // 
             // richTextBoxAktInf
             // 
-            this.richTextBoxAktInf.Location = new System.Drawing.Point(532, 135);
+            this.richTextBoxAktInf.Location = new System.Drawing.Point(532, 120);
             this.richTextBoxAktInf.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBoxAktInf.Name = "richTextBoxAktInf";
             this.richTextBoxAktInf.Size = new System.Drawing.Size(155, 85);
@@ -186,7 +186,7 @@
             // Lable3
             // 
             this.Lable3.AutoSize = true;
-            this.Lable3.Location = new System.Drawing.Point(528, 50);
+            this.Lable3.Location = new System.Drawing.Point(528, 48);
             this.Lable3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lable3.Name = "Lable3";
             this.Lable3.Size = new System.Drawing.Size(63, 17);
@@ -195,7 +195,7 @@
             // 
             // textBoxAktnamn
             // 
-            this.textBoxAktnamn.Location = new System.Drawing.Point(532, 71);
+            this.textBoxAktnamn.Location = new System.Drawing.Point(532, 70);
             this.textBoxAktnamn.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAktnamn.Name = "textBoxAktnamn";
             this.textBoxAktnamn.Size = new System.Drawing.Size(155, 22);
@@ -206,7 +206,7 @@
             this.textBoxAktStarttid.Location = new System.Drawing.Point(535, 261);
             this.textBoxAktStarttid.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAktStarttid.Name = "textBoxAktStarttid";
-            this.textBoxAktStarttid.Size = new System.Drawing.Size(132, 22);
+            this.textBoxAktStarttid.Size = new System.Drawing.Size(152, 22);
             this.textBoxAktStarttid.TabIndex = 18;
             // 
             // label4
@@ -224,7 +224,7 @@
             this.textBoxAktSluttid.Location = new System.Drawing.Point(533, 318);
             this.textBoxAktSluttid.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAktSluttid.Name = "textBoxAktSluttid";
-            this.textBoxAktSluttid.Size = new System.Drawing.Size(132, 22);
+            this.textBoxAktSluttid.Size = new System.Drawing.Size(154, 22);
             this.textBoxAktSluttid.TabIndex = 19;
             // 
             // label5
@@ -242,7 +242,7 @@
             this.textBoxAktVuxenpris.Location = new System.Drawing.Point(536, 372);
             this.textBoxAktVuxenpris.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAktVuxenpris.Name = "textBoxAktVuxenpris";
-            this.textBoxAktVuxenpris.Size = new System.Drawing.Size(132, 22);
+            this.textBoxAktVuxenpris.Size = new System.Drawing.Size(151, 22);
             this.textBoxAktVuxenpris.TabIndex = 20;
             // 
             // label6
@@ -280,7 +280,7 @@
             this.textBoxForestStarttid.Location = new System.Drawing.Point(45, 303);
             this.textBoxForestStarttid.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxForestStarttid.Name = "textBoxForestStarttid";
-            this.textBoxForestStarttid.Size = new System.Drawing.Size(132, 22);
+            this.textBoxForestStarttid.Size = new System.Drawing.Size(173, 22);
             this.textBoxForestStarttid.TabIndex = 4;
             this.textBoxForestStarttid.TextChanged += new System.EventHandler(this.textBoxForestStarttid_TextChanged);
             // 
@@ -289,7 +289,7 @@
             this.textBoxForestSluttid.Location = new System.Drawing.Point(45, 351);
             this.textBoxForestSluttid.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxForestSluttid.Name = "textBoxForestSluttid";
-            this.textBoxForestSluttid.Size = new System.Drawing.Size(132, 22);
+            this.textBoxForestSluttid.Size = new System.Drawing.Size(173, 22);
             this.textBoxForestSluttid.TabIndex = 5;
             this.textBoxForestSluttid.TextChanged += new System.EventHandler(this.textBoxForestSluttid_TextChanged);
             // 
@@ -320,7 +320,7 @@
             this.textBoxVuxenpris.Location = new System.Drawing.Point(48, 402);
             this.textBoxVuxenpris.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxVuxenpris.Name = "textBoxVuxenpris";
-            this.textBoxVuxenpris.Size = new System.Drawing.Size(132, 22);
+            this.textBoxVuxenpris.Size = new System.Drawing.Size(170, 22);
             this.textBoxVuxenpris.TabIndex = 6;
             this.textBoxVuxenpris.TextChanged += new System.EventHandler(this.textBoxVuxenpris_TextChanged);
             // 
@@ -329,7 +329,7 @@
             this.textBoxUngdomspris.Location = new System.Drawing.Point(47, 455);
             this.textBoxUngdomspris.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxUngdomspris.Name = "textBoxUngdomspris";
-            this.textBoxUngdomspris.Size = new System.Drawing.Size(132, 22);
+            this.textBoxUngdomspris.Size = new System.Drawing.Size(171, 22);
             this.textBoxUngdomspris.TabIndex = 7;
             // 
             // textBoxBarnpris
@@ -337,7 +337,7 @@
             this.textBoxBarnpris.Location = new System.Drawing.Point(47, 510);
             this.textBoxBarnpris.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxBarnpris.Name = "textBoxBarnpris";
-            this.textBoxBarnpris.Size = new System.Drawing.Size(132, 22);
+            this.textBoxBarnpris.Size = new System.Drawing.Size(171, 22);
             this.textBoxBarnpris.TabIndex = 8;
             // 
             // label3
@@ -417,7 +417,7 @@
             this.textBoxAktUngdPris.Location = new System.Drawing.Point(535, 434);
             this.textBoxAktUngdPris.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAktUngdPris.Name = "textBoxAktUngdPris";
-            this.textBoxAktUngdPris.Size = new System.Drawing.Size(132, 22);
+            this.textBoxAktUngdPris.Size = new System.Drawing.Size(152, 22);
             this.textBoxAktUngdPris.TabIndex = 21;
             // 
             // TextBoxAktBarnpris
@@ -425,7 +425,7 @@
             this.TextBoxAktBarnpris.Location = new System.Drawing.Point(540, 494);
             this.TextBoxAktBarnpris.Margin = new System.Windows.Forms.Padding(4);
             this.TextBoxAktBarnpris.Name = "TextBoxAktBarnpris";
-            this.TextBoxAktBarnpris.Size = new System.Drawing.Size(132, 22);
+            this.TextBoxAktBarnpris.Size = new System.Drawing.Size(147, 22);
             this.TextBoxAktBarnpris.TabIndex = 22;
             this.TextBoxAktBarnpris.TextChanged += new System.EventHandler(this.TextBoxAktBarnpris_TextChanged);
             // 
@@ -523,7 +523,7 @@
             this.textBoxForestDatum.Location = new System.Drawing.Point(47, 252);
             this.textBoxForestDatum.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxForestDatum.Name = "textBoxForestDatum";
-            this.textBoxForestDatum.Size = new System.Drawing.Size(132, 22);
+            this.textBoxForestDatum.Size = new System.Drawing.Size(171, 22);
             this.textBoxForestDatum.TabIndex = 3;
             // 
             // label14

@@ -390,57 +390,68 @@ namespace FirstTry
 
         private void uppdatera_Click(object sender, EventArgs e)
         {
-            int id = valdforestallning.id;
-            string namn = textBoxForestNamn.Text;
-            string generellinfo = richTextBoxForestInf.Text;
-            bool open = false;
-            DateTime datum = Convert.ToDateTime(textBoxForestDatum.Text);
-            DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
-            DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
-            int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
-            int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
-            int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
-            bool friplacering = false;
-            DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
-
-
-            if (checkBoxForestallning.Checked == true)
+            try
             {
-                valdforestallning.open = true;
-            }
+                int id = valdforestallning.id;
+                string namn = textBoxForestNamn.Text;
+                string generellinfo = richTextBoxForestInf.Text;
+                bool open = false;
+                DateTime datum = Convert.ToDateTime(textBoxForestDatum.Text);
+                DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
+                DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
+                int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
+                int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
+                int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
+                bool friplacering = false;
+                DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
-            else
-            {
-                checkBoxForestallning.Checked = false;
-            }
 
-            if (datum.Date >= DateTime.Now.Date)
-            {
-                if (starttid.TimeOfDay < sluttid.TimeOfDay)
+                if (checkBoxForestallning.Checked == true)
                 {
-                    if (vuxenpris >= ungdomspris && vuxenpris >= barnpris && ungdomspris >= barnpris)
+                    valdforestallning.open = true;
+                }
+
+                else
+                {
+                    checkBoxForestallning.Checked = false;
+                }
+
+                if (datum.Date >= DateTime.Now.Date)
+                {
+                    if (starttid.TimeOfDay < sluttid.TimeOfDay)
                     {
-            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
-            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
-            MessageBox.Show("Föreställningen har nu uppdaterats");
-        }
+                        if (vuxenpris >= ungdomspris && vuxenpris >= barnpris && ungdomspris >= barnpris)
+                        {
+                            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
+                            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+                            MessageBox.Show("Föreställningen har nu uppdaterats");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
+                        }
+
+                    }
                     else
                     {
-                        MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
+                        MessageBox.Show("Föreställningen är för kort!");
                     }
 
                 }
                 else
                 {
-                    MessageBox.Show("Föreställningen är för kort!");
+                    MessageBox.Show("Sätt ett senare datum!");
                 }
+            }
+            catch (Exception)
+            {
 
-                }
-                else
-                {
-                MessageBox.Show("Sätt ett senare datum!");
-                }
+                MessageBox.Show("Alla textboxar måste vara korrekt ifyllda, vänligen se exempelkod vid textboxarna!");
+            }
+
+            conn.Close();
         }
+
 
 
 
