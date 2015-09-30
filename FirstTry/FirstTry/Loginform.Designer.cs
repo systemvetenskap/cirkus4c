@@ -41,6 +41,7 @@
             this.textBox_anvandarnamn.Name = "textBox_anvandarnamn";
             this.textBox_anvandarnamn.Size = new System.Drawing.Size(100, 20);
             this.textBox_anvandarnamn.TabIndex = 0;
+            this.textBox_anvandarnamn.Text = "dilan";
             // 
             // textBox_losenord
             // 
@@ -48,6 +49,7 @@
             this.textBox_losenord.Name = "textBox_losenord";
             this.textBox_losenord.Size = new System.Drawing.Size(100, 20);
             this.textBox_losenord.TabIndex = 1;
+            this.textBox_losenord.Text = "123";
             this.textBox_losenord.TextChanged += new System.EventHandler(this.textBox_losenord_TextChanged);
             // 
             // label_anvandarnamn

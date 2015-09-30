@@ -73,7 +73,7 @@ namespace FirstTry
 
                    // int y = (int)command.ExecuteScalar();
 
-                    if (x >= 16)
+                    if (x >= 64)
                     {
                         // MessageBox.Show("Tyvärr finns inte tillräkligt med plats, utanför");
                         // this.Hide();
@@ -85,7 +85,7 @@ namespace FirstTry
 
                     foreach (DataRow row in dt.Rows)
                     {
-                        if (x >= 16)
+                        if (x >= 64)
                         {
                             // MessageBox.Show("Tyvärr finns inte tillräkligt med plats, innanför");
                             //this.Hide();

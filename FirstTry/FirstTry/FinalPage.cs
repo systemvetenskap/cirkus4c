@@ -329,7 +329,7 @@ namespace FirstTry
             string docName = (namn + ".txt");
             string docPath = @"C:\Users\TickL\Source\Repos\cirkus4c\FirstTry\FirstTry\bin\Debug\";
             pd.DocumentName = docName;
-            using (FileStream stream = new FileStream(docPath + docName, FileMode.Open))
+            using (FileStream stream = new FileStream(docPath + docName, FileMode.Open)) //Open or create?
             using (StreamReader reader = new StreamReader(stream))
             {
                 content = reader.ReadToEnd();
