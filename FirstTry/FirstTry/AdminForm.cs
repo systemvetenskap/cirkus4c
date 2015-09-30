@@ -541,12 +541,12 @@ private void Rapport()
 
         private void btnSkapaForestallning_Click(object sender, EventArgs e)
         {
-            buttonLaggTillForest.Enabled = true;
-            buttonLaggTillForest.Visible = true;
-            btnSkapaForestallning.Enabled = false;
-            btnSkapaForestallning.Visible = false;
-            btn_Avbryt.Enabled = true;
-            btn_Avbryt.Visible = true;
+            //buttonLaggTillForest.Enabled = true;
+            //buttonLaggTillForest.Visible = true;
+            //btnSkapaForestallning.Enabled = false;
+            //btnSkapaForestallning.Visible = false;
+            //btn_Avbryt.Enabled = true;
+            //btn_Avbryt.Visible = true;
             listBoxAdminForestallning.SelectionMode = SelectionMode.None;
             tomTextBoxarForestallning();
             tomTextBoxarAkt();
@@ -898,11 +898,11 @@ private void Rapport()
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Refresh();
-            // Databasmetoder.HamtaForestallningLista();
-        }
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+        //    Refresh();
+        //    // Databasmetoder.HamtaForestallningLista();
+        //}
 
         private void textBoxForestStarttid_TextChanged(object sender, EventArgs e)
             {
