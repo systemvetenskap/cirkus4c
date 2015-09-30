@@ -87,10 +87,10 @@ namespace FirstTry
             if (aktorlistaId.Contains(3) == true)
             {
                 //Föreställning edit
-                this.buttonLaggTillForest.Enabled = true;
-                this.buttonLaggTillForest.Visible = true;
-                this.btnSkapaForestallning.Enabled = false;
-                this.btnSkapaForestallning.Visible = false;
+                this.buttonLaggTillForest.Enabled = false;
+                this.buttonLaggTillForest.Visible = false;
+                this.btnSkapaForestallning.Enabled = true;
+                this.btnSkapaForestallning.Visible = true;
                 this.uppdatera.Enabled = true;
                 this.uppdatera.Visible = true;
                 this.buttonTaBort.Enabled = true;
@@ -104,10 +104,10 @@ namespace FirstTry
                 checkBoxfriPlacering.Enabled = true;
                 checkBoxForestallning1.Enabled = true;
                 //Akt edit
-                this.btnAkt.Enabled = false;
-                this.btnAkt.Visible = false;
-                this.buttonLaggTillAktInfo.Enabled = true;
-                this.buttonLaggTillAktInfo.Visible = true;
+                this.btnAkt.Enabled = true;
+                this.btnAkt.Visible = true;
+                this.buttonLaggTillAktInfo.Enabled = false;
+                this.buttonLaggTillAktInfo.Visible = false;
                 this.buttonUppdateraAkt.Enabled = true;
                 this.buttonUppdateraAkt.Visible = true;
                 this.button1.Enabled = true;
@@ -932,6 +932,11 @@ private void Rapport()
         private void checkBoxForestallning1_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_Avbryt_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 
