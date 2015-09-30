@@ -384,75 +384,67 @@ private void Rapport()
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            //int fsid = valdforestallning.id;
-            //int id = valdakt.id;
-            //string namn = textBoxAktnamn.Text;
-            //string aktinfo = richTextBoxAktInf.Text;
-            //DateTime starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
-            //DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
-            //int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
-            //int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
-            //int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
-
-
-            //Forestallning fs = new Forestallning();  //använder vi denna?????
-            //fs = (Forestallning)listBoxAdminForestallning.SelectedItem;
-
-            //Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
-            //listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
-
 
             try
             {
-            int fsid = valdforestallning.id;
-            int id = valdakt.id;
-            string namn = textBoxAktnamn.Text;
-            string aktinfo = richTextBoxAktInf.Text;
-            DateTime starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
-            DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
-            int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
-            int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
-            int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
+                int fsid = valdforestallning.id;
+                int id = valdakt.id;
+                string namn = textBoxAktnamn.Text;
+                string aktinfo = richTextBoxAktInf.Text;
+                DateTime starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
+                DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
+                int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
+                int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
+                int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
 
                 DateTime forestStart = valdforestallning.starttid;
 
-                if (starttid.TimeOfDay >= forestStart.TimeOfDay && sluttid.TimeOfDay <= valdforestallning.sluttid.TimeOfDay)
-                {
-                    if (starttid.TimeOfDay < sluttid.TimeOfDay)
-                    {
-                        if (vuxen <= valdforestallning.vuxenpris && ungdom <= valdforestallning.ungdomspris && barn <= valdforestallning.barnpris)
-                        {
-                            if (vuxen >= ungdom && vuxen >= barn && ungdom >= barn)
-                            {
-                            Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
-                            listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+                //if (listBoxAkter.SelectedIndex == -1)
+                //{
 
-                            conn.Close();
-                            MessageBox.Show("Akten är nu uppdaterad!");
+
+                    if (starttid.TimeOfDay >= forestStart.TimeOfDay && sluttid.TimeOfDay <= valdforestallning.sluttid.TimeOfDay)
+                    {
+                        if (starttid.TimeOfDay < sluttid.TimeOfDay)
+                        {
+                            if (vuxen <= valdforestallning.vuxenpris && ungdom <= valdforestallning.ungdomspris && barn <= valdforestallning.barnpris)
+                            {
+                                if (vuxen >= ungdom && vuxen >= barn && ungdom >= barn)
+                                {
+                                    Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
+                                    listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+
+                                    conn.Close();
+                                    MessageBox.Show("Akten är nu uppdaterad!");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
+                                }
+
                             }
                             else
                             {
-                                MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
+                                MessageBox.Show("Akten har fel pris!");
                             }
-                               
+
                         }
                         else
                         {
-                            MessageBox.Show("Akten har fel pris!");
+                            MessageBox.Show("Akten är för kort!");
                         }
-
                     }
                     else
                     {
-                        MessageBox.Show("Akten är för kort!");
+                        MessageBox.Show("Akten måste ha en tid som passar föreställningen!");
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Akten måste ha en tid som passar föreställningen!");
-
-        }
-
+               // }
+                //else
+                //{
+                //    MessageBox.Show("För att uppdatera måste du ha valt en akt.");
+                //}
+            
+               
             }
             catch (Exception)
             {
