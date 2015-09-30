@@ -492,6 +492,7 @@
             // 
             // btnAndraTaBortBeh
             // 
+            this.btnAndraTaBortBeh.Enabled = false;
             this.btnAndraTaBortBeh.Location = new System.Drawing.Point(785, 41);
             this.btnAndraTaBortBeh.Margin = new System.Windows.Forms.Padding(2);
             this.btnAndraTaBortBeh.Name = "btnAndraTaBortBeh";
@@ -499,6 +500,7 @@
             this.btnAndraTaBortBeh.TabIndex = 47;
             this.btnAndraTaBortBeh.Text = "Ändra behörigheter";
             this.btnAndraTaBortBeh.UseVisualStyleBackColor = true;
+            this.btnAndraTaBortBeh.Visible = false;
             this.btnAndraTaBortBeh.Click += new System.EventHandler(this.btnAndraTaBortBeh_Click);
             // 
             // textBoxForsaljningsslut

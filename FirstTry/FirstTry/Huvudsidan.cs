@@ -42,7 +42,7 @@ namespace FirstTry
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
             
-            if (aktortyper.Contains(6) == true)
+            if (aktortyper.Contains(8) == false)
             {
                 this.button3.Enabled = true;
                 this.button3.Visible = true;
