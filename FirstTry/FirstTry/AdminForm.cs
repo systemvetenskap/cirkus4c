@@ -89,8 +89,8 @@ namespace FirstTry
                 //Föreställning edit
                 this.buttonLaggTillForest.Enabled = true;
                 this.buttonLaggTillForest.Visible = true;
-                this.btnSkapaForestallning.Enabled = true;
-                this.btnSkapaForestallning.Visible = true;
+                this.btnSkapaForestallning.Enabled = false;
+                this.btnSkapaForestallning.Visible = false;
                 this.uppdatera.Enabled = true;
                 this.uppdatera.Visible = true;
                 this.buttonTaBort.Enabled = true;
@@ -104,8 +104,8 @@ namespace FirstTry
                 checkBoxfriPlacering.Enabled = true;
                 checkBoxForestallning1.Enabled = true;
                 //Akt edit
-                this.btnAkt.Enabled = true;
-                this.btnAkt.Visible = true;
+                this.btnAkt.Enabled = false;
+                this.btnAkt.Visible = false;
                 this.buttonLaggTillAktInfo.Enabled = true;
                 this.buttonLaggTillAktInfo.Visible = true;
                 this.buttonUppdateraAkt.Enabled = true;
@@ -163,9 +163,7 @@ namespace FirstTry
             Rapport();
         }
                 
-//    }
 
-//}
 
 
 
@@ -254,22 +252,31 @@ private void Rapport()
             try
             {
 
-            string namn = textBoxForestNamn.Text;
-            string generellinfo = richTextBoxForestInf.Text;
+                string namn = textBoxForestNamn.Text;
+                string generellinfo = richTextBoxForestInf.Text;
                 DateTime datum = Convert.ToDateTime(textBoxForestDatum1.Text);
-            DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
-            DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
-            bool open = false;
-            int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
-            int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
-            int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
-            bool friplacering = false;
+                DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
+                DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
+                bool open = false;
+                int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
+                int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
+                int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
+                bool friplacering = false;
                 DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
-            if (checkBoxfriPlacering.Checked == true)
-            {
-                friplacering = true;
-            }
+                if (checkBoxfriPlacering.Checked == true)
+                {
+                    friplacering = true;
+                }
+                if (valdforestallning.open == true)
+                {
+                    checkBoxForestallning1.Checked = true;
+                }
+                else
+                {
+                    checkBoxForestallning1.Checked = false;
+                }
+
 
 
                 if (datum.Date >= DateTime.Now.Date)
@@ -278,14 +285,15 @@ private void Rapport()
                     {
                         if (vuxenpris >= ungdomspris && vuxenpris >= barnpris && ungdomspris >= barnpris)
                         {
-                            if (forsaljningsslut.Date >= datum.Date )
+                            if (forsaljningsslut.Date >= datum.Date)
                             {
                                 Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
-            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+                                listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
                                 buttonLaggTillForest.Enabled = false;
                                 listBoxAdminForestallning.SelectionMode = SelectionMode.One;
-                            
-                            conn.Close();
+
+                                conn.Close();
+                                MessageBox.Show("Föreställningen är nu tillagd i föreställningslistan.");
                             }
                             else
                             {
@@ -293,22 +301,22 @@ private void Rapport()
                             }
                         }
                         else
-                        { 
+                        {
                             MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
                         }
-                        
+
                     }
                     else
                     {
                         MessageBox.Show("Föreställningen är för kort!");
                     }
-               
+
                 }
                 else
                 {
                     MessageBox.Show("Sätt ett senare datum!");
                 }
-               
+
             }
 
             catch (Exception)
@@ -317,9 +325,11 @@ private void Rapport()
                 MessageBox.Show("Vänligen observera att alla textfält måste vara ifyllda korrekt, se exempelkod. Kontrollera även så att du inte glömt att fylla i ett textfält.");
             }
 
-            MessageBox.Show("Föreställningen är nu tillagd i föreställningslistan.");
-            conn.Close();
-
+            finally
+            {
+                conn.Close();
+               
+            }
         }
 
         private void listBoxAkter_SelectedIndexChanged(object sender, EventArgs e)
@@ -803,7 +813,8 @@ private void Rapport()
                             buttonLaggTillAktInfo.Enabled = false;
                             buttonLaggTillAktInfo.Visible = false;
 
-                             conn.Close();
+                                conn.Close();
+                                MessageBox.Show("Akten är nu tillagd i aktlistan.");
                             }
                             else
                             {
@@ -836,7 +847,7 @@ private void Rapport()
             }
             finally
             {
-                MessageBox.Show("Akten är nu tillagd i aktlistan.");
+               
                 conn.Close();
             }
         }
@@ -904,6 +915,11 @@ private void Rapport()
         private void textBoxVuxenpris_TextChanged(object sender, EventArgs e)
         {
                           
+        }
+
+        private void checkBoxForestallning1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

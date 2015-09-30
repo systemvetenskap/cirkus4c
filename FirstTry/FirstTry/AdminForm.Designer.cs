@@ -834,6 +834,7 @@
             this.checkBoxForestallning1.TabIndex = 84;
             this.checkBoxForestallning1.Text = "Öppna föreställning";
             this.checkBoxForestallning1.UseVisualStyleBackColor = true;
+            this.checkBoxForestallning1.CheckedChanged += new System.EventHandler(this.checkBoxForestallning1_CheckedChanged);
             // 
             // textBoxForestDatum1
             // 
