@@ -435,6 +435,15 @@ namespace FirstTry
                         gk(button_F7, fusk, vecka, platsid, id);
                         gk(button_F8, fusk, vecka, platsid, id);
 
+                        gk(button_H1, fusk, vecka, platsid, id);
+                        gk(button_H2, fusk, vecka, platsid, id);
+                        gk(button_H3, fusk, vecka, platsid, id);
+                        gk(button_H4, fusk, vecka, platsid, id);
+                        gk(button_H5, fusk, vecka, platsid, id);
+                        gk(button_H6, fusk, vecka, platsid, id);
+                        gk(button_H7, fusk, vecka, platsid, id);
+                        gk(button_H8, fusk, vecka, platsid, id);
+
                     // }
                 }
                 dr.Close();
