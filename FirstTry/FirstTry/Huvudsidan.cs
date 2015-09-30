@@ -41,6 +41,12 @@ namespace FirstTry
         }
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
+            
+            if (aktortyper.Contains(6) == true)
+            {
+                this.button3.Enabled = true;
+                this.button3.Visible = true;
+            }
             session = new Tempkop();
             conn.Open();
             session.totalpris = 0; //För att kolla vid button click att inget är vallt

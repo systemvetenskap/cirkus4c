@@ -315,12 +315,14 @@
             // 
             // button3
             // 
+            this.button3.Enabled = false;
             this.button3.Location = new System.Drawing.Point(489, 41);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 27;
             this.button3.Text = "Admin";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
             // 
             // Huvudsidan
             // 
