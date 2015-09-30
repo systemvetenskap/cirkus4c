@@ -383,6 +383,7 @@ namespace FirstTry
             btnSkapaForestallning.Visible = false;
             listBoxAdminForestallning.SelectionMode = SelectionMode.None;
             tomTextBoxarForestallning();
+            tomTextBoxarAkt();
             exempelkodforest();
 
         }
