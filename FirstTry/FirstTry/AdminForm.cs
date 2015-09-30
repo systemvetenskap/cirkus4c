@@ -264,11 +264,6 @@ namespace FirstTry
                             Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
                             listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
 
-                            //Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn, forestallningsid);
-                            //listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
-                            //listBoxAkter.SelectionMode = SelectionMode.One;
-                            //buttonLaggTillAktInfo.Enabled = false;
-
                             conn.Close();
                         }
                         else
