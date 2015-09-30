@@ -59,8 +59,11 @@ namespace FirstTry
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
+
             if (aktorlistaId.Contains(4) == true)
             {
+                uppdatera.Enabled = true;
+                buttonUppdateraAkt.Enabled = true;
                 textBoxAktVuxenpris.Enabled = true;
                 textBoxAktUngdPris.Enabled = true;
                 TextBoxAktBarnpris.Enabled = true;
@@ -73,6 +76,13 @@ namespace FirstTry
                 this.btnAndraTaBortBeh.Enabled = true;
                 this.btnAndraTaBortBeh.Visible = true;
             }
+            if (aktorlistaId.Contains(9) == true)
+            {
+                checkBoxForestallning1.Enabled = true;
+                uppdatera.Enabled = true;
+                buttonUppdateraAkt.Enabled = true;
+            }
+
             if (aktorlistaId.Contains(3) == true)
             {
                 //Föreställning edit
@@ -84,6 +94,14 @@ namespace FirstTry
                 this.uppdatera.Visible = true;
                 this.buttonTaBort.Enabled = true;
                 this.buttonTaBort.Visible = true;
+                textBoxForestNamn.Enabled = true;
+                richTextBoxForestInf.Enabled = true;
+                textBoxForestDatum1.Enabled = true;
+                textBoxForestStarttid.Enabled = true;
+                textBoxForestSluttid.Enabled = true;
+                textBoxForsaljningsslut.Enabled = true;
+                checkBoxfriPlacering.Enabled = true;
+                checkBoxForestallning1.Enabled = true;
                 //Akt edit
                 this.btnAkt.Enabled = true;
                 this.btnAkt.Visible = true;
@@ -93,6 +111,11 @@ namespace FirstTry
                 this.buttonUppdateraAkt.Visible = true;
                 this.button1.Enabled = true;
                 this.button1.Visible = true;
+                textBoxAktnamn.Enabled = true;
+                richTextBoxAktInf.Enabled = true;
+                textBoxAktStarttid.Enabled = true;
+                textBoxAktSluttid.Enabled = true;
+
             }
 
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
