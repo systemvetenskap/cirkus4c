@@ -150,7 +150,7 @@ namespace FirstTry
                             }
                         }
                         else
-                        
+                        { 
                             MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
                         }
                         
