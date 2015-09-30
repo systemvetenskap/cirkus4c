@@ -145,7 +145,16 @@ namespace FirstTry
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Tyvärr blev platsen precis bokad" + ex.ToString());
+                if (listBoxTabell.Items.Count == 0)
+                {
+                    MessageBox.Show("Det finns inga fler behörigheter att lägga till");
+
+                }
+                else
+                {
+                    MessageBox.Show("Hoppsan, du glöde välja behörighet att lägg till!");
+
+                }
 
 
                 //throw;
@@ -185,9 +194,9 @@ namespace FirstTry
 
 
 
-                
 
 
+                tabortPeronalBehorighet(p.Id, b.Id);
 
 
 
@@ -198,13 +207,23 @@ namespace FirstTry
             }
             catch (Exception)
             {
+                if (listBoxBehorighet.Items.Count == 0)
+                {
+                    MessageBox.Show("Det finns inte fler behörigheter att ta bort");
 
-                throw;
+                }
+                else
+                {
+                    MessageBox.Show("Hoppsan, du glömde välja behörighet att ta bort!");
+
+                }
+
+                // throw;
             }
             conn.Close();
 
 
-            tabortPeronalBehorighet(p.Id, b.Id);
+            
             // MessageBox.Show(MessageBoxButtons.YesNo.ToString());
 
 
