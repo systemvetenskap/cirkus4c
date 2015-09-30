@@ -23,6 +23,8 @@ namespace FirstTry
         PrintDocument pd = new PrintDocument();
         Tempkop tk = new Tempkop();
         int x = 0;
+
+
         public FinalPage(Tempkop tk2)
         {
             InitializeComponent();
@@ -30,8 +32,7 @@ namespace FirstTry
         }
         public FinalPage()
         {
-            InitializeComponent();
-            
+            InitializeComponent();    
         }
         private bool arDetMail()
         {
@@ -208,6 +209,7 @@ namespace FirstTry
                                   
 
             }
+
         }
 
         public string platsnamn(string platsID)
@@ -239,7 +241,7 @@ namespace FirstTry
         //    foreach (Biljett i in tk.biljetter)
         //    {
         //        Graphics g = e.Graphics;
-                
+
         //        Rectangle rect = new Rectangle(10, pointVar, 593, 343);
         //        Pen pen = new Pen(Brushes.Black);
         //        g.DrawRectangle(pen, rect);
@@ -283,31 +285,55 @@ namespace FirstTry
         
         private void button2_Click(object sender, EventArgs e)
         {
+            ReadFile();
+            pd.PrintPage +=
+                new PrintPageEventHandler(pd_PrintPage);
+            pd.PrinterSettings.PrintToFile = true;
+            pd.Print();
+        }
+        //private void pd_PrintPage(object sender, PrintPageEventArgs ev)
+        //{
+        //    ev.Graphics.DrawString(content, printFont, Brushes.Black,
+        //                    ev.MarginBounds.Left, 0, new StringFormat());
+        //    ev.HasMorePages = (content.Length > 0);
+        //}
+
+        private void pd_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            int charactersOnPage = 0;
+            int linesPerPage = 0;
+
+            // Copied from https://msdn.microsoft.com/en-us/library/cwbe712d(v=vs.110).aspx
+            // Sets the value of charactersOnPage to the number of characters 
+            // of stringToPrint that will fit within the bounds of the page.
+            e.Graphics.MeasureString(content, this.Font,
+                e.MarginBounds.Size, StringFormat.GenericTypographic,
+                out charactersOnPage, out linesPerPage);
+
+            // Draws the string within the bounds of the page
+            e.Graphics.DrawString(content, this.Font, Brushes.Black,
+                e.MarginBounds, StringFormat.GenericTypographic);
+
+            // Remove the portion of the string that has been printed.
+            content = content.Substring(charactersOnPage);
+
+            // Check to see if more pages are to be printed.
+            e.HasMorePages = (content.Length > 0);
+        }
+
+
+        private void ReadFile()
+        {
             string namn = tk.biljetter[0].ToString();
             File.AppendAllText(namn + ".txt", richTextBox1.Text);
-            
-
-
-
-
-            //richTextBox1.SaveFile("biljetttttttttttter.txt");
-            try
+            string docName = (namn + ".txt");
+            string docPath = @"C:\Users\TickL\Source\Repos\cirkus4c\FirstTry\FirstTry\bin\Debug\";
+            pd.DocumentName = docName;
+            using (FileStream stream = new FileStream(docPath + docName, FileMode.Open))
+            using (StreamReader reader = new StreamReader(stream))
             {
-                content = File.ReadAllText(namn + ".txt");
-                PrintDocument pd = new PrintDocument();
-                pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
-                pd.PrinterSettings.PrintToFile = true;
-                pd.Print();
+                content = reader.ReadToEnd();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        private void pd_PrintPage(object sender, PrintPageEventArgs ev)
-        {
-            ev.Graphics.DrawString(content, printFont, Brushes.Black,
-                            ev.MarginBounds.Left, 0, new StringFormat());
         }
 
         private void button3_Click(object sender, EventArgs e)
