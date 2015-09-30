@@ -14,7 +14,7 @@ namespace FirstTry
 {
     public partial class Huvudsidan : Form
     {
-        
+        List<int> aktortyper = new List<int>();
         public Huvudsidan()
         {
             InitializeComponent();
@@ -22,6 +22,7 @@ namespace FirstTry
         public Huvudsidan(List<int> aktortypID)
         {
             InitializeComponent();
+            aktortyper = aktortypID;
         }
         Tempkop session;
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");

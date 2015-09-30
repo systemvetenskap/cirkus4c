@@ -67,23 +67,11 @@ namespace FirstTry
                     List<int> aktortyper = new List<int>();
                     foreach (DataRow row in dt2.Rows)
                     {
-                        
                         int x = Convert.ToInt32(row["aktortyp_id"]);
                         aktortyper.Add(x);
-
-
-
-                        if (Convert.ToInt32(row["aktortyp_id"]) == 6)
-                        {
-                            AdminForm af = new AdminForm(aktortyper);
-                            af.ShowDialog();
-                        }
-                        else if(Convert.ToInt32(row["aktortyp_id"]) == 3)
-                        {
-                            Huvudsidan hs = new Huvudsidan(aktortyper);
-                            hs.ShowDialog();
-                        }
                     }
+                    Huvudsidan hs = new Huvudsidan(aktortyper);
+                    hs.ShowDialog();
 
                     this.Close();
 
