@@ -18,11 +18,11 @@ namespace FirstTry
         public string Aktinfo { get; set; }
         public DateTime Starttid { get; set; }
         public DateTime Sluttid { get; set; }
-
+        public int Forestallningsid { get; set; }
 
         public override string ToString()
         {
-            return namn + "\t " + Starttid.ToShortDateString()+ " " + Starttid.ToShortTimeString();
+            return namn + "\t " + Starttid.ToShortTimeString();
         }
     }
 }

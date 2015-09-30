@@ -50,7 +50,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxForestStarttid = new System.Windows.Forms.TextBox();
             this.textBoxForestSluttid = new System.Windows.Forms.TextBox();
-            this.buttonOppnaForest = new System.Windows.Forms.Button();
             this.uppdatera = new System.Windows.Forms.Button();
             this.buttonTaBort = new System.Windows.Forms.Button();
             this.textBoxVuxenpris = new System.Windows.Forms.TextBox();
@@ -66,10 +65,8 @@
             this.textBoxAktUngdPris = new System.Windows.Forms.TextBox();
             this.TextBoxAktBarnpris = new System.Windows.Forms.TextBox();
             this.btnSkapaForestallning = new System.Windows.Forms.Button();
-            this.dateTimePickerTid = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
             this.checkBoxfriPlacering = new System.Windows.Forms.CheckBox();
-            this.btnOK = new System.Windows.Forms.Button();
             this.lblforestallningoppen = new System.Windows.Forms.Label();
             this.btnAndraTaBortBeh = new System.Windows.Forms.Button();
             this.textBoxForsaljningsslut = new System.Windows.Forms.TextBox();
@@ -108,7 +105,7 @@
             this.listBoxAdminForestallning.Location = new System.Drawing.Point(186, 45);
             this.listBoxAdminForestallning.Name = "listBoxAdminForestallning";
             this.listBoxAdminForestallning.Size = new System.Drawing.Size(204, 277);
-            this.listBoxAdminForestallning.TabIndex = 0;
+            this.listBoxAdminForestallning.TabIndex = 11;
             this.listBoxAdminForestallning.SelectedIndexChanged += new System.EventHandler(this.listBoxAdminForestallning_SelectedIndexChanged);
             // 
             // textBoxForestNamn
@@ -136,9 +133,10 @@
             this.buttonLaggTillForest.Location = new System.Drawing.Point(189, 359);
             this.buttonLaggTillForest.Name = "buttonLaggTillForest";
             this.buttonLaggTillForest.Size = new System.Drawing.Size(178, 23);
-            this.buttonLaggTillForest.TabIndex = 3;
+            this.buttonLaggTillForest.TabIndex = 13;
             this.buttonLaggTillForest.Text = "Lägg till ";
             this.buttonLaggTillForest.UseVisualStyleBackColor = true;
+            this.buttonLaggTillForest.Visible = false;
             this.buttonLaggTillForest.Click += new System.EventHandler(this.buttonLaggTillForest_Click);
             // 
             // listBoxAkter
@@ -147,7 +145,7 @@
             this.listBoxAkter.Location = new System.Drawing.Point(546, 41);
             this.listBoxAkter.Name = "listBoxAkter";
             this.listBoxAkter.Size = new System.Drawing.Size(212, 277);
-            this.listBoxAkter.TabIndex = 4;
+            this.listBoxAkter.TabIndex = 23;
             this.listBoxAkter.SelectedIndexChanged += new System.EventHandler(this.listBoxAkter_SelectedIndexChanged);
             // 
             // buttonLaggTillAktInfo
@@ -155,16 +153,17 @@
             this.buttonLaggTillAktInfo.Enabled = false;
             this.buttonLaggTillAktInfo.Location = new System.Drawing.Point(546, 361);
             this.buttonLaggTillAktInfo.Name = "buttonLaggTillAktInfo";
-            this.buttonLaggTillAktInfo.Size = new System.Drawing.Size(151, 23);
-            this.buttonLaggTillAktInfo.TabIndex = 6;
+            this.buttonLaggTillAktInfo.Size = new System.Drawing.Size(178, 23);
+            this.buttonLaggTillAktInfo.TabIndex = 25;
             this.buttonLaggTillAktInfo.Text = "Lägg till ";
             this.buttonLaggTillAktInfo.UseVisualStyleBackColor = true;
+            this.buttonLaggTillAktInfo.Visible = false;
             this.buttonLaggTillAktInfo.Click += new System.EventHandler(this.buttonLaggTillAktInfo_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(396, 94);
+            this.label1.Location = new System.Drawing.Point(396, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 7;
@@ -173,26 +172,25 @@
             // 
             // richTextBoxAktInf
             // 
-            this.richTextBoxAktInf.Enabled = false;
-            this.richTextBoxAktInf.Location = new System.Drawing.Point(399, 110);
+            this.richTextBoxAktInf.Location = new System.Drawing.Point(399, 98);
             this.richTextBoxAktInf.Name = "richTextBoxAktInf";
             this.richTextBoxAktInf.Size = new System.Drawing.Size(117, 70);
-            this.richTextBoxAktInf.TabIndex = 8;
+            this.richTextBoxAktInf.TabIndex = 17;
             this.richTextBoxAktInf.Text = "";
+            this.richTextBoxAktInf.TextChanged += new System.EventHandler(this.richTextBoxAktInf_TextChanged);
             // 
             // richTextBoxForestInf
             // 
-            this.richTextBoxForestInf.Enabled = false;
-            this.richTextBoxForestInf.Location = new System.Drawing.Point(39, 111);
+            this.richTextBoxForestInf.Location = new System.Drawing.Point(39, 98);
             this.richTextBoxForestInf.Name = "richTextBoxForestInf";
             this.richTextBoxForestInf.Size = new System.Drawing.Size(135, 84);
-            this.richTextBoxForestInf.TabIndex = 9;
+            this.richTextBoxForestInf.TabIndex = 2;
             this.richTextBoxForestInf.Text = "";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 94);
+            this.label2.Location = new System.Drawing.Point(36, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(125, 13);
             this.label2.TabIndex = 10;
@@ -201,7 +199,7 @@
             // Lable3
             // 
             this.Lable3.AutoSize = true;
-            this.Lable3.Location = new System.Drawing.Point(396, 41);
+            this.Lable3.Location = new System.Drawing.Point(396, 39);
             this.Lable3.Name = "Lable3";
             this.Lable3.Size = new System.Drawing.Size(49, 13);
             this.Lable3.TabIndex = 12;
@@ -209,19 +207,17 @@
             // 
             // textBoxAktnamn
             // 
-            this.textBoxAktnamn.Enabled = false;
-            this.textBoxAktnamn.Location = new System.Drawing.Point(399, 58);
+            this.textBoxAktnamn.Location = new System.Drawing.Point(399, 57);
             this.textBoxAktnamn.Name = "textBoxAktnamn";
             this.textBoxAktnamn.Size = new System.Drawing.Size(117, 20);
-            this.textBoxAktnamn.TabIndex = 13;
+            this.textBoxAktnamn.TabIndex = 16;
             // 
             // textBoxAktStarttid
             // 
-            this.textBoxAktStarttid.Enabled = false;
             this.textBoxAktStarttid.Location = new System.Drawing.Point(401, 212);
             this.textBoxAktStarttid.Name = "textBoxAktStarttid";
-            this.textBoxAktStarttid.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAktStarttid.TabIndex = 14;
+            this.textBoxAktStarttid.Size = new System.Drawing.Size(115, 20);
+            this.textBoxAktStarttid.TabIndex = 18;
             // 
             // label4
             // 
@@ -234,11 +230,10 @@
             // 
             // textBoxAktSluttid
             // 
-            this.textBoxAktSluttid.Enabled = false;
             this.textBoxAktSluttid.Location = new System.Drawing.Point(400, 258);
             this.textBoxAktSluttid.Name = "textBoxAktSluttid";
-            this.textBoxAktSluttid.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAktSluttid.TabIndex = 16;
+            this.textBoxAktSluttid.Size = new System.Drawing.Size(116, 20);
+            this.textBoxAktSluttid.TabIndex = 19;
             // 
             // label5
             // 
@@ -251,11 +246,10 @@
             // 
             // textBoxAktVuxenpris
             // 
-            this.textBoxAktVuxenpris.Enabled = false;
             this.textBoxAktVuxenpris.Location = new System.Drawing.Point(402, 302);
             this.textBoxAktVuxenpris.Name = "textBoxAktVuxenpris";
-            this.textBoxAktVuxenpris.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAktVuxenpris.TabIndex = 18;
+            this.textBoxAktVuxenpris.Size = new System.Drawing.Size(114, 20);
+            this.textBoxAktVuxenpris.TabIndex = 20;
             // 
             // label6
             // 
@@ -269,7 +263,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(35, 217);
+            this.label7.Location = new System.Drawing.Point(35, 226);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 13);
             this.label7.TabIndex = 20;
@@ -278,7 +272,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(34, 255);
+            this.label8.Location = new System.Drawing.Point(34, 268);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(36, 13);
             this.label8.TabIndex = 21;
@@ -286,80 +280,66 @@
             // 
             // textBoxForestStarttid
             // 
-            this.textBoxForestStarttid.Enabled = false;
-            this.textBoxForestStarttid.Location = new System.Drawing.Point(35, 234);
+            this.textBoxForestStarttid.Location = new System.Drawing.Point(34, 246);
             this.textBoxForestStarttid.Name = "textBoxForestStarttid";
-            this.textBoxForestStarttid.Size = new System.Drawing.Size(100, 20);
-            this.textBoxForestStarttid.TabIndex = 22;
+            this.textBoxForestStarttid.Size = new System.Drawing.Size(131, 20);
+            this.textBoxForestStarttid.TabIndex = 4;
+            this.textBoxForestStarttid.TextChanged += new System.EventHandler(this.textBoxForestStarttid_TextChanged);
             // 
             // textBoxForestSluttid
             // 
-            this.textBoxForestSluttid.Enabled = false;
-            this.textBoxForestSluttid.Location = new System.Drawing.Point(34, 272);
+            this.textBoxForestSluttid.Location = new System.Drawing.Point(34, 285);
             this.textBoxForestSluttid.Name = "textBoxForestSluttid";
-            this.textBoxForestSluttid.Size = new System.Drawing.Size(100, 20);
-            this.textBoxForestSluttid.TabIndex = 23;
-            // 
-            // buttonOppnaForest
-            // 
-            this.buttonOppnaForest.Location = new System.Drawing.Point(789, 385);
-            this.buttonOppnaForest.Name = "buttonOppnaForest";
-            this.buttonOppnaForest.Size = new System.Drawing.Size(125, 27);
-            this.buttonOppnaForest.TabIndex = 25;
-            this.buttonOppnaForest.Text = "Öppna föreställning";
-            this.buttonOppnaForest.UseVisualStyleBackColor = true;
-            this.buttonOppnaForest.Click += new System.EventHandler(this.buttonOppnaForest_Click);
+            this.textBoxForestSluttid.Size = new System.Drawing.Size(131, 20);
+            this.textBoxForestSluttid.TabIndex = 5;
+            this.textBoxForestSluttid.TextChanged += new System.EventHandler(this.textBoxForestSluttid_TextChanged);
             // 
             // uppdatera
             // 
-            this.uppdatera.Enabled = false;
             this.uppdatera.Location = new System.Drawing.Point(189, 394);
             this.uppdatera.Name = "uppdatera";
             this.uppdatera.Size = new System.Drawing.Size(178, 23);
-            this.uppdatera.TabIndex = 26;
+            this.uppdatera.TabIndex = 14;
             this.uppdatera.Text = "Uppdatera";
             this.uppdatera.UseVisualStyleBackColor = true;
             this.uppdatera.Click += new System.EventHandler(this.uppdatera_Click);
             // 
             // buttonTaBort
             // 
-            this.buttonTaBort.Enabled = false;
             this.buttonTaBort.Location = new System.Drawing.Point(189, 431);
             this.buttonTaBort.Name = "buttonTaBort";
             this.buttonTaBort.Size = new System.Drawing.Size(178, 23);
-            this.buttonTaBort.TabIndex = 27;
+            this.buttonTaBort.TabIndex = 15;
             this.buttonTaBort.Text = "Ta bort";
             this.buttonTaBort.UseVisualStyleBackColor = true;
             this.buttonTaBort.Click += new System.EventHandler(this.buttonTaBort_Click);
             // 
             // textBoxVuxenpris
             // 
-            this.textBoxVuxenpris.Enabled = false;
-            this.textBoxVuxenpris.Location = new System.Drawing.Point(35, 317);
+            this.textBoxVuxenpris.Location = new System.Drawing.Point(36, 327);
             this.textBoxVuxenpris.Name = "textBoxVuxenpris";
-            this.textBoxVuxenpris.Size = new System.Drawing.Size(100, 20);
-            this.textBoxVuxenpris.TabIndex = 28;
+            this.textBoxVuxenpris.Size = new System.Drawing.Size(128, 20);
+            this.textBoxVuxenpris.TabIndex = 6;
+            this.textBoxVuxenpris.TextChanged += new System.EventHandler(this.textBoxVuxenpris_TextChanged);
             // 
             // textBoxUngdomspris
             // 
-            this.textBoxUngdomspris.Enabled = false;
-            this.textBoxUngdomspris.Location = new System.Drawing.Point(35, 361);
+            this.textBoxUngdomspris.Location = new System.Drawing.Point(35, 370);
             this.textBoxUngdomspris.Name = "textBoxUngdomspris";
-            this.textBoxUngdomspris.Size = new System.Drawing.Size(100, 20);
-            this.textBoxUngdomspris.TabIndex = 29;
+            this.textBoxUngdomspris.Size = new System.Drawing.Size(129, 20);
+            this.textBoxUngdomspris.TabIndex = 7;
             // 
             // textBoxBarnpris
             // 
-            this.textBoxBarnpris.Enabled = false;
-            this.textBoxBarnpris.Location = new System.Drawing.Point(35, 400);
+            this.textBoxBarnpris.Location = new System.Drawing.Point(35, 414);
             this.textBoxBarnpris.Name = "textBoxBarnpris";
-            this.textBoxBarnpris.Size = new System.Drawing.Size(100, 20);
-            this.textBoxBarnpris.TabIndex = 30;
+            this.textBoxBarnpris.Size = new System.Drawing.Size(129, 20);
+            this.textBoxBarnpris.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 383);
+            this.label3.Location = new System.Drawing.Point(35, 395);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 31;
@@ -368,7 +348,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(34, 343);
+            this.label9.Location = new System.Drawing.Point(34, 351);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(68, 13);
             this.label9.TabIndex = 32;
@@ -377,7 +357,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(36, 299);
+            this.label10.Location = new System.Drawing.Point(36, 308);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(53, 13);
             this.label10.TabIndex = 33;
@@ -385,22 +365,20 @@
             // 
             // buttonUppdateraAkt
             // 
-            this.buttonUppdateraAkt.Enabled = false;
-            this.buttonUppdateraAkt.Location = new System.Drawing.Point(546, 397);
+            this.buttonUppdateraAkt.Location = new System.Drawing.Point(546, 395);
             this.buttonUppdateraAkt.Name = "buttonUppdateraAkt";
-            this.buttonUppdateraAkt.Size = new System.Drawing.Size(151, 23);
-            this.buttonUppdateraAkt.TabIndex = 34;
+            this.buttonUppdateraAkt.Size = new System.Drawing.Size(178, 23);
+            this.buttonUppdateraAkt.TabIndex = 26;
             this.buttonUppdateraAkt.Text = "Uppdatera Akt";
             this.buttonUppdateraAkt.UseVisualStyleBackColor = true;
             this.buttonUppdateraAkt.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // button1
             // 
-            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(546, 431);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 23);
-            this.button1.TabIndex = 35;
+            this.button1.Size = new System.Drawing.Size(178, 23);
+            this.button1.TabIndex = 27;
             this.button1.Text = "Ta bort";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
@@ -425,75 +403,49 @@
             // 
             // textBoxAktUngdPris
             // 
-            this.textBoxAktUngdPris.Enabled = false;
             this.textBoxAktUngdPris.Location = new System.Drawing.Point(401, 353);
             this.textBoxAktUngdPris.Name = "textBoxAktUngdPris";
-            this.textBoxAktUngdPris.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAktUngdPris.TabIndex = 38;
+            this.textBoxAktUngdPris.Size = new System.Drawing.Size(115, 20);
+            this.textBoxAktUngdPris.TabIndex = 21;
             // 
             // TextBoxAktBarnpris
             // 
-            this.TextBoxAktBarnpris.Enabled = false;
             this.TextBoxAktBarnpris.Location = new System.Drawing.Point(405, 401);
             this.TextBoxAktBarnpris.Name = "TextBoxAktBarnpris";
-            this.TextBoxAktBarnpris.Size = new System.Drawing.Size(100, 20);
-            this.TextBoxAktBarnpris.TabIndex = 39;
+            this.TextBoxAktBarnpris.Size = new System.Drawing.Size(111, 20);
+            this.TextBoxAktBarnpris.TabIndex = 22;
             this.TextBoxAktBarnpris.TextChanged += new System.EventHandler(this.TextBoxAktBarnpris_TextChanged);
             // 
             // btnSkapaForestallning
             // 
-            this.btnSkapaForestallning.Enabled = false;
             this.btnSkapaForestallning.Location = new System.Drawing.Point(190, 327);
-            this.btnSkapaForestallning.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSkapaForestallning.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSkapaForestallning.Name = "btnSkapaForestallning";
             this.btnSkapaForestallning.Size = new System.Drawing.Size(178, 21);
-            this.btnSkapaForestallning.TabIndex = 40;
+            this.btnSkapaForestallning.TabIndex = 12;
             this.btnSkapaForestallning.Text = "Skapa föreställning";
             this.btnSkapaForestallning.UseVisualStyleBackColor = true;
             this.btnSkapaForestallning.Click += new System.EventHandler(this.btnSkapaForestallning_Click);
             // 
-            // dateTimePickerTid
-            // 
-            this.dateTimePickerTid.CustomFormat = "";
-            this.dateTimePickerTid.Enabled = false;
-            this.dateTimePickerTid.Location = new System.Drawing.Point(789, 320);
-            this.dateTimePickerTid.Name = "dateTimePickerTid";
-            this.dateTimePickerTid.Size = new System.Drawing.Size(152, 20);
-            this.dateTimePickerTid.TabIndex = 42;
-            this.dateTimePickerTid.Value = new System.DateTime(2015, 9, 23, 10, 18, 53, 0);
-            this.dateTimePickerTid.Visible = false;
-            this.dateTimePickerTid.ValueChanged += new System.EventHandler(this.dateTimePickerTid_ValueChanged);
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(788, 299);
+            this.label13.Location = new System.Drawing.Point(31, 440);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(103, 13);
             this.label13.TabIndex = 43;
             this.label13.Text = "Sista försäljningsdag";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // checkBoxfriPlacering
             // 
             this.checkBoxfriPlacering.AutoSize = true;
-            this.checkBoxfriPlacering.Location = new System.Drawing.Point(35, 446);
+            this.checkBoxfriPlacering.Location = new System.Drawing.Point(21, 492);
             this.checkBoxfriPlacering.Name = "checkBoxfriPlacering";
             this.checkBoxfriPlacering.Size = new System.Drawing.Size(83, 17);
-            this.checkBoxfriPlacering.TabIndex = 44;
+            this.checkBoxfriPlacering.TabIndex = 10;
             this.checkBoxfriPlacering.Text = "Fri placering";
             this.checkBoxfriPlacering.UseVisualStyleBackColor = true;
-            // 
-            // btnOK
-            // 
-            this.btnOK.Enabled = false;
-            this.btnOK.Location = new System.Drawing.Point(789, 419);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(2);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(125, 29);
-            this.btnOK.TabIndex = 45;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // lblforestallningoppen
             // 
@@ -511,12 +463,11 @@
             // 
             // btnAndraTaBortBeh
             // 
-            this.btnAndraTaBortBeh.Enabled = false;
             this.btnAndraTaBortBeh.Location = new System.Drawing.Point(785, 41);
-            this.btnAndraTaBortBeh.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAndraTaBortBeh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAndraTaBortBeh.Name = "btnAndraTaBortBeh";
             this.btnAndraTaBortBeh.Size = new System.Drawing.Size(129, 35);
-            this.btnAndraTaBortBeh.TabIndex = 47;
+            this.btnAndraTaBortBeh.TabIndex = 28;
             this.btnAndraTaBortBeh.Text = "Ändra behörigheter";
             this.btnAndraTaBortBeh.UseVisualStyleBackColor = true;
             this.btnAndraTaBortBeh.Visible = false;
@@ -524,22 +475,20 @@
             // 
             // textBoxForsaljningsslut
             // 
-            this.textBoxForsaljningsslut.Location = new System.Drawing.Point(789, 353);
+            this.textBoxForsaljningsslut.Location = new System.Drawing.Point(32, 460);
             this.textBoxForsaljningsslut.Name = "textBoxForsaljningsslut";
-            this.textBoxForsaljningsslut.Size = new System.Drawing.Size(152, 20);
-            this.textBoxForsaljningsslut.TabIndex = 48;
+            this.textBoxForsaljningsslut.Size = new System.Drawing.Size(103, 20);
+            this.textBoxForsaljningsslut.TabIndex = 9;
             this.textBoxForsaljningsslut.Text = "yyyy-mm-dd hh:mm";
-            this.textBoxForsaljningsslut.Visible = false;
             this.textBoxForsaljningsslut.TextChanged += new System.EventHandler(this.textBoxForsaljningsslut_TextChanged);
             // 
             // btnAkt
             // 
-            this.btnAkt.Enabled = false;
             this.btnAkt.Location = new System.Drawing.Point(546, 327);
-            this.btnAkt.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAkt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAkt.Name = "btnAkt";
             this.btnAkt.Size = new System.Drawing.Size(178, 21);
-            this.btnAkt.TabIndex = 49;
+            this.btnAkt.TabIndex = 24;
             this.btnAkt.Text = "Skapa akt";
             this.btnAkt.UseVisualStyleBackColor = true;
             this.btnAkt.Click += new System.EventHandler(this.btnAkt_Click);
@@ -782,6 +731,43 @@
             this.label45.TabIndex = 70;
             this.label45.Text = "Antal besökare";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(832, 484);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(151, 29);
+            this.button2.TabIndex = 29;
+            this.button2.Text = "Avbryt";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // textBoxForestDatum
+            // 
+            this.textBoxForestDatum.Location = new System.Drawing.Point(35, 205);
+            this.textBoxForestDatum.Name = "textBoxForestDatum";
+            this.textBoxForestDatum.Size = new System.Drawing.Size(129, 20);
+            this.textBoxForestDatum.TabIndex = 3;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(37, 188);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(38, 13);
+            this.label14.TabIndex = 53;
+            this.label14.Text = "Datum";
+            // 
+            // checkBoxForestallning
+            // 
+            this.checkBoxForestallning.AutoSize = true;
+            this.checkBoxForestallning.Location = new System.Drawing.Point(108, 492);
+            this.checkBoxForestallning.Name = "checkBoxForestallning";
+            this.checkBoxForestallning.Size = new System.Drawing.Size(129, 17);
+            this.checkBoxForestallning.TabIndex = 54;
+            this.checkBoxForestallning.Text = "Öppna föreställningen";
+            this.checkBoxForestallning.UseVisualStyleBackColor = true;
+            this.checkBoxForestallning.CheckedChanged += new System.EventHandler(this.checkBoxForestallning_CheckedChanged);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -813,14 +799,17 @@
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
+            this.ClientSize = new System.Drawing.Size(1089, 524);
+            this.Controls.Add(this.checkBoxForestallning);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.textBoxForestDatum);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnAkt);
             this.Controls.Add(this.textBoxForsaljningsslut);
             this.Controls.Add(this.btnAndraTaBortBeh);
             this.Controls.Add(this.lblforestallningoppen);
-            this.Controls.Add(this.btnOK);
             this.Controls.Add(this.checkBoxfriPlacering);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.dateTimePickerTid);
             this.Controls.Add(this.btnSkapaForestallning);
             this.Controls.Add(this.TextBoxAktBarnpris);
             this.Controls.Add(this.textBoxAktUngdPris);
@@ -836,7 +825,6 @@
             this.Controls.Add(this.textBoxVuxenpris);
             this.Controls.Add(this.buttonTaBort);
             this.Controls.Add(this.uppdatera);
-            this.Controls.Add(this.buttonOppnaForest);
             this.Controls.Add(this.textBoxForestSluttid);
             this.Controls.Add(this.textBoxForestStarttid);
             this.Controls.Add(this.label8);
@@ -891,7 +879,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxForestStarttid;
         private System.Windows.Forms.TextBox textBoxForestSluttid;
-        private System.Windows.Forms.Button buttonOppnaForest;
         private System.Windows.Forms.Button uppdatera;
         private System.Windows.Forms.Button buttonTaBort;
         private System.Windows.Forms.TextBox textBoxVuxenpris;
@@ -907,10 +894,8 @@
         private System.Windows.Forms.TextBox textBoxAktUngdPris;
         private System.Windows.Forms.TextBox TextBoxAktBarnpris;
         private System.Windows.Forms.Button btnSkapaForestallning;
-        private System.Windows.Forms.DateTimePicker dateTimePickerTid;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckBox checkBoxfriPlacering;
-        private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Label lblforestallningoppen;
         private System.Windows.Forms.Button btnAndraTaBortBeh;
         private System.Windows.Forms.TextBox textBoxForsaljningsslut;
@@ -941,5 +926,9 @@
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBoxForestDatum;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.CheckBox checkBoxForestallning;
     }
 }
