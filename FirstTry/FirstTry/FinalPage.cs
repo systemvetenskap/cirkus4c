@@ -195,7 +195,7 @@ namespace FirstTry
         {
             tk.fardig = true;
 
-            if (tk.biljetter[0].forestallning.friplacering == true)
+            if (tk.biljetter[0].forestallning.friplacering != null && tk.biljetter[0].forestallning.friplacering == true)
             {
                 foreach (Biljett bilj in tk.biljetter)
                 {
