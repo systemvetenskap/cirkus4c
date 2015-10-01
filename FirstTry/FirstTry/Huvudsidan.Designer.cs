@@ -340,6 +340,7 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.Enabled = false;
             this.richTextBox1.Location = new System.Drawing.Point(26, 85);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(139, 125);
@@ -348,6 +349,7 @@
             // 
             // richTextBox2
             // 
+            this.richTextBox2.Enabled = false;
             this.richTextBox2.Location = new System.Drawing.Point(464, 85);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(139, 125);
