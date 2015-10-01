@@ -382,20 +382,24 @@ namespace FirstTry
                 { */
                     string platsid = row["plats_id"].ToString();
                     bool vecka = false;
+                    DateTime dt = new DateTime();
+                // dt = (DateTime)row["tidsstampel"];
 
-                /*    if ((bool)row["reserverad"] == true)
-                    {
-                        DateTime dat = (DateTime)row["tidsstampel"];
-                        DateTime nu = DateTime.Now;
-                        TimeSpan ts = new TimeSpan(0, 0, 0, 15);
-                        TimeSpan elapsed = nu.Subtract(dat);
+                if ((bool)row["reserverad"] == true)
+                {
+                    DateTime dat = (DateTime)row["tidsstampel"];
 
-                        if (elapsed > ts)
+                    DateTime nu = DateTime.Now;
+
+                    TimeSpan ts = new TimeSpan(7, 0, 0, 0);
+                    //TimeSpan elapsed = nu.Subtract(dat);
+                    DateTime test = tk.biljetter[0].forestallning.forsaljningsslut.Subtract(ts);
+                        if (test < DateTime.Now)
                         {
                             vecka = true;
                         }
                     }
-                    */
+                    
                     string query2 = "select nummer from platser where id =" + platsid;
 
 
@@ -533,7 +537,7 @@ namespace FirstTry
         }
         private void Platskarta_Load(object sender, EventArgs e)
         {
-
+           
 
 
             label8.Text = tk.totalpris.ToString() + " Kr";
@@ -695,7 +699,7 @@ namespace FirstTry
 
         private int tabortreserv(string plats, int akt)
         {
-            string dquery = "delete from innehaller where platser_id = " + plats + " and akter_id = " + akt + ";";
+            string dquery = "delete from biljett where plats_id = " + plats + " and akt_id = " + akt + ";";
            
             NpgsqlCommand command = new NpgsqlCommand(dquery, conn);
             return command.ExecuteNonQuery();           
@@ -707,9 +711,9 @@ namespace FirstTry
 
                 if (vecka == true)
                 {
-                    conn.Open();
+                   // conn.Open();
                     tabortreserv(plats, akt);
-                    conn.Close();                    
+                   // conn.Close();                    
                 }
                 else
                 {

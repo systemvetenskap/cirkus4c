@@ -97,6 +97,7 @@ namespace FirstTry
                         fs.vuxen = vuxen;
                         fs.datum = datum;
                         fs.starttid = tid;
+                        fs.forsaljningsslut = slutdatum;
                         listBox_forestallning.Items.Add(fs);
                         //forenamn += forenummer;
                         //forenummer++;
