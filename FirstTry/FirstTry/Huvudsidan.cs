@@ -78,6 +78,7 @@ namespace FirstTry
                         DateTime slutdatum = (DateTime)row["forsaljningslut"];
                        // if (slutdatum > DateTime.Now)
                     {
+                        string info = row["generell_info"].ToString();
                         string namn = row["namn"].ToString();
                         string id = row["id"].ToString();
                         bool fri = (bool)row["fri_placering"];
@@ -88,7 +89,7 @@ namespace FirstTry
                         DateTime tid = (DateTime)row["starttid"];
                         Forestallning fs = new Forestallning();
                         fs.akter = new List<Akt>();
-
+                        fs.generellinfo = info;
                         fs.namn = namn;
                         fs.id = Convert.ToInt32(id);
                         fs.friplacering = fri;
@@ -110,7 +111,8 @@ namespace FirstTry
                         foreach (DataRow row2 in dt2.Rows)
                         {
                             Akt akt = new Akt();
-                            string aktnamn = row2["aktnamn"].ToString();
+                                string aktinfo = row2["aktinfo"].ToString();
+                                string aktnamn = row2["aktnamn"].ToString();
                             string aktid = row2["id"].ToString();
                             //  int aktpris = Convert.ToInt32(row2["vuxenpris"]);
                             int vuxen2 = Convert.ToInt32(row2["vuxenpris"]);
@@ -123,6 +125,7 @@ namespace FirstTry
                             akt.ungdom = ungdom2;
                             akt.barn = barn2;
                             akt.Starttid = tidakt;
+                                akt.Aktinfo = aktinfo;
                             fs.akter.Add(akt);
                         }
                         
@@ -143,6 +146,7 @@ namespace FirstTry
 
         private void listBox_forestallning_SelectedIndexChanged(object sender, EventArgs e)
         {
+            richTextBox2.Clear();
             label16.Text = "";
             label15.Text = "";
 
@@ -161,7 +165,7 @@ namespace FirstTry
                 label16.Visible = true;
                 
                 label16.Text = fs.datum.ToShortDateString();
-                label15.Text = fs.tid.ToShortTimeString();               
+                label15.Text = fs.starttid.ToShortTimeString();               
             }
            
             label5.Visible = false;
@@ -178,6 +182,7 @@ namespace FirstTry
             label9.Text = fs.ungdom.ToString();
             label8.Text = fs.barn.ToString();
 
+            richTextBox1.Text = fs.generellinfo;
 
             //string forestallning = listBox_forestallning.SelectedItem.ToString();
             //string query2 = "SELECT aktinfo, id FROM public.akter WHERE akter.forestallningsid = " + fs.id;
@@ -740,10 +745,26 @@ namespace FirstTry
                 label5.Text = akt.vuxen.ToString();
                 label6.Text = akt.ungdom.ToString();
                 label7.Text = akt.barn.ToString();
-
+                richTextBox2.Clear();
+                if (listBox_akter.SelectedItems.Count > 0)
+                {
+                    foreach (Akt item in listBox_akter.SelectedItems)
+                    {
+                        richTextBox2.Text += item.namn + ": \n" + item.Aktinfo + "\n \n";
+                    }
+                }
+                
+                    
+                
+                
+                
+            }
+            else
+            {
+                richTextBox2.Clear();
             }
             
-
+            
         }
 
         private void noll()
