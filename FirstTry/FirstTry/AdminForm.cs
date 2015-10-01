@@ -541,7 +541,7 @@ private void Rapport()
             //btn_Avbryt.Visible = true;
             //listBoxAdminForestallning.SelectionMode = SelectionMode.None;
             tomTextBoxarForestallning();
-            tomTextBoxarAkt();
+            //tomTextBoxarAkt();
             exempelkodforest();
 
         }
@@ -872,7 +872,7 @@ private void Rapport()
             textBoxForestDatum1.Text = "YYYY-mm-dd";
             textBoxForsaljningsslut.Text = "HH:mm";
             textBoxForestStarttid.Text = "HH:mm";
-            textBoxForsaljningsslut.Text = "YYYY-mm-dd HH:mm";
+            textBoxForsaljningsslut.Text =  "YYYY-mm-dd HH:mm"; //textBoxForestDatum.Text.ToString();//
 
         }
 
