@@ -22,7 +22,23 @@ namespace FirstTry
 
         public override string ToString()
         {
-            return namn + "\t " + Starttid.ToShortTimeString();
+            int antalChar = 0;
+
+            for (int i = 0; i < namn.Length; i++)
+            {
+                antalChar++;
+            }
+
+            if (antalChar > 9)
+            {
+                return namn + "\t " + Starttid.ToShortTimeString();
+            }
+            else
+            {
+                return namn + "\t "+ "\t " + Starttid.ToShortTimeString();
+            }
+
+           
         }
     }
 }

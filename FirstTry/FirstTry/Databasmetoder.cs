@@ -13,85 +13,35 @@ namespace FirstTry
     class Databasmetoder
     {
 
-
-
-
-        //public static int LaggTillForestallning(Forestallning laggtillforestallning)
-        //{
-        //    NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-        //    conn.Open();
-
-        //    string query = "INSERT INTO forestallning (namn, generell_info, starttid, sluttid, open, vuxenpris, ungdomspris, barnpris, fri_placering) VALUES(@namn, @generell_info, @starttid, @sluttid, @open, @vuxenpris, @ungdomspris, @barnpris, @fri_placering)";
-
-        //    NpgsqlCommand command = new NpgsqlCommand(query, conn);
-
-        //    command.Parameters.AddWithValue("@namn", laggtillforestallning.namn);
-        //    command.Parameters.AddWithValue("@generell_info", laggtillforestallning.generellinfo);
-        //    command.Parameters.AddWithValue("@starttid", laggtillforestallning.starttid);
-        //    command.Parameters.AddWithValue("@sluttid", laggtillforestallning.sluttid);
-        //    command.Parameters.AddWithValue("@open", false);//false tills öppnad
-        //    command.Parameters.AddWithValue("@vuxenpris", laggtillforestallning.vuxenpris);
-        //    command.Parameters.AddWithValue("@ungdomspris", laggtillforestallning.ungdomspris);
-        //    command.Parameters.AddWithValue("@barnpris", laggtillforestallning.barnpris);
-        //    command.Parameters.AddWithValue(@"fri_placering", false);
-
-        //    return command.ExecuteNonQuery();
-
-        //}
-
+        
 
         public static List<Forestallning> HamtaForestallningLista()
         {
             List<Forestallning> forestallningslista = new List<Forestallning>();
             NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
             conn.Open();
-            NpgsqlCommand command = new NpgsqlCommand("Select * from forestallning ORDER BY namn", conn);
+            NpgsqlCommand command = new NpgsqlCommand("Select * from forestallning ORDER BY namn ASC", conn);
             NpgsqlDataReader dr = command.ExecuteReader();
 
             while (dr.Read())
             {
-                if ((bool)dr["open"] == true)
-                {
 
-                    Forestallning forestallning = new Forestallning();
+                Forestallning forestallning = new Forestallning();
 
+                forestallning.id = Convert.ToInt32(dr["id"]);
+                forestallning.namn = (string)dr["namn"];
+                forestallning.generellinfo = (string)dr["generell_info"];
+                forestallning.open = (bool)dr["open"];
+                forestallning.datum = Convert.ToDateTime(dr["datum"]);
+                forestallning.starttid = Convert.ToDateTime(dr["starttid"]);
+                forestallning.sluttid = Convert.ToDateTime(dr["sluttid"]);
+                forestallning.vuxenpris = Convert.ToInt32(dr["vuxenpris"]);
+                forestallning.ungdomspris = Convert.ToInt32(dr["ungdomspris"]);
+                forestallning.barnpris = Convert.ToInt32(dr["barnpris"]);
+                forestallning.friplacering = (bool)dr["fri_placering"];
+                forestallning.forsaljningsslut = Convert.ToDateTime(dr["forsaljningslut"]);
 
-                    forestallning.id = Convert.ToInt32(dr["id"]);
-                    forestallning.namn = (string)dr["namn"];
-                    forestallning.generellinfo = (string)dr["generell_info"];
-                    forestallning.open = (bool)dr["open"];
-                    forestallning.datum = Convert.ToDateTime(dr["datum"]);
-                    forestallning.starttid = Convert.ToDateTime(dr["starttid"]);
-                    forestallning.sluttid = Convert.ToDateTime(dr["sluttid"]);
-                    forestallning.vuxenpris = Convert.ToInt32(dr["vuxenpris"]);
-                    forestallning.ungdomspris = Convert.ToInt32(dr["ungdomspris"]);
-                    forestallning.barnpris = Convert.ToInt32(dr["barnpris"]);
-                    forestallning.friplacering = (bool)dr["fri_placering"];
-                    forestallning.forsaljningsslut = Convert.ToDateTime(dr["forsaljningslut"]);
-
-                    forestallningslista.Add(forestallning);
-                }
-                else
-                {
-
-                    Forestallning forestallning = new Forestallning();
-
-
-                    forestallning.id = Convert.ToInt32(dr["id"]);
-                    forestallning.namn = (string)dr["namn"];
-                    forestallning.generellinfo = (string)dr["generell_info"];
-                    forestallning.open = (bool)dr["open"];
-                    forestallning.datum = Convert.ToDateTime(dr["datum"]);
-                    forestallning.starttid = Convert.ToDateTime(dr["starttid"]);
-                    forestallning.sluttid = Convert.ToDateTime(dr["sluttid"]);
-                    forestallning.vuxenpris = Convert.ToInt32(dr["vuxenpris"]);
-                    forestallning.ungdomspris = Convert.ToInt32(dr["ungdomspris"]);
-                    forestallning.barnpris = Convert.ToInt32(dr["barnpris"]);
-                    forestallning.friplacering = (bool)dr["fri_placering"];
-                    forestallning.forsaljningsslut = Convert.ToDateTime("2010-10-29 23:00:00");
-
-                    forestallningslista.Add(forestallning);
-                }
+                forestallningslista.Add(forestallning);
             }
             conn.Close();
             return forestallningslista;
@@ -106,7 +56,7 @@ namespace FirstTry
             NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
             conn.Open();
             string sql1 = @"SELECT * FROM akter , forestallning WHERE akter.forestallningsid = forestallning.id
-                                                 and akter.forestallningsid = :nyValdforestallningsid";
+                                                 and akter.forestallningsid = :nyValdforestallningsid ORDER BY akter.starttid ASC";
 
             NpgsqlCommand command = new NpgsqlCommand(sql1, conn);
 
@@ -123,7 +73,7 @@ namespace FirstTry
 
                 akten.namn = (string)dr["aktnamn"];
                 akten.Aktinfo = (string)dr["aktinfo"];
-                akten.Starttid = Convert.ToDateTime(dr["starttid"]);   //datumtid
+                akten.Starttid = Convert.ToDateTime(dr["starttid"]);   
                 akten.Sluttid = Convert.ToDateTime(dr["sluttid"]);
                 akten.vuxen = Convert.ToInt32(dr["vuxenpris"]);
                 akten.ungdom = Convert.ToInt32(dr["ungdomspris"]);
@@ -191,8 +141,6 @@ namespace FirstTry
         public static void LaggTillNyAkt(string namn, string aktinfo, DateTime starttid, DateTime sluttid, int vuxen, int ungdom, int barn, int forestallningsid)  ///*, string aktinfo, DateTime starttid, DateTime sluttid, int vuxen, int ungdom, int barn*/
         {
             NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-
-
 
             try
             {
@@ -354,6 +302,7 @@ namespace FirstTry
             }
             finally
             {
+
                 conn1.Close();
             }
 

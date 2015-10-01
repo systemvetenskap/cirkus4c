@@ -233,9 +233,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(416, 257);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.Size = new System.Drawing.Size(78, 13);
             this.label4.TabIndex = 15;
-            this.label4.Text = "Starttid";
+            this.label4.Text = "Starttid HH:mm";
             // 
             // textBoxAktSluttid
             // 
@@ -250,9 +250,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(416, 306);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 13);
+            this.label5.Size = new System.Drawing.Size(74, 13);
             this.label5.TabIndex = 17;
-            this.label5.Text = "Sluttid";
+            this.label5.Text = "Sluttid HH:mm";
             // 
             // textBoxAktVuxenpris
             // 
@@ -276,18 +276,18 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(29, 299);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 13);
+            this.label7.Size = new System.Drawing.Size(78, 13);
             this.label7.TabIndex = 20;
-            this.label7.Text = "Starttid";
+            this.label7.Text = "Starttid HH:mm";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(28, 341);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 13);
+            this.label8.Size = new System.Drawing.Size(74, 13);
             this.label8.TabIndex = 21;
-            this.label8.Text = "Sluttid";
+            this.label8.Text = "Sluttid HH:mm";
             // 
             // textBoxForestStarttid
             // 
@@ -455,9 +455,9 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(25, 513);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(103, 13);
+            this.label13.Size = new System.Drawing.Size(206, 13);
             this.label13.TabIndex = 43;
-            this.label13.Text = "Sista försäljningsdag";
+            this.label13.Text = "Sista försäljningsdag YYYY-mm-dd HH:mm";
             this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // checkBoxfriPlacering
@@ -767,6 +767,7 @@
             this.checkBoxForestallning1.TabIndex = 84;
             this.checkBoxForestallning1.Text = "Öppna föreställning";
             this.checkBoxForestallning1.UseVisualStyleBackColor = true;
+            this.checkBoxForestallning1.CheckedChanged += new System.EventHandler(this.checkBoxForestallning1_CheckedChanged);
             // 
             // textBoxForestDatum1
             // 
@@ -781,9 +782,9 @@
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(33, 257);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(38, 13);
+            this.label28.Size = new System.Drawing.Size(103, 13);
             this.label28.TabIndex = 86;
-            this.label28.Text = "Datum";
+            this.label28.Text = "Datum YYYY-mm-dd";
             // 
             // btn_Avbryt
             // 
@@ -795,6 +796,8 @@
             this.btn_Avbryt.TabIndex = 87;
             this.btn_Avbryt.Text = "Avbryt";
             this.btn_Avbryt.UseVisualStyleBackColor = true;
+            this.btn_Avbryt.Visible = false;
+            this.btn_Avbryt.Click += new System.EventHandler(this.btn_Avbryt_Click);
             // 
             // btn_Huvud
             // 
@@ -811,7 +814,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1204, 689);
+            this.ClientSize = new System.Drawing.Size(1197, 689);
             this.Controls.Add(this.btn_Huvud);
             this.Controls.Add(this.btn_Avbryt);
             this.Controls.Add(this.label28);

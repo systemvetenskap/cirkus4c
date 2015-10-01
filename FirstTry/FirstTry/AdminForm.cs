@@ -70,6 +70,7 @@ namespace FirstTry
                 textBoxVuxenpris.Enabled = true;
                 textBoxUngdomspris.Enabled = true;
                 textBoxBarnpris.Enabled = true;
+                label13.Text = "Sista försäljningsdag \n YYYY-mm-dd HH:mm";
             }
             if (aktorlistaId.Contains(5) == true || aktorlistaId.Contains(7) == true)
             {
@@ -162,9 +163,7 @@ namespace FirstTry
             Rapport();
         }
                 
-//    }
 
-//}
 
 
 
@@ -269,6 +268,15 @@ private void Rapport()
             {
                 friplacering = true;
             }
+                if (valdforestallning.open == true)
+                {
+                    checkBoxForestallning1.Checked = true;
+                }
+                else
+                {
+                    checkBoxForestallning1.Checked = false;
+                }
+
 
 
                 if (datum.Date >= DateTime.Now.Date)
@@ -277,14 +285,15 @@ private void Rapport()
                     {
                         if (vuxenpris >= ungdomspris && vuxenpris >= barnpris && ungdomspris >= barnpris)
                         {
-                            if (forsaljningsslut.Date >= datum.Date )
+                            if (forsaljningsslut.Date <= datum.Date)
                             {
                                 Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
-                                buttonLaggTillForest.Enabled = false;
-                                listBoxAdminForestallning.SelectionMode = SelectionMode.One;
+                               // buttonLaggTillForest.Enabled = false;
+                               // listBoxAdminForestallning.SelectionMode = SelectionMode.One;
                             
                             conn.Close();
+                                MessageBox.Show("Föreställningen är nu tillagd i föreställningslistan.");
                             }
                             else
                             {
@@ -313,11 +322,14 @@ private void Rapport()
             catch (Exception)
             {
 
-                MessageBox.Show("Alla textboxar måste vara korrekt ifyllda!");
+                MessageBox.Show("Vänligen observera att alla textfält måste vara ifyllda korrekt, se exempelkod. Kontrollera även så att du inte glömt att fylla i ett textfält.");
             }
 
+            finally
+            {
             conn.Close();
 
+        }
         }
 
         private void listBoxAkter_SelectedIndexChanged(object sender, EventArgs e)
@@ -372,23 +384,6 @@ private void Rapport()
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            //int fsid = valdforestallning.id;
-            //int id = valdakt.id;
-            //string namn = textBoxAktnamn.Text;
-            //string aktinfo = richTextBoxAktInf.Text;
-            //DateTime starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
-            //DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
-            //int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
-            //int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
-            //int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
-
-
-            //Forestallning fs = new Forestallning();  //använder vi denna?????
-            //fs = (Forestallning)listBoxAdminForestallning.SelectedItem;
-
-            //Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
-            //listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
-
 
             try
             {
@@ -404,19 +399,32 @@ private void Rapport()
 
                 DateTime forestStart = valdforestallning.starttid;
 
+                if(listBoxAkter.SelectedIndex != -1)
+                {
+
+
                 if (starttid.TimeOfDay >= forestStart.TimeOfDay && sluttid.TimeOfDay <= valdforestallning.sluttid.TimeOfDay)
                 {
                     if (starttid.TimeOfDay < sluttid.TimeOfDay)
                     {
                         if (vuxen <= valdforestallning.vuxenpris && ungdom <= valdforestallning.ungdomspris && barn <= valdforestallning.barnpris)
                         {
+                                if (vuxen >= ungdom && vuxen >= barn && ungdom >= barn)
+                                {
                             Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
                             listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
 
                             conn.Close();
+                                    MessageBox.Show("Akten är nu uppdaterad!");
                         }
                         else
                         {
+                                    MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
+                                }
+
+                            }
+                            else
+                            {
                             MessageBox.Show("Akten har fel pris!");
                         }
 
@@ -429,8 +437,13 @@ private void Rapport()
                 else
                 {
                     MessageBox.Show("Akten måste ha en tid som passar föreställningen!");
-
         }
+                }
+                else
+                {
+                    MessageBox.Show("För att uppdatera måste du ha valt en akt.");
+                }
+
 
             }
             catch (Exception)
@@ -447,6 +460,7 @@ private void Rapport()
             if (dialogResult == DialogResult.Yes)
             {
                 TaBortAkt();
+                MessageBox.Show("Akten har raderats");
             }
         
             else if (dialogResult == DialogResult.No)
@@ -492,7 +506,7 @@ private void Rapport()
 
                 trans.Commit();
                 listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
-                MessageBox.Show("Akten har raderats");
+
 
             }
 
@@ -519,11 +533,13 @@ private void Rapport()
 
         private void btnSkapaForestallning_Click(object sender, EventArgs e)
         {
-            buttonLaggTillForest.Enabled = true;
-            buttonLaggTillForest.Visible = true;
-            btnSkapaForestallning.Enabled = false;
-            btnSkapaForestallning.Visible = false;
-            listBoxAdminForestallning.SelectionMode = SelectionMode.None;
+            //buttonLaggTillForest.Enabled = true;
+            //buttonLaggTillForest.Visible = true;
+            //btnSkapaForestallning.Enabled = false;
+            //btnSkapaForestallning.Visible = false;
+            //btn_Avbryt.Enabled = true;
+            //btn_Avbryt.Visible = true;
+            //listBoxAdminForestallning.SelectionMode = SelectionMode.None;
             tomTextBoxarForestallning();
             tomTextBoxarAkt();
             exempelkodforest();
@@ -790,20 +806,28 @@ private void Rapport()
                     {
                         if (vuxen <= valdforestallning.vuxenpris && ungdom <= valdforestallning.ungdomspris && barn <= valdforestallning.barnpris)
                         {
+                            if (vuxen >= ungdom && vuxen >= barn && ungdom >= barn)
+                            {
                             Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn, forestallningsid);
             listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
-                            listBoxAkter.SelectionMode = SelectionMode.One;
-                            btnAkt.Enabled = true;
-                            btnAkt.Visible = true;
-                            buttonLaggTillAktInfo.Enabled = false;
-                            buttonLaggTillAktInfo.Visible = false;
+                            //listBoxAkter.SelectionMode = SelectionMode.One;
+                            //btnAkt.Enabled = true;
+                            //btnAkt.Visible = true;
+                            //buttonLaggTillAktInfo.Enabled = false;
+                            //buttonLaggTillAktInfo.Visible = false;
 
             conn.Close();
+                                MessageBox.Show("Akten är nu tillagd i aktlistan.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
+                            }
 
                         }
                         else
                         {
-                            MessageBox.Show("Akten har fel pris!");
+                            MessageBox.Show("Akten bör inte vara dyrare än föreställningen!");
         }
 
                     }
@@ -821,35 +845,41 @@ private void Rapport()
             }
             catch (Exception)
             {
-                MessageBox.Show("Alla textboxar måste vara korrekt ifyllda!");
+                MessageBox.Show("Vänligen observera att alla textfält måste vara ifyllda korrekt, se exempelkod. Kontrollera även så att du inte glömt att fylla i ett textfält.");
 
             }
+            finally
+            {
 
+                conn.Close();
+            }
         }
 
         private void btnAkt_Click(object sender, EventArgs e)
         {
-            buttonLaggTillAktInfo.Enabled = true;
-            buttonLaggTillAktInfo.Visible = true;
-            btnAkt.Enabled = false;
-            btnAkt.Visible = false;
-            listBoxAkter.SelectionMode = SelectionMode.None;
+            //buttonLaggTillAktInfo.Enabled = true;
+            //buttonLaggTillAktInfo.Visible = true;
+            //btnAkt.Enabled = false;
+            //btnAkt.Visible = false;
+            //btn_Avbryt.Enabled = true;
+            //btn_Avbryt.Visible = true;
+            //listBoxAkter.SelectionMode = SelectionMode.None;
             tomTextBoxarAkt();
            exempelkodakt();
         }           
             private void exempelkodforest()
         {
-            textBoxForestDatum1.Text = "yyyy-mm-dd";
-            textBoxForsaljningsslut.Text = "00:00";
-            textBoxForestStarttid.Text = "00:00";
-            textBoxForsaljningsslut.Text = "yyyy-mm-dd HH:mm";
+            textBoxForestDatum1.Text = "YYYY-mm-dd";
+            textBoxForsaljningsslut.Text = "HH:mm";
+            textBoxForestStarttid.Text = "HH:mm";
+            textBoxForsaljningsslut.Text = "YYYY-mm-dd HH:mm";
 
         }
 
         private void exempelkodakt()
             {
-            textBoxAktStarttid.Text = "00:00";
-            textBoxAktSluttid.Text = "00:00";
+            textBoxAktStarttid.Text = "HH:mm";
+            textBoxAktSluttid.Text = "HH:mm";
 
         }
                    
@@ -861,11 +891,11 @@ private void Rapport()
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Refresh();
-            // Databasmetoder.HamtaForestallningLista();
-        }
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+        //    Refresh();
+        //    // Databasmetoder.HamtaForestallningLista();
+        //}
 
         private void textBoxForestStarttid_TextChanged(object sender, EventArgs e)
             {
@@ -898,6 +928,16 @@ private void Rapport()
             Huvudsidan hs = new Huvudsidan(aktorlistaId);
             hs.ShowDialog();
             this.Close();
+        }
+
+        private void checkBoxForestallning1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Avbryt_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 
