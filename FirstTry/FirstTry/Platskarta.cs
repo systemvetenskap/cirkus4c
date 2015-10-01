@@ -609,7 +609,7 @@ namespace FirstTry
             int ai = tk.fuskIgen - 1;
 
 
-            if (radioButton_barn.Checked == true || radioButton_ungdom.Checked == true || radioButton_vuxen.Checked == true)
+            if (label1.Text == "0" && label2.Text == "0" && label3.Text == "0")
             {
                 foreach (Biljett b in tk.biljetter)
                 {
@@ -677,6 +677,10 @@ namespace FirstTry
                     this.Close();
 
                 }
+            }
+            else if (radioButton_barn.Checked == true || radioButton_ungdom.Checked == true || radioButton_vuxen.Checked == true)
+            {
+
             }
             else
             {
