@@ -21,7 +21,7 @@ namespace FirstTry
         }
         public override string ToString()
         {
-            return fornamn.ToString() + efternamn.ToString();
+            return fornamn.ToString() + " " + efternamn.ToString();
         }
 
     }

@@ -268,6 +268,8 @@ namespace FirstTry
                         b.forestallning.datum = (DateTime)row2["datum"];
                         b.forestallning.tid = (DateTime)row2["starttid"];
                         k.bilj.Add(b);
+
+                        tk.biljetter.Add(b);
                     }
                     listBox_kunder.Items.Add(k);
 
@@ -395,9 +397,9 @@ namespace FirstTry
             string namn = tk.biljetter[0].ToString();
             File.AppendAllText(namn + ".txt", richTextBox1.Text);
             string docName = (namn + ".txt");
-            string docPath = @"C:\Users\TickL\Source\Repos\cirkus4c\FirstTry\FirstTry\bin\Debug\";
+            string docPath = @"C:\Users\Martin\Documents\nyGit\cirkus4c\FirstTry\FirstTry\bin";
             pd.DocumentName = docName;
-            using (FileStream stream = new FileStream(docPath + docName, FileMode.Open)) //Open or create?
+            using (FileStream stream = new FileStream(docPath + docName, FileMode.OpenOrCreate)) //Open or create?
             using (StreamReader reader = new StreamReader(stream))
             {
                 content = reader.ReadToEnd();
