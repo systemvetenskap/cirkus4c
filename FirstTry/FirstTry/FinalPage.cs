@@ -99,7 +99,7 @@ namespace FirstTry
                 richTextBox1.Text += " \n Föreställningsnamn: " + k.bilj[0].forestallning.namn;
                 richTextBox1.Text += " \n Alla akter";
                 richTextBox1.Text += "\n Datum: " + k.bilj[0].forestallning.datum.ToShortDateString();
-                richTextBox1.Text += " \n Tid: " + k.bilj[0].forestallning.tid.ToShortTimeString();
+                richTextBox1.Text += " \n Tid: " + k.bilj[0].forestallning.starttid.ToShortTimeString();
                 richTextBox1.Text += "\n Plats: " + platsnamn(k.bilj[0].plats_id.ToString());
                 richTextBox1.Text += "\n Pris: " + k.bilj[0].forestallning.vuxen;
                 richTextBox1.Text += "\n Vuxen";
@@ -115,7 +115,7 @@ namespace FirstTry
                 richTextBox1.Text += " \n Föreställningsnamn: " + k.bilj[0].forestallning.namn;
                 richTextBox1.Text += " \n Alla akter";
                 richTextBox1.Text += "\n Datum: " + k.bilj[0].forestallning.datum.ToShortDateString();
-                richTextBox1.Text += " \n Tid: " + k.bilj[0].forestallning.tid.ToShortTimeString();
+                richTextBox1.Text += " \n Tid: " + k.bilj[0].forestallning.starttid.ToShortTimeString();
                 richTextBox1.Text += "\n Plats: " + platsnamn(k.bilj[0].plats_id.ToString());
                 richTextBox1.Text += "\n Pris: " + k.bilj[0].forestallning.ungdom;
                 richTextBox1.Text += "\n Ungdom";
@@ -131,7 +131,7 @@ namespace FirstTry
                 richTextBox1.Text += " \n Föreställningsnamn: " + tk.biljetter[0].forestallning.namn;
                 richTextBox1.Text += " \n Alla akter";
                 richTextBox1.Text += "\n Datum: " + k.bilj[0].forestallning.datum.ToShortDateString();
-                richTextBox1.Text += " \n Tid: " + k.bilj[0].forestallning.tid.ToShortTimeString();
+                richTextBox1.Text += " \n Tid: " + k.bilj[0].forestallning.starttid.ToShortTimeString();
                 richTextBox1.Text += "\n Plats: " + platsnamn(k.bilj[0].plats_id.ToString());
                 richTextBox1.Text += "\n Pris: " + k.bilj[0].forestallning.barn;
                 richTextBox1.Text += "\n Barn";
@@ -149,7 +149,7 @@ namespace FirstTry
             richTextBox1.Text += " \n Föreställningsnamn: " + bilj.forestallning.namn;
             richTextBox1.Text += " \n Akt: " + bilj.akter.namn;
             richTextBox1.Text += "\n Datum: " + bilj.forestallning.datum.ToShortDateString();
-            richTextBox1.Text += " \n Tid: " + bilj.forestallning.tid.ToShortTimeString();
+            richTextBox1.Text += " \n Tid: " + bilj.akter.Starttid.ToShortTimeString();
             richTextBox1.Text += "\n Plats: " + platsnamn(bilj.plats_id.ToString());
             richTextBox1.Text += "\n Pris: " + bilj.pris.ToString();
             richTextBox1.Text += "\n " + bilj.biljettyp + " \n  \n -------------------------------  \n \n";
@@ -397,7 +397,7 @@ namespace FirstTry
             string namn = tk.biljetter[0].ToString();
             File.AppendAllText(namn + ".txt", richTextBox1.Text);
             string docName = (namn + ".txt");
-            string docPath = @"C:\Users\Martin\Documents\nyGit\cirkus4c\FirstTry\FirstTry\bin";
+            string docPath = @"C:\Users\Martin\Documents\nyGit\cirkus4c\FirstTry\FirstTry\bin\";
             pd.DocumentName = docName;
             using (FileStream stream = new FileStream(docPath + docName, FileMode.OpenOrCreate)) //Open or create?
             using (StreamReader reader = new StreamReader(stream))

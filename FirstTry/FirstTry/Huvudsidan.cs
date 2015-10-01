@@ -96,7 +96,7 @@ namespace FirstTry
                         fs.ungdom = ungdom;
                         fs.vuxen = vuxen;
                         fs.datum = datum;
-                        fs.tid = tid;
+                        fs.starttid = tid;
                         listBox_forestallning.Items.Add(fs);
                         //forenamn += forenummer;
                         //forenummer++;
@@ -109,17 +109,19 @@ namespace FirstTry
                         foreach (DataRow row2 in dt2.Rows)
                         {
                             Akt akt = new Akt();
-                            string aktnamn = row2["aktinfo"].ToString();
+                            string aktnamn = row2["aktnamn"].ToString();
                             string aktid = row2["id"].ToString();
                             //  int aktpris = Convert.ToInt32(row2["vuxenpris"]);
                             int vuxen2 = Convert.ToInt32(row2["vuxenpris"]);
                             int ungdom2 = Convert.ToInt32(row2["ungdomspris"]);
                             int barn2 = Convert.ToInt32(row2["barnpris"]);
+                            DateTime tidakt = (DateTime)row["starttid"];
                             akt.namn = aktnamn;
                             akt.id = Convert.ToInt32(aktid);
                             akt.vuxen = vuxen2;
                             akt.ungdom = ungdom2;
                             akt.barn = barn2;
+                            akt.Starttid = tidakt;
                             fs.akter.Add(akt);
                         }
                         

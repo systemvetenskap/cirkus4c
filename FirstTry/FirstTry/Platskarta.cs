@@ -602,76 +602,90 @@ namespace FirstTry
                  }
 
          */
+            
+
             bool kopt = true;
             int antalkopta = 0;
             int ai = tk.fuskIgen - 1;
 
-            foreach (Biljett b in tk.biljetter)
+
+            if (radioButton_barn.Checked == false && radioButton_ungdom.Checked == false && radioButton_vuxen.Checked == false)
             {
-                if (b.akter.id == tk.biljetter[ai].akter.id)
+                foreach (Biljett b in tk.biljetter)
                 {
-                    if (b.kopt != true)
+                    if (b.akter.id == tk.biljetter[ai].akter.id)
                     {
-                        kopt = false;
+                        if (b.kopt != true)
+                        {
+                            kopt = false;
+                        }
                     }
                 }
-            }
 
 
 
 
-            if (kopt == true)
-            {
-              
+                if (kopt == true)
+                {
+
 
                     tk.antal++;
                     this.Hide();
 
-                if (tk.antal < tk.loopar && tk.hela == false)
-                {
-                    Platskarta pk2 = new Platskarta(tk);
-                    pk2.ShowDialog();
-
-                }
-                else if (tk.fardig == true)
-                {
-                    Huvudsidan hu = new Huvudsidan();
-                    hu.ShowDialog();
-                    this.Close();
-                    //  Application.Exit();
-                }
-                else
-                {
-                    DialogResult dialogResult = MessageBox.Show("Vill du Slutföra köpet?", "Bokning", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
+                    if (tk.antal < tk.loopar && tk.hela == false)
                     {
-
-
-                        //biljettform ladda
-                        FinalPage fp = new FinalPage(tk);
-                        fp.ShowDialog();
-
-                        this.Close();
-                       // this.Dispose();
-
+                        Platskarta pk2 = new Platskarta(tk);
+                        pk2.ShowDialog();
 
                     }
-                    else if (dialogResult == DialogResult.No)
+                    else if (tk.fardig == true)
                     {
-
                         Huvudsidan hu = new Huvudsidan();
                         hu.ShowDialog();
+                        this.Close();
+                        //  Application.Exit();
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Vill du Slutföra köpet?", "Bokning", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+
+
+                            //biljettform ladda
+                            FinalPage fp = new FinalPage(tk);
+                            fp.ShowDialog();
+
+                            this.Close();
+                            // this.Dispose();
+
+
+                        }
+                        else if (dialogResult == DialogResult.No)
+                        {
+
+                            Huvudsidan hu = new Huvudsidan();
+                            hu.ShowDialog();
+
+                        }
+
 
                     }
 
 
-                }
 
-               
-                
-                this.Close();
-                
+                    this.Close();
+
+                }
             }
+            else
+            {
+
+
+
+            }
+
+
 
         }
 
