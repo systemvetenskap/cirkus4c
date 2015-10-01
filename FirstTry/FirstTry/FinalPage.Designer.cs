@@ -90,7 +90,6 @@
             this.listBox_kunder.Location = new System.Drawing.Point(14, 143);
             this.listBox_kunder.Name = "listBox_kunder";
             this.listBox_kunder.ScrollAlwaysVisible = true;
-            this.listBox_kunder.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox_kunder.Size = new System.Drawing.Size(177, 225);
             this.listBox_kunder.TabIndex = 5;
             this.listBox_kunder.Visible = false;

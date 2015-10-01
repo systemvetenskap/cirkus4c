@@ -94,6 +94,8 @@ namespace FirstTry
         private void FinalPage_Load(object sender, EventArgs e)
         {
             tk.fardig = true;
+
+
             if (tk.biljetter.Count > 0)
             {
                 if (tk.biljetter[0].resserverad == true)
@@ -229,8 +231,39 @@ namespace FirstTry
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    listBox_kunder.Items.Add(row["id"].ToString());
-                    
+                    Kund k = new Kund();
+                    k.kund_id = (Convert.ToInt32(row["id"]));
+                    k.fornamn = (row["namn"].ToString());
+                    k.efternamn = (row["efternamn"].ToString());
+
+
+                    string query2 = "SELECT biljett.id, akter.aktnamn, forestallning.namn, biljett.pris, biljett.kund_id, forestallning.datum, forestallning.starttid, biljett.plats_id FROM public.forestallning, public.biljett, public.akter WHERE biljett.forestallning_id = forestallning.id AND biljett.akt_id = akter.id And kund_id = ";
+                    query2 += k.kund_id.ToString() + ";";
+                    // NpgsqlCommand cmd = new NpgsqlCommand();
+                    DataTable dt2 = new DataTable();
+                    NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
+
+                    da2.Fill(dt2);
+
+                    foreach (DataRow row2 in dt2.Rows)
+                    {
+                        Biljett b = new Biljett();
+                        Forestallning f = new Forestallning();
+                        Akt a = new Akt();
+                        b.forestallning = f;
+                        b.akter = a;
+
+                        b.biljett_id = (Convert.ToInt32(row2["id"]));
+                        b.pris = (Convert.ToInt32(row2["pris"]));
+                        b.forestallning.namn = ((row2["namn"]).ToString());
+                        b.akter.namn = ((row2["aktnamn"]).ToString());
+                        b.plats_id = (Convert.ToInt32((row2["plats_id"])));
+                        b.forestallning.datum = (DateTime)row2["datum"];
+                        b.forestallning.tid = (DateTime)row2["starttid"];
+                        k.bilj.Add(b);
+                    }
+                    listBox_kunder.Items.Add(k);
+
                 }
                 conn.Close();
 

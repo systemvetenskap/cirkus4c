@@ -19,7 +19,10 @@ namespace FirstTry
         {
             bilj = new List<Biljett>();
         }
-
+        public override string ToString()
+        {
+            return fornamn.ToString() + efternamn.ToString();
+        }
 
     }
 }
