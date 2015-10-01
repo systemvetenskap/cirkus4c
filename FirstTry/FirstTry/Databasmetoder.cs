@@ -20,7 +20,7 @@ namespace FirstTry
             List<Forestallning> forestallningslista = new List<Forestallning>();
             NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
             conn.Open();
-            NpgsqlCommand command = new NpgsqlCommand("Select * from forestallning ORDER BY namn ASC", conn);
+            NpgsqlCommand command = new NpgsqlCommand("Select * from forestallning ORDER BY namn, datum, starttid ASC", conn);
             NpgsqlDataReader dr = command.ExecuteReader();
 
             while (dr.Read())
