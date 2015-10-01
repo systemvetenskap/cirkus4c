@@ -254,15 +254,15 @@ private void Rapport()
 
             string namn = textBoxForestNamn.Text;
             string generellinfo = richTextBoxForestInf.Text;
-                DateTime datum = Convert.ToDateTime(textBoxForestDatum1.Text);
+            DateTime datum = Convert.ToDateTime(textBoxForestDatum1.Text);
             DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
             DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
-            bool open = false;
+            bool open = checkBoxForestallning1.Checked;
             int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
             bool friplacering = false;
-                DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
+            DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
             if (checkBoxfriPlacering.Checked == true)
             {
