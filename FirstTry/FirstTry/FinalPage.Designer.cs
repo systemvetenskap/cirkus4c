@@ -93,6 +93,7 @@
             this.listBox_kunder.Size = new System.Drawing.Size(177, 225);
             this.listBox_kunder.TabIndex = 5;
             this.listBox_kunder.Visible = false;
+            this.listBox_kunder.SelectedIndexChanged += new System.EventHandler(this.listBox_kunder_SelectedIndexChanged);
             // 
             // FinalPage
             // 
