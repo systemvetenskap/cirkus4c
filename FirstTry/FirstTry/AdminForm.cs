@@ -399,8 +399,8 @@ private void Rapport()
 
                 DateTime forestStart = valdforestallning.starttid;
 
-                //if (listBoxAkter.SelectedIndex == -1)
-                //{
+                if(listBoxAkter.SelectedIndex != -1)
+                {
 
 
                     if (starttid.TimeOfDay >= forestStart.TimeOfDay && sluttid.TimeOfDay <= valdforestallning.sluttid.TimeOfDay)
@@ -438,13 +438,13 @@ private void Rapport()
                     {
                         MessageBox.Show("Akten måste ha en tid som passar föreställningen!");
                     }
-               // }
-                //else
-                //{
-                //    MessageBox.Show("För att uppdatera måste du ha valt en akt.");
-                //}
-            
-               
+                }
+                else
+                {
+                    MessageBox.Show("För att uppdatera måste du ha valt en akt.");
+                }
+
+
             }
             catch (Exception)
             {
