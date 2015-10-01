@@ -309,9 +309,15 @@ namespace FirstTry
             }
                 else if (session.biljetter[0].forestallning.friplacering == true)
             {
-                //ladda biljett stuff direkt
-                MessageBox.Show("ITS WORKING");
-            }
+                    //ladda biljett stuff direkt
+                    // MessageBox.Show("ITS WORKING");
+                    //ladda biljett stuff direkt
+                    //MessageBox.Show("ITS WORKING");
+                    this.Hide();
+                    FinalPage fp = new FinalPage(session);
+                    fp.ShowDialog();
+                    this.Close();
+                }
             else
             {
                 this.Hide();

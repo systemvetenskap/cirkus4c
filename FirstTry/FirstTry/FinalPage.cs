@@ -155,13 +155,66 @@ namespace FirstTry
             richTextBox1.Text += "\n " + bilj.biljettyp + " \n  \n -------------------------------  \n \n";
         }
 
+        private int laggTilliDatabasenBiljetter()
+        {
+            string query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, reserverad, tidsstampel) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @reserverad, @tidsstampel) RETURNING id;";
+            Biljett biljetten = new Biljett();
 
+
+            if (tk.biljetter[tk.fuskIgen].resserverad == true)
+            {
+                query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, reserverad, tidsstampel, kund_id) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @reserverad, @tidsstampel, @kund_id) RETURNING id;";
+            }
+
+
+            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+            command.Parameters.AddWithValue("@pris", tk.biljetter[tk.fuskIgen].pris);
+            command.Parameters.AddWithValue("@forestallning_id", tk.biljetter[tk.fuskIgen].forestallning.id);
+            command.Parameters.AddWithValue("@akt_id", tk.biljetter[tk.fuskIgen].akter.id);
+            command.Parameters.AddWithValue("@biljettyp", tk.biljetter[tk.fuskIgen].biljettyp);
+            command.Parameters.AddWithValue("@reserverad", tk.biljetter[tk.fuskIgen].resserverad);
+            command.Parameters.AddWithValue("@tidsstampel", DateTime.Now);
+
+            if (tk.biljetter[tk.fuskIgen].resserverad == true)
+            {
+                command.Parameters.AddWithValue("@kund_id", tk.biljetter[tk.fuskIgen].kund_id);
+            }
+
+
+            int x = (int)command.ExecuteScalar();
+
+            tk.biljetter[tk.fuskIgen].biljett_id = x;
+            tk.biljetter[tk.fuskIgen].kopt = true;
+
+            tk.fuskIgen++;
+
+            return x;
+        }
         private void FinalPage_Load(object sender, EventArgs e)
         {
             tk.fardig = true;
 
+            if (tk.biljetter[0].forestallning.friplacering == true)
+            {
+                foreach (Biljett bilj in tk.biljetter)
+                {
+                    conn.Open();
+                    laggTilliDatabasenBiljetter();
+                    conn.Close();
 
-            if (tk.biljetter.Count > 0)
+                    richTextBox1.Text += " Biljett ID: " + bilj.ToString();
+                    richTextBox1.Text += " \n Föreställningsnamn: " + bilj.forestallning.namn;
+                    richTextBox1.Text += " \n Akt: " + bilj.akter.namn;
+                    richTextBox1.Text += "\n Datum: " + bilj.forestallning.datum.ToShortDateString();
+                    richTextBox1.Text += " \n Tid: " + bilj.akter.Starttid.ToShortTimeString();
+                 //   richTextBox1.Text += "\n Plats: " + platsnamn(bilj.plats_id.ToString());
+                    richTextBox1.Text += "\n Pris: " + bilj.pris.ToString();
+                    richTextBox1.Text += "\n " + bilj.biljettyp + " \n  \n -------------------------------  \n \n";
+
+                }
+            }
+            else if (tk.biljetter.Count > 0)
             {
                 if (tk.biljetter[0].resserverad == true)
                 {
