@@ -113,18 +113,28 @@ namespace FirstTry
             }
             else
             {
-                
-
-
                 conn.Open();
                 nyKund();
                 //  tk.kund_id = nyKundID();
                 conn.Close();
 
-                this.Hide();
-                Platskarta pk = new Platskarta(tk);
-                pk.ShowDialog();
-                this.Close();
+                if (tk.biljetter[0].forestallning.friplacering == true)
+                {
+                    this.Hide();
+                    FinalPage fp = new FinalPage(tk);
+                    fp.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    this.Hide();
+                    Platskarta pk = new Platskarta(tk);
+                    pk.ShowDialog();
+                    this.Close();
+                }
+
+
+
             }
 
         }
