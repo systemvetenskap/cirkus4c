@@ -217,7 +217,7 @@ namespace FirstTry
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Tyvärr blev platsen precis bokad" + ex.ToString());
+                MessageBox.Show("Tyvärr blev platsen precis bokad");
 
                 return -1;
                 //throw;
@@ -609,7 +609,7 @@ namespace FirstTry
             int ai = tk.fuskIgen - 1;
 
 
-            if (radioButton_barn.Checked == false && radioButton_ungdom.Checked == false && radioButton_vuxen.Checked == false)
+            if (radioButton_barn.Checked == true || radioButton_ungdom.Checked == true || radioButton_vuxen.Checked == true)
             {
                 foreach (Biljett b in tk.biljetter)
                 {
@@ -681,7 +681,7 @@ namespace FirstTry
             else
             {
 
-
+                
 
             }
 

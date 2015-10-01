@@ -395,9 +395,9 @@ namespace FirstTry
         private void ReadFile()
         {
             string namn = tk.biljetter[0].ToString();
-            File.AppendAllText(namn + ".txt", richTextBox1.Text);
+            File.WriteAllText(namn + ".txt", richTextBox1.Text);
             string docName = (namn + ".txt");
-            string docPath = @"C:\Users\Martin\Documents\nyGit\cirkus4c\FirstTry\FirstTry\bin\";
+            string docPath = @"C:\Users\Martin\Documents\nyGit\cirkus4c\FirstTry\FirstTry\bin\Debug\";
             pd.DocumentName = docName;
             using (FileStream stream = new FileStream(docPath + docName, FileMode.OpenOrCreate)) //Open or create?
             using (StreamReader reader = new StreamReader(stream))
