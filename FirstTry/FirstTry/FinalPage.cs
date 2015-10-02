@@ -147,8 +147,6 @@ namespace FirstTry
 
             richTextBox1.Text += " \n  \n -------------------------------  \n \n";
             // richTextBox1.Text += "\n Pris: " + tk.forestallning
-
-
         }
 
         private void laddaHelafore(Biljett bilj)
@@ -174,7 +172,6 @@ namespace FirstTry
                 query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, reserverad, tidsstampel, kund_id) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @reserverad, @tidsstampel, @kund_id) RETURNING id;";
             }
 
-
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
             command.Parameters.AddWithValue("@pris", tk.biljetter[tk.fuskIgen].pris);
@@ -189,7 +186,6 @@ namespace FirstTry
                 command.Parameters.AddWithValue("@kund_id", tk.biljetter[tk.fuskIgen].kund_id);
             }
 
-
             int x = (int)command.ExecuteScalar();
 
             tk.biljetter[tk.fuskIgen].biljett_id = x;
@@ -202,7 +198,6 @@ namespace FirstTry
         private void FinalPage_Load(object sender, EventArgs e)
         {
             tk.fardig = true;
-
 
             if (tk.biljetter.Count > 0 && tk.biljetter[0].forestallning.friplacering == true)
             {
@@ -220,7 +215,6 @@ namespace FirstTry
                     richTextBox1.Text += "\n Plats: Fri placering";
                     richTextBox1.Text += "\n Pris: " + bilj.pris.ToString();
                     richTextBox1.Text += "\n " + bilj.biljettyp + " \n  \n -------------------------------  \n \n";
-
                 }
             }
             else if (tk.biljetter.Count > 0)
@@ -254,8 +248,7 @@ namespace FirstTry
             else
             {
                 string query = "select * from kund";
-                
-                // NpgsqlCommand cmd = new NpgsqlCommand();
+
                 DataTable dt = new DataTable();
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
 
@@ -273,7 +266,6 @@ namespace FirstTry
 
                     string query2 = "SELECT biljett.id, akter.aktnamn, forestallning.namn, biljett.pris, biljett.kund_id, forestallning.datum, forestallning.starttid, biljett.plats_id FROM public.forestallning, public.biljett, public.akter WHERE biljett.forestallning_id = forestallning.id AND biljett.akt_id = akter.id And kund_id = ";
                     query2 += k.kund_id.ToString() + ";";
-                    // NpgsqlCommand cmd = new NpgsqlCommand();
                     DataTable dt2 = new DataTable();
                     NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
 
@@ -295,18 +287,12 @@ namespace FirstTry
                         b.forestallning.datum = (DateTime)row2["datum"];
                         b.akter.Starttid = (DateTime)row2["starttid"];
                         k.bilj.Add(b);
-
                         tk.biljetter.Add(b);
                     }
                     listBox_kunder.Items.Add(k);
-
                 }
                 conn.Close();
-
-
-
             }
-
         }
 
         public string platsnamn(string platsID)
@@ -315,7 +301,6 @@ namespace FirstTry
             string namn = "";
             string query = "select nummer from platser where id = ";
             query += platsID.ToString();
-            // NpgsqlCommand cmd = new NpgsqlCommand();
             DataTable dt = new DataTable();
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
 
@@ -331,54 +316,10 @@ namespace FirstTry
             return namn;
         }
 
-        //private void pd_PrintPage(object sender, PrintPageEventArgs e)
-        //{
-        //    int pointVar = 10;
-        //    int strinPlacering = 120;
-        //    foreach (Biljett i in tk.biljetter)
-        //    {
-        //        Graphics g = e.Graphics;
-
-        //        Rectangle rect = new Rectangle(10, pointVar, 593, 343);
-        //        Pen pen = new Pen(Brushes.Black);
-        //        g.DrawRectangle(pen, rect);
-
-        //        Font fBody = new Font("Lucida Console", 15, FontStyle.Bold);
-        //        Font fBody1 = new Font("Lucida Console", 15, FontStyle.Regular);
-        //        Font fBody2 = new Font("Lucida Console", 9, FontStyle.Regular);
-
-        //        SolidBrush sb = new SolidBrush(Color.Black);
-        //        g.DrawString("Föreställning: " + i.forestallning.ToString(), fBody1, sb, 10, strinPlacering);
-        //        g.DrawString("Akt: " + i.akter.namn, fBody1, sb, 10, strinPlacering + 20);
-        //        g.DrawString("Datum: " + i.forestallning.datum.ToShortDateString(), fBody1, sb, 10, strinPlacering + 40);
-        //        g.DrawString("Biljett Nr: " + i.ToString(), fBody1, sb, 10, strinPlacering + 60);
-        //        pointVar += 360;
-        //        strinPlacering += 360;
-        //        pd.Dispose();
-        //    }
-
-
-        //}
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
-
-        //private void button2_Click(object sender, EventArgs e)
-        //{
-
-        //    //richTextBox1.SaveFile("biljetttttttttttter.rtf");
-        //    //PrintDocument rtf = new PrintDocument();
-        //    //FileStream fs = new FileStream("biljetttttttttttter.rtf", FileMode.Open);
-        //    //StreamReader sr = new StreamReader(fs);
-        //    //sr.ToString();
-        //    ////pd.Print();
-        //    //pd.PrintController = new StandardPrintController();
-        //    //pd.PrintPage += new PrintPageEventHandler();
-        //    //////pd.PrinterSettings.PrintToFile = true;
-        //    ////pd.PrinterSettings.PrintToFile = true;
-        //    ////pd.Print();
-        //}
         
         private void button2_Click(object sender, EventArgs e)
         {
@@ -388,12 +329,6 @@ namespace FirstTry
             pd.PrinterSettings.PrintToFile = true;
             pd.Print();
         }
-        //private void pd_PrintPage(object sender, PrintPageEventArgs ev)
-        //{
-        //    ev.Graphics.DrawString(content, printFont, Brushes.Black,
-        //                    ev.MarginBounds.Left, 0, new StringFormat());
-        //    ev.HasMorePages = (content.Length > 0);
-        //}
 
         private void pd_PrintPage(object sender, PrintPageEventArgs e)
         {
@@ -417,14 +352,15 @@ namespace FirstTry
             // Check to see if more pages are to be printed.
             e.HasMorePages = (content.Length > 0);
         }
-
-
+        
         private void ReadFile()
         {
+            string test = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
             string namn = tk.biljetter[0].ToString();
-            File.WriteAllText(namn + ".txt", richTextBox1.Text);
+            File.WriteAllText(test + namn + ".txt", richTextBox1.Text);
             string docName = (namn + ".txt");
-            string docPath = @"C:\Users\TickL\Source\Repos\cirkus4c\FirstTry\FirstTry\bin\Debug\";
+            
+            string docPath = test;
             pd.DocumentName = docName;
             using (FileStream stream = new FileStream(docPath + docName, FileMode.OpenOrCreate)) //Open or create?
             using (StreamReader reader = new StreamReader(stream))
