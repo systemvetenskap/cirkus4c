@@ -535,15 +535,8 @@ private void Rapport()
 
         private void btnSkapaForestallning_Click(object sender, EventArgs e)
         {
-            //buttonLaggTillForest.Enabled = true;
-            //buttonLaggTillForest.Visible = true;
-            //btnSkapaForestallning.Enabled = false;
-            //btnSkapaForestallning.Visible = false;
-            //btn_Avbryt.Enabled = true;
-            //btn_Avbryt.Visible = true;
-            //listBoxAdminForestallning.SelectionMode = SelectionMode.None;
+           
             tomTextBoxarForestallning();
-            //tomTextBoxarAkt();
             exempelkodforest();
 
         }
