@@ -36,6 +36,7 @@ namespace FirstTry
         {
             InitializeComponent();
             aktortyper = aktortyperID;
+            listBox_kunder.Visible = true;
         }
         public FinalPage()
         {
@@ -203,7 +204,7 @@ namespace FirstTry
             tk.fardig = true;
 
 
-            if (tk.biljetter != null && tk.biljetter[0].forestallning.friplacering == true)
+            if (tk.biljetter.Count > 0 && tk.biljetter[0].forestallning.friplacering == true)
             {
                 foreach (Biljett bilj in tk.biljetter)
                 {
@@ -236,42 +237,10 @@ namespace FirstTry
                 {
                     if (tk.hela == true)
                     {
-                        /* for (int i = 0; i < totalt; i++)
-                         {
-
-                             richTextBox1.Text += " Biljett ID: " + tk.biljetter[i].biljett_id;
-
-                             richTextBox1.Text += " \n Föreställningsnamn: " + tk.biljetter[0].forestallning.namn;
-                             richTextBox1.Text += " \n Alla akter";
-                             richTextBox1.Text += "\n Datum: " + tk.biljetter[0].forestallning.datum.ToShortDateString();
-                             richTextBox1.Text += " \n Tid: " + tk.biljetter[0].forestallning.tid.ToShortTimeString();
-                             richTextBox1.Text += "\n Plats: " + platsnamn(tk.biljetter[i + totalt].plats_id.ToString());
-                            // richTextBox1.Text += "\n Pris: " + tk.forestallning
-
-                             richTextBox1.Text += "\n " + tk.biljetter[i + totalt].biljettyp;
-
-                             if (tk.biljetter[i + totalt].biljettyp == "vuxen")
-                             {
-                                 richTextBox1.Text += "\n Pris: " + tk.biljetter[0].forestallning.vuxen.ToString()  +" \n  \n -------------------------------  \n \n";
-                             }
-                             if (tk.biljetter[i + totalt].biljettyp == "ungdom")
-                             {
-                                 richTextBox1.Text += "\n Pris: " + tk.biljetter[0].forestallning.ungdom.ToString() + " \n  \n -------------------------------  \n \n";
-                             }
-                             if (tk.biljetter[i + totalt].biljettyp == "barn")
-                             {
-                                 richTextBox1.Text += "\n Pris: " + tk.biljetter[0].forestallning.barn.ToString() + " \n  \n -------------------------------  \n \n";
-                             }
-                         }*/
-
                         foreach (Kund k in tk.kunder)
                         {
                             laddaKundRich(k);
-
                         }
-
-
-
                     }
                     else
                     {
@@ -280,10 +249,7 @@ namespace FirstTry
                             laddaHelafore(bilj);
                         }
                     }
-
-
                 }
-
             }
             else
             {
@@ -327,7 +293,7 @@ namespace FirstTry
                         b.akter.namn = ((row2["aktnamn"]).ToString());
                         b.plats_id = (Convert.ToInt32((row2["plats_id"])));
                         b.forestallning.datum = (DateTime)row2["datum"];
-                        b.forestallning.tid = (DateTime)row2["starttid"];
+                        b.akter.Starttid = (DateTime)row2["starttid"];
                         k.bilj.Add(b);
 
                         tk.biljetter.Add(b);
