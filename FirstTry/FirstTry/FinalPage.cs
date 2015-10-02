@@ -217,7 +217,7 @@ namespace FirstTry
                     richTextBox1.Text += " \n Akt: " + bilj.akter.namn;
                     richTextBox1.Text += "\n Datum: " + bilj.forestallning.datum.ToShortDateString();
                     richTextBox1.Text += " \n Tid: " + bilj.akter.Starttid.ToShortTimeString();
-                 //   richTextBox1.Text += "\n Plats: " + platsnamn(bilj.plats_id.ToString());
+                    richTextBox1.Text += "\n Plats: Fri placering";
                     richTextBox1.Text += "\n Pris: " + bilj.pris.ToString();
                     richTextBox1.Text += "\n " + bilj.biljettyp + " \n  \n -------------------------------  \n \n";
 
