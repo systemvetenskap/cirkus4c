@@ -302,7 +302,7 @@ namespace FirstTry
                 if (checkBox1.Checked == true)
             {
                 this.Hide();
-                Kunduppgifter ku = new Kunduppgifter(session);
+                Kunduppgifter ku = new Kunduppgifter(session, aktortyper);
                 ku.ShowDialog();
 
                 this.Close();
@@ -314,14 +314,14 @@ namespace FirstTry
                     //ladda biljett stuff direkt
                     //MessageBox.Show("ITS WORKING");
                     this.Hide();
-                    FinalPage fp = new FinalPage(session);
+                    FinalPage fp = new FinalPage(session, aktortyper);
                     fp.ShowDialog();
                     this.Close();
                 }
             else
             {
                 this.Hide();
-                Platskarta pk = new Platskarta(session);
+                Platskarta pk = new Platskarta(session, aktortyper);
                 pk.ShowDialog();
                 this.Close();
             }
@@ -804,7 +804,7 @@ namespace FirstTry
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FinalPage fp = new FinalPage();
+            FinalPage fp = new FinalPage(aktortyper);
             fp.ShowDialog();
             this.Close();
         }

@@ -12,14 +12,16 @@ namespace FirstTry
 {
     partial class Platskarta : Form
     {
+        List<int> aktortyper = new List<int>();
         Tempkop tk = new Tempkop();
         //  List<int> biljett_id = new List<int>();
 
         
-        public Platskarta(Tempkop tk2)
+        public Platskarta(Tempkop tk2, List<int> aktortypID)
         {
             InitializeComponent();
             tk = tk2;
+            aktortyper = aktortypID;
         }
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
@@ -75,7 +77,7 @@ namespace FirstTry
             if (ReserveraBiljett(knapp.Text) == -1)
             {
                 this.Hide();
-                Platskarta pk2 = new Platskarta(tk);
+                Platskarta pk2 = new Platskarta(tk, aktortyper);
                 pk2.ShowDialog();
                 this.Close(); //ta bort this?
             }
@@ -639,7 +641,7 @@ namespace FirstTry
 
                     if (tk.antal < tk.loopar && tk.hela == false)
                     {
-                        Platskarta pk2 = new Platskarta(tk);
+                        Platskarta pk2 = new Platskarta(tk, aktortyper);
                         pk2.ShowDialog();
 
                     }
@@ -658,7 +660,7 @@ namespace FirstTry
 
 
                             //biljettform ladda
-                            FinalPage fp = new FinalPage(tk);
+                            FinalPage fp = new FinalPage(tk, aktortyper);
                             fp.ShowDialog();
 
                             this.Close();

@@ -15,13 +15,14 @@ namespace FirstTry
     {
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         Tempkop tk = new Tempkop();
+        List<int> aktortyper = new List<int>();
 
-        public Kunduppgifter(Tempkop tk2)
+        public Kunduppgifter(Tempkop tk2, List<int> aktortyperID)
         {
 
             InitializeComponent();
             tk = tk2;
-
+            aktortyper = aktortyperID;
         }
         private void kundIDBiljetter(int x)
         {
@@ -121,14 +122,14 @@ namespace FirstTry
                 if (tk.biljetter[0].forestallning.friplacering == true)
                 {
                     this.Hide();
-                    FinalPage fp = new FinalPage(tk);
+                    FinalPage fp = new FinalPage(tk, aktortyper);
                     fp.ShowDialog();
                     this.Close();
                 }
                 else
                 {
                     this.Hide();
-                    Platskarta pk = new Platskarta(tk);
+                    Platskarta pk = new Platskarta(tk, aktortyper);
                     pk.ShowDialog();
                     this.Close();
                 }
