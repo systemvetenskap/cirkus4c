@@ -290,7 +290,7 @@ private void Rapport()
                             if (forsaljningsslut.Date <= datum.Date)
                             {
                                 Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
-            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+                                listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
                                // buttonLaggTillForest.Enabled = false;
                                // listBoxAdminForestallning.SelectionMode = SelectionMode.One;
                             
@@ -387,7 +387,9 @@ private void Rapport()
         private void button1_Click_1(object sender, EventArgs e)
         {
 
-            try
+            if (listBoxAkter.SelectedIndex != -1)
+            {
+                try
             {
             int fsid = valdforestallning.id;
             int id = valdakt.id;
@@ -401,50 +403,43 @@ private void Rapport()
 
                 DateTime forestStart = valdforestallning.starttid;
 
-                if(listBoxAkter.SelectedIndex != -1)
-                {
+                
 
-
-                if (starttid.TimeOfDay >= forestStart.TimeOfDay && sluttid.TimeOfDay <= valdforestallning.sluttid.TimeOfDay)
-                {
-                    if (starttid.TimeOfDay < sluttid.TimeOfDay)
+                    if (starttid.TimeOfDay >= forestStart.TimeOfDay && sluttid.TimeOfDay <= valdforestallning.sluttid.TimeOfDay)
                     {
-                        if (vuxen <= valdforestallning.vuxenpris && ungdom <= valdforestallning.ungdomspris && barn <= valdforestallning.barnpris)
+                        if (starttid.TimeOfDay < sluttid.TimeOfDay)
                         {
+                            if (vuxen <= valdforestallning.vuxenpris && ungdom <= valdforestallning.ungdomspris && barn <= valdforestallning.barnpris)
+                            {
                                 if (vuxen >= ungdom && vuxen >= barn && ungdom >= barn)
                                 {
-                            Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
-                            listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
-
-                            conn.Close();
+                                    Databasmetoder.UppdateraAkt(id, namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn);
+                                    listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+                                    conn.Close();
                                     MessageBox.Show("Akten är nu uppdaterad!");
-                        }
-                        else
-                        {
+                                }
+                                else
+                                {
                                     MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
                                 }
 
                             }
                             else
                             {
-                            MessageBox.Show("Akten har fel pris!");
-                        }
+                                MessageBox.Show("Akten har fel pris!");
+                            }
 
+                        }
+                        else
+                        {
+                            MessageBox.Show("Akten är för kort!");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Akten är för kort!");
+                        MessageBox.Show("Akten måste ha en tid som passar föreställningen!");
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Akten måste ha en tid som passar föreställningen!");
-        }
-                }
-                else
-                {
-                    MessageBox.Show("För att uppdatera måste du ha valt en akt.");
-                }
+               
 
 
             }
@@ -452,6 +447,11 @@ private void Rapport()
             {
                 MessageBox.Show("Alla textboxar måste vara korrekt ifyllda!");
 
+            }
+            }
+            else
+            {
+                MessageBox.Show("För att kunna uppdatera måste du ha valt en akt.");
             }
         }
 
@@ -577,7 +577,9 @@ private void Rapport()
                     checkBoxForestallning1.Checked = false;
                 }
 
+               
 
+                
                 if (datum.Date >= DateTime.Now.Date)
                 {
                     if (starttid.TimeOfDay < sluttid.TimeOfDay)
@@ -585,13 +587,13 @@ private void Rapport()
                         if (vuxenpris >= ungdomspris && vuxenpris >= barnpris && ungdomspris >= barnpris)
                         {
                             Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
-            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+                            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
                             MessageBox.Show("Föreställningen har nu uppdaterats");
                         }
                         else
                         {
                             MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
-        }
+                        }
 
                     }
                     else
@@ -604,6 +606,8 @@ private void Rapport()
                 {
                     MessageBox.Show("Sätt ett senare datum!");
                 }
+              
+            
             }
             catch (Exception)
             {
