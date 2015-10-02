@@ -42,7 +42,7 @@ namespace FirstTry
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
             
-            if (aktortyper.Contains(8) == false)
+            if (aktortyper.Contains(3) == true || aktortyper.Contains(4) == true || aktortyper.Contains(5) == true || aktortyper.Contains(6) == true || aktortyper.Contains(7) == true || aktortyper.Contains(9) == true)
             {
                 this.button3.Enabled = true;
                 this.button3.Visible = true;
