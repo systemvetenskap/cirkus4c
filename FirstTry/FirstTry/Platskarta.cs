@@ -67,6 +67,7 @@ namespace FirstTry
 
         private void bokaplats(Button knapp, int id)
         {
+            conn.Close();
             conn.Open();
             //dubbelkolla igen först så den inte är bokad
 
