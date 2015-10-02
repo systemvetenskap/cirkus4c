@@ -22,13 +22,20 @@ namespace FirstTry
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
         PrintDocument pd = new PrintDocument();
         Tempkop tk = new Tempkop();
+        List<int> aktortyper = new List<int>();
         int x = 0;
 
 
-        public FinalPage(Tempkop tk2)
+        public FinalPage(Tempkop tk2, List<int> aktortyperID)
         {
             InitializeComponent();
             tk = tk2;
+            aktortyper = aktortyperID;
+        }
+        public FinalPage(List<int> aktortyperID)
+        {
+            InitializeComponent();
+            aktortyper = aktortyperID;
         }
         public FinalPage()
         {
