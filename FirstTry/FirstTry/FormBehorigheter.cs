@@ -542,7 +542,7 @@ namespace FirstTry
                 laggTillAnvandare();
 
                 listBoxAnvandare.Items.Clear();
-
+                personallista.Clear();
                 hamtaPersonal();
                 conn.Close();
             }
