@@ -654,7 +654,7 @@ namespace FirstTry
                     }
                     else
                     {
-                        DialogResult dialogResult = MessageBox.Show("Vill du Slutföra köpet?", "Bokning", MessageBoxButtons.YesNo);
+                        DialogResult dialogResult = MessageBox.Show("Vill du Slutföra köpet? Om inte så tar vi bort biljetterna", "Bokning", MessageBoxButtons.YesNo);
                         if (dialogResult == DialogResult.Yes)
                         {
 
@@ -670,10 +670,14 @@ namespace FirstTry
                         }
                         else if (dialogResult == DialogResult.No)
                         {
+                            conn.Open();
+                            avbrytkop();
+                            conn.Close();
 
-                            Huvudsidan hu = new Huvudsidan();
-                            hu.ShowDialog();
-
+                            this.Hide();
+                            Huvudsidan hs = new Huvudsidan();
+                            hs.ShowDialog();
+                            this.Close();
                         }
 
 
