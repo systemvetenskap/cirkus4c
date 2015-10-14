@@ -34,6 +34,8 @@
             this.textBox_epost = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.listBox_kunder = new System.Windows.Forms.ListBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -48,7 +50,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(47, 442);
+            this.button1.Location = new System.Drawing.Point(47, 476);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(105, 23);
             this.button1.TabIndex = 1;
@@ -58,7 +60,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(47, 511);
+            this.button2.Location = new System.Drawing.Point(47, 528);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(105, 23);
             this.button2.TabIndex = 2;
@@ -68,7 +70,7 @@
             // 
             // textBox_epost
             // 
-            this.textBox_epost.Location = new System.Drawing.Point(47, 405);
+            this.textBox_epost.Location = new System.Drawing.Point(47, 450);
             this.textBox_epost.Name = "textBox_epost";
             this.textBox_epost.Size = new System.Drawing.Size(105, 20);
             this.textBox_epost.TabIndex = 3;
@@ -76,7 +78,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(47, 65);
+            this.button3.Location = new System.Drawing.Point(47, 12);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(105, 40);
             this.button3.TabIndex = 4;
@@ -87,19 +89,41 @@
             // listBox_kunder
             // 
             this.listBox_kunder.FormattingEnabled = true;
-            this.listBox_kunder.Location = new System.Drawing.Point(14, 143);
+            this.listBox_kunder.Location = new System.Drawing.Point(12, 58);
             this.listBox_kunder.Name = "listBox_kunder";
             this.listBox_kunder.ScrollAlwaysVisible = true;
-            this.listBox_kunder.Size = new System.Drawing.Size(177, 225);
+            this.listBox_kunder.Size = new System.Drawing.Size(193, 225);
             this.listBox_kunder.TabIndex = 5;
             this.listBox_kunder.Visible = false;
             this.listBox_kunder.SelectedIndexChanged += new System.EventHandler(this.listBox_kunder_SelectedIndexChanged);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(47, 351);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(105, 23);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "Ta bort reservation";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Visible = false;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(47, 299);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(105, 23);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "Köp biljetter";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Visible = false;
             // 
             // FinalPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 563);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.listBox_kunder);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox_epost);
@@ -122,5 +146,7 @@
         private System.Windows.Forms.TextBox textBox_epost;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ListBox listBox_kunder;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }

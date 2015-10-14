@@ -37,11 +37,16 @@ namespace FirstTry
             InitializeComponent();
             aktortyper = aktortyperID;
             listBox_kunder.Visible = true;
+            button5.Visible = true;
+            button4.Visible = true;
         }
         public FinalPage()
         {
             InitializeComponent();
             listBox_kunder.Visible = true;
+            button5.Visible = true;
+            button4.Visible = true;
+
               
         }
         private bool arDetMail()
