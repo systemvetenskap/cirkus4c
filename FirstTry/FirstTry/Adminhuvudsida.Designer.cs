@@ -59,6 +59,7 @@
             this.buttonTillHuvudsida.TabIndex = 0;
             this.buttonTillHuvudsida.Text = "Till huvudsidan";
             this.buttonTillHuvudsida.UseVisualStyleBackColor = true;
+            this.buttonTillHuvudsida.Click += new System.EventHandler(this.buttonTillHuvudsida_Click);
             // 
             // LabelOppen
             // 
@@ -252,6 +253,7 @@
             this.buttonAndraBehorighet.TabIndex = 19;
             this.buttonAndraBehorighet.Text = "Ändra behörighet";
             this.buttonAndraBehorighet.UseVisualStyleBackColor = true;
+            this.buttonAndraBehorighet.Click += new System.EventHandler(this.buttonAndraBehorighet_Click);
             // 
             // Adminhuvudsida
             // 

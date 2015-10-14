@@ -12,6 +12,10 @@ namespace FirstTry
 {
     public partial class Adminhuvudsida : Form
     {
+
+        private List<int> aktorlistaId = new List<int>();
+
+
         public Adminhuvudsida()
         {
             InitializeComponent();
@@ -38,6 +42,22 @@ namespace FirstTry
             ////Rapporter rapporter = new Rapporter();
             ////rapporter.ShowDialog();
             ////this.Close();
+        }
+
+        private void buttonAndraBehorighet_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormBehorigheter fbh = new FormBehorigheter(aktorlistaId);
+            fbh.ShowDialog();
+            this.Close();
+        }
+
+        private void buttonTillHuvudsida_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Huvudsidan hs = new Huvudsidan(aktorlistaId);
+            hs.ShowDialog();
+            this.Close();
         }
     }
 }
