@@ -10,24 +10,19 @@ using System.Windows.Forms;
 
 namespace FirstTry
 {
-    public partial class Adminhuvudsida : Form
+    public partial class Rapporter : Form
     {
-        public Adminhuvudsida()
+        public Rapporter()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void label40_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonOppnaForsaljning_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Adminhuvudsida_Load(object sender, EventArgs e)
+        private void label29_Click(object sender, EventArgs e)
         {
 
         }
