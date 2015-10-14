@@ -647,7 +647,7 @@ namespace FirstTry
                     }
                     else if (tk.fardig == true)
                     {
-                        Huvudsidan hu = new Huvudsidan();
+                        Huvudsidan hu = new Huvudsidan(aktortyper);
                         hu.ShowDialog();
                         this.Close();
                         //  Application.Exit();
@@ -675,7 +675,7 @@ namespace FirstTry
                             conn.Close();
 
                             this.Hide();
-                            Huvudsidan hs = new Huvudsidan();
+                            Huvudsidan hs = new Huvudsidan(aktortyper);
                             hs.ShowDialog();
                             this.Close();
                         }
@@ -791,7 +791,7 @@ namespace FirstTry
                 conn.Close();
 
                 this.Hide();
-                Huvudsidan hs = new Huvudsidan();
+                Huvudsidan hs = new Huvudsidan(aktortyper);
                 hs.ShowDialog();
                 this.Close();
 
