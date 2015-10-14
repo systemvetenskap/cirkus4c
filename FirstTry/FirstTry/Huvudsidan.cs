@@ -808,5 +808,25 @@ namespace FirstTry
             fp.ShowDialog();
             this.Close();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            session.hela = false; //låg kvar som true om man gick tillbaka från platskartan
+            int kollaOmDetarHela = 0;
+
+            foreach (Akt akter in listBox_akter.SelectedItems)
+            {
+                session.loopar++;
+                session.akter.Add(akter);
+            }
+            foreach (Akt item in listBox_akter.Items)
+            {
+                kollaOmDetarHela++;
+            }
+            if (session.loopar == kollaOmDetarHela)
+            {
+                session.hela = true;
+            }
+        }
     }
 }

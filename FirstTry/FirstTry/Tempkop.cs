@@ -93,6 +93,7 @@ namespace FirstTry
                            // Huvudsidan hu = new Huvudsidan();
                             //hu.ShowDialog();
                             //Close();
+
                             return true;
                         }
                         x++;

@@ -262,7 +262,7 @@ namespace FirstTry
                     k.kund_id = (Convert.ToInt32(row["id"]));
                     k.fornamn = (row["namn"].ToString());
                     k.efternamn = (row["efternamn"].ToString());
-
+                    k.epost = (row["mail"].ToString());
 
                     string query2 = "SELECT biljett.id, akter.aktnamn, forestallning.namn, biljett.pris, biljett.kund_id, forestallning.datum, forestallning.starttid, biljett.plats_id FROM public.forestallning, public.biljett, public.akter WHERE biljett.forestallning_id = forestallning.id AND biljett.akt_id = akter.id And kund_id = ";
                     query2 += k.kund_id.ToString() + ";";
@@ -383,7 +383,7 @@ namespace FirstTry
 
             Kund k = new Kund();
             k = (Kund)listBox_kunder.SelectedItem;
-
+            textBox_epost.Text = k.epost;
 
             foreach (Biljett bilj in k.bilj)
             {
