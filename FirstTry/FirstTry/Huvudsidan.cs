@@ -796,8 +796,8 @@ namespace FirstTry
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            AdminForm af = new AdminForm(aktortyper);
-            af.ShowDialog();
+            Adminhuvudsida ah = new Adminhuvudsida(aktortyper);
+            ah.ShowDialog();
             this.Close();
         }
 

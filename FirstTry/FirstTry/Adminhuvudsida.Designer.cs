@@ -52,10 +52,10 @@
             // 
             // buttonTillHuvudsida
             // 
-            this.buttonTillHuvudsida.Location = new System.Drawing.Point(20, 9);
+            this.buttonTillHuvudsida.Location = new System.Drawing.Point(38, 9);
             this.buttonTillHuvudsida.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonTillHuvudsida.Name = "buttonTillHuvudsida";
-            this.buttonTillHuvudsida.Size = new System.Drawing.Size(197, 37);
+            this.buttonTillHuvudsida.Size = new System.Drawing.Size(179, 37);
             this.buttonTillHuvudsida.TabIndex = 0;
             this.buttonTillHuvudsida.Text = "Till huvudsidan";
             this.buttonTillHuvudsida.UseVisualStyleBackColor = true;
@@ -90,7 +90,7 @@
             this.listBoxForestallning.Location = new System.Drawing.Point(39, 130);
             this.listBoxForestallning.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBoxForestallning.Name = "listBoxForestallning";
-            this.listBoxForestallning.Size = new System.Drawing.Size(333, 500);
+            this.listBoxForestallning.Size = new System.Drawing.Size(333, 484);
             this.listBoxForestallning.TabIndex = 3;
             // 
             // listBoxAkt

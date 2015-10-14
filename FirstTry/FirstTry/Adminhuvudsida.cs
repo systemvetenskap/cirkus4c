@@ -14,10 +14,18 @@ namespace FirstTry
     {
 
         private List<int> aktorlistaId = new List<int>();
+        private Forestallning valdforestallning;
 
 
         public Adminhuvudsida()
         {
+            InitializeComponent();
+        }
+
+        public Adminhuvudsida(List<int> aktorlista)
+        {
+            aktorlistaId = aktorlista;
+
             InitializeComponent();
         }
 
