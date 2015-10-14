@@ -31,5 +31,13 @@ namespace FirstTry
         {
 
         }
+
+        private void buttonRapporter_Click(object sender, EventArgs e)
+        {
+            ////this.Hide();
+            ////Rapporter rapporter = new Rapporter();
+            ////rapporter.ShowDialog();
+            ////this.Close();
+        }
     }
 }

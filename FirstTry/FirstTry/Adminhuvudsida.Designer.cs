@@ -241,6 +241,7 @@
             this.buttonRapporter.TabIndex = 18;
             this.buttonRapporter.Text = "Rapporter";
             this.buttonRapporter.UseVisualStyleBackColor = true;
+            this.buttonRapporter.Click += new System.EventHandler(this.buttonRapporter_Click);
             // 
             // buttonAndraBehorighet
             // 

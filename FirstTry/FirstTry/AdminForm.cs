@@ -160,14 +160,14 @@ namespace FirstTry
                     conn.Close();
                   
                     }
-            Rapport();
+            //Rapport();
         }
                 
 
 
 
 
-private void Rapport()
+/*private void Rapport()
         {
             string sql = "SELECT coalesce (sum(case when id IS NOT NULL then 1 else 0 end), 0) as totalt, coalesce (sum(case when biljettyp = 'vuxen' then 1 else 0 end), 0) as vuxen, coalesce (sum(case when biljettyp = 'ungdom' then 1 else 0 end), 0) as ungdom, coalesce (sum(case when biljettyp = 'barn' then 1 else 0 end), 0) as barn, coalesce (sum(pris), 0) as totaltKr FROM biljett WHERE forestallning_id = " + valdforestallning.id;
             conn.Open();
@@ -190,7 +190,7 @@ private void Rapport()
                     label25.Text = totaltKr.ToString() + " kr";
                     //label14.Text = "Antal besökare";
                     label26.Text = valdforestallning.namn;
-                }  
+                } 
             
             conn.Close();
 
@@ -216,7 +216,7 @@ private void Rapport()
                // label14.Text = "Antal besökare";
             }
 
-            conn.Close();
+            conn.Close();*/
 
             //string sql1 = "SELECT sum(pris) FROM biljett WHERE biljettyp = 'vuxen' UNION SELECT sum(pris) FROM biljett WHERE biljettyp = 'ungdom' UNION SELECT sum(pris) FROM biljett WHERE biljettyp = 'barn'";
             //conn.Open();
@@ -242,7 +242,7 @@ private void Rapport()
 
 
             //conn.Close();
-        }
+        //}
 
 
 
