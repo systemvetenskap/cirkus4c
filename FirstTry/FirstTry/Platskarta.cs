@@ -727,11 +727,11 @@ namespace FirstTry
         }
         private void avbrytkop()
         {
-            foreach (int bid in tk.biljett_id)
+            foreach (Biljett b in tk.biljetter)
             {
-                string dquery = "delete from innehaller where biljett_id = " + bid;
+                string dquery = "delete from biljett where id = " + b.biljett_id;
 
-                NpgsqlCommand command = new NpgsqlCommand(dquery, conn);
+                    NpgsqlCommand command = new NpgsqlCommand(dquery, conn);
                 command.ExecuteNonQuery();
             }
 
@@ -779,14 +779,25 @@ namespace FirstTry
 
         private void button1_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            avbrytkop();
-            conn.Close();
+            DialogResult dialogResult = MessageBox.Show("Vil du avbryta köpet? Biljetterna kommer att tas bort", "Avbryt köp", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                conn.Open();
+                avbrytkop();
+                conn.Close();
 
-            this.Hide();
-            Huvudsidan hs = new Huvudsidan();
-            hs.ShowDialog();
-            this.Close();
+                this.Hide();
+                Huvudsidan hs = new Huvudsidan();
+                hs.ShowDialog();
+                this.Close();
+
+
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+
         }
 
         private void button_B1_Click(object sender, EventArgs e)
