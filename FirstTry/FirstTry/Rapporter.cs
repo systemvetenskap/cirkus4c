@@ -35,7 +35,7 @@ namespace FirstTry
         private void Rapport()
         {
             string sql = "SELECT coalesce (sum(case when id IS NOT NULL then 1 else 0 end), 0) as totalt, coalesce (sum(case when biljettyp = 'vuxen' then 1 else 0 end), 0) as vuxen, coalesce (sum(case when biljettyp = 'ungdom' then 1 else 0 end), 0) as ungdom, coalesce (sum(case when biljettyp = 'barn' then 1 else 0 end), 0) as barn, coalesce (sum(pris), 0) as totaltKr FROM biljett WHERE forestallning_id = " + valdforestallning.id;
-            conn.Open();
+            //conn.Open();
 
             NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
 
