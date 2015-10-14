@@ -182,6 +182,7 @@
             this.buttonUppdateraForest.TabIndex = 12;
             this.buttonUppdateraForest.Text = "Uppdatera Föreställning";
             this.buttonUppdateraForest.UseVisualStyleBackColor = true;
+            this.buttonUppdateraForest.Click += new System.EventHandler(this.buttonUppdateraForest_Click);
             // 
             // buttonTaBortForest
             // 
