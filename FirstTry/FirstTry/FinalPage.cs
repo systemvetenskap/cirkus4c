@@ -385,19 +385,77 @@ namespace FirstTry
         private void listBox_kunder_SelectedIndexChanged(object sender, EventArgs e)
         {
             richTextBox1.Clear();
-
-            Kund k = new Kund();
-            k = (Kund)listBox_kunder.SelectedItem;
-            textBox_epost.Text = k.epost;
-
-            foreach (Biljett bilj in k.bilj)
+            if (listBox_kunder.Items.Count > 0)
             {
-                laddaHelafore(bilj);
+                Kund k = new Kund();
+                k = (Kund)listBox_kunder.SelectedItem;
+                textBox_epost.Text = k.epost;
+
+                foreach (Biljett bilj in k.bilj)
+                {
+                    laddaHelafore(bilj);
+                }
             }
+
             
 
 
 
+        }
+        private void taBortKund(Kund k)
+        {
+            string query2 = "delete from kund where id =";
+            query2 += k.kund_id;
+            NpgsqlCommand command2 = new NpgsqlCommand(query2, conn);
+
+            command2.ExecuteNonQuery();
+            
+
+            listBox_kunder.Items.Remove(k);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            Kund k = (Kund)listBox_kunder.SelectedItem;
+
+            foreach (Biljett b in k.bilj)
+            {
+                conn.Open();
+                string query = "update biljett set kund_id = null, reserverad = false where id = ";
+                query += b.biljett_id;
+                NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
+
+            conn.Open();
+            taBortKund(k);
+            conn.Close();
+           
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Kund k = (Kund)listBox_kunder.SelectedItem;
+
+            foreach (Biljett b in k.bilj)
+            {
+                conn.Open();
+                string query = "delete from biljett where id = ";
+                query += b.biljett_id;
+                NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
+
+
+            conn.Open();
+            taBortKund(k);
+            conn.Close();
         }
     }
 }
