@@ -119,7 +119,7 @@
             this.textBoxForestNamn.Enabled = false;
             this.textBoxForestNamn.Location = new System.Drawing.Point(28, 104);
             this.textBoxForestNamn.Name = "textBoxForestNamn";
-            this.textBoxForestNamn.Size = new System.Drawing.Size(143, 20);
+            this.textBoxForestNamn.Size = new System.Drawing.Size(135, 20);
             this.textBoxForestNamn.TabIndex = 1;
             this.textBoxForestNamn.TextChanged += new System.EventHandler(this.textBoxForestNamn_TextChanged);
             // 
