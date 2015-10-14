@@ -82,6 +82,7 @@
             this.buttonLoggaUt.TabIndex = 2;
             this.buttonLoggaUt.Text = "Logga ut";
             this.buttonLoggaUt.UseVisualStyleBackColor = true;
+            this.buttonLoggaUt.Click += new System.EventHandler(this.buttonLoggaUt_Click);
             // 
             // listBoxForestallning
             // 
