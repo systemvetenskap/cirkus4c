@@ -81,7 +81,7 @@ namespace FirstTry
                         string info = row["generell_info"].ToString();
                         string namn = row["namn"].ToString();
                         string id = row["id"].ToString();
-                        bool fri = (bool)row["fri_placering"];
+                      //  bool fri = (bool)row["fri_placering"];
                         int vuxen = Convert.ToInt32(row["vuxenpris"]);
                         int ungdom = Convert.ToInt32(row["ungdomspris"]);
                         int barn = Convert.ToInt32(row["barnpris"]);
@@ -92,7 +92,7 @@ namespace FirstTry
                         fs.generellinfo = info;
                         fs.namn = namn;
                         fs.id = Convert.ToInt32(id);
-                        fs.friplacering = fri;
+                       // fs.friplacering = fri;
                         fs.barn = barn;
                         fs.ungdom = ungdom;
                         fs.vuxen = vuxen;
@@ -307,7 +307,7 @@ namespace FirstTry
 
                 this.Close();
             }
-                else if (session.biljetter[0].forestallning.friplacering == true)
+              /*  else if (session.biljetter[0].forestallning.friplacering == true)
             {
                     //ladda biljett stuff direkt
                     // MessageBox.Show("ITS WORKING");
@@ -317,7 +317,7 @@ namespace FirstTry
                     FinalPage fp = new FinalPage(session, aktortyper);
                     fp.ShowDialog();
                     this.Close();
-                }
+                }*/
             else
             {
                 this.Hide();
