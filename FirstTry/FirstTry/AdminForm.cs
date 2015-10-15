@@ -64,7 +64,33 @@ namespace FirstTry
             
             if (st=="skapaForestallning")
             {
-                
+                this.buttonLaggTillForest.Enabled = false;
+                this.buttonLaggTillForest.Visible = false;
+                //this.btnSkapaForestallning.Enabled = true;
+                //this.btnSkapaForestallning.Visible = true;
+                ////this.uppdatera.Enabled = true;
+                ////this.uppdatera.Visible = true;
+                ////this.buttonTaBort.Enabled = true;
+                ////this.buttonTaBort.Visible = true;
+                //textBoxForestNamn.Enabled = true;
+                //richTextBoxForestInf.Enabled = true;
+                //textBoxForestDatum1.Enabled = true;
+                //textBoxForestStarttid.Enabled = true;
+                //textBoxForestSluttid.Enabled = true;
+               //textBoxForsaljningsslut.Enabled = true;
+                //Akt edit
+                this.btnAkt.Enabled = true;
+                this.btnAkt.Visible = true;
+                this.buttonLaggTillAktInfo.Enabled = true;
+                this.buttonLaggTillAktInfo.Visible = true;
+                this.buttonUppdateraAkt.Enabled = true;
+                this.buttonUppdateraAkt.Visible = true;
+                this.button1.Enabled = true;
+                this.button1.Visible = true;
+                textBoxAktnamn.Enabled = true;
+                richTextBoxAktInf.Enabled = true;
+                textBoxAktStarttid.Enabled = true;
+                textBoxAktSluttid.Enabled = true;
             }
 
             if (st=="uppdateraForestallning")
@@ -163,14 +189,14 @@ namespace FirstTry
                   textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
                   textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString();
 
-                  //if (valdforestallning.friplacering == true)
-                  //{
-                  //    checkBoxfriPlacering.Checked = true;
-                  //}
-                  //else
-                  //{
-                  //    checkBoxfriPlacering.Checked = false;
-                  //}
+                  if (valdforestallning.friplacering == true)
+                  {
+                      checkBoxfriPlacering.Checked = true;
+                  }
+                  else
+                  {
+                      checkBoxfriPlacering.Checked = false;
+                  }
 
                   if (valdforestallning.open == true)
                   {
@@ -209,13 +235,13 @@ namespace FirstTry
             int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
-            //bool friplacering = false;
+            bool friplacering = false;
              DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
-            //if (checkBoxfriPlacering.Checked == true)
-            //{
-            //    friplacering = true;
-            //}
+            if (checkBoxfriPlacering.Checked == true)
+            {
+                friplacering = true;
+            }
 
 
                 if (checkBoxForestallning1.Checked == true)
@@ -235,20 +261,20 @@ namespace FirstTry
                     {
                         if (vuxenpris >= ungdomspris && vuxenpris >= barnpris && ungdomspris >= barnpris)
                         {
-                            if (forsaljningsslut.Date <= datum.Date)
-                            {
-                                Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
+                            //if (forsaljningsslut.Date <= datum.Date)
+                            //{
+                                Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris,forsaljningsslut);
                                 listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
                                // buttonLaggTillForest.Enabled = false;
                                // listBoxAdminForestallning.SelectionMode = SelectionMode.One;
                             
                             conn.Close();
                                 MessageBox.Show("Föreställningen är nu tillagd i föreställningslistan.");
-                            }
-                            else
-                            {
-                                MessageBox.Show("Du bör inte sälja biljetter efter att föreställningen spelats klart.");
-                            }
+                            //}
+                            //else
+                            //{
+                            //    MessageBox.Show("Du bör inte sälja biljetter efter att föreställningen spelats klart.");
+                            //}
                         }
                         else
                         { 
@@ -503,7 +529,7 @@ namespace FirstTry
             int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
-           // bool friplacering = false;
+            bool friplacering = false;
                 DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
 
@@ -719,10 +745,10 @@ namespace FirstTry
 
         private void btnAndraTaBortBeh_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FormBehorigheter fbh = new FormBehorigheter(aktorlistaId);
-            fbh.ShowDialog();
-            this.Close();
+        //    this.Hide();
+        //    FormBehorigheter fbh = new FormBehorigheter(aktorlistaId);
+        //    fbh.ShowDialog();
+        //    this.Close();
             //if (aktorlistaId != 6)
             //{
             //    btnAndraTaBortBeh.Enabled;
@@ -899,6 +925,11 @@ namespace FirstTry
             //{
             //    MessageBox.Show("jeyyy");
             //}
+        }
+
+        private void checkBoxfriPlacering_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

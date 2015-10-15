@@ -119,21 +119,6 @@ namespace FirstTry
                 //  tk.kund_id = nyKundID();
                 conn.Close();
 
-                if (tk.biljetter[0].forestallning.friplacering == true)
-                {
-                    this.Hide();
-                    FinalPage fp = new FinalPage(tk, aktortyper);
-                    fp.ShowDialog();
-                    this.Close();
-                }
-                else
-                {
-                    this.Hide();
-                    Platskarta pk = new Platskarta(tk, aktortyper);
-                    pk.ShowDialog();
-                    this.Close();
-                }
-
 
 
             }
