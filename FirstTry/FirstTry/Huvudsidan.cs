@@ -811,22 +811,37 @@ namespace FirstTry
 
         private void button5_Click(object sender, EventArgs e)
         {
-            session.hela = false; //låg kvar som true om man gick tillbaka från platskartan
-            int kollaOmDetarHela = 0;
+            foreach (Akt a in listBox_akter.SelectedItems)
+            {
+                session.baraVisa = true;
+                session.hela = false; //låg kvar som true om man gick tillbaka från platskartan
+                int kollaOmDetarHela = 0;
+                session.forestallning = (Forestallning)listBox_forestallning.SelectedItem;
 
-            foreach (Akt akter in listBox_akter.SelectedItems)
-            {
+                List<Akt> alist = new List<Akt>();
+                alist.Add(a);
+                session.akter = alist;
                 session.loopar++;
-                session.akter.Add(akter);
+
+
+
+
+                foreach (Akt item in listBox_akter.Items)
+                {
+                    kollaOmDetarHela++;
+                }
+                if (session.loopar == kollaOmDetarHela)
+                {
+                    session.hela = true;
+                }
+
+
+                Platskarta pk = new Platskarta(session, aktortyper);
+                pk.ShowDialog();
             }
-            foreach (Akt item in listBox_akter.Items)
-            {
-                kollaOmDetarHela++;
-            }
-            if (session.loopar == kollaOmDetarHela)
-            {
-                session.hela = true;
-            }
+
+            
+
         }
     }
 }
