@@ -35,6 +35,7 @@ namespace FirstTry
         public List <Kund> kunder { get; set; }
         public int antalKunder { get; set; }
         public bool fardig { get; set; }
+        public bool baraVisa { get; set; }
       //  public string kundID { get; set; }
 
         public Tempkop()
@@ -44,6 +45,7 @@ namespace FirstTry
             kunder = new List<Kund>();
             fuskIgen = 0;
             fardig = false;
+            baraVisa = false;
         }
 
 

@@ -557,6 +557,27 @@ namespace FirstTry
                 }
                 label6.Text = "Alla akter";
             }
+           /* else if(tk.baraVisa == true)
+            {
+                Biljett b = new Biljett();
+                Forestallning f = new Forestallning();
+                Akt a = new Akt();
+                b.forestallning = f;
+                b.akter = a;
+                b.forestallning.namn = tk.forestallning.namn;
+                b.akter.namn = tk.akter[tk.fuskIgen].namn;
+                tk.biljetter.Add(b);
+
+
+
+                button2.Visible = true;
+                button1.Visible = false;
+
+
+
+
+                backbone(tk.akter[tk.fuskIgen]);
+            }*/
             else
             {
                 //Akt temp = new Akt();
@@ -1082,6 +1103,12 @@ namespace FirstTry
         private void button_C8_Click(object sender, EventArgs e)
         {
             generellknapp(button_C8);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            this.Close();
         }
     }
 }
