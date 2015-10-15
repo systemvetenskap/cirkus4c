@@ -60,47 +60,81 @@ namespace FirstTry
 
             if (tk.akter != null)
             {
-
-
-                foreach (Akt item in tk.akter)
+                if (tk.biljetter[0].forestallning.friplacering == true)
                 {
-                    string query = "select * from biljett where akt_id = "; //And where fri = false
-                    query += item.id.ToString();
-                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
-                    DataTable dt = new DataTable();
-
-                    da.Fill(dt);
-
-                    int x = 0;
-                    x = tk.vuxna + tk.barn + tk.ungdom;
-
-                   // int y = (int)command.ExecuteScalar();
-
-                    if (x >= 64)
+                    foreach (Akt item in tk.akter)
                     {
-                        // MessageBox.Show("Tyvärr finns inte tillräkligt med plats, utanför");
-                        // this.Hide();
-                        //Huvudsidan hu = new Huvudsidan();
-                        //hu.ShowDialog();
-                        // Close();
-                        return true;
-                    }
+                        string query = "select * from biljett where akt_id = "; //And where fri = false
+                        query += item.id.ToString() + " AND fri_placering = true";
+                        NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+                        DataTable dt = new DataTable();
 
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        if (x >= 64)
+                        da.Fill(dt);
+
+                        int x = 0;
+                        x = tk.vuxna + tk.barn + tk.ungdom;
+
+                       
+
+                        if (x >= 250)
                         {
-                            // MessageBox.Show("Tyvärr finns inte tillräkligt med plats, innanför");
-                            //this.Hide();
-                           // Huvudsidan hu = new Huvudsidan();
-                            //hu.ShowDialog();
-                            //Close();
 
                             return true;
                         }
-                        x++;
+
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            if (x >= 250)
+                            {
+                                return true;
+                            }
+                            x++;
+                        }
                     }
                 }
+                else
+                {
+                    foreach (Akt item in tk.akter)
+                    {
+                        string query = "select * from biljett where akt_id = "; //And where fri = false
+                        query += item.id.ToString();
+                        NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+                        DataTable dt = new DataTable();
+
+                        da.Fill(dt);
+
+                        int x = 0;
+                        x = tk.vuxna + tk.barn + tk.ungdom;
+
+                        // int y = (int)command.ExecuteScalar();
+
+                        if (x >= 64)
+                        {
+                            // MessageBox.Show("Tyvärr finns inte tillräkligt med plats, utanför");
+                            // this.Hide();
+                            //Huvudsidan hu = new Huvudsidan();
+                            //hu.ShowDialog();
+                            // Close();
+                            return true;
+                        }
+
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            if (x >= 64)
+                            {
+                                // MessageBox.Show("Tyvärr finns inte tillräkligt med plats, innanför");
+                                //this.Hide();
+                                // Huvudsidan hu = new Huvudsidan();
+                                //hu.ShowDialog();
+                                //Close();
+
+                                return true;
+                            }
+                            x++;
+                        }
+                    }
+                }
+
             }         
                 return false;
         }
