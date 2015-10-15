@@ -168,13 +168,23 @@ namespace FirstTry
 
         private int laggTilliDatabasenBiljetter()
         {
+
+
             string query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, reserverad, tidsstampel) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @reserverad, @tidsstampel) RETURNING id;";
             Biljett biljetten = new Biljett();
 
 
-            if (tk.biljetter[tk.fuskIgen].resserverad == true)
+            if (tk.biljetter[tk.fuskIgen].resserverad == true && tk.biljetter[tk.fuskIgen].forestallning.friplacering == true)
+            {
+                query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, reserverad, tidsstampel, kund_id, fri_placering) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @reserverad, @tidsstampel, @kund_id, @fri_placering) RETURNING id;";
+            }
+            else if (tk.biljetter[tk.fuskIgen].resserverad == true)
             {
                 query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, reserverad, tidsstampel, kund_id) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @reserverad, @tidsstampel, @kund_id) RETURNING id;";
+            }
+            else if (tk.biljetter[tk.fuskIgen].forestallning.friplacering == true)
+            {
+                query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, reserverad, tidsstampel, fri_placering) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp,  @reserverad, @tidsstampel, @fri_placering) RETURNING id;";
             }
 
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
@@ -190,6 +200,16 @@ namespace FirstTry
             {
                 command.Parameters.AddWithValue("@kund_id", tk.biljetter[tk.fuskIgen].kund_id);
             }
+            else if(tk.biljetter[tk.fuskIgen].forestallning.friplacering == true)
+            {
+                command.Parameters.AddWithValue("@fri_placering", true);
+            }
+            else if (tk.biljetter[tk.fuskIgen].resserverad == true && tk.biljetter[tk.fuskIgen].forestallning.friplacering == true)
+            {
+                command.Parameters.AddWithValue("@kund_id", tk.biljetter[tk.fuskIgen].kund_id);
+                command.Parameters.AddWithValue("@fri_placering", true);
+            }
+
 
             int x = (int)command.ExecuteScalar();
 

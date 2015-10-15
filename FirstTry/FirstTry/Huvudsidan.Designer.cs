@@ -61,6 +61,8 @@
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
+            this.checkBox_fri = new System.Windows.Forms.CheckBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBox_forestallning
@@ -78,7 +80,7 @@
             this.listBox_akter.Location = new System.Drawing.Point(609, 85);
             this.listBox_akter.Name = "listBox_akter";
             this.listBox_akter.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBox_akter.Size = new System.Drawing.Size(264, 238);
+            this.listBox_akter.Size = new System.Drawing.Size(492, 238);
             this.listBox_akter.TabIndex = 1;
             this.listBox_akter.SelectedIndexChanged += new System.EventHandler(this.listBox_akter_SelectedIndexChanged);
             // 
@@ -111,7 +113,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(790, 434);
+            this.button1.Location = new System.Drawing.Point(790, 412);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 23);
             this.button1.TabIndex = 5;
@@ -377,11 +379,32 @@
             this.label17.TabIndex = 32;
             this.label17.Text = "Antal lediga platser kvar:";
             // 
+            // checkBox_fri
+            // 
+            this.checkBox_fri.AutoSize = true;
+            this.checkBox_fri.Location = new System.Drawing.Point(790, 441);
+            this.checkBox_fri.Name = "checkBox_fri";
+            this.checkBox_fri.Size = new System.Drawing.Size(83, 17);
+            this.checkBox_fri.TabIndex = 33;
+            this.checkBox_fri.Text = "Fri placering";
+            this.checkBox_fri.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(986, 69);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(115, 13);
+            this.label18.TabIndex = 34;
+            this.label18.Text = "Antal läktarplatser kvar";
+            // 
             // Huvudsidan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(925, 533);
+            this.ClientSize = new System.Drawing.Size(1113, 533);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.checkBox_fri);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.richTextBox2);
@@ -458,5 +481,7 @@
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.CheckBox checkBox_fri;
+        private System.Windows.Forms.Label label18;
     }
 }

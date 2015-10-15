@@ -253,8 +253,11 @@ namespace FirstTry
             {
                 session.hela = true;
             }
+
+
             if (antal_ar_siffror() == true)
             {
+
                 if (session.hela == true)
                 {
                     biljetterForHela();
@@ -299,7 +302,7 @@ namespace FirstTry
             else
             {
             //Admin ska väll kunna ändra pris?
-                if (checkBox1.Checked == true)
+            if (checkBox1.Checked == true)
             {
                 this.Hide();
                 Kunduppgifter ku = new Kunduppgifter(session, aktortyper);
@@ -307,17 +310,14 @@ namespace FirstTry
 
                 this.Close();
             }
-              /*  else if (session.biljetter[0].forestallning.friplacering == true)
+            
+            else if (checkBox_fri.Checked == true)
             {
-                    //ladda biljett stuff direkt
-                    // MessageBox.Show("ITS WORKING");
-                    //ladda biljett stuff direkt
-                    //MessageBox.Show("ITS WORKING");
                     this.Hide();
                     FinalPage fp = new FinalPage(session, aktortyper);
                     fp.ShowDialog();
                     this.Close();
-                }*/
+                }
             else
             {
                 this.Hide();
@@ -482,6 +482,11 @@ namespace FirstTry
                 b.biljettyp = biljettyp;
                 b.pris = pris;
                 b.resserverad = false;
+
+                if(checkBox_fri.Checked == true)
+                {
+                    b.forestallning.friplacering = true;
+                }
 
                 session.biljetter.Add(b);
 

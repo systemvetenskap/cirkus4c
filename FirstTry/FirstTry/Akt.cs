@@ -44,13 +44,19 @@ namespace FirstTry
                 return namn + "\t "+ "\t " + Starttid.ToShortTimeString() + "\t " + AntalLedigaPlatser()  + " av 64";
             } 
         }
+        private string LaktarPlatser()
+        {
 
+
+
+            return "fuckoff";
+        }
         private string AntalLedigaPlatser()
         {
 
             NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
 
-            8string query = "SELECT COUNT(platser.id) FROM akter, platser, biljett WHERE akter.id = biljett.akt_id AND platser.id = biljett.plats_id AND akter.id = " + this.id + ";";
+            string query = "SELECT COUNT(platser.id) FROM akter, platser, biljett WHERE akter.id = biljett.akt_id AND platser.id = biljett.plats_id AND akter.id = " + this.id + ";";
             DataTable dt = new DataTable();
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
             da.Fill(dt);

@@ -21,6 +21,7 @@ namespace FirstTry
         public bool hela { get; set; }
         public bool kopt { get; set; }
         public int kund_id { get; set; }
+    //    public bool fri { get; set; }
         //datum
         //tid
 
