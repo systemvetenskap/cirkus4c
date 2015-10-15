@@ -302,7 +302,7 @@ namespace FirstTry
             else
             {
             //Admin ska väll kunna ändra pris?
-            if (checkBox1.Checked == true)
+                if (checkBox1.Checked == true)
             {
                 this.Hide();
                 Kunduppgifter ku = new Kunduppgifter(session, aktortyper);
@@ -805,8 +805,8 @@ namespace FirstTry
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            AdminForm af = new AdminForm(aktortyper);
-            af.ShowDialog();
+            Adminhuvudsida ah = new Adminhuvudsida(aktortyper);
+            ah.ShowDialog();
             this.Close();
         }
 

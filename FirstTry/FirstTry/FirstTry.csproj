@@ -58,6 +58,12 @@
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Adminhuvudsida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adminhuvudsida.Designer.cs">
+      <DependentUpon>Adminhuvudsida.cs</DependentUpon>
+    </Compile>
     <Compile Include="Akt.cs" />
     <Compile Include="Behorigheter.cs" />
     <Compile Include="Biljett.cs" />
@@ -115,9 +121,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rapporter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rapporter.Designer.cs">
+      <DependentUpon>Rapporter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tempkop.cs" />
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adminhuvudsida.resx">
+      <DependentUpon>Adminhuvudsida.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FinalForm2.resx">
       <DependentUpon>FinalForm2.cs</DependentUpon>
@@ -152,6 +167,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Rapporter.resx">
+      <DependentUpon>Rapporter.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
