@@ -17,15 +17,17 @@ namespace FirstTry
         private Forestallning valdforestallning;
         private Akt valdakt;
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+        string st;
 
         public AdminForm()
         {
             InitializeComponent();
         }
 
-        public AdminForm(List<int> aktorlista)
+        public AdminForm(List<int> aktorlista, string st2)
         {
             aktorlistaId = aktorlista;
+            st = st2;
 
             InitializeComponent();
         }
@@ -59,190 +61,136 @@ namespace FirstTry
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
-
-            if (aktorlistaId.Contains(4) == true)
+            
+            if (st=="skapaForestallning")
             {
-                uppdatera.Enabled = true;
-                buttonUppdateraAkt.Enabled = true;
-                textBoxAktVuxenpris.Enabled = true;
-                textBoxAktUngdPris.Enabled = true;
-                TextBoxAktBarnpris.Enabled = true;
-                textBoxVuxenpris.Enabled = true;
-                textBoxUngdomspris.Enabled = true;
-                textBoxBarnpris.Enabled = true;
-                label13.Text = "Sista försäljningsdag \n YYYY-mm-dd HH:mm";
-            }
-            if (aktorlistaId.Contains(5) == true || aktorlistaId.Contains(7) == true)
-            {
-                this.btnAndraTaBortBeh.Enabled = true;
-                this.btnAndraTaBortBeh.Visible = true;
-            }
-            if (aktorlistaId.Contains(9) == true)
-            {
-                checkBoxForestallning1.Enabled = true;
-                uppdatera.Enabled = true;
-                buttonUppdateraAkt.Enabled = true;
-            }
-
-            if (aktorlistaId.Contains(3) == true)
-            {
-                //Föreställning edit
-                this.buttonLaggTillForest.Enabled = true;
-                this.buttonLaggTillForest.Visible = true;
-                this.btnSkapaForestallning.Enabled = true;
-                this.btnSkapaForestallning.Visible = true;
-                this.uppdatera.Enabled = true;
-                this.uppdatera.Visible = true;
-                this.buttonTaBort.Enabled = true;
-                this.buttonTaBort.Visible = true;
-                textBoxForestNamn.Enabled = true;
-                richTextBoxForestInf.Enabled = true;
-                textBoxForestDatum1.Enabled = true;
-                textBoxForestStarttid.Enabled = true;
-                textBoxForestSluttid.Enabled = true;
-                textBoxForsaljningsslut.Enabled = true;
-                checkBoxfriPlacering.Enabled = true;
-                checkBoxForestallning1.Enabled = true;
-                //Akt edit
-                this.btnAkt.Enabled = true;
-                this.btnAkt.Visible = true;
-                this.buttonLaggTillAktInfo.Enabled = true;
-                this.buttonLaggTillAktInfo.Visible = true;
-                this.buttonUppdateraAkt.Enabled = true;
-                this.buttonUppdateraAkt.Visible = true;
-                this.button1.Enabled = true;
-                this.button1.Visible = true;
-                textBoxAktnamn.Enabled = true;
-                richTextBoxAktInf.Enabled = true;
-                textBoxAktStarttid.Enabled = true;
-                textBoxAktSluttid.Enabled = true;
-
-            }
-
-            listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
-
-        }
-        private void listBoxAdminForestallning_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            textBoxForsaljningsslut.Clear();
-            valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
-            if (valdforestallning != null)
-            {
-                listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
-                textBoxForestNamn.Text = valdforestallning.namn;
-                richTextBoxForestInf.Text = valdforestallning.generellinfo;
-                textBoxForestDatum1.Text = valdforestallning.datum.ToShortDateString();
-                textBoxForestStarttid.Text = valdforestallning.starttid.ToShortTimeString();
-                textBoxForestSluttid.Text = valdforestallning.sluttid.ToShortTimeString();
-                textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
-                textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
-                textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
-                textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString();
-
-                if (valdforestallning.friplacering == true)
-                {
-                    checkBoxfriPlacering.Checked = true;
-                }
-                else
-                {
-                    checkBoxfriPlacering.Checked = false;
-                }
-
-                if (valdforestallning.open == true)
-                {
-                    checkBoxForestallning1.Checked = true;
-                }
-                else
-                {
-                    checkBoxForestallning1.Checked = false;
-                }
-
-                    conn.Close();
-                  
-                    }
-            //Rapport();
-        }
                 
-
-
-
-
-/*private void Rapport()
-        {
-            string sql = "SELECT coalesce (sum(case when id IS NOT NULL then 1 else 0 end), 0) as totalt, coalesce (sum(case when biljettyp = 'vuxen' then 1 else 0 end), 0) as vuxen, coalesce (sum(case when biljettyp = 'ungdom' then 1 else 0 end), 0) as ungdom, coalesce (sum(case when biljettyp = 'barn' then 1 else 0 end), 0) as barn, coalesce (sum(pris), 0) as totaltKr FROM biljett WHERE forestallning_id = " + valdforestallning.id;
-            conn.Open();
-
-            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
-            
-            NpgsqlDataReader dr = cmd.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    int vuxen = Convert.ToInt32(dr["vuxen"]);
-                    int ungdom = Convert.ToInt32(dr["ungdom"]);
-                    int barn = Convert.ToInt32(dr["barn"]);
-                    int totalt = Convert.ToInt32(dr["totalt"]);
-                    int totaltKr = Convert.ToInt32(dr["totaltkr"]);
-                    label20.Text = totalt.ToString() + " st";
-                    label21.Text = vuxen.ToString() + " st";
-                    label22.Text = ungdom.ToString() + " st";
-                    label23.Text = barn.ToString() + " st";
-                    label25.Text = totaltKr.ToString() + " kr";
-                    //label14.Text = "Antal besökare";
-                    label26.Text = valdforestallning.namn;
-                } 
-            
-            conn.Close();
-
-            string sql1 = "SELECT coalesce (sum(case when id IS NOT NULL then 1 else 0 end), 0) as totalt, coalesce (sum(case when biljettyp = 'vuxen' then 1 else 0 end), 0) as vuxen, coalesce (sum(case when biljettyp = 'ungdom' then 1 else 0 end), 0) as ungdom, coalesce (sum(case when biljettyp = 'barn' then 1 else 0 end), 0) as barn, coalesce (sum(pris), 0) as totaltKr FROM biljett;";
-            conn.Open();
-
-            NpgsqlCommand cmd1 = new NpgsqlCommand(sql1, conn);
-
-            NpgsqlDataReader dr1 = cmd1.ExecuteReader();
-
-            while (dr1.Read())
-            {
-                int vuxen = Convert.ToInt32(dr1["vuxen"]);
-                int ungdom = Convert.ToInt32(dr1["ungdom"]);
-                int barn = Convert.ToInt32(dr1["barn"]);
-                int totalt = Convert.ToInt32(dr1["totalt"]);
-                int totaltKr = Convert.ToInt32(dr1["totaltkr"]);
-                label39.Text = totalt.ToString() + " st";
-                label38.Text = vuxen.ToString() + " st";
-                label37.Text = ungdom.ToString() + " st";
-                label36.Text = barn.ToString() + " st";
-                label35.Text = totaltKr.ToString() + " kr";
-               // label14.Text = "Antal besökare";
             }
 
-            conn.Close();*/
+            if (st=="uppdateraForestallning")
+            {
 
-            //string sql1 = "SELECT sum(pris) FROM biljett WHERE biljettyp = 'vuxen' UNION SELECT sum(pris) FROM biljett WHERE biljettyp = 'ungdom' UNION SELECT sum(pris) FROM biljett WHERE biljettyp = 'barn'";
-            //conn.Open();
-            //NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql1, conn);
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            //DataTableReader dr1 = new DataTableReader(dt);
-            ////NpgsqlCommand cmd1 = new NpgsqlCommand(sql1, conn);
+            }
 
-            ////NpgsqlDataReader dr1 = cmd1.ExecuteReader();
-            //foreach (DataRow item in dt.Rows)
-            //{
-            //    int vuxen1 = Convert.ToInt32(dr1[0]);
+            if (st == "skapaAkt")
+            {
 
-            //    int barn1 = Convert.ToInt32(dr1[1]);
-            //    int ungdom1 = Convert.ToInt32(dr1[2]);
-            //    label27.Text = vuxen1.ToString() + " kr";
-            //    label28.Text = ungdom1.ToString() + " kr";
-            //    label29.Text = barn1.ToString() + " kr";
-            //}
+            }
+
+            if (st == "uppdateraAkt")
+            {
+
+            }
+
+            /* if (aktorlistaId.Contains(4) == true)
+             {
+                 uppdatera.Enabled = true;
+                 buttonUppdateraAkt.Enabled = true;
+                 textBoxAktVuxenpris.Enabled = true;
+                 textBoxAktUngdPris.Enabled = true;
+                 TextBoxAktBarnpris.Enabled = true;
+                 textBoxVuxenpris.Enabled = true;
+                 textBoxUngdomspris.Enabled = true;
+                 textBoxBarnpris.Enabled = true;
+                 label13.Text = "Sista försäljningsdag \n YYYY-mm-dd HH:mm";
+             }
+             if (aktorlistaId.Contains(5) == true || aktorlistaId.Contains(7) == true)
+             {
+                 this.btnAndraTaBortBeh.Enabled = true;
+                 this.btnAndraTaBortBeh.Visible = true;
+             }
+             if (aktorlistaId.Contains(9) == true)
+             {
+                 checkBoxForestallning1.Enabled = true;
+                 uppdatera.Enabled = true;
+                 buttonUppdateraAkt.Enabled = true;
+             }
+
+             if (aktorlistaId.Contains(3) == true)
+             {
+                 //Föreställning edit
+                 this.buttonLaggTillForest.Enabled = true;
+                 this.buttonLaggTillForest.Visible = true;
+                 this.btnSkapaForestallning.Enabled = true;
+                 this.btnSkapaForestallning.Visible = true;
+                 this.uppdatera.Enabled = true;
+                 this.uppdatera.Visible = true;
+                 this.buttonTaBort.Enabled = true;
+                 this.buttonTaBort.Visible = true;
+                 textBoxForestNamn.Enabled = true;
+                 richTextBoxForestInf.Enabled = true;
+                 textBoxForestDatum1.Enabled = true;
+                 textBoxForestStarttid.Enabled = true;
+                 textBoxForestSluttid.Enabled = true;
+                 textBoxForsaljningsslut.Enabled = true;
+                 checkBoxfriPlacering.Enabled = true;
+                 checkBoxForestallning1.Enabled = true;
+                 //Akt edit
+                 this.btnAkt.Enabled = true;
+                 this.btnAkt.Visible = true;
+                 this.buttonLaggTillAktInfo.Enabled = true;
+                 this.buttonLaggTillAktInfo.Visible = true;
+                 this.buttonUppdateraAkt.Enabled = true;
+                 this.buttonUppdateraAkt.Visible = true;
+                 this.button1.Enabled = true;
+                 this.button1.Visible = true;
+                 textBoxAktnamn.Enabled = true;
+                 richTextBoxAktInf.Enabled = true;
+                 textBoxAktStarttid.Enabled = true;
+                 textBoxAktSluttid.Enabled = true;
+
+             }*/
+
+              listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+
+          }
+
+
+          private void listBoxAdminForestallning_SelectedIndexChanged(object sender, EventArgs e)
+          {
+              textBoxForsaljningsslut.Clear();
+              valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
+              if (valdforestallning != null)
+              {
+                  listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+                  textBoxForestNamn.Text = valdforestallning.namn;
+                  richTextBoxForestInf.Text = valdforestallning.generellinfo;
+                  textBoxForestDatum1.Text = valdforestallning.datum.ToShortDateString();
+                  textBoxForestStarttid.Text = valdforestallning.starttid.ToShortTimeString();
+                  textBoxForestSluttid.Text = valdforestallning.sluttid.ToShortTimeString();
+                  textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
+                  textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
+                  textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
+                  textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString();
+
+                  if (valdforestallning.friplacering == true)
+                  {
+                      checkBoxfriPlacering.Checked = true;
+                  }
+                  else
+                  {
+                      checkBoxfriPlacering.Checked = false;
+                  }
+
+                  if (valdforestallning.open == true)
+                  {
+                      checkBoxForestallning1.Checked = true;
+                  }
+                  else
+                  {
+                      checkBoxForestallning1.Checked = false;
+                  }
+
+                      conn.Close();
+
+                      }
+                       }
+
+              
 
 
 
-
-            //conn.Close();
-        //}
+        
 
 
 
@@ -938,6 +886,19 @@ namespace FirstTry
         private void btn_Avbryt_Click(object sender, EventArgs e)
         {
            
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxForestDatum1_TextChanged(object sender, EventArgs e)
+        {
+            //if (textBoxForestDatum1.)
+            //{
+            //    MessageBox.Show("jeyyy");
+            //}
         }
     }
 

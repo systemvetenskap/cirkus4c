@@ -67,72 +67,40 @@
             this.btnSkapaForestallning = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.checkBoxfriPlacering = new System.Windows.Forms.CheckBox();
-            this.lblforestallningoppen = new System.Windows.Forms.Label();
             this.btnAndraTaBortBeh = new System.Windows.Forms.Button();
             this.textBoxForsaljningsslut = new System.Windows.Forms.TextBox();
             this.btnAkt = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
             this.checkBoxForestallning1 = new System.Windows.Forms.CheckBox();
             this.textBoxForestDatum1 = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.btn_Huvud = new System.Windows.Forms.Button();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
+            this.lblforestallningoppen = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBoxAdminForestallning
             // 
             this.listBoxAdminForestallning.FormattingEnabled = true;
-            this.listBoxAdminForestallning.ItemHeight = 16;
-            this.listBoxAdminForestallning.Location = new System.Drawing.Point(251, 124);
-            this.listBoxAdminForestallning.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxAdminForestallning.Location = new System.Drawing.Point(188, 101);
             this.listBoxAdminForestallning.Name = "listBoxAdminForestallning";
-            this.listBoxAdminForestallning.Size = new System.Drawing.Size(271, 484);
+            this.listBoxAdminForestallning.Size = new System.Drawing.Size(204, 394);
             this.listBoxAdminForestallning.TabIndex = 11;
             this.listBoxAdminForestallning.SelectedIndexChanged += new System.EventHandler(this.listBoxAdminForestallning_SelectedIndexChanged);
             // 
             // textBoxForestNamn
             // 
             this.textBoxForestNamn.Enabled = false;
-            this.textBoxForestNamn.Location = new System.Drawing.Point(37, 128);
-            this.textBoxForestNamn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxForestNamn.Location = new System.Drawing.Point(28, 104);
             this.textBoxForestNamn.Name = "textBoxForestNamn";
-            this.textBoxForestNamn.Size = new System.Drawing.Size(179, 22);
+            this.textBoxForestNamn.Size = new System.Drawing.Size(135, 20);
             this.textBoxForestNamn.TabIndex = 1;
             this.textBoxForestNamn.TextChanged += new System.EventHandler(this.textBoxForestNamn_TextChanged);
             // 
             // labelForestNamn
             // 
             this.labelForestNamn.AutoSize = true;
-            this.labelForestNamn.Location = new System.Drawing.Point(33, 108);
-            this.labelForestNamn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelForestNamn.Location = new System.Drawing.Point(25, 88);
             this.labelForestNamn.Name = "labelForestNamn";
-            this.labelForestNamn.Size = new System.Drawing.Size(131, 17);
+            this.labelForestNamn.Size = new System.Drawing.Size(97, 13);
             this.labelForestNamn.TabIndex = 2;
             this.labelForestNamn.Text = "Föreställningsnamn";
             this.labelForestNamn.Click += new System.EventHandler(this.label1_Click);
@@ -140,10 +108,9 @@
             // buttonLaggTillForest
             // 
             this.buttonLaggTillForest.Enabled = false;
-            this.buttonLaggTillForest.Location = new System.Drawing.Point(251, 629);
-            this.buttonLaggTillForest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLaggTillForest.Location = new System.Drawing.Point(188, 511);
             this.buttonLaggTillForest.Name = "buttonLaggTillForest";
-            this.buttonLaggTillForest.Size = new System.Drawing.Size(272, 28);
+            this.buttonLaggTillForest.Size = new System.Drawing.Size(204, 23);
             this.buttonLaggTillForest.TabIndex = 13;
             this.buttonLaggTillForest.Text = "Skapa ny föreställning";
             this.buttonLaggTillForest.UseVisualStyleBackColor = true;
@@ -153,21 +120,18 @@
             // listBoxAkter
             // 
             this.listBoxAkter.FormattingEnabled = true;
-            this.listBoxAkter.ItemHeight = 16;
-            this.listBoxAkter.Location = new System.Drawing.Point(736, 124);
-            this.listBoxAkter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxAkter.Location = new System.Drawing.Point(740, 101);
             this.listBoxAkter.Name = "listBoxAkter";
-            this.listBoxAkter.Size = new System.Drawing.Size(281, 484);
+            this.listBoxAkter.Size = new System.Drawing.Size(212, 394);
             this.listBoxAkter.TabIndex = 23;
             this.listBoxAkter.SelectedIndexChanged += new System.EventHandler(this.listBoxAkter_SelectedIndexChanged);
             // 
             // buttonLaggTillAktInfo
             // 
             this.buttonLaggTillAktInfo.Enabled = false;
-            this.buttonLaggTillAktInfo.Location = new System.Drawing.Point(736, 629);
-            this.buttonLaggTillAktInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLaggTillAktInfo.Location = new System.Drawing.Point(740, 508);
             this.buttonLaggTillAktInfo.Name = "buttonLaggTillAktInfo";
-            this.buttonLaggTillAktInfo.Size = new System.Drawing.Size(283, 28);
+            this.buttonLaggTillAktInfo.Size = new System.Drawing.Size(212, 23);
             this.buttonLaggTillAktInfo.TabIndex = 25;
             this.buttonLaggTillAktInfo.Text = "Skapa ny akt";
             this.buttonLaggTillAktInfo.UseVisualStyleBackColor = true;
@@ -177,10 +141,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(543, 154);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(407, 125);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 17);
+            this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Aktinfo";
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
@@ -188,10 +151,9 @@
             // richTextBoxAktInf
             // 
             this.richTextBoxAktInf.Enabled = false;
-            this.richTextBoxAktInf.Location = new System.Drawing.Point(547, 176);
-            this.richTextBoxAktInf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBoxAktInf.Location = new System.Drawing.Point(410, 143);
             this.richTextBoxAktInf.Name = "richTextBoxAktInf";
-            this.richTextBoxAktInf.Size = new System.Drawing.Size(179, 102);
+            this.richTextBoxAktInf.Size = new System.Drawing.Size(135, 84);
             this.richTextBoxAktInf.TabIndex = 17;
             this.richTextBoxAktInf.Text = "";
             this.richTextBoxAktInf.TextChanged += new System.EventHandler(this.richTextBoxAktInf_TextChanged);
@@ -199,146 +161,131 @@
             // richTextBoxForestInf
             // 
             this.richTextBoxForestInf.Enabled = false;
-            this.richTextBoxForestInf.Location = new System.Drawing.Point(37, 176);
-            this.richTextBoxForestInf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBoxForestInf.Location = new System.Drawing.Point(28, 143);
             this.richTextBoxForestInf.Name = "richTextBoxForestInf";
-            this.richTextBoxForestInf.Size = new System.Drawing.Size(179, 102);
+            this.richTextBoxForestInf.Size = new System.Drawing.Size(135, 84);
             this.richTextBoxForestInf.TabIndex = 2;
             this.richTextBoxForestInf.Text = "";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 154);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(33, 125);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(170, 17);
+            this.label2.Size = new System.Drawing.Size(125, 13);
             this.label2.TabIndex = 10;
             this.label2.Text = "Föreställnings information";
             // 
             // Lable3
             // 
             this.Lable3.AutoSize = true;
-            this.Lable3.Location = new System.Drawing.Point(543, 106);
-            this.Lable3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lable3.Location = new System.Drawing.Point(407, 86);
             this.Lable3.Name = "Lable3";
-            this.Lable3.Size = new System.Drawing.Size(63, 17);
+            this.Lable3.Size = new System.Drawing.Size(49, 13);
             this.Lable3.TabIndex = 12;
             this.Lable3.Text = "Aktnamn";
             // 
             // textBoxAktnamn
             // 
             this.textBoxAktnamn.Enabled = false;
-            this.textBoxAktnamn.Location = new System.Drawing.Point(547, 126);
-            this.textBoxAktnamn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAktnamn.Location = new System.Drawing.Point(410, 102);
             this.textBoxAktnamn.Name = "textBoxAktnamn";
-            this.textBoxAktnamn.Size = new System.Drawing.Size(159, 22);
+            this.textBoxAktnamn.Size = new System.Drawing.Size(120, 20);
             this.textBoxAktnamn.TabIndex = 16;
             // 
             // textBoxAktStarttid
             // 
             this.textBoxAktStarttid.Enabled = false;
-            this.textBoxAktStarttid.Location = new System.Drawing.Point(547, 393);
-            this.textBoxAktStarttid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAktStarttid.Location = new System.Drawing.Point(410, 319);
             this.textBoxAktStarttid.Name = "textBoxAktStarttid";
-            this.textBoxAktStarttid.Size = new System.Drawing.Size(159, 22);
+            this.textBoxAktStarttid.Size = new System.Drawing.Size(120, 20);
             this.textBoxAktStarttid.TabIndex = 18;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(543, 368);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(407, 299);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 17);
+            this.label4.Size = new System.Drawing.Size(78, 13);
             this.label4.TabIndex = 15;
             this.label4.Text = "Starttid HH:mm";
             // 
             // textBoxAktSluttid
             // 
             this.textBoxAktSluttid.Enabled = false;
-            this.textBoxAktSluttid.Location = new System.Drawing.Point(547, 441);
-            this.textBoxAktSluttid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAktSluttid.Location = new System.Drawing.Point(410, 358);
             this.textBoxAktSluttid.Name = "textBoxAktSluttid";
-            this.textBoxAktSluttid.Size = new System.Drawing.Size(159, 22);
+            this.textBoxAktSluttid.Size = new System.Drawing.Size(120, 20);
             this.textBoxAktSluttid.TabIndex = 19;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(543, 420);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(407, 341);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 17);
+            this.label5.Size = new System.Drawing.Size(74, 13);
             this.label5.TabIndex = 17;
             this.label5.Text = "Sluttid HH:mm";
             // 
             // textBoxAktVuxenpris
             // 
             this.textBoxAktVuxenpris.Enabled = false;
-            this.textBoxAktVuxenpris.Location = new System.Drawing.Point(547, 492);
-            this.textBoxAktVuxenpris.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAktVuxenpris.Location = new System.Drawing.Point(410, 400);
             this.textBoxAktVuxenpris.Name = "textBoxAktVuxenpris";
-            this.textBoxAktVuxenpris.Size = new System.Drawing.Size(159, 22);
+            this.textBoxAktVuxenpris.Size = new System.Drawing.Size(120, 20);
             this.textBoxAktVuxenpris.TabIndex = 20;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(543, 469);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(407, 381);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 17);
+            this.label6.Size = new System.Drawing.Size(53, 13);
             this.label6.TabIndex = 19;
             this.label6.Text = "Vuxenpris";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(39, 368);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(29, 299);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(103, 17);
+            this.label7.Size = new System.Drawing.Size(78, 13);
             this.label7.TabIndex = 20;
             this.label7.Text = "Starttid HH:mm";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(37, 420);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(28, 341);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(97, 17);
+            this.label8.Size = new System.Drawing.Size(74, 13);
             this.label8.TabIndex = 21;
             this.label8.Text = "Sluttid HH:mm";
             // 
             // textBoxForestStarttid
             // 
             this.textBoxForestStarttid.Enabled = false;
-            this.textBoxForestStarttid.Location = new System.Drawing.Point(37, 393);
-            this.textBoxForestStarttid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxForestStarttid.Location = new System.Drawing.Point(28, 319);
             this.textBoxForestStarttid.Name = "textBoxForestStarttid";
-            this.textBoxForestStarttid.Size = new System.Drawing.Size(189, 22);
+            this.textBoxForestStarttid.Size = new System.Drawing.Size(143, 20);
             this.textBoxForestStarttid.TabIndex = 4;
             this.textBoxForestStarttid.TextChanged += new System.EventHandler(this.textBoxForestStarttid_TextChanged);
             // 
             // textBoxForestSluttid
             // 
             this.textBoxForestSluttid.Enabled = false;
-            this.textBoxForestSluttid.Location = new System.Drawing.Point(37, 441);
-            this.textBoxForestSluttid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxForestSluttid.Location = new System.Drawing.Point(28, 358);
             this.textBoxForestSluttid.Name = "textBoxForestSluttid";
-            this.textBoxForestSluttid.Size = new System.Drawing.Size(189, 22);
+            this.textBoxForestSluttid.Size = new System.Drawing.Size(143, 20);
             this.textBoxForestSluttid.TabIndex = 5;
             this.textBoxForestSluttid.TextChanged += new System.EventHandler(this.textBoxForestSluttid_TextChanged);
             // 
             // uppdatera
             // 
             this.uppdatera.Enabled = false;
-            this.uppdatera.Location = new System.Drawing.Point(251, 665);
-            this.uppdatera.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.uppdatera.Location = new System.Drawing.Point(188, 540);
             this.uppdatera.Name = "uppdatera";
-            this.uppdatera.Size = new System.Drawing.Size(272, 28);
+            this.uppdatera.Size = new System.Drawing.Size(204, 23);
             this.uppdatera.TabIndex = 14;
             this.uppdatera.Text = "Uppdatera föreställning";
             this.uppdatera.UseVisualStyleBackColor = true;
@@ -347,10 +294,9 @@
             // buttonTaBort
             // 
             this.buttonTaBort.Enabled = false;
-            this.buttonTaBort.Location = new System.Drawing.Point(251, 700);
-            this.buttonTaBort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonTaBort.Location = new System.Drawing.Point(188, 569);
             this.buttonTaBort.Name = "buttonTaBort";
-            this.buttonTaBort.Size = new System.Drawing.Size(272, 28);
+            this.buttonTaBort.Size = new System.Drawing.Size(204, 23);
             this.buttonTaBort.TabIndex = 15;
             this.buttonTaBort.Text = "Ta bort föreställning";
             this.buttonTaBort.UseVisualStyleBackColor = true;
@@ -359,68 +305,61 @@
             // textBoxVuxenpris
             // 
             this.textBoxVuxenpris.Enabled = false;
-            this.textBoxVuxenpris.Location = new System.Drawing.Point(37, 492);
-            this.textBoxVuxenpris.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxVuxenpris.Location = new System.Drawing.Point(28, 400);
             this.textBoxVuxenpris.Name = "textBoxVuxenpris";
-            this.textBoxVuxenpris.Size = new System.Drawing.Size(189, 22);
+            this.textBoxVuxenpris.Size = new System.Drawing.Size(143, 20);
             this.textBoxVuxenpris.TabIndex = 6;
             this.textBoxVuxenpris.TextChanged += new System.EventHandler(this.textBoxVuxenpris_TextChanged);
             // 
             // textBoxUngdomspris
             // 
             this.textBoxUngdomspris.Enabled = false;
-            this.textBoxUngdomspris.Location = new System.Drawing.Point(37, 545);
-            this.textBoxUngdomspris.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxUngdomspris.Location = new System.Drawing.Point(28, 443);
             this.textBoxUngdomspris.Name = "textBoxUngdomspris";
-            this.textBoxUngdomspris.Size = new System.Drawing.Size(189, 22);
+            this.textBoxUngdomspris.Size = new System.Drawing.Size(143, 20);
             this.textBoxUngdomspris.TabIndex = 7;
             // 
             // textBoxBarnpris
             // 
             this.textBoxBarnpris.Enabled = false;
-            this.textBoxBarnpris.Location = new System.Drawing.Point(37, 596);
-            this.textBoxBarnpris.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxBarnpris.Location = new System.Drawing.Point(28, 484);
             this.textBoxBarnpris.Name = "textBoxBarnpris";
-            this.textBoxBarnpris.Size = new System.Drawing.Size(189, 22);
+            this.textBoxBarnpris.Size = new System.Drawing.Size(143, 20);
             this.textBoxBarnpris.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(39, 576);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(29, 468);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 17);
+            this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 31;
             this.label3.Text = "Barnpris";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(37, 522);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(28, 424);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(91, 17);
+            this.label9.Size = new System.Drawing.Size(68, 13);
             this.label9.TabIndex = 32;
             this.label9.Text = "Ungdomspris";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(40, 469);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(30, 381);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(70, 17);
+            this.label10.Size = new System.Drawing.Size(53, 13);
             this.label10.TabIndex = 33;
             this.label10.Text = "Vuxenpris";
             // 
             // buttonUppdateraAkt
             // 
             this.buttonUppdateraAkt.Enabled = false;
-            this.buttonUppdateraAkt.Location = new System.Drawing.Point(736, 665);
-            this.buttonUppdateraAkt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonUppdateraAkt.Location = new System.Drawing.Point(740, 537);
             this.buttonUppdateraAkt.Name = "buttonUppdateraAkt";
-            this.buttonUppdateraAkt.Size = new System.Drawing.Size(283, 28);
+            this.buttonUppdateraAkt.Size = new System.Drawing.Size(212, 23);
             this.buttonUppdateraAkt.TabIndex = 26;
             this.buttonUppdateraAkt.Text = "Uppdatera akt";
             this.buttonUppdateraAkt.UseVisualStyleBackColor = true;
@@ -429,10 +368,9 @@
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(736, 700);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(552, 569);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(283, 28);
+            this.button1.Size = new System.Drawing.Size(212, 23);
             this.button1.TabIndex = 27;
             this.button1.Text = "Ta bort akt";
             this.button1.UseVisualStyleBackColor = true;
@@ -441,49 +379,45 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(543, 522);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(407, 424);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(91, 17);
+            this.label11.Size = new System.Drawing.Size(68, 13);
             this.label11.TabIndex = 36;
             this.label11.Text = "Ungdomspris";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(543, 576);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(407, 468);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(61, 17);
+            this.label12.Size = new System.Drawing.Size(45, 13);
             this.label12.TabIndex = 37;
             this.label12.Text = "Barnpris";
             // 
             // textBoxAktUngdPris
             // 
             this.textBoxAktUngdPris.Enabled = false;
-            this.textBoxAktUngdPris.Location = new System.Drawing.Point(547, 545);
-            this.textBoxAktUngdPris.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAktUngdPris.Location = new System.Drawing.Point(410, 443);
             this.textBoxAktUngdPris.Name = "textBoxAktUngdPris";
-            this.textBoxAktUngdPris.Size = new System.Drawing.Size(159, 22);
+            this.textBoxAktUngdPris.Size = new System.Drawing.Size(120, 20);
             this.textBoxAktUngdPris.TabIndex = 21;
             // 
             // TextBoxAktBarnpris
             // 
             this.TextBoxAktBarnpris.Enabled = false;
-            this.TextBoxAktBarnpris.Location = new System.Drawing.Point(547, 596);
-            this.TextBoxAktBarnpris.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TextBoxAktBarnpris.Location = new System.Drawing.Point(410, 484);
             this.TextBoxAktBarnpris.Name = "TextBoxAktBarnpris";
-            this.TextBoxAktBarnpris.Size = new System.Drawing.Size(159, 22);
+            this.TextBoxAktBarnpris.Size = new System.Drawing.Size(120, 20);
             this.TextBoxAktBarnpris.TabIndex = 22;
             this.TextBoxAktBarnpris.TextChanged += new System.EventHandler(this.TextBoxAktBarnpris_TextChanged);
             // 
             // btnSkapaForestallning
             // 
             this.btnSkapaForestallning.Enabled = false;
-            this.btnSkapaForestallning.Location = new System.Drawing.Point(251, 735);
-            this.btnSkapaForestallning.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSkapaForestallning.Location = new System.Drawing.Point(188, 597);
+            this.btnSkapaForestallning.Margin = new System.Windows.Forms.Padding(2);
             this.btnSkapaForestallning.Name = "btnSkapaForestallning";
-            this.btnSkapaForestallning.Size = new System.Drawing.Size(272, 26);
+            this.btnSkapaForestallning.Size = new System.Drawing.Size(204, 21);
             this.btnSkapaForestallning.TabIndex = 12;
             this.btnSkapaForestallning.Text = "Töm textfält föreställning";
             this.btnSkapaForestallning.UseVisualStyleBackColor = true;
@@ -492,10 +426,9 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(33, 631);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(25, 513);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(277, 17);
+            this.label13.Size = new System.Drawing.Size(206, 13);
             this.label13.TabIndex = 43;
             this.label13.Text = "Sista försäljningsdag YYYY-mm-dd HH:mm";
             this.label13.Click += new System.EventHandler(this.label13_Click);
@@ -504,34 +437,20 @@
             // 
             this.checkBoxfriPlacering.AutoSize = true;
             this.checkBoxfriPlacering.Enabled = false;
-            this.checkBoxfriPlacering.Location = new System.Drawing.Point(37, 714);
-            this.checkBoxfriPlacering.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxfriPlacering.Location = new System.Drawing.Point(28, 580);
             this.checkBoxfriPlacering.Name = "checkBoxfriPlacering";
-            this.checkBoxfriPlacering.Size = new System.Drawing.Size(108, 21);
+            this.checkBoxfriPlacering.Size = new System.Drawing.Size(83, 17);
             this.checkBoxfriPlacering.TabIndex = 10;
             this.checkBoxfriPlacering.Text = "Fri placering";
             this.checkBoxfriPlacering.UseVisualStyleBackColor = true;
             // 
-            // lblforestallningoppen
-            // 
-            this.lblforestallningoppen.AutoSize = true;
-            this.lblforestallningoppen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblforestallningoppen.ForeColor = System.Drawing.Color.Green;
-            this.lblforestallningoppen.Location = new System.Drawing.Point(43, 73);
-            this.lblforestallningoppen.Name = "lblforestallningoppen";
-            this.lblforestallningoppen.Size = new System.Drawing.Size(227, 25);
-            this.lblforestallningoppen.TabIndex = 46;
-            this.lblforestallningoppen.Text = "Föreställningen är öppen";
-            this.lblforestallningoppen.Visible = false;
-            this.lblforestallningoppen.Click += new System.EventHandler(this.label14_Click);
-            // 
             // btnAndraTaBortBeh
             // 
             this.btnAndraTaBortBeh.Enabled = false;
-            this.btnAndraTaBortBeh.Location = new System.Drawing.Point(251, 14);
-            this.btnAndraTaBortBeh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAndraTaBortBeh.Location = new System.Drawing.Point(188, 11);
+            this.btnAndraTaBortBeh.Margin = new System.Windows.Forms.Padding(2);
             this.btnAndraTaBortBeh.Name = "btnAndraTaBortBeh";
-            this.btnAndraTaBortBeh.Size = new System.Drawing.Size(172, 43);
+            this.btnAndraTaBortBeh.Size = new System.Drawing.Size(129, 35);
             this.btnAndraTaBortBeh.TabIndex = 28;
             this.btnAndraTaBortBeh.Text = "Ändra behörigheter";
             this.btnAndraTaBortBeh.UseVisualStyleBackColor = true;
@@ -540,10 +459,9 @@
             // textBoxForsaljningsslut
             // 
             this.textBoxForsaljningsslut.Enabled = false;
-            this.textBoxForsaljningsslut.Location = new System.Drawing.Point(37, 676);
-            this.textBoxForsaljningsslut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxForsaljningsslut.Location = new System.Drawing.Point(28, 549);
             this.textBoxForsaljningsslut.Name = "textBoxForsaljningsslut";
-            this.textBoxForsaljningsslut.Size = new System.Drawing.Size(189, 22);
+            this.textBoxForsaljningsslut.Size = new System.Drawing.Size(143, 20);
             this.textBoxForsaljningsslut.TabIndex = 9;
             this.textBoxForsaljningsslut.Text = "yyyy-mm-dd hh:mm";
             this.textBoxForsaljningsslut.TextChanged += new System.EventHandler(this.textBoxForsaljningsslut_TextChanged);
@@ -551,287 +469,22 @@
             // btnAkt
             // 
             this.btnAkt.Enabled = false;
-            this.btnAkt.Location = new System.Drawing.Point(736, 735);
-            this.btnAkt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAkt.Location = new System.Drawing.Point(552, 597);
+            this.btnAkt.Margin = new System.Windows.Forms.Padding(2);
             this.btnAkt.Name = "btnAkt";
-            this.btnAkt.Size = new System.Drawing.Size(283, 26);
+            this.btnAkt.Size = new System.Drawing.Size(212, 21);
             this.btnAkt.TabIndex = 24;
             this.btnAkt.Text = "Töm textfält akt";
             this.btnAkt.UseVisualStyleBackColor = true;
             this.btnAkt.Click += new System.EventHandler(this.btnAkt_Click);
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(1312, 158);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(47, 17);
-            this.label15.TabIndex = 51;
-            this.label15.Text = "Vuxna";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(1375, 158);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(74, 17);
-            this.label16.TabIndex = 52;
-            this.label16.Text = "Ungdomar";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(1457, 158);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(38, 17);
-            this.label17.TabIndex = 53;
-            this.label17.Text = "Barn";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(1112, 219);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(51, 17);
-            this.label18.TabIndex = 54;
-            this.label18.Text = "Kronor";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(1167, 174);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(548, 17);
-            this.label19.TabIndex = 55;
-            this.label19.Text = "---------------------------------------------------------------------------------" +
-    "---------------------------";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(1171, 194);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(54, 17);
-            this.label20.TabIndex = 56;
-            this.label20.Text = "label20";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(1312, 194);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(54, 17);
-            this.label21.TabIndex = 57;
-            this.label21.Text = "label21";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(1376, 194);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(54, 17);
-            this.label22.TabIndex = 58;
-            this.label22.Text = "label22";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(1457, 194);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(54, 17);
-            this.label23.TabIndex = 59;
-            this.label23.Text = "label23";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(1171, 219);
-            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(54, 17);
-            this.label25.TabIndex = 64;
-            this.label25.Text = "label25";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(1089, 124);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(178, 20);
-            this.label24.TabIndex = 65;
-            this.label24.Text = "Försäljningsrapport:";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(1277, 128);
-            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(89, 17);
-            this.label26.TabIndex = 66;
-            this.label26.Text = "Föreställning";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(1277, 367);
-            this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(40, 17);
-            this.label33.TabIndex = 82;
-            this.label33.Text = "Total";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(1089, 364);
-            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(178, 20);
-            this.label34.TabIndex = 81;
-            this.label34.Text = "Försäljningsrapport:";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(1148, 459);
-            this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(54, 17);
-            this.label35.TabIndex = 80;
-            this.label35.Text = "label35";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(1435, 434);
-            this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(54, 17);
-            this.label36.TabIndex = 79;
-            this.label36.Text = "label36";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(1353, 434);
-            this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(54, 17);
-            this.label37.TabIndex = 78;
-            this.label37.Text = "label37";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(1289, 434);
-            this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(54, 17);
-            this.label38.TabIndex = 77;
-            this.label38.Text = "label38";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(1148, 434);
-            this.label39.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(54, 17);
-            this.label39.TabIndex = 76;
-            this.label39.Text = "label39";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(1144, 414);
-            this.label40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(548, 17);
-            this.label40.TabIndex = 75;
-            this.label40.Text = "---------------------------------------------------------------------------------" +
-    "---------------------------";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(1089, 459);
-            this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(51, 17);
-            this.label41.TabIndex = 74;
-            this.label41.Text = "Kronor";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(1435, 398);
-            this.label42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(38, 17);
-            this.label42.TabIndex = 73;
-            this.label42.Text = "Barn";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(1352, 398);
-            this.label43.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(74, 17);
-            this.label43.TabIndex = 72;
-            this.label43.Text = "Ungdomar";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(1289, 398);
-            this.label44.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(47, 17);
-            this.label44.TabIndex = 71;
-            this.label44.Text = "Vuxna";
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(1036, 434);
-            this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(103, 17);
-            this.label45.TabIndex = 70;
-            this.label45.Text = "Antal besökare";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(1059, 194);
-            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(103, 17);
-            this.label27.TabIndex = 83;
-            this.label27.Text = "Antal besökare";
-            // 
             // checkBoxForestallning1
             // 
             this.checkBoxForestallning1.AutoSize = true;
             this.checkBoxForestallning1.Enabled = false;
-            this.checkBoxForestallning1.Location = new System.Drawing.Point(37, 740);
-            this.checkBoxForestallning1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxForestallning1.Location = new System.Drawing.Point(28, 601);
             this.checkBoxForestallning1.Name = "checkBoxForestallning1";
-            this.checkBoxForestallning1.Size = new System.Drawing.Size(154, 21);
+            this.checkBoxForestallning1.Size = new System.Drawing.Size(117, 17);
             this.checkBoxForestallning1.TabIndex = 84;
             this.checkBoxForestallning1.Text = "Öppna föreställning";
             this.checkBoxForestallning1.UseVisualStyleBackColor = true;
@@ -840,90 +493,55 @@
             // textBoxForestDatum1
             // 
             this.textBoxForestDatum1.Enabled = false;
-            this.textBoxForestDatum1.Location = new System.Drawing.Point(37, 340);
-            this.textBoxForestDatum1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxForestDatum1.Location = new System.Drawing.Point(28, 276);
             this.textBoxForestDatum1.Name = "textBoxForestDatum1";
-            this.textBoxForestDatum1.Size = new System.Drawing.Size(189, 22);
+            this.textBoxForestDatum1.Size = new System.Drawing.Size(143, 20);
             this.textBoxForestDatum1.TabIndex = 85;
+            this.textBoxForestDatum1.TextChanged += new System.EventHandler(this.textBoxForestDatum1_TextChanged);
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(44, 316);
-            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label28.Location = new System.Drawing.Point(33, 257);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(137, 17);
+            this.label28.Size = new System.Drawing.Size(103, 13);
             this.label28.TabIndex = 86;
             this.label28.Text = "Datum YYYY-mm-dd";
             // 
             // btn_Huvud
             // 
-            this.btn_Huvud.Location = new System.Drawing.Point(47, 14);
-            this.btn_Huvud.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Huvud.Location = new System.Drawing.Point(35, 11);
+            this.btn_Huvud.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Huvud.Name = "btn_Huvud";
-            this.btn_Huvud.Size = new System.Drawing.Size(172, 43);
+            this.btn_Huvud.Size = new System.Drawing.Size(129, 35);
             this.btn_Huvud.TabIndex = 88;
             this.btn_Huvud.Text = "Tillbaka till Huvudsidan";
             this.btn_Huvud.UseVisualStyleBackColor = true;
             this.btn_Huvud.Click += new System.EventHandler(this.btn_Huvud_Click);
             // 
-            // label29
+            // lblforestallningoppen
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(1148, 398);
-            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(40, 17);
-            this.label29.TabIndex = 89;
-            this.label29.Text = "Total";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(1171, 158);
-            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(40, 17);
-            this.label30.TabIndex = 90;
-            this.label30.Text = "Total";
+            this.lblforestallningoppen.AutoSize = true;
+            this.lblforestallningoppen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblforestallningoppen.ForeColor = System.Drawing.Color.Green;
+            this.lblforestallningoppen.Location = new System.Drawing.Point(32, 59);
+            this.lblforestallningoppen.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblforestallningoppen.Name = "lblforestallningoppen";
+            this.lblforestallningoppen.Size = new System.Drawing.Size(185, 20);
+            this.lblforestallningoppen.TabIndex = 46;
+            this.lblforestallningoppen.Text = "Föreställningen är öppen";
+            this.lblforestallningoppen.Visible = false;
+            this.lblforestallningoppen.Click += new System.EventHandler(this.label14_Click);
             // 
             // AdminForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1704, 791);
-            this.Controls.Add(this.label30);
-            this.Controls.Add(this.label29);
+            this.ClientSize = new System.Drawing.Size(1278, 643);
             this.Controls.Add(this.btn_Huvud);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.textBoxForestDatum1);
             this.Controls.Add(this.checkBoxForestallning1);
-            this.Controls.Add(this.label27);
-            this.Controls.Add(this.label33);
-            this.Controls.Add(this.label34);
-            this.Controls.Add(this.label35);
-            this.Controls.Add(this.label36);
-            this.Controls.Add(this.label37);
-            this.Controls.Add(this.label38);
-            this.Controls.Add(this.label39);
-            this.Controls.Add(this.label40);
-            this.Controls.Add(this.label41);
-            this.Controls.Add(this.label42);
-            this.Controls.Add(this.label43);
-            this.Controls.Add(this.label44);
-            this.Controls.Add(this.label45);
-            this.Controls.Add(this.label26);
-            this.Controls.Add(this.label24);
-            this.Controls.Add(this.label25);
-            this.Controls.Add(this.label23);
-            this.Controls.Add(this.label22);
-            this.Controls.Add(this.label21);
-            this.Controls.Add(this.label20);
-            this.Controls.Add(this.label19);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label15);
             this.Controls.Add(this.btnAkt);
             this.Controls.Add(this.textBoxForsaljningsslut);
             this.Controls.Add(this.btnAndraTaBortBeh);
@@ -967,9 +585,8 @@
             this.Controls.Add(this.labelForestNamn);
             this.Controls.Add(this.textBoxForestNamn);
             this.Controls.Add(this.listBoxAdminForestallning);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AdminForm";
-            this.Text = "  ";
+            this.Text = "AdminForm";
             this.Load += new System.EventHandler(this.AdminForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1017,46 +634,18 @@
         private System.Windows.Forms.Button btnSkapaForestallning;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckBox checkBoxfriPlacering;
-        private System.Windows.Forms.Label lblforestallningoppen;
         private System.Windows.Forms.Button btnAndraTaBortBeh;
         private System.Windows.Forms.TextBox textBoxForsaljningsslut;
         private System.Windows.Forms.Button btnAkt;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBoxForestDatum;
         //private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox checkBoxForestallning;
-        private System.Windows.Forms.Label label27;
         private System.Windows.Forms.CheckBox checkBoxForestallning1;
         private System.Windows.Forms.TextBox textBoxForestDatum1;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Button btn_Huvud;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label lblforestallningoppen;
     }
 }

@@ -78,8 +78,47 @@ namespace FirstTry
 
         private void buttonUppdateraForest_Click(object sender, EventArgs e)
         {
-            //string st = uppdateraForestallning;
-            //st = Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
+            this.Hide();
+            string st= "uppdateraForestallning";
+            AdminForm af = new AdminForm();
+            af.ShowDialog();
+            this.Close();
+
+
+            //x = Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
+        }
+
+        private void buttonNyForestallning_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            string st = "skapaForestallning";
+            AdminForm af = new AdminForm();
+            af.ShowDialog();
+            this.Close();
+        }
+
+        private void buttonTaBortForest_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSkapaNyAkt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            string st = "skapaAkt";
+            AdminForm af = new AdminForm();
+            af.ShowDialog();
+            this.Close();
+        }
+
+        private void buttonUppdateraAkt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            string st = "uppdateraAkt";
+            AdminForm af = new AdminForm();
+            af.ShowDialog();
+            this.Close();
+            
         }
     }
 }
