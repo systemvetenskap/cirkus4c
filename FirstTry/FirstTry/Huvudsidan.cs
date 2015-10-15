@@ -81,7 +81,6 @@ namespace FirstTry
                         string info = row["generell_info"].ToString();
                         string namn = row["namn"].ToString();
                         string id = row["id"].ToString();
-                        bool fri = (bool)row["fri_placering"];
                         int vuxen = Convert.ToInt32(row["vuxenpris"]);
                         int ungdom = Convert.ToInt32(row["ungdomspris"]);
                         int barn = Convert.ToInt32(row["barnpris"]);
@@ -92,7 +91,6 @@ namespace FirstTry
                         fs.generellinfo = info;
                         fs.namn = namn;
                         fs.id = Convert.ToInt32(id);
-                        fs.friplacering = fri;
                         fs.barn = barn;
                         fs.ungdom = ungdom;
                         fs.vuxen = vuxen;

@@ -163,14 +163,14 @@ namespace FirstTry
                   textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
                   textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString();
 
-                  if (valdforestallning.friplacering == true)
-                  {
-                      checkBoxfriPlacering.Checked = true;
-                  }
-                  else
-                  {
-                      checkBoxfriPlacering.Checked = false;
-                  }
+                  //if (valdforestallning.friplacering == true)
+                  //{
+                  //    checkBoxfriPlacering.Checked = true;
+                  //}
+                  //else
+                  //{
+                  //    checkBoxfriPlacering.Checked = false;
+                  //}
 
                   if (valdforestallning.open == true)
                   {
@@ -209,13 +209,13 @@ namespace FirstTry
             int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
-            bool friplacering = false;
+            //bool friplacering = false;
              DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
-            if (checkBoxfriPlacering.Checked == true)
-            {
-                friplacering = true;
-            }
+            //if (checkBoxfriPlacering.Checked == true)
+            //{
+            //    friplacering = true;
+            //}
 
 
                 if (checkBoxForestallning1.Checked == true)
@@ -503,7 +503,7 @@ namespace FirstTry
             int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
-            bool friplacering = false;
+           // bool friplacering = false;
                 DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
 
@@ -527,7 +527,7 @@ namespace FirstTry
                     {
                         if (vuxenpris >= ungdomspris && vuxenpris >= barnpris && ungdomspris >= barnpris)
                         {
-                            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
+                            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, forsaljningsslut);
                             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
                             MessageBox.Show("Föreställningen har nu uppdaterats");
                         }

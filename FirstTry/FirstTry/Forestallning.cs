@@ -22,7 +22,6 @@ namespace FirstTry
         public int ungdomspris { get; set; }
         public int barnpris { get; set; }
         public DateTime forsaljningsslut { get; set; }
-        public bool friplacering { get; set; }
         public List<Akt> akter { get; set; }
         public int vuxen { get; set; }
         public int ungdom { get; set; }
