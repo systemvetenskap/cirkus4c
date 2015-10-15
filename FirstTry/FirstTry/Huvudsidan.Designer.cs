@@ -60,6 +60,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBox_forestallning
@@ -367,11 +368,21 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(750, 69);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(123, 13);
+            this.label17.TabIndex = 32;
+            this.label17.Text = "Antal lediga platser kvar:";
+            // 
             // Huvudsidan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(925, 533);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.richTextBox1);
@@ -446,5 +457,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label17;
     }
 }

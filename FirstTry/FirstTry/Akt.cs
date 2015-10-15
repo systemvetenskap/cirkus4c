@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Npgsql;
+using System.Data;
 
 namespace FirstTry
 {
@@ -22,6 +24,7 @@ namespace FirstTry
 
         public override string ToString()
         {
+            
             int antalChar = 0;
 
             for (int i = 0; i < namn.Length; i++)
@@ -31,14 +34,43 @@ namespace FirstTry
 
             if (antalChar > 9)
             {
-                return namn + "\t " + Starttid.ToShortTimeString();
-            }
+                string antalLedig;
+                antalLedig = AntalLedigaPlatser();
+
+                return namn + "\t " + Starttid.ToShortTimeString() + "\t "+ "\t " + AntalLedigaPlatser() + " av 64"; 
+            } 
             else
             {
-                return namn + "\t "+ "\t " + Starttid.ToShortTimeString();
+                return namn + "\t "+ "\t " + Starttid.ToShortTimeString() + "\t " + AntalLedigaPlatser()  + " av 64";
+            } 
+        }
+
+        private string AntalLedigaPlatser()
+        {
+
+            NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+
+            8string query = "SELECT COUNT(platser.id) FROM akter, platser, biljett WHERE akter.id = biljett.akt_id AND platser.id = biljett.plats_id AND akter.id = " + this.id + ";";
+            DataTable dt = new DataTable();
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+            da.Fill(dt);
+
+            int lediga = 0;
+
+
+            foreach (DataRow row in dt.Rows)
+            {
+                lediga = Convert.ToInt32(row["count"]);
             }
 
-           
+            
+
+            lediga = 64 - lediga;
+            
+
+            return lediga.ToString();
         }
+
+
     }
 }
