@@ -88,7 +88,6 @@
             // 
             // textBoxForestNamn
             // 
-            this.textBoxForestNamn.Enabled = false;
             this.textBoxForestNamn.Location = new System.Drawing.Point(28, 104);
             this.textBoxForestNamn.Name = "textBoxForestNamn";
             this.textBoxForestNamn.Size = new System.Drawing.Size(135, 20);
@@ -160,7 +159,6 @@
             // 
             // richTextBoxForestInf
             // 
-            this.richTextBoxForestInf.Enabled = false;
             this.richTextBoxForestInf.Location = new System.Drawing.Point(28, 143);
             this.richTextBoxForestInf.Name = "richTextBoxForestInf";
             this.richTextBoxForestInf.Size = new System.Drawing.Size(135, 84);
@@ -300,6 +298,7 @@
             this.buttonTaBort.TabIndex = 15;
             this.buttonTaBort.Text = "Ta bort föreställning";
             this.buttonTaBort.UseVisualStyleBackColor = true;
+            this.buttonTaBort.Visible = false;
             this.buttonTaBort.Click += new System.EventHandler(this.buttonTaBort_Click);
             // 
             // textBoxVuxenpris
@@ -413,7 +412,6 @@
             // 
             // btnSkapaForestallning
             // 
-            this.btnSkapaForestallning.Enabled = false;
             this.btnSkapaForestallning.Location = new System.Drawing.Point(188, 597);
             this.btnSkapaForestallning.Margin = new System.Windows.Forms.Padding(2);
             this.btnSkapaForestallning.Name = "btnSkapaForestallning";
@@ -443,6 +441,7 @@
             this.checkBoxfriPlacering.TabIndex = 10;
             this.checkBoxfriPlacering.Text = "Fri placering";
             this.checkBoxfriPlacering.UseVisualStyleBackColor = true;
+            this.checkBoxfriPlacering.Visible = false;
             this.checkBoxfriPlacering.CheckedChanged += new System.EventHandler(this.checkBoxfriPlacering_CheckedChanged);
             // 
             // btnAndraTaBortBeh
@@ -465,6 +464,7 @@
             this.textBoxForsaljningsslut.Size = new System.Drawing.Size(143, 20);
             this.textBoxForsaljningsslut.TabIndex = 9;
             this.textBoxForsaljningsslut.Text = "yyyy-mm-dd hh:mm";
+            this.textBoxForsaljningsslut.Visible = false;
             this.textBoxForsaljningsslut.TextChanged += new System.EventHandler(this.textBoxForsaljningsslut_TextChanged);
             // 
             // btnAkt
@@ -489,6 +489,7 @@
             this.checkBoxForestallning1.TabIndex = 84;
             this.checkBoxForestallning1.Text = "Öppna föreställning";
             this.checkBoxForestallning1.UseVisualStyleBackColor = true;
+            this.checkBoxForestallning1.Visible = false;
             this.checkBoxForestallning1.CheckedChanged += new System.EventHandler(this.checkBoxForestallning1_CheckedChanged);
             // 
             // textBoxForestDatum1
