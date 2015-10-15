@@ -97,7 +97,7 @@ namespace FirstTry
                     foreach (Akt item in tk.akter)
                     {
                         string query = "select * from biljett where akt_id = "; //And where fri = false
-                        query += item.id.ToString();
+                        query += item.id.ToString() + " AND fri_placering = false";
                         NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
                         DataTable dt = new DataTable();
 

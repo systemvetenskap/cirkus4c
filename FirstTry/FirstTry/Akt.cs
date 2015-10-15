@@ -42,7 +42,7 @@ namespace FirstTry
             } 
             else
             {
-                return namn + "\t "+ "\t " + Starttid.ToShortTimeString() + "\t " + AntalLedigaPlatser();
+                return namn + "\t "+ "\t " + Starttid.ToShortTimeString() + "\t " + AntalLedigaPlatser() + "\t " + "\t " + "\t " + LaktarPlatser();
             } 
         }
         private string LaktarPlatser()
@@ -63,7 +63,10 @@ namespace FirstTry
 
 
             lediga = 250 - lediga;
-
+            if (lediga == 0)
+            {
+                return "Fullbokat";
+            }
 
             return lediga.ToString() + " av 250";
         }
@@ -85,7 +88,11 @@ namespace FirstTry
             
 
             lediga = 64 - lediga;
-            
+
+            if (lediga == 0)
+            {
+                return "Fullbokat";
+            }
 
             return lediga.ToString() + " av 64";
         }
