@@ -179,13 +179,13 @@ namespace FirstTry
             conn.Open();
             try
             {
-                string query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, plats_id, reserverad, tidsstampel) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @plats_id, @reserverad, @tidsstampel) RETURNING id;";
+                string query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, plats_id, reserverad, tidsstampel, fri_placering) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @plats_id, @reserverad, @tidsstampel, @fri_placering) RETURNING id;";
                 Biljett biljetten = new Biljett();
 
 
                 if (tk.biljetter[tk.fuskIgen].resserverad == true)
                 {
-                    query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, plats_id, reserverad, tidsstampel, kund_id) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @plats_id, @reserverad, @tidsstampel, @kund_id) RETURNING id;";
+                    query = "INSERT INTO biljett (pris, forestallning_id, akt_id, biljettyp, plats_id, reserverad, tidsstampel, kund_id, fri_placering) VALUES(@pris, @forestallning_id, @akt_id, @biljettyp, @plats_id, @reserverad, @tidsstampel, @kund_id, @fri_placering) RETURNING id;";
                 }
 
 
@@ -200,6 +200,8 @@ namespace FirstTry
                 command.Parameters.AddWithValue("@plats_id", tk.biljetter[tk.fuskIgen].plats_id);
                 command.Parameters.AddWithValue("@reserverad", tk.biljetter[tk.fuskIgen].resserverad);
                 command.Parameters.AddWithValue("@tidsstampel", DateTime.Now);
+
+                command.Parameters.AddWithValue("@fri_placering", tk.biljetter[tk.fuskIgen].forestallning.friplacering);
 
                 if (tk.biljetter[tk.fuskIgen].resserverad == true)
                 {
@@ -371,38 +373,42 @@ namespace FirstTry
             foreach (DataRow row in dt.Rows)
             {
 
-
-
-             /*   if (x >= 8)
+                if ((bool)row["fri_placering"] == true)
                 {
-                    MessageBox.Show("Tyvärr finns inte tillräkligt med plats, innanför");
-                    this.Hide();
-                    Huvudsidan hu = new Huvudsidan();
-                    hu.ShowDialog();
-                    Close();
+                    
                 }
                 else
-                { */
+                {
+                    /*   if (x >= 8)
+                       {
+                           MessageBox.Show("Tyvärr finns inte tillräkligt med plats, innanför");
+                           this.Hide();
+                           Huvudsidan hu = new Huvudsidan();
+                           hu.ShowDialog();
+                           Close();
+                       }
+                       else
+                       { */
                     string platsid = row["plats_id"].ToString();
                     bool vecka = false;
                     DateTime dt = new DateTime();
-                // dt = (DateTime)row["tidsstampel"];
+                    // dt = (DateTime)row["tidsstampel"];
 
-                if ((bool)row["reserverad"] == true)
-                {
-                    DateTime dat = (DateTime)row["tidsstampel"];
+                    if ((bool)row["reserverad"] == true)
+                    {
+                        DateTime dat = (DateTime)row["tidsstampel"];
 
-                    DateTime nu = DateTime.Now;
+                        DateTime nu = DateTime.Now;
 
-                    TimeSpan ts = new TimeSpan(7, 0, 0, 0);
-                    //TimeSpan elapsed = nu.Subtract(dat);
-                    DateTime test = tk.biljetter[0].forestallning.forsaljningsslut.Subtract(ts);
+                        TimeSpan ts = new TimeSpan(7, 0, 0, 0);
+                        //TimeSpan elapsed = nu.Subtract(dat);
+                        DateTime test = tk.biljetter[0].forestallning.forsaljningsslut.Subtract(ts);
                         if (test < DateTime.Now)
                         {
                             vecka = true;
                         }
                     }
-                    
+
                     string query2 = "select nummer from platser where id =" + platsid;
 
 
@@ -493,10 +499,12 @@ namespace FirstTry
                         gk(button_C7, fusk, vecka, platsid, id);
                         gk(button_C8, fusk, vecka, platsid, id);
 
-                    // }
+                        // }
+                    }
+                    dr.Close();
+                    x++;
                 }
-                dr.Close();
-                x++;
+
             }
         }
 

@@ -10,6 +10,7 @@ namespace FirstTry
 {
     class Akt
     {
+        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
 
         public string namn { get; set; }
         public int id { get; set; }
@@ -37,25 +38,37 @@ namespace FirstTry
                 string antalLedig;
                 antalLedig = AntalLedigaPlatser();
 
-                return namn + "\t " + Starttid.ToShortTimeString() + "\t "+ "\t " + AntalLedigaPlatser() + " av 64"; 
+                return namn + "\t " + Starttid.ToShortTimeString() + "\t " + "\t " + AntalLedigaPlatser() + "\t " + "\t " + "\t " + LaktarPlatser(); 
             } 
             else
             {
-                return namn + "\t "+ "\t " + Starttid.ToShortTimeString() + "\t " + AntalLedigaPlatser()  + " av 64";
+                return namn + "\t "+ "\t " + Starttid.ToShortTimeString() + "\t " + AntalLedigaPlatser();
             } 
         }
         private string LaktarPlatser()
         {
+            string query = "SELECT COUNT(biljett.id) FROM public.akter, public.biljett WHERE akter.id = biljett.akt_id AND biljett.fri_placering = true AND akter.id =" + this.id + ";";
+            DataTable dt = new DataTable();
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+            da.Fill(dt);
+
+            int lediga = 0;
+
+
+            foreach (DataRow row in dt.Rows)
+            {
+                lediga = Convert.ToInt32(row["count"]);
+            }
 
 
 
-            return "fuckoff";
+            lediga = 250 - lediga;
+
+
+            return lediga.ToString() + " av 250";
         }
         private string AntalLedigaPlatser()
         {
-
-            NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
-
             string query = "SELECT COUNT(platser.id) FROM akter, platser, biljett WHERE akter.id = biljett.akt_id AND platser.id = biljett.plats_id AND akter.id = " + this.id + ";";
             DataTable dt = new DataTable();
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
@@ -74,7 +87,7 @@ namespace FirstTry
             lediga = 64 - lediga;
             
 
-            return lediga.ToString();
+            return lediga.ToString() + " av 64";
         }
 
 

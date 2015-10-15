@@ -487,6 +487,10 @@ namespace FirstTry
                 {
                     b.forestallning.friplacering = true;
                 }
+                else
+                {
+                    b.forestallning.friplacering = false;
+                }
 
                 session.biljetter.Add(b);
 
