@@ -161,17 +161,9 @@ namespace FirstTry
                   textBoxVuxenpris.Text = valdforestallning.vuxenpris.ToString();
                   textBoxUngdomspris.Text = valdforestallning.ungdomspris.ToString();
                   textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
-                  textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString();
+                 // textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString();
 
-                  if (valdforestallning.friplacering == true)
-                  {
-                      checkBoxfriPlacering.Checked = true;
-                  }
-                  else
-                  {
-                      checkBoxfriPlacering.Checked = false;
-                  }
-
+                 
                   if (valdforestallning.open == true)
                   {
                       checkBoxForestallning1.Checked = true;
@@ -212,10 +204,10 @@ namespace FirstTry
             bool friplacering = false;
              DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
-            if (checkBoxfriPlacering.Checked == true)
-            {
-                friplacering = true;
-            }
+            //if (checkBoxfriPlacering.Checked == true)
+            //{
+            //    friplacering = true;
+            //}
 
 
                 if (checkBoxForestallning1.Checked == true)
@@ -899,6 +891,11 @@ namespace FirstTry
             //{
             //    MessageBox.Show("jeyyy");
             //}
+        }
+
+        private void checkBoxfriPlacering_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
