@@ -78,8 +78,8 @@ namespace FirstTry
 
         private void buttonUppdateraForest_Click(object sender, EventArgs e)
         {
-            //string x;
-            //x = Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
+            //string st = uppdateraForestallning;
+            //st = Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, friplacering, forsaljningsslut);
         }
     }
 }
