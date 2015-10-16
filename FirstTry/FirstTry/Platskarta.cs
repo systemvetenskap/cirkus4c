@@ -375,7 +375,7 @@ namespace FirstTry
 
                 if ((bool)row["fri_placering"] == true)
                 {
-                    
+
                 }
                 else
                 {

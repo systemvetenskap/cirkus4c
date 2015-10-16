@@ -39,9 +39,76 @@ namespace FirstTry
             session = new Tempkop();
 
         }
+        private bool harDenVarit(int forestalnings_id)
+        {
+            string query = "SELECT * from forestallning where id = " + forestalnings_id.ToString();
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                if ((DateTime)row["datum"] <= DateTime.Now )
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+
+
+        }
+        private void FriBokadeVecka()
+        {
+            string query = "SELECT forestallning.datum, biljett.reserverad, biljett.id FROM public.biljett, public.forestallning WHERE biljett.forestallning_id = forestallning.id and biljett.reserverad = true;";
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+            DataTable dt = new DataTable();
+            DateTime dtime = new DateTime();
+            bool vecka = false;
+            da.Fill(dt);
+
+            foreach (DataRow row in dt.Rows)
+            {
+
+                if ((bool)row["reserverad"] == true)
+                {
+                    DateTime dat = (DateTime)row["datum"];
+
+                    DateTime nu = DateTime.Now;
+
+                    TimeSpan ts = new TimeSpan(7, 0, 0, 0);
+                    //TimeSpan elapsed = nu.Subtract(dat);
+                    DateTime test = dat.Subtract(ts);
+                    if (test < DateTime.Now)
+                    {
+                        vecka = true;
+                    }
+                    if (vecka == true)
+                    {
+                        string querry2 = "delete from biljett where id = " + row["id"].ToString();
+
+                        NpgsqlCommand command = new NpgsqlCommand(querry2, conn);
+                        command.ExecuteNonQuery();
+
+                    }
+
+                }
+            }
+
+            // dt = (DateTime)row["tidsstampel"];
+
+
+        }
         private void Huvudsidan_Load(object sender, EventArgs e)
         {
-            
+
+            conn.Open();
+            FriBokadeVecka();
+            conn.Close();
+
             if (aktortyper.Contains(3) == true || aktortyper.Contains(4) == true || aktortyper.Contains(5) == true || aktortyper.Contains(6) == true || aktortyper.Contains(7) == true || aktortyper.Contains(9) == true)
             {
                 this.button3.Enabled = true;
@@ -78,68 +145,74 @@ namespace FirstTry
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    
-                   
 
-                    if ((bool)row["open"] == true )
+
+                    if (harDenVarit(Convert.ToInt32(row["id"])) == false)
                     {
-                        DateTime slutdatum = (DateTime)row["forsaljningslut"];
-                       // if (slutdatum > DateTime.Now)
-                    {
-                        string info = row["generell_info"].ToString();
-                        string namn = row["namn"].ToString();
-                        string id = row["id"].ToString();
-                      //  bool fri = (bool)row["fri_placering"];
-                        int vuxen = Convert.ToInt32(row["vuxenpris"]);
-                        int ungdom = Convert.ToInt32(row["ungdomspris"]);
-                        int barn = Convert.ToInt32(row["barnpris"]);
-                        DateTime datum = (DateTime)row["datum"];
-                        DateTime tid = (DateTime)row["starttid"];
-                        Forestallning fs = new Forestallning();
-                        fs.akter = new List<Akt>();
-                        fs.generellinfo = info;
-                        fs.namn = namn;
-                        fs.id = Convert.ToInt32(id);
-                       // fs.friplacering = fri;
-                        fs.barn = barn;
-                        fs.ungdom = ungdom;
-                        fs.vuxen = vuxen;
-                        fs.datum = datum;
-                        fs.starttid = tid;
-                        fs.forsaljningsslut = slutdatum;
-                        listBox_forestallning.Items.Add(fs);
-                        //forenamn += forenummer;
-                        //forenummer++;
-
-
-                        string query2 = "select * from akter where forestallningsid = " + fs.id.ToString();
-                        NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
-                        DataTable dt2 = new DataTable();
-                        da2.Fill(dt2);
-                        foreach (DataRow row2 in dt2.Rows)
+                        if ((bool)row["open"] == true)
                         {
-                            Akt akt = new Akt();
-                                string aktinfo = row2["aktinfo"].ToString();
-                                string aktnamn = row2["aktnamn"].ToString();
-                            string aktid = row2["id"].ToString();
-                            //  int aktpris = Convert.ToInt32(row2["vuxenpris"]);
-                            int vuxen2 = Convert.ToInt32(row2["vuxenpris"]);
-                            int ungdom2 = Convert.ToInt32(row2["ungdomspris"]);
-                            int barn2 = Convert.ToInt32(row2["barnpris"]);
-                            DateTime tidakt = (DateTime)row2["starttid"];
-                            akt.namn = aktnamn;
-                            akt.id = Convert.ToInt32(aktid);
-                            akt.vuxen = vuxen2;
-                            akt.ungdom = ungdom2;
-                            akt.barn = barn2;
-                            akt.Starttid = tidakt;
-                            akt.Aktinfo = aktinfo;
-                            fs.akter.Add(akt);
-                        }
-                        
+                            DateTime slutdatum = (DateTime)row["forsaljningslut"];
+                            if (slutdatum > DateTime.Now)
+                            //  { 
+                            {
+                                string info = row["generell_info"].ToString();
+                                string namn = row["namn"].ToString();
+                                string id = row["id"].ToString();
+                                //  bool fri = (bool)row["fri_placering"];
+                                int vuxen = Convert.ToInt32(row["vuxenpris"]);
+                                int ungdom = Convert.ToInt32(row["ungdomspris"]);
+                                int barn = Convert.ToInt32(row["barnpris"]);
+                                DateTime datum = (DateTime)row["datum"];
+                                DateTime tid = (DateTime)row["starttid"];
+                                Forestallning fs = new Forestallning();
+                                fs.akter = new List<Akt>();
+                                fs.generellinfo = info;
+                                fs.namn = namn;
+                                fs.id = Convert.ToInt32(id);
+                                // fs.friplacering = fri;
+                                fs.barn = barn;
+                                fs.ungdom = ungdom;
+                                fs.vuxen = vuxen;
+                                fs.datum = datum;
+                                fs.starttid = tid;
+                                fs.forsaljningsslut = slutdatum;
+                                listBox_forestallning.Items.Add(fs);
 
- 
-                    }
+
+                                //forenamn += forenummer;
+                                //forenummer++;
+
+
+                                string query2 = "select * from akter where forestallningsid = " + fs.id.ToString();
+                                NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
+                                DataTable dt2 = new DataTable();
+                                da2.Fill(dt2);
+                                foreach (DataRow row2 in dt2.Rows)
+                                {
+                                    Akt akt = new Akt();
+                                    string aktinfo = row2["aktinfo"].ToString();
+                                    string aktnamn = row2["aktnamn"].ToString();
+                                    string aktid = row2["id"].ToString();
+                                    //  int aktpris = Convert.ToInt32(row2["vuxenpris"]);
+                                    int vuxen2 = Convert.ToInt32(row2["vuxenpris"]);
+                                    int ungdom2 = Convert.ToInt32(row2["ungdomspris"]);
+                                    int barn2 = Convert.ToInt32(row2["barnpris"]);
+                                    DateTime tidakt = (DateTime)row2["starttid"];
+                                    akt.namn = aktnamn;
+                                    akt.id = Convert.ToInt32(aktid);
+                                    akt.vuxen = vuxen2;
+                                    akt.ungdom = ungdom2;
+                                    akt.barn = barn2;
+                                    akt.Starttid = tidakt;
+                                    akt.Aktinfo = aktinfo;
+                                    fs.akter.Add(akt);
+                                }
+
+
+                            }
+                            //    }
+                        }
+
                     }
 
 
