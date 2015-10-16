@@ -313,7 +313,7 @@ namespace FirstTry
 
                                 Databasmetoder.LaggTillNyForestallning(namn, generellinfo, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
 
-                                Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris,forsaljningsslut);
+                                
 
                                 listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
                                // buttonLaggTillForest.Enabled = false;
@@ -607,7 +607,7 @@ namespace FirstTry
 
                             Databasmetoder.UppdateraForestallning(id, namn, generellinfo, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
 
-                            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, forsaljningsslut);
+                           
 
                             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
                             MessageBox.Show("Föreställningen har nu uppdaterats");
