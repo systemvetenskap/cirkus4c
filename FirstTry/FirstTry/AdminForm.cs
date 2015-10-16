@@ -60,14 +60,8 @@ namespace FirstTry
             
             if (st=="skapaForestallning")
             {
-                //this.buttonLaggTillForest.Enabled = false;
-                //this.buttonLaggTillForest.Visible = false;
-                this.btnSkapaForestallning.Enabled = true;
-                this.btnSkapaForestallning.Visible = true;
-                //this.uppdatera.Enabled = true;
-                //this.uppdatera.Visible = true;
-                //this.buttonTaBort.Enabled = true;
-                //this.buttonTaBort.Visible = true;
+                buttonLaggTillForest.Enabled = true;
+                buttonLaggTillForest.Visible = true;
                 textBoxForestNamn.Enabled = true;
                 textBoxForestNamn.Visible = true;
                 richTextBoxForestInf.Enabled = true;
@@ -79,7 +73,7 @@ namespace FirstTry
                 textBoxForestSluttid.Enabled = true;
                 textBoxForestSluttid.Visible = true;
                 textBoxForsaljningsslut.Enabled = true;
-               textBoxVuxenpris.Enabled = true;
+                textBoxVuxenpris.Enabled = true;
                 textBoxVuxenpris.Visible = true;
                 textBoxUngdomspris.Enabled = true;
                 textBoxUngdomspris.Visible = true;
@@ -87,60 +81,117 @@ namespace FirstTry
                 textBoxBarnpris.Visible = true;
                 listBoxAkter.Visible = false;
                 listBoxAkter.Enabled = false;
-                //Akt edit
-                //this.btnAkt.Enabled = true;
-                //this.btnAkt.Visible = true;
-                //this.buttonLaggTillAktInfo.Enabled = true;
-                //this.buttonLaggTillAktInfo.Visible = true;
-                //this.buttonUppdateraAkt.Enabled = true;
-                //this.buttonUppdateraAkt.Visible = true;
-                //this.button1.Enabled = true;
-                //this.button1.Visible = true;
-                //textBoxAktnamn.Enabled = true;
-                //richTextBoxAktInf.Enabled = true;
-                //textBoxAktStarttid.Enabled = true;
-                //textBoxAktSluttid.Enabled = true;
+                label2.Visible = true;
+                label28.Visible = true;
+                label7.Visible = true;
+                label8.Visible = true;
+                label9.Visible = true;
+                label10.Visible = true;
+                label3.Visible = true;
+                labelForestNamn.Visible = true;
+                
             }
 
             if (st=="uppdateraForestallning")
             {
-                //this.buttonLaggTillForest.Enabled = false;
-                //this.buttonLaggTillForest.Visible = false;
-                this.btnSkapaForestallning.Enabled = true;
-                this.btnSkapaForestallning.Visible = true;
-                //this.uppdatera.Enabled = true;
-                //this.uppdatera.Visible = true;
-                //this.buttonTaBort.Enabled = true;
-                //this.buttonTaBort.Visible = true;
+               
+                uppdatera.Enabled = true;
+                uppdatera.Visible = true;
                 textBoxForestNamn.Enabled = true;
                 richTextBoxForestInf.Enabled = true;
                 textBoxForestDatum1.Enabled = true;
                 textBoxForestStarttid.Enabled = true;
                 textBoxForestSluttid.Enabled = true;
                 textBoxForsaljningsslut.Enabled = true;
-                //Akt edit
-                //this.btnAkt.Enabled = true;
-                //this.btnAkt.Visible = true;
-                //this.buttonLaggTillAktInfo.Enabled = true;
-                //this.buttonLaggTillAktInfo.Visible = true;
-                //this.buttonUppdateraAkt.Enabled = true;
-                //this.buttonUppdateraAkt.Visible = true;
-                //this.button1.Enabled = true;
-                //this.button1.Visible = true;
-                //textBoxAktnamn.Enabled = true;
-                //richTextBoxAktInf.Enabled = true;
-                //textBoxAktStarttid.Enabled = true;
-                //textBoxAktSluttid.Enabled = true;
+                textBoxForestNamn.Enabled = true;
+                textBoxForestNamn.Visible = true;
+                richTextBoxForestInf.Enabled = true;
+                richTextBoxForestInf.Visible = true;
+                textBoxForestDatum1.Enabled = true;
+                textBoxForestDatum1.Visible = true;
+                textBoxForestStarttid.Enabled = true;
+                textBoxForestStarttid.Visible = true;
+                textBoxForestSluttid.Enabled = true;
+                textBoxForestSluttid.Visible = true;
+                textBoxForsaljningsslut.Enabled = true;
+                textBoxVuxenpris.Enabled = true;
+                textBoxVuxenpris.Visible = true;
+                textBoxUngdomspris.Enabled = true;
+                textBoxUngdomspris.Visible = true;
+                textBoxBarnpris.Enabled = true;
+                textBoxBarnpris.Visible = true;
+                listBoxAkter.Visible = false;
+                listBoxAkter.Enabled = false;
+                label2.Visible = true;
+                label28.Visible = true;
+                label7.Visible = true;
+                label8.Visible = true;
+                label9.Visible = true;
+                label10.Visible = true;
+                label3.Visible = true;
+                labelForestNamn.Visible = true;
             }
 
             if (st == "skapaAkt")
             {
-
+                buttonLaggTillAktInfo.Enabled = true;
+                buttonLaggTillAktInfo.Visible = true;
+                listBoxAdminForestallning.Visible = true;
+                listBoxAdminForestallning.Enabled = true;
+                listBoxAkter.Visible = true;
+                listBoxAkter.Enabled = true;
+                textBoxAktnamn.Visible = true;
+                textBoxAktnamn.Enabled = true;
+                richTextBoxAktInf.Visible = true;
+                richTextBoxAktInf.Enabled = true;
+                TextBoxAktBarnpris.Visible = true;
+                textBoxAktStarttid.Enabled = true;
+                textBoxAktStarttid.Visible = true;
+                textBoxAktSluttid.Enabled = true;
+                textBoxAktSluttid.Visible = true;
+                TextBoxAktBarnpris.Enabled = true;
+                textBoxAktUngdPris.Enabled = true;
+                textBoxAktUngdPris.Visible = true;
+                textBoxAktVuxenpris.Visible = true;
+                textBoxAktVuxenpris.Enabled = true;
+                Lable3.Visible = true;
+                label1.Visible = true;
+                label4.Visible = true;
+                label5.Visible = true;
+                label6.Visible = true;
+                label11.Visible = true;
+                label12.Visible = true;
             }
 
             if (st == "uppdateraAkt")
             {
-
+                buttonUppdateraAkt.Enabled = true;
+                buttonUppdateraAkt.Visible = true;
+                listBoxAdminForestallning.Visible = true;
+                listBoxAdminForestallning.Enabled = true;
+                listBoxAkter.Visible = true;
+                listBoxAkter.Enabled = true;
+                textBoxAktnamn.Visible = true;
+                textBoxAktnamn.Enabled = true;
+                richTextBoxAktInf.Visible = true;
+                richTextBoxAktInf.Enabled = true;
+                TextBoxAktBarnpris.Visible = true;
+                textBoxAktStarttid.Enabled = true;
+                textBoxAktStarttid.Visible = true;
+                textBoxAktSluttid.Enabled = true;
+                textBoxAktSluttid.Visible = true;
+                TextBoxAktBarnpris.Enabled = true;
+                textBoxAktUngdPris.Enabled = true;
+                textBoxAktUngdPris.Visible = true;
+                textBoxAktVuxenpris.Visible = true;
+                textBoxAktVuxenpris.Enabled = true;
+                Lable3.Visible = true;
+                label1.Visible = true;
+                label4.Visible = true;
+                label5.Visible = true;
+                label6.Visible = true;
+                label11.Visible = true;
+                label12.Visible = true;
             }
 
             /* if (aktorlistaId.Contains(4) == true)
@@ -211,7 +262,7 @@ namespace FirstTry
           {
               textBoxForsaljningsslut.Clear();
               valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
-              if (valdforestallning != null)
+              if (valdforestallning != null&& st!= "skapaForestallning")
               {
                   listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
                   textBoxForestNamn.Text = valdforestallning.namn;
@@ -224,23 +275,23 @@ namespace FirstTry
                   textBoxBarnpris.Text = valdforestallning.barnpris.ToString();
                   textBoxForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString();
 
-                  if (valdforestallning.friplacering == true)
-                  {
-                      checkBoxfriPlacering.Checked = true;
-                  }
-                  else
-                  {
-                      checkBoxfriPlacering.Checked = false;
-                  }
+                  //if (valdforestallning.friplacering == true)
+                  //{
+                  //    checkBoxfriPlacering.Checked = true;
+                  //}
+                  //else
+                  //{
+                  //    checkBoxfriPlacering.Checked = false;
+                  //}
 
-                  if (valdforestallning.open == true)
-                  {
-                      checkBoxForestallning1.Checked = true;
-                  }
-                  else
-                  {
-                      checkBoxForestallning1.Checked = false;
-                  }
+                  //if (valdforestallning.open == true)
+                  //{
+                  //    checkBoxForestallning1.Checked = true;
+                  //}
+                  //else
+                  //{
+                  //    checkBoxForestallning1.Checked = false;
+                  //}
 
                       conn.Close();
 
@@ -298,7 +349,7 @@ namespace FirstTry
                         {
                             //if (forsaljningsslut.Date <= datum.Date)
                             //{
-                                Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris,forsaljningsslut);
+                                Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
                                 listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
                                // buttonLaggTillForest.Enabled = false;
                                // listBoxAdminForestallning.SelectionMode = SelectionMode.One;
@@ -346,7 +397,7 @@ namespace FirstTry
         private void listBoxAkter_SelectedIndexChanged(object sender, EventArgs e)
         {
             valdforestallning = (Forestallning)listBoxAdminForestallning.SelectedItem;
-            if (valdforestallning != null)
+            if (valdforestallning != null && st != "skapaAkt")
             {
                 valdakt = (Akt)listBoxAkter.SelectedItem;
                 
@@ -589,7 +640,7 @@ namespace FirstTry
                     {
                         if (vuxenpris >= ungdomspris && vuxenpris >= barnpris && ungdomspris >= barnpris)
                         {
-                            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, forsaljningsslut);
+                            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
                             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
                             MessageBox.Show("Föreställningen har nu uppdaterats");
                         }
