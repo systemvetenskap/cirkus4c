@@ -51,6 +51,8 @@ namespace FirstTry
             }
             listBoxForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
 
+
+
           
         }
 
@@ -203,6 +205,7 @@ namespace FirstTry
             {
                 listBoxAkt.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
                 richTextBoxForestallning.Text = valdforestallning.generellinfo;
+                labelForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString();
             }
 
         }
@@ -302,5 +305,19 @@ namespace FirstTry
             }
 
         }
-     }
+
+        private void LabelOppen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelForsaljningsslut_Click(object sender, EventArgs e)
+        {
+            if (valdforestallning != null)
+            {
+
+                labelForsaljningsslut.Text = ("t.o.m " + valdforestallning.forsaljningsslut.ToShortDateString());
+            }
+        }
+    }
 }

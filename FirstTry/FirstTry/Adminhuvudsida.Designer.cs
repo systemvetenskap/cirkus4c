@@ -49,6 +49,7 @@
             this.buttonRapporter = new System.Windows.Forms.Button();
             this.buttonAndraBehorighet = new System.Windows.Forms.Button();
             this.buttonAdminhuvudsida = new System.Windows.Forms.Button();
+            this.labelForsaljningsslut = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonTillHuvudsida
@@ -65,14 +66,16 @@
             // LabelOppen
             // 
             this.LabelOppen.AutoSize = true;
+            this.LabelOppen.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.LabelOppen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelOppen.ForeColor = System.Drawing.Color.LimeGreen;
             this.LabelOppen.Location = new System.Drawing.Point(40, 67);
             this.LabelOppen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelOppen.Name = "LabelOppen";
-            this.LabelOppen.Size = new System.Drawing.Size(352, 25);
+            this.LabelOppen.Size = new System.Drawing.Size(347, 25);
             this.LabelOppen.TabIndex = 1;
-            this.LabelOppen.Text = "Föreställningen är öppen för försäljning.";
+            this.LabelOppen.Text = "Föreställningen är öppen för försäljning";
+            this.LabelOppen.Click += new System.EventHandler(this.LabelOppen_Click);
             // 
             // buttonLoggaUt
             // 
@@ -276,11 +279,24 @@
             this.buttonAdminhuvudsida.UseVisualStyleBackColor = true;
             this.buttonAdminhuvudsida.Click += new System.EventHandler(this.button1_Click);
             // 
+            // labelForsaljningsslut
+            // 
+            this.labelForsaljningsslut.AutoSize = true;
+            this.labelForsaljningsslut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labelForsaljningsslut.ForeColor = System.Drawing.Color.LimeGreen;
+            this.labelForsaljningsslut.Location = new System.Drawing.Point(406, 67);
+            this.labelForsaljningsslut.Name = "labelForsaljningsslut";
+            this.labelForsaljningsslut.Size = new System.Drawing.Size(188, 25);
+            this.labelForsaljningsslut.TabIndex = 21;
+            this.labelForsaljningsslut.Text = "labelForsaljningsslut";
+            this.labelForsaljningsslut.Click += new System.EventHandler(this.labelForsaljningsslut_Click);
+            // 
             // Adminhuvudsida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1241, 710);
+            this.Controls.Add(this.labelForsaljningsslut);
             this.Controls.Add(this.buttonAdminhuvudsida);
             this.Controls.Add(this.buttonAndraBehorighet);
             this.Controls.Add(this.buttonRapporter);
@@ -334,5 +350,6 @@
         private System.Windows.Forms.Button buttonRapporter;
         private System.Windows.Forms.Button buttonAndraBehorighet;
         private System.Windows.Forms.Button buttonAdminhuvudsida;
+        private System.Windows.Forms.Label labelForsaljningsslut;
     }
 }
