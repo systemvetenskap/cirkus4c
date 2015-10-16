@@ -46,7 +46,15 @@ namespace FirstTry
             {
                 this.button3.Enabled = true;
                 this.button3.Visible = true;
+
             }
+            if (aktortyper.Contains(8) == true)
+            {
+                this.button1.Visible = true;
+                this.checkBox_fri.Visible = true;
+                this.checkBox1.Visible = true;
+            }
+
             session = new Tempkop();
             conn.Open();
             session.totalpris = 0; //För att kolla vid button click att inget är vallt
@@ -125,7 +133,7 @@ namespace FirstTry
                             akt.ungdom = ungdom2;
                             akt.barn = barn2;
                             akt.Starttid = tidakt;
-                                akt.Aktinfo = aktinfo;
+                            akt.Aktinfo = aktinfo;
                             fs.akter.Add(akt);
                         }
                         

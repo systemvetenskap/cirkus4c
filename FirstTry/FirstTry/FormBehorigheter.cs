@@ -141,7 +141,7 @@ namespace FirstTry
 
                 command.Parameters.AddWithValue("@aktortyp_id", b.Id);
                 command.Parameters.AddWithValue("@inlog_id", personallista[pindex].Id); //p.id innan
-
+                aktortyper.Add(Convert.ToInt32(b.Id));
 
 
 
@@ -207,7 +207,7 @@ namespace FirstTry
 
 
                 tabortPeronalBehorighet(p.Id, b.Id);
-
+                aktortyper.Remove(Convert.ToInt32(b.Id));
 
 
                 NpgsqlCommand command = new NpgsqlCommand(query, conn);
@@ -564,6 +564,14 @@ namespace FirstTry
         private void listBoxTabell_SelectedIndexChanged(object sender, EventArgs e)
         {
            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Huvudsidan h = new Huvudsidan(aktortyper);
+            h.ShowDialog();
+            this.Close();
         }
     }
     }

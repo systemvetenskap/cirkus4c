@@ -80,7 +80,7 @@
             this.listBox_akter.Location = new System.Drawing.Point(609, 85);
             this.listBox_akter.Name = "listBox_akter";
             this.listBox_akter.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBox_akter.Size = new System.Drawing.Size(455, 186);
+            this.listBox_akter.Size = new System.Drawing.Size(455, 238);
             this.listBox_akter.TabIndex = 1;
             this.listBox_akter.SelectedIndexChanged += new System.EventHandler(this.listBox_akter_SelectedIndexChanged);
             // 
@@ -113,13 +113,14 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(790, 410);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(609, 405);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 23);
             this.button1.TabIndex = 5;
             this.button1.Text = "Fortsätt";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label_vuxen
@@ -152,17 +153,18 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(790, 463);
+            this.checkBox1.Location = new System.Drawing.Point(609, 458);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(83, 17);
             this.checkBox1.TabIndex = 9;
             this.checkBox1.Text = "Reservation";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(798, 486);
+            this.label1.Location = new System.Drawing.Point(617, 481);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 10;
@@ -171,7 +173,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(860, 486);
+            this.label2.Location = new System.Drawing.Point(679, 481);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(13, 13);
             this.label2.TabIndex = 11;
@@ -363,13 +365,14 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(763, 276);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Location = new System.Drawing.Point(866, 20);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(198, 19);
             this.button5.TabIndex = 31;
             this.button5.Text = "Visa platskarta för valda akter";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Visible = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label17
@@ -385,13 +388,14 @@
             // checkBox_fri
             // 
             this.checkBox_fri.AutoSize = true;
-            this.checkBox_fri.Location = new System.Drawing.Point(790, 433);
-            this.checkBox_fri.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox_fri.Location = new System.Drawing.Point(609, 428);
+            this.checkBox_fri.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox_fri.Name = "checkBox_fri";
             this.checkBox_fri.Size = new System.Drawing.Size(83, 17);
             this.checkBox_fri.TabIndex = 33;
             this.checkBox_fri.Text = "Fri placering";
             this.checkBox_fri.UseVisualStyleBackColor = true;
+            this.checkBox_fri.Visible = false;
             // 
             // label18
             // 
@@ -407,7 +411,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1203, 539);
+            this.ClientSize = new System.Drawing.Size(1077, 539);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.checkBox_fri);
             this.Controls.Add(this.label17);
