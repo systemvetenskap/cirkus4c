@@ -22,13 +22,26 @@ namespace FirstTry
             InitializeComponent();
         }
 
+        public OppnaForestallning(List<int> aktorlista, int id2)
+        {
+            aktorlistaId = aktorlista;
+            int id = id2; 
+
+            InitializeComponent();
+        }
+
         private void OppnaForestallning_Load(object sender, EventArgs e)
         {
 
         }
 
+
+
+
+
         private void buttonSistaFörsäljningsdag_Click(object sender, EventArgs e)
         {
+                
             bool open = true;
             DateTime forsaljningsslut = Convert.ToDateTime(textBoxSistaForsaljningsdag.Text);
 

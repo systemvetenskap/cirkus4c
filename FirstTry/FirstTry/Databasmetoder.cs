@@ -103,7 +103,6 @@ namespace FirstTry
 
                 int numberOfAffectedRows = command1.ExecuteNonQuery();
 
-        public static void LaggTillNyForestallning(string namn, string generellinfo, DateTime datum, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
             }
 
             catch (NpgsqlException ex)

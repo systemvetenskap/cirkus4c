@@ -14,6 +14,7 @@ namespace FirstTry
     public partial class Adminhuvudsida : Form
     {
         string st;
+        int id;
         private List<int> aktorlistaId = new List<int>();
         private Forestallning valdforestallning;
         private Akt valdakt;
@@ -39,6 +40,8 @@ namespace FirstTry
 
         private void buttonOppnaForsaljning_Click(object sender, EventArgs e)
         {
+            int id2 = id;  
+
             this.Hide();
             OppnaForestallning open = new OppnaForestallning();
             open.ShowDialog();
@@ -198,7 +201,7 @@ namespace FirstTry
 
         private void listBoxForestallning_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            id = valdforestallning.id;
             valdforestallning = (Forestallning)listBoxForestallning.SelectedItem;
             if (valdforestallning != null)
             {

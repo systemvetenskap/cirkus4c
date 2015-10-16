@@ -310,11 +310,11 @@ namespace FirstTry
                         {
                             //if (forsaljningsslut.Date <= datum.Date)
                             //{
-<<<<<<< HEAD
+
                                 Databasmetoder.LaggTillNyForestallning(namn, generellinfo, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
-=======
+
                                 Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris,forsaljningsslut);
->>>>>>> origin/LastMerge
+
                                 listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
                                // buttonLaggTillForest.Enabled = false;
                                // listBoxAdminForestallning.SelectionMode = SelectionMode.One;
@@ -604,11 +604,11 @@ namespace FirstTry
                     {
                         if (vuxenpris >= ungdomspris && vuxenpris >= barnpris && ungdomspris >= barnpris)
                         {
-<<<<<<< HEAD
+
                             Databasmetoder.UppdateraForestallning(id, namn, generellinfo, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
-=======
+
                             Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris, forsaljningsslut);
->>>>>>> origin/LastMerge
+
                             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
                             MessageBox.Show("Föreställningen har nu uppdaterats");
                         }
