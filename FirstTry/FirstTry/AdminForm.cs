@@ -62,40 +62,72 @@ namespace FirstTry
         private void AdminForm_Load(object sender, EventArgs e)
         {
             
+            
             if (st=="skapaForestallning")
             {
-                this.buttonLaggTillForest.Enabled = false;
-                this.buttonLaggTillForest.Visible = false;
-                //this.btnSkapaForestallning.Enabled = true;
-                //this.btnSkapaForestallning.Visible = true;
-                ////this.uppdatera.Enabled = true;
-                ////this.uppdatera.Visible = true;
-                ////this.buttonTaBort.Enabled = true;
-                ////this.buttonTaBort.Visible = true;
-                //textBoxForestNamn.Enabled = true;
-                //richTextBoxForestInf.Enabled = true;
-                //textBoxForestDatum1.Enabled = true;
-                //textBoxForestStarttid.Enabled = true;
-                //textBoxForestSluttid.Enabled = true;
-               //textBoxForsaljningsslut.Enabled = true;
+                //this.buttonLaggTillForest.Enabled = false;
+                //this.buttonLaggTillForest.Visible = false;
+                this.btnSkapaForestallning.Enabled = true;
+                this.btnSkapaForestallning.Visible = true;
+                //this.uppdatera.Enabled = true;
+                //this.uppdatera.Visible = true;
+                //this.buttonTaBort.Enabled = true;
+                //this.buttonTaBort.Visible = true;
+                textBoxForestNamn.Enabled = true;
+                textBoxForestNamn.Visible = true;
+                richTextBoxForestInf.Enabled = true;
+                richTextBoxForestInf.Visible = true;
+                textBoxForestDatum1.Enabled = true;
+                textBoxForestDatum1.Visible = true;
+                textBoxForestStarttid.Enabled = true;
+                textBoxForestStarttid.Visible = true;
+                textBoxForestSluttid.Enabled = true;
+                textBoxForestSluttid.Visible = true;
+                textBoxForsaljningsslut.Enabled = true;
                 //Akt edit
-                this.btnAkt.Enabled = true;
-                this.btnAkt.Visible = true;
-                this.buttonLaggTillAktInfo.Enabled = true;
-                this.buttonLaggTillAktInfo.Visible = true;
-                this.buttonUppdateraAkt.Enabled = true;
-                this.buttonUppdateraAkt.Visible = true;
-                this.button1.Enabled = true;
-                this.button1.Visible = true;
-                textBoxAktnamn.Enabled = true;
-                richTextBoxAktInf.Enabled = true;
-                textBoxAktStarttid.Enabled = true;
-                textBoxAktSluttid.Enabled = true;
+                //this.btnAkt.Enabled = true;
+                //this.btnAkt.Visible = true;
+                //this.buttonLaggTillAktInfo.Enabled = true;
+                //this.buttonLaggTillAktInfo.Visible = true;
+                //this.buttonUppdateraAkt.Enabled = true;
+                //this.buttonUppdateraAkt.Visible = true;
+                //this.button1.Enabled = true;
+                //this.button1.Visible = true;
+                //textBoxAktnamn.Enabled = true;
+                //richTextBoxAktInf.Enabled = true;
+                //textBoxAktStarttid.Enabled = true;
+                //textBoxAktSluttid.Enabled = true;
             }
 
             if (st=="uppdateraForestallning")
             {
-
+                //this.buttonLaggTillForest.Enabled = false;
+                //this.buttonLaggTillForest.Visible = false;
+                this.btnSkapaForestallning.Enabled = true;
+                this.btnSkapaForestallning.Visible = true;
+                //this.uppdatera.Enabled = true;
+                //this.uppdatera.Visible = true;
+                //this.buttonTaBort.Enabled = true;
+                //this.buttonTaBort.Visible = true;
+                textBoxForestNamn.Enabled = true;
+                richTextBoxForestInf.Enabled = true;
+                textBoxForestDatum1.Enabled = true;
+                textBoxForestStarttid.Enabled = true;
+                textBoxForestSluttid.Enabled = true;
+                textBoxForsaljningsslut.Enabled = true;
+                //Akt edit
+                //this.btnAkt.Enabled = true;
+                //this.btnAkt.Visible = true;
+                //this.buttonLaggTillAktInfo.Enabled = true;
+                //this.buttonLaggTillAktInfo.Visible = true;
+                //this.buttonUppdateraAkt.Enabled = true;
+                //this.buttonUppdateraAkt.Visible = true;
+                //this.button1.Enabled = true;
+                //this.button1.Visible = true;
+                //textBoxAktnamn.Enabled = true;
+                //richTextBoxAktInf.Enabled = true;
+                //textBoxAktStarttid.Enabled = true;
+                //textBoxAktSluttid.Enabled = true;
             }
 
             if (st == "skapaAkt")

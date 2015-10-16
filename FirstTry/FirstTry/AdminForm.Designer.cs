@@ -88,6 +88,7 @@
             // 
             // textBoxForestNamn
             // 
+            this.textBoxForestNamn.Enabled = false;
             this.textBoxForestNamn.Location = new System.Drawing.Point(28, 104);
             this.textBoxForestNamn.Name = "textBoxForestNamn";
             this.textBoxForestNamn.Size = new System.Drawing.Size(135, 20);
@@ -159,6 +160,7 @@
             // 
             // richTextBoxForestInf
             // 
+            this.richTextBoxForestInf.Enabled = false;
             this.richTextBoxForestInf.Location = new System.Drawing.Point(28, 143);
             this.richTextBoxForestInf.Name = "richTextBoxForestInf";
             this.richTextBoxForestInf.Size = new System.Drawing.Size(135, 84);
@@ -412,6 +414,7 @@
             // 
             // btnSkapaForestallning
             // 
+            this.btnSkapaForestallning.Enabled = false;
             this.btnSkapaForestallning.Location = new System.Drawing.Point(188, 597);
             this.btnSkapaForestallning.Margin = new System.Windows.Forms.Padding(2);
             this.btnSkapaForestallning.Name = "btnSkapaForestallning";

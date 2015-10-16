@@ -27,7 +27,7 @@ namespace FirstTry
         public int ungdom { get; set; }
         public int barn { get; set; }
         public DateTime tid { get; set; }
-
+        public bool friplacering { get; set; }
 
         public override string ToString()
         {
