@@ -39,9 +39,12 @@ namespace FirstTry
 
         private void buttonOppnaForsaljning_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            OppnaForestallning open = new OppnaForestallning();
+            open.ShowDialog();
+            this.Close();
         }
-
+                
         private void Adminhuvudsida_Load(object sender, EventArgs e)
         {
             if (aktorlistaId.Contains(5) == true || aktorlistaId.Contains(7) == true)
@@ -50,10 +53,6 @@ namespace FirstTry
                 this.buttonAndraBehorighet.Visible = true;
             }
             listBoxForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
-
-
-
-          
         }
 
         private void buttonRapporter_Click(object sender, EventArgs e)
@@ -205,7 +204,12 @@ namespace FirstTry
             {
                 listBoxAkt.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
                 richTextBoxForestallning.Text = valdforestallning.generellinfo;
-                labelForsaljningsslut.Text = valdforestallning.forsaljningsslut.ToShortDateString();
+                labelForsaljningsslut.Text = ("t.o.m " + valdforestallning.forsaljningsslut.ToShortDateString());
+            }
+            else
+            {
+                labelForsaljningsslut.Visible = false;
+
             }
 
         }
@@ -313,11 +317,7 @@ namespace FirstTry
 
         private void labelForsaljningsslut_Click(object sender, EventArgs e)
         {
-            if (valdforestallning != null)
-            {
-
-                labelForsaljningsslut.Text = ("t.o.m " + valdforestallning.forsaljningsslut.ToShortDateString());
-            }
+           
         }
     }
 }

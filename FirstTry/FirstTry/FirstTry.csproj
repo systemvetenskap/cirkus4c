@@ -112,6 +112,12 @@
     <Compile Include="Loginform.Designer.cs">
       <DependentUpon>Loginform.cs</DependentUpon>
     </Compile>
+    <Compile Include="OppnaForestallning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OppnaForestallning.Designer.cs">
+      <DependentUpon>OppnaForestallning.cs</DependentUpon>
+    </Compile>
     <Compile Include="Personal.cs" />
     <Compile Include="Platskarta.cs">
       <SubType>Form</SubType>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Loginform.resx">
       <DependentUpon>Loginform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OppnaForestallning.resx">
+      <DependentUpon>OppnaForestallning.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Platskarta.resx">
       <DependentUpon>Platskarta.cs</DependentUpon>

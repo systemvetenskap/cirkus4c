@@ -63,7 +63,7 @@
             this.buttonTillHuvudsida.UseVisualStyleBackColor = true;
             this.buttonTillHuvudsida.Click += new System.EventHandler(this.buttonTillHuvudsida_Click);
             // 
-            // LabelOppen
+            //LabelOppen
             // 
             this.LabelOppen.AutoSize = true;
             this.LabelOppen.FlatStyle = System.Windows.Forms.FlatStyle.System;
