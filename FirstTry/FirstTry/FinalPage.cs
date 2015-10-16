@@ -214,6 +214,7 @@ namespace FirstTry
 
             if (tk.biljetter.Count > 0 && tk.biljetter[0].forestallning.friplacering == true)
             {
+                textBox_epost.Text = tk.epost;
                 foreach (Biljett bilj in tk.biljetter)
                 {
                     conn.Open();
@@ -277,7 +278,7 @@ namespace FirstTry
                     k.efternamn = (row["efternamn"].ToString());
                     k.epost = (row["mail"].ToString());
 
-                    string query2 = "SELECT biljett.id, akter.aktnamn, forestallning.namn, biljett.pris, biljett.kund_id, forestallning.datum, forestallning.starttid, biljett.plats_id FROM public.forestallning, public.biljett, public.akter WHERE biljett.forestallning_id = forestallning.id AND biljett.akt_id = akter.id And kund_id = ";
+                    string query2 = "SELECT biljett.id, akter.aktnamn, forestallning.namn, biljett.pris, biljett.kund_id, forestallning.datum, forestallning.starttid, biljett.plats_id, biljett.fri_placering FROM public.forestallning, public.biljett, public.akter WHERE biljett.forestallning_id = forestallning.id AND biljett.akt_id = akter.id And kund_id = ";
                     query2 += k.kund_id.ToString() + ";";
                     DataTable dt2 = new DataTable();
                     NpgsqlDataAdapter da2 = new NpgsqlDataAdapter(query2, conn);
@@ -296,7 +297,11 @@ namespace FirstTry
                         b.pris = (Convert.ToInt32(row2["pris"]));
                         b.forestallning.namn = ((row2["namn"]).ToString());
                         b.akter.namn = ((row2["aktnamn"]).ToString());
-                        b.plats_id = (Convert.ToInt32((row2["plats_id"])));
+                        if ((bool)row2["fri_placering"] == false)
+                        {
+                            b.plats_id = (Convert.ToInt32((row2["plats_id"])));
+                        }
+
                         b.forestallning.datum = (DateTime)row2["datum"];
                         b.akter.Starttid = (DateTime)row2["starttid"];
                         k.bilj.Add(b);
@@ -385,7 +390,7 @@ namespace FirstTry
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Huvudsidan hs = new Huvudsidan();
+            Huvudsidan hs = new Huvudsidan(aktortyper);
             hs.ShowDialog();
             this.Close();
         }
@@ -397,12 +402,21 @@ namespace FirstTry
             {
                 Kund k = new Kund();
                 k = (Kund)listBox_kunder.SelectedItem;
-                textBox_epost.Text = k.epost;
 
-                foreach (Biljett bilj in k.bilj)
+                int x = listBox_kunder.SelectedIndex;
+
+                if (listBox_kunder.SelectedIndex != -1)
                 {
-                    laddaHelafore(bilj);
+                    textBox_epost.Text = k.epost;
+
+                    foreach (Biljett bilj in k.bilj)
+                    {
+                        laddaHelafore(bilj);
+                    }
                 }
+
+
+
             }
 
             
@@ -447,6 +461,7 @@ namespace FirstTry
 
         private void button4_Click(object sender, EventArgs e)
         {
+            textBox_epost.Text = "";
             Kund k = (Kund)listBox_kunder.SelectedItem;
 
             foreach (Biljett b in k.bilj)

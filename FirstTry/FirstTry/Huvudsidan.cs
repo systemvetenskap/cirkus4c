@@ -126,7 +126,7 @@ namespace FirstTry
                             int vuxen2 = Convert.ToInt32(row2["vuxenpris"]);
                             int ungdom2 = Convert.ToInt32(row2["ungdomspris"]);
                             int barn2 = Convert.ToInt32(row2["barnpris"]);
-                            DateTime tidakt = (DateTime)row["starttid"];
+                            DateTime tidakt = (DateTime)row2["starttid"];
                             akt.namn = aktnamn;
                             akt.id = Convert.ToInt32(aktid);
                             akt.vuxen = vuxen2;
@@ -247,7 +247,7 @@ namespace FirstTry
             //  session.platsnamn = new List<string>();
             // session.typ = new List<string>();
             session.hela = false; //låg kvar som true om man gick tillbaka från platskartan
-
+            session.akter.Clear();
             foreach (Akt akter in listBox_akter.SelectedItems)
             {
                 session.loopar++;

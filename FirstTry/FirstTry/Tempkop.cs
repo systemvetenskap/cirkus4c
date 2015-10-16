@@ -46,6 +46,7 @@ namespace FirstTry
             fuskIgen = 0;
             fardig = false;
             baraVisa = false;
+            epost = "E-post: ";
         }
 
 

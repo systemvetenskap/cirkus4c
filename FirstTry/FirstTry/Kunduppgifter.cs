@@ -120,6 +120,21 @@ namespace FirstTry
                 conn.Close();
 
 
+                if(tk.biljetter[tk.fuskIgen].forestallning.friplacering == true)
+                {
+                    this.Hide();
+                    FinalPage fp = new FinalPage(tk, aktortyper);
+                    fp.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    this.Hide();
+                    Platskarta p = new Platskarta(tk, aktortyper);
+                    p.ShowDialog();
+                    this.Close();
+                }
+
 
             }
 
