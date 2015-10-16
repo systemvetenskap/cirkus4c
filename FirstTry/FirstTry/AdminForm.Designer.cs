@@ -76,6 +76,7 @@
             this.btn_Huvud = new System.Windows.Forms.Button();
             this.lblforestallningoppen = new System.Windows.Forms.Label();
             this.buttonAdminhuvudsida = new System.Windows.Forms.Button();
+            this.buttonLoggaUt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxAdminForestallning
@@ -491,7 +492,7 @@
             this.btnAndraTaBortBeh.Location = new System.Drawing.Point(433, 17);
             this.btnAndraTaBortBeh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAndraTaBortBeh.Name = "btnAndraTaBortBeh";
-            this.btnAndraTaBortBeh.Size = new System.Drawing.Size(172, 43);
+            this.btnAndraTaBortBeh.Size = new System.Drawing.Size(172, 37);
             this.btnAndraTaBortBeh.TabIndex = 28;
             this.btnAndraTaBortBeh.Text = "Ändra behörigheter";
             this.btnAndraTaBortBeh.UseVisualStyleBackColor = true;
@@ -556,10 +557,10 @@
             // 
             // btn_Huvud
             // 
-            this.btn_Huvud.Location = new System.Drawing.Point(47, 14);
+            this.btn_Huvud.Location = new System.Drawing.Point(47, 17);
             this.btn_Huvud.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Huvud.Name = "btn_Huvud";
-            this.btn_Huvud.Size = new System.Drawing.Size(172, 43);
+            this.btn_Huvud.Size = new System.Drawing.Size(172, 37);
             this.btn_Huvud.TabIndex = 88;
             this.btn_Huvud.Text = "Tillbaka till Huvudsidan";
             this.btn_Huvud.UseVisualStyleBackColor = true;
@@ -589,11 +590,24 @@
             this.buttonAdminhuvudsida.UseVisualStyleBackColor = true;
             this.buttonAdminhuvudsida.Click += new System.EventHandler(this.buttonAdminhuvudsida_Click);
             // 
+            // buttonLoggaUt
+            // 
+            this.buttonLoggaUt.Enabled = false;
+            this.buttonLoggaUt.Location = new System.Drawing.Point(618, 17);
+            this.buttonLoggaUt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonLoggaUt.Name = "buttonLoggaUt";
+            this.buttonLoggaUt.Size = new System.Drawing.Size(172, 37);
+            this.buttonLoggaUt.TabIndex = 90;
+            this.buttonLoggaUt.Text = "Logga ut";
+            this.buttonLoggaUt.UseVisualStyleBackColor = true;
+            this.buttonLoggaUt.Click += new System.EventHandler(this.buttonLoggaUt_Click);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1704, 791);
+            this.Controls.Add(this.buttonLoggaUt);
             this.Controls.Add(this.buttonAdminhuvudsida);
             this.Controls.Add(this.btn_Huvud);
             this.Controls.Add(this.label28);
@@ -706,5 +720,6 @@
         private System.Windows.Forms.Button btn_Huvud;
         private System.Windows.Forms.Label lblforestallningoppen;
         private System.Windows.Forms.Button buttonAdminhuvudsida;
+        private System.Windows.Forms.Button buttonLoggaUt;
     }
 }

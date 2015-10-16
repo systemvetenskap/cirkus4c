@@ -62,6 +62,7 @@
             this.buttonAndraBehorighet = new System.Windows.Forms.Button();
             this.buttonRapporter = new System.Windows.Forms.Button();
             this.buttonTillHuvudsida = new System.Windows.Forms.Button();
+            this.buttonLoggaUt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label30
@@ -413,11 +414,24 @@
             this.buttonTillHuvudsida.UseVisualStyleBackColor = true;
             this.buttonTillHuvudsida.Click += new System.EventHandler(this.buttonTillHuvudsida_Click);
             // 
+            // buttonLoggaUt
+            // 
+            this.buttonLoggaUt.Enabled = false;
+            this.buttonLoggaUt.Location = new System.Drawing.Point(781, 13);
+            this.buttonLoggaUt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonLoggaUt.Name = "buttonLoggaUt";
+            this.buttonLoggaUt.Size = new System.Drawing.Size(172, 37);
+            this.buttonLoggaUt.TabIndex = 126;
+            this.buttonLoggaUt.Text = "Logga ut";
+            this.buttonLoggaUt.UseVisualStyleBackColor = true;
+            this.buttonLoggaUt.Click += new System.EventHandler(this.buttonLoggaUt_Click);
+            // 
             // Rapporter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 555);
+            this.Controls.Add(this.buttonLoggaUt);
             this.Controls.Add(this.buttonAdminhuvudsida);
             this.Controls.Add(this.buttonAndraBehorighet);
             this.Controls.Add(this.buttonRapporter);
@@ -496,5 +510,6 @@
         private System.Windows.Forms.Button buttonAndraBehorighet;
         private System.Windows.Forms.Button buttonRapporter;
         private System.Windows.Forms.Button buttonTillHuvudsida;
+        private System.Windows.Forms.Button buttonLoggaUt;
     }
 }

@@ -23,6 +23,14 @@ namespace FirstTry
             InitializeComponent();
         }
 
+        public Rapporter(List<int> aktorlista)
+        {
+            aktorlistaId = aktorlista;
+
+            InitializeComponent();
+        }
+
+
         private void label40_Click(object sender, EventArgs e)
         {
 
@@ -137,6 +145,14 @@ namespace FirstTry
             this.Hide();
             Rapporter rapporter = new Rapporter(aktorlistaId);
             rapporter.ShowDialog();
+            this.Close();
+        }
+
+        private void buttonLoggaUt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Loginform lf = new Loginform();
+            lf.ShowDialog();
             this.Close();
         }
     }
