@@ -934,6 +934,14 @@ namespace FirstTry
             ah.ShowDialog();
             this.Close();
         }
+
+        private void buttonLoggaUt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Loginform lf = new Loginform();
+            lf.ShowDialog();
+            this.Close();
+        }
     }
 
 }
