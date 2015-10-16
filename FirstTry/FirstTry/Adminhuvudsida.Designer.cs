@@ -48,12 +48,13 @@
             this.buttonTaBortAkt = new System.Windows.Forms.Button();
             this.buttonRapporter = new System.Windows.Forms.Button();
             this.buttonAndraBehorighet = new System.Windows.Forms.Button();
+            this.buttonAdminhuvudsida = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonTillHuvudsida
             // 
             this.buttonTillHuvudsida.Location = new System.Drawing.Point(37, 9);
-            this.buttonTillHuvudsida.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonTillHuvudsida.Margin = new System.Windows.Forms.Padding(4);
             this.buttonTillHuvudsida.Name = "buttonTillHuvudsida";
             this.buttonTillHuvudsida.Size = new System.Drawing.Size(179, 37);
             this.buttonTillHuvudsida.TabIndex = 0;
@@ -66,7 +67,7 @@
             this.LabelOppen.AutoSize = true;
             this.LabelOppen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelOppen.ForeColor = System.Drawing.Color.LimeGreen;
-            this.LabelOppen.Location = new System.Drawing.Point(629, 14);
+            this.LabelOppen.Location = new System.Drawing.Point(40, 67);
             this.LabelOppen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelOppen.Name = "LabelOppen";
             this.LabelOppen.Size = new System.Drawing.Size(352, 25);
@@ -76,7 +77,7 @@
             // buttonLoggaUt
             // 
             this.buttonLoggaUt.Location = new System.Drawing.Point(1043, 6);
-            this.buttonLoggaUt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLoggaUt.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLoggaUt.Name = "buttonLoggaUt";
             this.buttonLoggaUt.Size = new System.Drawing.Size(137, 32);
             this.buttonLoggaUt.TabIndex = 2;
@@ -89,7 +90,7 @@
             this.listBoxForestallning.FormattingEnabled = true;
             this.listBoxForestallning.ItemHeight = 16;
             this.listBoxForestallning.Location = new System.Drawing.Point(39, 130);
-            this.listBoxForestallning.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxForestallning.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxForestallning.Name = "listBoxForestallning";
             this.listBoxForestallning.Size = new System.Drawing.Size(333, 484);
             this.listBoxForestallning.TabIndex = 3;
@@ -100,7 +101,7 @@
             this.listBoxAkt.FormattingEnabled = true;
             this.listBoxAkt.ItemHeight = 16;
             this.listBoxAkt.Location = new System.Drawing.Point(635, 132);
-            this.listBoxAkt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxAkt.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxAkt.Name = "listBoxAkt";
             this.listBoxAkt.Size = new System.Drawing.Size(348, 484);
             this.listBoxAkt.TabIndex = 4;
@@ -150,7 +151,7 @@
             // richTextBoxForestallning
             // 
             this.richTextBoxForestallning.Location = new System.Drawing.Point(400, 130);
-            this.richTextBoxForestallning.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBoxForestallning.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBoxForestallning.Name = "richTextBoxForestallning";
             this.richTextBoxForestallning.Size = new System.Drawing.Size(167, 237);
             this.richTextBoxForestallning.TabIndex = 9;
@@ -159,7 +160,7 @@
             // richTextBoxAkter
             // 
             this.richTextBoxAkter.Location = new System.Drawing.Point(1012, 132);
-            this.richTextBoxAkter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBoxAkter.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBoxAkter.Name = "richTextBoxAkter";
             this.richTextBoxAkter.Size = new System.Drawing.Size(167, 286);
             this.richTextBoxAkter.TabIndex = 10;
@@ -168,7 +169,7 @@
             // buttonNyForestallning
             // 
             this.buttonNyForestallning.Location = new System.Drawing.Point(401, 375);
-            this.buttonNyForestallning.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonNyForestallning.Margin = new System.Windows.Forms.Padding(4);
             this.buttonNyForestallning.Name = "buttonNyForestallning";
             this.buttonNyForestallning.Size = new System.Drawing.Size(167, 54);
             this.buttonNyForestallning.TabIndex = 11;
@@ -179,7 +180,7 @@
             // buttonUppdateraForest
             // 
             this.buttonUppdateraForest.Location = new System.Drawing.Point(401, 437);
-            this.buttonUppdateraForest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonUppdateraForest.Margin = new System.Windows.Forms.Padding(4);
             this.buttonUppdateraForest.Name = "buttonUppdateraForest";
             this.buttonUppdateraForest.Size = new System.Drawing.Size(167, 54);
             this.buttonUppdateraForest.TabIndex = 12;
@@ -190,7 +191,7 @@
             // buttonTaBortForest
             // 
             this.buttonTaBortForest.Location = new System.Drawing.Point(401, 498);
-            this.buttonTaBortForest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonTaBortForest.Margin = new System.Windows.Forms.Padding(4);
             this.buttonTaBortForest.Name = "buttonTaBortForest";
             this.buttonTaBortForest.Size = new System.Drawing.Size(167, 54);
             this.buttonTaBortForest.TabIndex = 13;
@@ -201,7 +202,7 @@
             // buttonOppnaForsaljning
             // 
             this.buttonOppnaForsaljning.Location = new System.Drawing.Point(401, 562);
-            this.buttonOppnaForsaljning.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonOppnaForsaljning.Margin = new System.Windows.Forms.Padding(4);
             this.buttonOppnaForsaljning.Name = "buttonOppnaForsaljning";
             this.buttonOppnaForsaljning.Size = new System.Drawing.Size(167, 54);
             this.buttonOppnaForsaljning.TabIndex = 14;
@@ -212,7 +213,7 @@
             // buttonSkapaNyAkt
             // 
             this.buttonSkapaNyAkt.Location = new System.Drawing.Point(1013, 437);
-            this.buttonSkapaNyAkt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSkapaNyAkt.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSkapaNyAkt.Name = "buttonSkapaNyAkt";
             this.buttonSkapaNyAkt.Size = new System.Drawing.Size(167, 54);
             this.buttonSkapaNyAkt.TabIndex = 15;
@@ -223,7 +224,7 @@
             // buttonUppdateraAkt
             // 
             this.buttonUppdateraAkt.Location = new System.Drawing.Point(1013, 501);
-            this.buttonUppdateraAkt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonUppdateraAkt.Margin = new System.Windows.Forms.Padding(4);
             this.buttonUppdateraAkt.Name = "buttonUppdateraAkt";
             this.buttonUppdateraAkt.Size = new System.Drawing.Size(167, 54);
             this.buttonUppdateraAkt.TabIndex = 16;
@@ -234,7 +235,7 @@
             // buttonTaBortAkt
             // 
             this.buttonTaBortAkt.Location = new System.Drawing.Point(1013, 562);
-            this.buttonTaBortAkt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonTaBortAkt.Margin = new System.Windows.Forms.Padding(4);
             this.buttonTaBortAkt.Name = "buttonTaBortAkt";
             this.buttonTaBortAkt.Size = new System.Drawing.Size(167, 54);
             this.buttonTaBortAkt.TabIndex = 17;
@@ -243,8 +244,8 @@
             // 
             // buttonRapporter
             // 
-            this.buttonRapporter.Location = new System.Drawing.Point(401, 9);
-            this.buttonRapporter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonRapporter.Location = new System.Drawing.Point(586, 9);
+            this.buttonRapporter.Margin = new System.Windows.Forms.Padding(4);
             this.buttonRapporter.Name = "buttonRapporter";
             this.buttonRapporter.Size = new System.Drawing.Size(167, 37);
             this.buttonRapporter.TabIndex = 18;
@@ -254,8 +255,8 @@
             // 
             // buttonAndraBehorighet
             // 
-            this.buttonAndraBehorighet.Location = new System.Drawing.Point(225, 9);
-            this.buttonAndraBehorighet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAndraBehorighet.Location = new System.Drawing.Point(411, 9);
+            this.buttonAndraBehorighet.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAndraBehorighet.Name = "buttonAndraBehorighet";
             this.buttonAndraBehorighet.Size = new System.Drawing.Size(167, 37);
             this.buttonAndraBehorighet.TabIndex = 19;
@@ -263,11 +264,23 @@
             this.buttonAndraBehorighet.UseVisualStyleBackColor = true;
             this.buttonAndraBehorighet.Click += new System.EventHandler(this.buttonAndraBehorighet_Click);
             // 
+            // buttonAdminhuvudsida
+            // 
+            this.buttonAdminhuvudsida.Location = new System.Drawing.Point(224, 9);
+            this.buttonAdminhuvudsida.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAdminhuvudsida.Name = "buttonAdminhuvudsida";
+            this.buttonAdminhuvudsida.Size = new System.Drawing.Size(179, 37);
+            this.buttonAdminhuvudsida.TabIndex = 20;
+            this.buttonAdminhuvudsida.Text = "Administration";
+            this.buttonAdminhuvudsida.UseVisualStyleBackColor = true;
+            this.buttonAdminhuvudsida.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Adminhuvudsida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1241, 710);
+            this.Controls.Add(this.buttonAdminhuvudsida);
             this.Controls.Add(this.buttonAndraBehorighet);
             this.Controls.Add(this.buttonRapporter);
             this.Controls.Add(this.buttonTaBortAkt);
@@ -288,7 +301,7 @@
             this.Controls.Add(this.buttonLoggaUt);
             this.Controls.Add(this.LabelOppen);
             this.Controls.Add(this.buttonTillHuvudsida);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Adminhuvudsida";
             this.Text = "Adminhuvudsida";
             this.Load += new System.EventHandler(this.Adminhuvudsida_Load);
@@ -319,5 +332,6 @@
         private System.Windows.Forms.Button buttonTaBortAkt;
         private System.Windows.Forms.Button buttonRapporter;
         private System.Windows.Forms.Button buttonAndraBehorighet;
+        private System.Windows.Forms.Button buttonAdminhuvudsida;
     }
 }

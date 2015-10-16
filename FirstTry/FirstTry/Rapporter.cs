@@ -13,6 +13,7 @@ namespace FirstTry
 {
     public partial class Rapporter : Form
     {
+        private List<int> aktorlistaId = new List<int>();
         private Forestallning valdforestallning;
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
 
@@ -105,6 +106,38 @@ namespace FirstTry
         private void Rapporter_Load(object sender, EventArgs e)
         {
             listBoxForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
+        }
+
+        private void buttonTillHuvudsida_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Huvudsidan hs = new Huvudsidan(aktorlistaId);
+            hs.ShowDialog();
+            this.Close();
+        }
+
+        private void buttonAdminhuvudsida_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Adminhuvudsida ah = new Adminhuvudsida(aktorlistaId);
+            ah.ShowDialog();
+            this.Close();
+        }
+
+        private void buttonAndraBehorighet_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormBehorigheter fbh = new FormBehorigheter(aktorlistaId);
+            fbh.ShowDialog();
+            this.Close();
+        }
+
+        private void buttonRapporter_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Rapporter rapporter = new Rapporter(aktorlistaId);
+            rapporter.ShowDialog();
+            this.Close();
         }
     }
 }

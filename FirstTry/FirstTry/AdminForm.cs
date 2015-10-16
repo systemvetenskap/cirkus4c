@@ -33,11 +33,6 @@ namespace FirstTry
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -930,6 +925,14 @@ namespace FirstTry
         private void checkBoxfriPlacering_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonAdminhuvudsida_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Adminhuvudsida ah = new Adminhuvudsida(aktorlistaId);
+            ah.ShowDialog();
+            this.Close();
         }
     }
 

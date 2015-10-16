@@ -13,7 +13,7 @@ namespace FirstTry
 {
     public partial class Adminhuvudsida : Form
     {
-
+        string st;
         private List<int> aktorlistaId = new List<int>();
         private Forestallning valdforestallning;
         private Akt valdakt;
@@ -90,7 +90,7 @@ namespace FirstTry
         {
             this.Hide();
             string st = "uppdateraForestallning";
-            AdminForm af = new AdminForm();
+            AdminForm af = new AdminForm(aktorlistaId, st);
             af.ShowDialog();
             this.Close();
 
@@ -102,7 +102,7 @@ namespace FirstTry
         {
             this.Hide();
             string st = "skapaForestallning";
-            AdminForm af = new AdminForm();
+            AdminForm af = new AdminForm(aktorlistaId, st);
             af.ShowDialog();
             this.Close();
         }
@@ -116,7 +116,7 @@ namespace FirstTry
         {
             this.Hide();
             string st = "skapaAkt";
-            AdminForm af = new AdminForm();
+            AdminForm af = new AdminForm(aktorlistaId, st);
             af.ShowDialog();
             this.Close();
         }
@@ -125,7 +125,7 @@ namespace FirstTry
         {
             this.Hide();
             string st = "uppdateraAkt";
-            AdminForm af = new AdminForm();
+            AdminForm af = new AdminForm(aktorlistaId, st);
             af.ShowDialog();
             this.Close();
 
@@ -157,6 +157,14 @@ namespace FirstTry
                     richTextBoxAkter.Text = valdakt.Aktinfo.ToString();
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Adminhuvudsida ah = new Adminhuvudsida(aktorlistaId);
+            ah.ShowDialog();
+            this.Close();
         }
     }
 }
