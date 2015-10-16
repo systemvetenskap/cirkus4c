@@ -88,7 +88,7 @@ namespace FirstTry
 
 
 
-        public static void LaggTillNyForestallning(string namn, string generellinfo,bool open, DateTime datum, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
+        public static void LaggTillNyForestallning(string namn, string generellinfo, DateTime datum, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
         {
             NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
 
@@ -103,8 +103,8 @@ namespace FirstTry
                 command1.Parameters[0].Value = namn;
                 command1.Parameters.Add(new NpgsqlParameter("nyGenerellinfo", DbType.String));
                 command1.Parameters[1].Value = generellinfo;
-                command1.Parameters.Add(new NpgsqlParameter("nyOpen", DbType.Boolean));
-                command1.Parameters[2].Value = open;
+                //command1.Parameters.Add(new NpgsqlParameter("nyOpen", DbType.Boolean));
+                //command1.Parameters[2].Value = open;
                 command1.Parameters.Add(new NpgsqlParameter("nyDatum", DbType.DateTime));
                 command1.Parameters[3].Value = datum;
                 command1.Parameters.Add(new NpgsqlParameter("nyStarttid", DbType.DateTime));
@@ -180,7 +180,7 @@ namespace FirstTry
             }
         }
 
-        public static void UppdateraForestallning(int id, string namn, string generellinfo, bool open,  DateTime datum, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
+        public static void UppdateraForestallning(int id, string namn, string generellinfo, DateTime datum, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
         {
             NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
 
@@ -193,8 +193,8 @@ namespace FirstTry
                 command1.Parameters[0].Value = namn;
                 command1.Parameters.Add(new NpgsqlParameter("nyGenerellinfo", DbType.String));
                 command1.Parameters[1].Value = generellinfo;
-                command1.Parameters.Add(new NpgsqlParameter("nyOpen", DbType.Boolean));
-                command1.Parameters[2].Value = open;
+                //command1.Parameters.Add(new NpgsqlParameter("nyOpen", DbType.Boolean));
+                //command1.Parameters[2].Value = open;
                 command1.Parameters.Add(new NpgsqlParameter("nyDatum", DbType.DateTime));
                 command1.Parameters[3].Value = datum;
                 command1.Parameters.Add(new NpgsqlParameter("nyStarttid", DbType.DateTime));

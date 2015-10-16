@@ -304,8 +304,26 @@ namespace FirstTry
 
         
 
+        private void varningar()
+        {
+
+        }
 
 
+        /*  DialogResult dialogResult = MessageBox.Show("Vill du radera hela föreställningen samt alla tillhörande akter? Observera att det kan finnas biljetter bokade på denna föreställning!", "Bokning", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (valdakt != null)
+                {
+                    TaBortAkt();
+                }  
+                
+               else if (dialogResult == DialogResult.No)
+            {
+                Refresh();
+
+            }
+            */
 
         private void buttonLaggTillForest_Click(object sender, EventArgs e)
         {
@@ -313,33 +331,35 @@ namespace FirstTry
             {
 
             string namn = textBoxForestNamn.Text;
+
+
             string generellinfo = richTextBoxForestInf.Text;
             DateTime datum = Convert.ToDateTime(textBoxForestDatum1.Text);
             DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
             DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
-            bool open = checkBoxForestallning1.Checked;
+            //bool open = checkBoxForestallning1.Checked;
             int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
-            bool friplacering = false;
+          //  bool friplacering = false;
              DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
-            if (checkBoxfriPlacering.Checked == true)
-            {
-                friplacering = true;
-            }
+            //if (checkBoxfriPlacering.Checked == true)
+            //{
+            //    friplacering = true;
+            //}
 
 
-                if (checkBoxForestallning1.Checked == true)
-                {
-                    valdforestallning.open = true;
+                //if (checkBoxForestallning1.Checked == true)
+                //{
+                //    valdforestallning.open = true;
 
-                }
+                //}
 
-                else
-                {
-                    checkBoxForestallning1.Checked = false;
-                }
+                //else
+                //{
+                //    checkBoxForestallning1.Checked = false;
+                //}
 
                 if (datum.Date >= DateTime.Now.Date)
                 {
@@ -349,7 +369,7 @@ namespace FirstTry
                         {
                             //if (forsaljningsslut.Date <= datum.Date)
                             //{
-                                Databasmetoder.LaggTillNyForestallning(namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
+                                Databasmetoder.LaggTillNyForestallning(namn, generellinfo, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
                                 listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
                                // buttonLaggTillForest.Enabled = false;
                                // listBoxAdminForestallning.SelectionMode = SelectionMode.One;
@@ -609,15 +629,15 @@ namespace FirstTry
             int id = valdforestallning.id;
             string namn = textBoxForestNamn.Text;
             string generellinfo = richTextBoxForestInf.Text;
-            bool open = checkBoxForestallning1.Checked;
+           // bool open = checkBoxForestallning1.Checked;
             DateTime datum = Convert.ToDateTime(textBoxForestDatum1.Text);
             DateTime starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
             DateTime sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
             int vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
             int ungdomspris = Convert.ToInt32(textBoxUngdomspris.Text);
             int barnpris = Convert.ToInt32(textBoxBarnpris.Text);
-            bool friplacering = false;
-                DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
+            //bool friplacering = false;
+            DateTime forsaljningsslut = Convert.ToDateTime(textBoxForsaljningsslut.Text);
 
 
                 if (checkBoxForestallning1.Checked == true)
@@ -640,7 +660,7 @@ namespace FirstTry
                     {
                         if (vuxenpris >= ungdomspris && vuxenpris >= barnpris && ungdomspris >= barnpris)
                         {
-                            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, open, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
+                            Databasmetoder.UppdateraForestallning(id, namn, generellinfo, datum, starttid, sluttid, vuxenpris, ungdomspris, barnpris);
                             listBoxAdminForestallning.DataSource = Databasmetoder.HamtaForestallningLista();
                             MessageBox.Show("Föreställningen har nu uppdaterats");
                         }
