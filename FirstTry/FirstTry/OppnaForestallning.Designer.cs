@@ -40,6 +40,7 @@
             this.textBoxSistaForsaljningsdag.Name = "textBoxSistaForsaljningsdag";
             this.textBoxSistaForsaljningsdag.Size = new System.Drawing.Size(188, 22);
             this.textBoxSistaForsaljningsdag.TabIndex = 0;
+            this.textBoxSistaForsaljningsdag.Text = "YYYY-MM-DD HH:mm";
             // 
             // labelSistaForsaljningsdag
             // 
@@ -58,6 +59,7 @@
             this.buttonSistaFörsäljningsdag.TabIndex = 2;
             this.buttonSistaFörsäljningsdag.Text = "Öppna försäljning av föreställningen";
             this.buttonSistaFörsäljningsdag.UseVisualStyleBackColor = true;
+            this.buttonSistaFörsäljningsdag.Click += new System.EventHandler(this.buttonSistaFörsäljningsdag_Click);
             // 
             // label1
             // 
@@ -80,6 +82,7 @@
             this.Controls.Add(this.textBoxSistaForsaljningsdag);
             this.Name = "OppnaForestallning";
             this.Text = "OppnaForestallning";
+            this.Load += new System.EventHandler(this.OppnaForestallning_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

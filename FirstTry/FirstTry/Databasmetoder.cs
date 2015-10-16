@@ -86,7 +86,34 @@ namespace FirstTry
             return aktlista;
         }
 
+        public static void LaggTillOpenOchForsaljningsslut(bool open, DateTime forsaljningsslut)
+        {
+            NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
 
+            try
+            {
+                conn1.Open();
+
+                NpgsqlCommand command1 = new NpgsqlCommand(@"INSERT INTO forestallning(open, forsaljningslut) VALUES (:nyOpen , :nyForsaljningsslut)", conn1);
+
+                command1.Parameters.Add(new NpgsqlParameter("nyOpen", DbType.Boolean));
+                command1.Parameters[0].Value = open;
+                command1.Parameters.Add(new NpgsqlParameter("nyForsaljningsslut", DbType.DateTime));
+                command1.Parameters[1].Value = forsaljningsslut;
+
+                int numberOfAffectedRows = command1.ExecuteNonQuery();
+
+            }
+
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                conn1.Close();
+            }
+        }
 
         public static void LaggTillNyForestallning(string namn, string generellinfo,bool open, DateTime datum, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
         {
@@ -103,8 +130,8 @@ namespace FirstTry
                 command1.Parameters[0].Value = namn;
                 command1.Parameters.Add(new NpgsqlParameter("nyGenerellinfo", DbType.String));
                 command1.Parameters[1].Value = generellinfo;
-                command1.Parameters.Add(new NpgsqlParameter("nyOpen", DbType.Boolean));
-                command1.Parameters[2].Value = open;
+               // command1.Parameters.Add(new NpgsqlParameter("nyOpen", DbType.Boolean));
+               // command1.Parameters[2].Value = open;
                 command1.Parameters.Add(new NpgsqlParameter("nyDatum", DbType.DateTime));
                 command1.Parameters[3].Value = datum;
                 command1.Parameters.Add(new NpgsqlParameter("nyStarttid", DbType.DateTime));
