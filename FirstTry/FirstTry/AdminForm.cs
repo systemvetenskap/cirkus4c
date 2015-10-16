@@ -79,6 +79,14 @@ namespace FirstTry
                 textBoxForestSluttid.Enabled = true;
                 textBoxForestSluttid.Visible = true;
                 textBoxForsaljningsslut.Enabled = true;
+               textBoxVuxenpris.Enabled = true;
+                textBoxVuxenpris.Visible = true;
+                textBoxUngdomspris.Enabled = true;
+                textBoxUngdomspris.Visible = true;
+                textBoxBarnpris.Enabled = true;
+                textBoxBarnpris.Visible = true;
+                listBoxAkter.Visible = false;
+                listBoxAkter.Enabled = false;
                 //Akt edit
                 //this.btnAkt.Enabled = true;
                 //this.btnAkt.Visible = true;
@@ -538,7 +546,8 @@ namespace FirstTry
         {
            
             tomTextBoxarForestallning();
-            exempelkodforest();
+            tomTextBoxarAkt();
+            //exempelkodforest();
 
         }
 
