@@ -372,10 +372,10 @@
             // 
             // buttonAdminhuvudsida
             // 
-            this.buttonAdminhuvudsida.Location = new System.Drawing.Point(245, 13);
+            this.buttonAdminhuvudsida.Location = new System.Drawing.Point(220, 13);
             this.buttonAdminhuvudsida.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAdminhuvudsida.Name = "buttonAdminhuvudsida";
-            this.buttonAdminhuvudsida.Size = new System.Drawing.Size(179, 37);
+            this.buttonAdminhuvudsida.Size = new System.Drawing.Size(144, 37);
             this.buttonAdminhuvudsida.TabIndex = 125;
             this.buttonAdminhuvudsida.Text = "Administration";
             this.buttonAdminhuvudsida.UseVisualStyleBackColor = true;
@@ -383,10 +383,10 @@
             // 
             // buttonAndraBehorighet
             // 
-            this.buttonAndraBehorighet.Location = new System.Drawing.Point(432, 13);
+            this.buttonAndraBehorighet.Location = new System.Drawing.Point(372, 13);
             this.buttonAndraBehorighet.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAndraBehorighet.Name = "buttonAndraBehorighet";
-            this.buttonAndraBehorighet.Size = new System.Drawing.Size(167, 37);
+            this.buttonAndraBehorighet.Size = new System.Drawing.Size(144, 37);
             this.buttonAndraBehorighet.TabIndex = 124;
             this.buttonAndraBehorighet.Text = "Ändra behörighet";
             this.buttonAndraBehorighet.UseVisualStyleBackColor = true;
@@ -394,10 +394,10 @@
             // 
             // buttonRapporter
             // 
-            this.buttonRapporter.Location = new System.Drawing.Point(607, 13);
+            this.buttonRapporter.Location = new System.Drawing.Point(522, 13);
             this.buttonRapporter.Margin = new System.Windows.Forms.Padding(4);
             this.buttonRapporter.Name = "buttonRapporter";
-            this.buttonRapporter.Size = new System.Drawing.Size(167, 37);
+            this.buttonRapporter.Size = new System.Drawing.Size(146, 37);
             this.buttonRapporter.TabIndex = 123;
             this.buttonRapporter.Text = "Rapporter";
             this.buttonRapporter.UseVisualStyleBackColor = true;
@@ -405,10 +405,10 @@
             // 
             // buttonTillHuvudsida
             // 
-            this.buttonTillHuvudsida.Location = new System.Drawing.Point(58, 13);
+            this.buttonTillHuvudsida.Location = new System.Drawing.Point(67, 13);
             this.buttonTillHuvudsida.Margin = new System.Windows.Forms.Padding(4);
             this.buttonTillHuvudsida.Name = "buttonTillHuvudsida";
-            this.buttonTillHuvudsida.Size = new System.Drawing.Size(179, 37);
+            this.buttonTillHuvudsida.Size = new System.Drawing.Size(145, 37);
             this.buttonTillHuvudsida.TabIndex = 121;
             this.buttonTillHuvudsida.Text = "Till huvudsidan";
             this.buttonTillHuvudsida.UseVisualStyleBackColor = true;
@@ -417,10 +417,10 @@
             // buttonLoggaUt
             // 
             this.buttonLoggaUt.Enabled = false;
-            this.buttonLoggaUt.Location = new System.Drawing.Point(781, 13);
+            this.buttonLoggaUt.Location = new System.Drawing.Point(924, 13);
             this.buttonLoggaUt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonLoggaUt.Name = "buttonLoggaUt";
-            this.buttonLoggaUt.Size = new System.Drawing.Size(172, 37);
+            this.buttonLoggaUt.Size = new System.Drawing.Size(144, 37);
             this.buttonLoggaUt.TabIndex = 126;
             this.buttonLoggaUt.Text = "Logga ut";
             this.buttonLoggaUt.UseVisualStyleBackColor = true;

@@ -76,7 +76,7 @@
             // 
             // buttonLoggaUt
             // 
-            this.buttonLoggaUt.Location = new System.Drawing.Point(1043, 6);
+            this.buttonLoggaUt.Location = new System.Drawing.Point(1030, 14);
             this.buttonLoggaUt.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLoggaUt.Name = "buttonLoggaUt";
             this.buttonLoggaUt.Size = new System.Drawing.Size(137, 32);
@@ -241,6 +241,7 @@
             this.buttonTaBortAkt.TabIndex = 17;
             this.buttonTaBortAkt.Text = "Ta bort akt";
             this.buttonTaBortAkt.UseVisualStyleBackColor = true;
+            this.buttonTaBortAkt.Click += new System.EventHandler(this.buttonTaBortAkt_Click);
             // 
             // buttonRapporter
             // 

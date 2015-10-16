@@ -593,7 +593,7 @@
             // buttonLoggaUt
             // 
             this.buttonLoggaUt.Enabled = false;
-            this.buttonLoggaUt.Location = new System.Drawing.Point(618, 17);
+            this.buttonLoggaUt.Location = new System.Drawing.Point(1096, 17);
             this.buttonLoggaUt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonLoggaUt.Name = "buttonLoggaUt";
             this.buttonLoggaUt.Size = new System.Drawing.Size(172, 37);
