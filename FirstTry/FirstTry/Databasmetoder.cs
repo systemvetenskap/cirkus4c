@@ -103,7 +103,7 @@ namespace FirstTry
 
                 int numberOfAffectedRows = command1.ExecuteNonQuery();
 
-        public static void LaggTillNyForestallning(string namn, string generellinfo, DateTime datum, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
+     
             }
 
             catch (NpgsqlException ex)
@@ -116,7 +116,7 @@ namespace FirstTry
             }
         }
 
-        public static void LaggTillNyForestallning(string namn, string generellinfo,bool open, DateTime datum, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
+        public static void LaggTillNyForestallning(string namn, string generellinfo, DateTime datum, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
         {
             NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
 
