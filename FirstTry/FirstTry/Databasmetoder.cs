@@ -123,7 +123,7 @@ namespace FirstTry
         }
 
 
-        public static void LaggTillNyForestallning(string namn, string generellinfo, DateTime datum, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris)
+        public static void LaggTillNyForestallning(string namn, string generellinfo, bool open, DateTime datum, DateTime starttid, DateTime sluttid, int vuxenpris, int ungdomspris, int barnpris, DateTime forsaljningsslut)
         {
             NpgsqlConnection conn1 = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
 
@@ -138,8 +138,8 @@ namespace FirstTry
                 command1.Parameters[0].Value = namn;
                 command1.Parameters.Add(new NpgsqlParameter("nyGenerellinfo", DbType.String));
                 command1.Parameters[1].Value = generellinfo;
-                //command1.Parameters.Add(new NpgsqlParameter("nyOpen", DbType.Boolean));
-                //command1.Parameters[2].Value = open;
+                command1.Parameters.Add(new NpgsqlParameter("nyOpen", DbType.Boolean));
+                command1.Parameters[2].Value = open;
                 command1.Parameters.Add(new NpgsqlParameter("nyDatum", DbType.DateTime));
                 command1.Parameters[3].Value = datum;
                 command1.Parameters.Add(new NpgsqlParameter("nyStarttid", DbType.DateTime));
@@ -152,8 +152,8 @@ namespace FirstTry
                 command1.Parameters[7].Value = ungdomspris;
                 command1.Parameters.Add(new NpgsqlParameter("nyBarnpris", DbType.Int32));
                 command1.Parameters[8].Value = barnpris;
-                //command1.Parameters.Add(new NpgsqlParameter("nyForsaljningsslut", DbType.DateTime));
-                //command1.Parameters[10].Value = forsaljningsslut;
+                command1.Parameters.Add(new NpgsqlParameter("nyForsaljningsslut", DbType.DateTime));
+                command1.Parameters[9].Value = forsaljningsslut;
 
 
                 int numberOfAffectedRows = command1.ExecuteNonQuery();
@@ -222,7 +222,7 @@ namespace FirstTry
             try
             {
                 conn1.Open();
-                NpgsqlCommand command1 = new NpgsqlCommand(@"UPDATE forestallning SET namn = :nyNamn, generell_info = :nyGenerellInfo, open = :nyOpen, datum = :nyDatum, starttid = :nyStarttid, sluttid = :nySluttid, vuxenpris = :nyVuxenpris, ungdomspris = :nyUngdomspris, barnpris = :nyBarnpris, forsaljningslut = :nyForsaljningsslut WHERE id = :nyId", conn1);
+                NpgsqlCommand command1 = new NpgsqlCommand(@"UPDATE forestallning SET namn = :nyNamn, generell_info = :nyGenerellInfo, datum = :nyDatum, starttid = :nyStarttid, sluttid = :nySluttid, vuxenpris = :nyVuxenpris, ungdomspris = :nyUngdomspris, barnpris = :nyBarnpris WHERE id = :nyId", conn1);
 
                 command1.Parameters.Add(new NpgsqlParameter("nyNamn", DbType.String));
                 command1.Parameters[0].Value = namn;
@@ -231,21 +231,21 @@ namespace FirstTry
                 //command1.Parameters.Add(new NpgsqlParameter("nyOpen", DbType.Boolean));
                 //command1.Parameters[2].Value = open;
                 command1.Parameters.Add(new NpgsqlParameter("nyDatum", DbType.DateTime));
-                command1.Parameters[3].Value = datum;
+                command1.Parameters[2].Value = datum;
                 command1.Parameters.Add(new NpgsqlParameter("nyStarttid", DbType.DateTime));
-                command1.Parameters[4].Value = starttid;
+                command1.Parameters[3].Value = starttid;
                 command1.Parameters.Add(new NpgsqlParameter("nySluttid", DbType.DateTime));
-                command1.Parameters[5].Value = sluttid;
+                command1.Parameters[4].Value = sluttid;
                 command1.Parameters.Add(new NpgsqlParameter("nyVuxenpris", DbType.Int32));
-                command1.Parameters[6].Value = vuxenpris;
+                command1.Parameters[5].Value = vuxenpris;
                 command1.Parameters.Add(new NpgsqlParameter("nyUngdomspris", DbType.Int32));
-                command1.Parameters[7].Value = ungdomspris;
+                command1.Parameters[6].Value = ungdomspris;
                 command1.Parameters.Add(new NpgsqlParameter("nyBarnpris", DbType.Int32));
-                command1.Parameters[8].Value = barnpris;
+                command1.Parameters[7].Value = barnpris;
                 //command1.Parameters.Add(new NpgsqlParameter("nyForsaljningsslut", DbType.DateTime));
                 //command1.Parameters[10].Value = forsaljningsslut;
                 command1.Parameters.Add(new NpgsqlParameter("nyId", DbType.Int32));
-                command1.Parameters[11].Value = id;
+                command1.Parameters[8].Value = id;
 
 
 
