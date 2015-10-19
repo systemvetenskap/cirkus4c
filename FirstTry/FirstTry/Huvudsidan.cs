@@ -383,8 +383,12 @@ namespace FirstTry
             else
             {
             //Admin ska väll kunna ändra pris?
-                if (checkBox1.Checked == true)
+            if (checkBox1.Checked == true)
             {
+                    if (checkBox_fri.Checked == true)
+                    {
+                        session.biljetter[0].forestallning.friplacering = true;
+                    }
                 this.Hide();
                 Kunduppgifter ku = new Kunduppgifter(session, aktortyper);
                 ku.ShowDialog();

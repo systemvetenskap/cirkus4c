@@ -105,24 +105,24 @@
             this.lblBehorighet.Location = new System.Drawing.Point(63, 32);
             this.lblBehorighet.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBehorighet.Name = "lblBehorighet";
-            this.lblBehorighet.Size = new System.Drawing.Size(58, 13);
+            this.lblBehorighet.Size = new System.Drawing.Size(132, 13);
             this.lblBehorighet.TabIndex = 52;
-            this.lblBehorighet.Text = "Behörighet";
+            this.lblBehorighet.Text = "Användarens behörigheter";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(253, 32);
+            this.label1.Location = new System.Drawing.Point(250, 32);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.Size = new System.Drawing.Size(122, 13);
             this.label1.TabIndex = 53;
-            this.label1.Text = "Behörighet";
+            this.label1.Text = "Tillgängliga behörigheter";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(514, 32);
+            this.label2.Location = new System.Drawing.Point(423, 32);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 13);

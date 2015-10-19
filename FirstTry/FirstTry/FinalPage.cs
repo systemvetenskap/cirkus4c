@@ -438,47 +438,58 @@ namespace FirstTry
 
         private void button5_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("Vill du verkligen köp biljetterna?", "Köpa biljetterna", MessageBoxButtons.YesNo);
 
-            Kund k = (Kund)listBox_kunder.SelectedItem;
-
-            foreach (Biljett b in k.bilj)
+            if (dialogResult == DialogResult.Yes)
             {
-                conn.Open();
-                string query = "update biljett set kund_id = null, reserverad = false where id = ";
-                query += b.biljett_id;
-                NpgsqlCommand command = new NpgsqlCommand(query, conn);
+                Kund k = (Kund)listBox_kunder.SelectedItem;
 
-                command.ExecuteNonQuery();
+                foreach (Biljett b in k.bilj)
+                {
+                    conn.Open();
+                    string query = "update biljett set kund_id = null, reserverad = false where id = ";
+                    query += b.biljett_id;
+                    NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                }
+
+                conn.Open();
+                taBortKund(k);
                 conn.Close();
             }
-
-            conn.Open();
-            taBortKund(k);
-            conn.Close();
-           
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            textBox_epost.Text = "";
-            Kund k = (Kund)listBox_kunder.SelectedItem;
+            DialogResult dialogResult = MessageBox.Show("Vill du verkligen ta bort reservationen?", "Ta bort reservation", MessageBoxButtons.YesNo);
 
-            foreach (Biljett b in k.bilj)
+            if (dialogResult == DialogResult.Yes)
             {
-                conn.Open();
-                string query = "delete from biljett where id = ";
-                query += b.biljett_id;
-                NpgsqlCommand command = new NpgsqlCommand(query, conn);
+                textBox_epost.Text = "";
+                Kund k = (Kund)listBox_kunder.SelectedItem;
 
-                command.ExecuteNonQuery();
+                foreach (Biljett b in k.bilj)
+                {
+                    conn.Open();
+                    string query = "delete from biljett where id = ";
+                    query += b.biljett_id;
+                    NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                }
+
+
+                conn.Open();
+                taBortKund(k);
                 conn.Close();
             }
 
 
-            conn.Open();
-            taBortKund(k);
-            conn.Close();
+
         }
     }
 }
