@@ -1263,7 +1263,7 @@ namespace FirstTry
         private void buttonLaggTillAktInfo_Click(object sender, EventArgs e)
         {
             string namn;// = textBoxAktnamn.Text;
-            string aktinfo;// = richTextBoxAktInf.Text;
+            string aktinfo = richTextBoxAktInf.Text;
             DateTime starttid;// = (Convert.ToDateTime(textBoxAktStarttid.Text));
             DateTime sluttid;// = Convert.ToDateTime(textBoxAktSluttid.Text);
             int vuxen; // = Convert.ToInt32(textBoxAktVuxenpris.Text);
@@ -1283,62 +1283,37 @@ namespace FirstTry
                 textBoxAktnamn.Focus();
                 return;
             }
-        }
 
 
-            ////generell info får vara "";
-
-            ////datum
-
-            //try
-            //{
-
-            //    datum = Convert.ToDateTime(textBoxForestDatum1.Text);
-            //    forsaljningsslut = datum;
-
-            //    if (datum.Date < DateTime.Now.Date)
-            //    {
-            //        DialogResult dialogResult = MessageBox.Show("Är du säker på att du vill skapa en föreställning på ett datum som redan varit?", "Datum", MessageBoxButtons.YesNo);
-            //        if (dialogResult == DialogResult.No)
-            //        {
-            //            textBoxForestDatum1.Focus();
-
-            //        }
-            //    }
-            //}
-            //catch (Exception)
-            //{
-
-            //    MessageBox.Show("Vänligen fyll i datumfältet enligt följande: 2015-10-27");
-            //    textBoxForestDatum1.Focus();
-            //    return;
-            //}
 
 
-            ////starttid
 
+            //starttid
+            
+            try
+            {
+                starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
 
-            //try
-            //{
+                if (textBoxForestStarttid.Text == "")
+                {
+                    DialogResult dialogResult = MessageBox.Show("Är du säker på att du inte vill ha en starttid i din akt?", "Starttid", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.No)
+                    {
+                        textBoxForestStarttid.Focus();
+                    }
+                }
+                //if (starttid.TimeOfDay < forestStart.TimeOfDay && starttid.TimeOfDay > sluttid.TimeOfDay) //if-sats här som kollar mot föreställning.... se till att den infon kommer in här.
+                //{
 
-            //    starttid = Convert.ToDateTime(textBoxForestStarttid.Text);
+                //}
+            }
+            catch (Exception)
+            {
 
-            //    if (textBoxForestStarttid.Text == "")
-            //    {
-            //        DialogResult dialogResult = MessageBox.Show("Är du säker på att du inte vill ha en starttid på din föreställning?", "Starttid", MessageBoxButtons.YesNo);
-            //        if (dialogResult == DialogResult.No)
-            //        {
-            //            textBoxForestStarttid.Focus();
-            //        }
-            //    }
-            //}
-            //catch (Exception)
-            //{
-
-            //    MessageBox.Show("Vänligen fyll i starttidsfältet enligt följande: 19:00, glöm ej : mellan timmar och minuter.");
-            //    textBoxForestStarttid.Focus();
-            //    return;
-            //}
+                MessageBox.Show("Vänligen fyll i starttidsfältet enligt följande: 19:00, glöm ej : mellan timmar och minuter.");
+                textBoxForestStarttid.Focus();
+                return;
+            }
 
             ////sluttid
 
@@ -1460,6 +1435,7 @@ namespace FirstTry
             //MessageBox.Show("Föreställningen är nu tillagd i föreställningslistan.");
 
 
+        }
 
 
 
@@ -1468,74 +1444,73 @@ namespace FirstTry
 
 
 
+        //            try
+        //            {
+        //            string namn = textBoxAktnamn.Text;
+        //                string aktinfo = richTextBoxAktInf.Text;
+        //                DateTime starttid = (Convert.ToDateTime(textBoxAktStarttid.Text));
+        //                DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
+        //                int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
+        //                int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
+        //                int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
+        //                int forestallningsid = Convert.ToInt32(valdforestallning.id);
 
-//            try
-//            {
-//            string namn = textBoxAktnamn.Text;
-//                string aktinfo = richTextBoxAktInf.Text;
-//                DateTime starttid = (Convert.ToDateTime(textBoxAktStarttid.Text));
-//                DateTime sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
-//                int vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
-//                int ungdom = Convert.ToInt32(textBoxAktUngdPris.Text);
-//                int barn = Convert.ToInt32(TextBoxAktBarnpris.Text);
-//                int forestallningsid = Convert.ToInt32(valdforestallning.id);
+        //                DateTime forestStart = valdforestallning.starttid;
 
-//                DateTime forestStart = valdforestallning.starttid;
-                
-//                if (starttid.TimeOfDay >= forestStart.TimeOfDay  &&  sluttid.TimeOfDay <= valdforestallning.sluttid.TimeOfDay)
-//                {
-//                    if (starttid.TimeOfDay < sluttid.TimeOfDay)
-//                    {
-//                        if (vuxen <= valdforestallning.vuxenpris && ungdom <= valdforestallning.ungdomspris && barn <= valdforestallning.barnpris)
-//                        {
-//                            if (vuxen >= ungdom && vuxen >= barn && ungdom >= barn)
-//                            {
-//                            Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn, forestallningsid);
-//            listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
-//                            //listBoxAkter.SelectionMode = SelectionMode.One;
-//                            //btnAkt.Enabled = true;
-//                            //btnAkt.Visible = true;
-//                            //buttonLaggTillAktInfo.Enabled = false;
-//                            //buttonLaggTillAktInfo.Visible = false;
+        //                if (starttid.TimeOfDay >= forestStart.TimeOfDay  &&  sluttid.TimeOfDay <= valdforestallning.sluttid.TimeOfDay)
+        //                {
+        //                    if (starttid.TimeOfDay < sluttid.TimeOfDay)
+        //                    {
+        //                        if (vuxen <= valdforestallning.vuxenpris && ungdom <= valdforestallning.ungdomspris && barn <= valdforestallning.barnpris)
+        //                        {
+        //                            if (vuxen >= ungdom && vuxen >= barn && ungdom >= barn)
+        //                            {
+        //                            Databasmetoder.LaggTillNyAkt(namn, aktinfo, starttid, sluttid, vuxen, ungdom, barn, forestallningsid);
+        //            listBoxAkter.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
+        //                            //listBoxAkter.SelectionMode = SelectionMode.One;
+        //                            //btnAkt.Enabled = true;
+        //                            //btnAkt.Visible = true;
+        //                            //buttonLaggTillAktInfo.Enabled = false;
+        //                            //buttonLaggTillAktInfo.Visible = false;
 
-//            conn.Close();
-//                                MessageBox.Show("Akten är nu tillagd i aktlistan.");
-//                            }
-//                            else
-//                            {
-//                                MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
-//                            }
+        //            conn.Close();
+        //                                MessageBox.Show("Akten är nu tillagd i aktlistan.");
+        //                            }
+        //                            else
+        //                            {
+        //                                MessageBox.Show("Vuxen är dyrast, sedan kommer ungdom följt av barn.");
+        //                            }
 
-//                        }
-//                        else
-//                        {
-//                            MessageBox.Show("Akten bör inte vara dyrare än föreställningen!");
-//        }
+        //                        }
+        //                        else
+        //                        {
+        //                            MessageBox.Show("Akten bör inte vara dyrare än föreställningen!");
+        //        }
 
-//                    }
-//                    else
-//        {
-//                        MessageBox.Show("Akten är för kort!");
-//        }
-//    }
-//                else
-//                {
-//                    MessageBox.Show("Akten måste ha en tid som passar föreställningen!");
+        //                    }
+        //                    else
+        //        {
+        //                        MessageBox.Show("Akten är för kort!");
+        //        }
+        //    }
+        //                else
+        //                {
+        //                    MessageBox.Show("Akten måste ha en tid som passar föreställningen!");
 
-//}
+        //}
 
-//            }
-//            catch (Exception)
-//            {
-//                MessageBox.Show("Vänligen observera att alla textfält måste vara ifyllda korrekt, se exempelkod. Kontrollera även så att du inte glömt att fylla i ett textfält.");
+        //            }
+        //            catch (Exception)
+        //            {
+        //                MessageBox.Show("Vänligen observera att alla textfält måste vara ifyllda korrekt, se exempelkod. Kontrollera även så att du inte glömt att fylla i ett textfält.");
 
-//            }
-//            finally
-//            {
+        //            }
+        //            finally
+        //            {
 
-//                conn.Close();
-//            }
-//        }
+        //                conn.Close();
+        //            }
+        //        }
 
         private void btnAkt_Click(object sender, EventArgs e)
         {
