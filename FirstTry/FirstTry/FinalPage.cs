@@ -215,11 +215,12 @@ namespace FirstTry
             if (tk.biljetter.Count > 0 && tk.biljetter[0].forestallning.friplacering == true)
             {
                 textBox_epost.Text = tk.epost;
+                conn.Open();
                 foreach (Biljett bilj in tk.biljetter)
                 {
-                    conn.Open();
+                    
                     laggTilliDatabasenBiljetter();
-                    conn.Close();
+                    
 
                     richTextBox1.Text += " Biljett ID: " + bilj.ToString();
                     richTextBox1.Text += " \n Föreställningsnamn: " + bilj.forestallning.namn;
@@ -230,6 +231,7 @@ namespace FirstTry
                     richTextBox1.Text += "\n Pris: " + bilj.pris.ToString();
                     richTextBox1.Text += "\n " + bilj.biljettyp + " \n  \n -------------------------------  \n \n";
                 }
+                conn.Close();
             }
             else if (tk.biljetter.Count > 0)
             {

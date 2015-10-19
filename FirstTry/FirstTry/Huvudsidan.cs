@@ -379,6 +379,7 @@ namespace FirstTry
            else if (session.fullbokat(session) == true)
             {
                 MessageBox.Show("Tyvärr så finns det inte tillräkligt med plats på de valda akterna");
+                session.biljetter.Clear();
             }
             else
             {
