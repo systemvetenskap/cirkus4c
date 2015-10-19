@@ -77,7 +77,7 @@ namespace FirstTry
 
                        
 
-                        if (x >= 250)
+                        if (x >= 251)
                         {
 
                             return true;
