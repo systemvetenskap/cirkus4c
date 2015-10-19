@@ -50,6 +50,7 @@
             this.buttonAndraBehorighet = new System.Windows.Forms.Button();
             this.buttonAdminhuvudsida = new System.Windows.Forms.Button();
             this.labelForsaljningsslut = new System.Windows.Forms.Label();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.SuspendLayout();
             // 
             // buttonTillHuvudsida
@@ -63,7 +64,7 @@
             this.buttonTillHuvudsida.UseVisualStyleBackColor = true;
             this.buttonTillHuvudsida.Click += new System.EventHandler(this.buttonTillHuvudsida_Click);
             // 
-            //LabelOppen
+            // LabelOppen
             // 
             this.LabelOppen.AutoSize = true;
             this.LabelOppen.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -351,5 +352,6 @@
         private System.Windows.Forms.Button buttonAndraBehorighet;
         private System.Windows.Forms.Button buttonAdminhuvudsida;
         private System.Windows.Forms.Label labelForsaljningsslut;
+        private System.Windows.Forms.FontDialog fontDialog1;
     }
 }

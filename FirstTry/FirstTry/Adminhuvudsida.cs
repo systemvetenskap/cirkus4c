@@ -203,7 +203,7 @@ namespace FirstTry
 
         private void listBoxForestallning_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            
             valdforestallning = (Forestallning)listBoxForestallning.SelectedItem;
             if (valdforestallning != null)
             {

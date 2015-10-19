@@ -42,14 +42,34 @@ namespace FirstTry
 
         private void buttonSistaFörsäljningsdag_Click(object sender, EventArgs e)
         {
-                
-            bool open = true;
-            DateTime forsaljningsslut = Convert.ToDateTime(textBoxSistaForsaljningsdag.Text);
 
-              Databasmetoder.UppdateraOpenochForsaljningsslut(id, open, forsaljningsslut);
+            bool open;
+            DateTime forsaljningsslut;
+           try
+           {
+                open = true;
+                forsaljningsslut = Convert.ToDateTime(textBoxSistaForsaljningsdag.Text);
 
-            MessageBox.Show("Föreställningen är nu öppnad och sista försäljningsdag är tillagd!");
-        }
-        
+                if (textBoxSistaForsaljningsdag.Text == "")
+                {
+
+                    Databasmetoder.UppdateraOpenochForsaljningsslut(id, open, forsaljningsslut);
+                    MessageBox.Show("Föreställningen är nu öppnad och sista försäljningsdag är tillagd!");
+                }
+                else
+                {
+                    MessageBox.Show("Datumfältet måste vara ifyllt enligt följande: 2015-10-15. Önskas även klockslag för försäljningsslut: 2015-10-15 16:00. Tänk på att det ska vara kolontecken mellan timmar och minuter");
+                    textBoxSistaForsaljningsdag.Focus();
+                    return;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("ex");
+            }
+
+            conn.Close();
+        }      
     }
 }
