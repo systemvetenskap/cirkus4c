@@ -507,7 +507,7 @@ namespace FirstTry
             {
 
                 MessageBox.Show("Vänligen fyll i vuxenpriset med siffror.");
-                textBoxForestSluttid.Focus();
+                textBoxVuxenpris.Focus();
                 return;
             }
 
@@ -1289,68 +1289,100 @@ namespace FirstTry
 
 
             //starttid
-            
+
             try
             {
+                
+                DateTime forestStart = valdforestallning.starttid;
                 starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
 
-                if (textBoxForestStarttid.Text == "")
+                if (textBoxAktStarttid.Text == "")
                 {
                     DialogResult dialogResult = MessageBox.Show("Är du säker på att du inte vill ha en starttid i din akt?", "Starttid", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.No)
                     {
-                        textBoxForestStarttid.Focus();
+                        textBoxAktStarttid.Focus();
                     }
                 }
-                //if (starttid.TimeOfDay < forestStart.TimeOfDay && starttid.TimeOfDay > sluttid.TimeOfDay) //if-sats här som kollar mot föreställning.... se till att den infon kommer in här.
+                //  // Kika på dessa och se vad du tycker. Kört en return för att komma ur loop men fungerar inte. 
+                //if (starttid.TimeOfDay < forestStart.TimeOfDay && starttid.TimeOfDay <= valdforestallning.sluttid.TimeOfDay) //if-sats här som kollar mot föreställning.... se till att den infon kommer in här.
                 //{
+                //    DialogResult dialogResult = MessageBox.Show("Observera att starttid på akten inte överensstämmer med föreställningens tider? Stämmer detta?", "Starttid", MessageBoxButtons.YesNo);
+                //    if (dialogResult == DialogResult.No)
+                //    {
+                //        textBoxAktStarttid.Focus();
+
+                //    }
+                //    else //- blir knas att sätta fyll i starttid rätt eftersom det kan den ju vara även om tiden är knas. 
+                //    {
+                //        return;
+                //    }
 
                 //}
+
             }
             catch (Exception)
             {
 
                 MessageBox.Show("Vänligen fyll i starttidsfältet enligt följande: 19:00, glöm ej : mellan timmar och minuter.");
-                textBoxForestStarttid.Focus();
+                textBoxAktStarttid.Focus();
                 return;
             }
+            finally
+            {
+                textBoxAktSluttid.Focus();
+            }
 
-            ////sluttid
+            //sluttid
 
+            try
+            {
+                sluttid = Convert.ToDateTime(textBoxAktSluttid.Text);
+
+                if (textBoxAktSluttid.Text == "")
+                {
+                    DialogResult dialogResult = MessageBox.Show("Är du säker på att du inte vill ha en sluttid på din föreställning?", "Sluttid", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.No)
+                    {
+                        textBoxAktSluttid.Focus();
+                    }
+
+                    // Kika på dessa och se vad du tycker. Kört en return för att komma ur loop men fungerar inte. 
+                    //if (starttid.TimeOfDay > sluttid.TimeOfDay)
+                    //{
+                    //    DialogResult dialogResult = MessageBox.Show("Vill du att akten ska skall ta slut innan den börjar?", "Sluttid", MessageBoxButtons.YesNo);
+                    //    if (dialogResult == DialogResult.No)
+                    //    {
+                    //        textBoxAktSluttid.Focus();
+                    //    }
+                    //    else
+                    //    {
+                    //        return;
+                    //    }
+
+
+                    //}
+
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Vänligen fyll i Sluttidsfältet enligt följande: 19:00, glöm ej : mellan timmar och minuter.");
+                textBoxAktSluttid.Focus();
+                return;
+            }
+            finally
+            {
+                textBoxAktVuxenpris.Focus();
+            }
+
+            ////vuxenpris - Ändrat till rätt textboxar! kommer dock inte in i if-sats!
+        
             //try
             //{
-            //    sluttid = Convert.ToDateTime(textBoxForestSluttid.Text);
-            //    if (textBoxForestSluttid.Text == "")
-            //    {
-            //        DialogResult dialogResult = MessageBox.Show("Är du säker på att du inte vill ha en sluttid på din föreställning?", "Sluttid", MessageBoxButtons.YesNo);
-            //        if (dialogResult == DialogResult.No)
-            //        {
-            //            textBoxForestSluttid.Focus();
-            //        }
-            //    }
-            //    if (starttid.TimeOfDay > sluttid.TimeOfDay)
-            //    {
-            //        DialogResult dialogResult = MessageBox.Show("Vill du verkligen att föreställningen skall ta slut innan den börjar?", "Sluttid", MessageBoxButtons.YesNo);
-            //        if (dialogResult == DialogResult.No)
-            //        {
-            //            textBoxForestSluttid.Focus();
-            //        }
-            //    }
-
-            //}
-            //catch (Exception)
-            //{
-
-            //    MessageBox.Show("Vänligen fyll i Sluttidsfältet enligt följande: 19:00, glöm ej : mellan timmar och minuter.");
-            //    textBoxForestSluttid.Focus();
-            //    return;
-            //}
-
-            ////vuxenpris
-            //try
-            //{
-            //    vuxenpris = Convert.ToInt32(textBoxVuxenpris.Text);
-            //    if (textBoxVuxenpris.Text == "")
+            //    vuxen = Convert.ToInt32(textBoxAktVuxenpris.Text);
+            //    if (textBoxAktVuxenpris.Text == "")
             //    {
             //        DialogResult dialogResult = MessageBox.Show("Är du säker på att du inte vill ha ett vuxenpris på din föreställning?", "Vuxenpris", MessageBoxButtons.YesNo);
             //        if (dialogResult == DialogResult.No)
@@ -1364,7 +1396,7 @@ namespace FirstTry
             //{
 
             //    MessageBox.Show("Vänligen fyll i vuxenpriset med siffror.");
-            //    textBoxForestSluttid.Focus();
+            //    textBoxAktVuxenpris.Focus();
             //    return;
             //}
 
