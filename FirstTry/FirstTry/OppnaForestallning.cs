@@ -26,7 +26,7 @@ namespace FirstTry
         public OppnaForestallning(List<int> aktorlista, int id2)
         {
             aktorlistaId = aktorlista;
-            id = id2; 
+            id = id2;
 
             InitializeComponent();
         }
