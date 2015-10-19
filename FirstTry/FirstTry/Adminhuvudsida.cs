@@ -40,7 +40,7 @@ namespace FirstTry
 
         private void buttonOppnaForsaljning_Click(object sender, EventArgs e)
         {
-            int id2 = id;  
+            string id = "oppnaforsaljning";  
 
             this.Hide();
             OppnaForestallning open = new OppnaForestallning();
@@ -201,10 +201,11 @@ namespace FirstTry
 
         private void listBoxForestallning_SelectedIndexChanged(object sender, EventArgs e)
         {
-            id = valdforestallning.id;
+           
             valdforestallning = (Forestallning)listBoxForestallning.SelectedItem;
             if (valdforestallning != null)
             {
+                int id2 = valdforestallning.id;
                 listBoxAkt.DataSource = Databasmetoder.HamtaAktLista(valdforestallning.id);
                 richTextBoxForestallning.Text = valdforestallning.generellinfo;
                 labelForsaljningsslut.Text = ("t.o.m " + valdforestallning.forsaljningsslut.ToShortDateString());

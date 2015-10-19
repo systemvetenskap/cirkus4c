@@ -16,6 +16,7 @@ namespace FirstTry
         private List<int> aktorlistaId = new List<int>();
         private Forestallning valdforestallning;
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;Database=pgmvaru_g4;User Id=pgmvaru_g4;Password=trapets;ssl=true");
+        int id;
 
         public OppnaForestallning()
         {
@@ -25,7 +26,7 @@ namespace FirstTry
         public OppnaForestallning(List<int> aktorlista, int id2)
         {
             aktorlistaId = aktorlista;
-            int id = id2; 
+            id = id2; 
 
             InitializeComponent();
         }
@@ -45,8 +46,7 @@ namespace FirstTry
             bool open = true;
             DateTime forsaljningsslut = Convert.ToDateTime(textBoxSistaForsaljningsdag.Text);
 
-
-            Databasmetoder.LaggTillOpenOchForsaljningsslut(open, forsaljningsslut);
+              Databasmetoder.UppdateraOpenochForsaljningsslut(id, open, forsaljningsslut);
 
             MessageBox.Show("Föreställningen är nu öppnad och sista försäljningsdag är tillagd!");
         }
