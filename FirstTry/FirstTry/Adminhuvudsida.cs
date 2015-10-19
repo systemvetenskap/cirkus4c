@@ -109,6 +109,7 @@ namespace FirstTry
             AdminForm af = new AdminForm(aktorlistaId, st);
             af.ShowDialog();
             this.Close();
+            
         }
 
         private void buttonTaBortForest_Click(object sender, EventArgs e)
