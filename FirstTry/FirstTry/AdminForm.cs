@@ -1266,11 +1266,12 @@ namespace FirstTry
             string aktinfo = richTextBoxAktInf.Text;
             DateTime starttid;// = (Convert.ToDateTime(textBoxAktStarttid.Text));
             DateTime sluttid; // = Convert.ToDateTime(textBoxAktSluttid.Text);
-            int vuxen; // = Convert.ToInt32(textBoxAktVuxenpris.Text);
-            int ungdom;// = Convert.ToInt32(textBoxAktUngdPris.Text);
-            int barn;// = Convert.ToInt32(TextBoxAktBarnpris.Text);
+            int vuxen = 0; // = Convert.ToInt32(textBoxAktVuxenpris.Text);
+            int ungdom = 0;// = Convert.ToInt32(textBoxAktUngdPris.Text);
+            int barn = 0;// = Convert.ToInt32(TextBoxAktBarnpris.Text);
             int forestallningsid = Convert.ToInt32(valdforestallning.id);
-
+            bool starttidSaknas = false;
+            bool sluttidSaknas = false;
 
             DateTime forestStart = valdforestallning.starttid;
           
@@ -1292,7 +1293,7 @@ namespace FirstTry
 
 
             //starttid
-            if (textBoxAktStarttid.Text != "" || textBoxAktStarttid.Text != null)
+            if (textBoxAktStarttid.Text != "" && textBoxAktStarttid.Text != null)
             { 
                 try
                 {
@@ -1310,8 +1311,9 @@ namespace FirstTry
                         }
                         else //- blir knas att sätta fyll i starttid rätt eftersom det kan den ju vara även om tiden är knas. 
                         {
-
+                            starttid = Convert.ToDateTime("00:00:59");
                             textBoxAktSluttid.Focus();
+                            starttidSaknas = true;
                         }
 
 
@@ -1333,12 +1335,14 @@ namespace FirstTry
                 if (dialogResult == DialogResult.No)
                 {
                     textBoxAktStarttid.Focus();
+                    return;
                 }
 
                 else
                 {
                     textBoxAktSluttid.Focus();
-                   
+                    starttid = Convert.ToDateTime("00:00:59");
+                    starttidSaknas = true;
                 }
             }
 

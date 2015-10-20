@@ -557,7 +557,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(971, 569);
+            this.ClientSize = new System.Drawing.Size(971, 566);
             this.Controls.Add(this.buttonLoggaUt);
             this.Controls.Add(this.buttonAdminhuvudsida);
             this.Controls.Add(this.btn_Huvud);
