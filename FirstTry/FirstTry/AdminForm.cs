@@ -1291,8 +1291,7 @@ namespace FirstTry
             //starttid
 
             try
-            {
-                
+            {  
                 DateTime forestStart = valdforestallning.starttid;
                 starttid = Convert.ToDateTime(textBoxAktStarttid.Text);
 
@@ -1303,22 +1302,25 @@ namespace FirstTry
                     {
                         textBoxAktStarttid.Focus();
                     }
+                    //else {
+                    //    return;
+                    //}
                 }
-                //  // Kika på dessa och se vad du tycker. Kört en return för att komma ur loop men fungerar inte. 
-                //if (starttid.TimeOfDay < forestStart.TimeOfDay && starttid.TimeOfDay <= valdforestallning.sluttid.TimeOfDay) //if-sats här som kollar mot föreställning.... se till att den infon kommer in här.
-                //{
-                //    DialogResult dialogResult = MessageBox.Show("Observera att starttid på akten inte överensstämmer med föreställningens tider? Stämmer detta?", "Starttid", MessageBoxButtons.YesNo);
-                //    if (dialogResult == DialogResult.No)
-                //    {
-                //        textBoxAktStarttid.Focus();
+                // Kika på dessa och se vad du tycker. Kört en return för att komma ur loop men fungerar inte. 
+                if (starttid.TimeOfDay < forestStart.TimeOfDay || starttid.TimeOfDay > valdforestallning.sluttid.TimeOfDay) //if-sats här som kollar mot föreställning.... se till att den infon kommer in här.
+                {
+                    DialogResult dialogResult = MessageBox.Show("Observera att starttid på akten inte överensstämmer med föreställningens tider? Stämmer detta?", "Starttid", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.No)
+                    {
+                        textBoxAktStarttid.Focus();
 
-                //    }
-                //    else //- blir knas att sätta fyll i starttid rätt eftersom det kan den ju vara även om tiden är knas. 
-                //    {
-                //        return;
-                //    }
+                    }
+                    else //- blir knas att sätta fyll i starttid rätt eftersom det kan den ju vara även om tiden är knas. 
+                    {
+                        return;
+                    }
 
-                //}
+                }
 
             }
             catch (Exception)
