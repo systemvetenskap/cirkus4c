@@ -1270,8 +1270,8 @@ namespace FirstTry
             int ungdom = 0;// = Convert.ToInt32(textBoxAktUngdPris.Text);
             int barn = 0;// = Convert.ToInt32(TextBoxAktBarnpris.Text);
             int forestallningsid = Convert.ToInt32(valdforestallning.id);
-            bool starttidSaknas = false;
-            bool sluttidSaknas = false;
+           
+            
 
             DateTime forestStart = valdforestallning.starttid;
           
@@ -1313,7 +1313,7 @@ namespace FirstTry
                         {
                             starttid = Convert.ToDateTime("00:00:59");
                             textBoxAktSluttid.Focus();
-                            starttidSaknas = true;
+                           
                         }
 
 
@@ -1342,7 +1342,7 @@ namespace FirstTry
                 {
                     textBoxAktSluttid.Focus();
                     starttid = Convert.ToDateTime("00:00:59");
-                    starttidSaknas = true;
+                   
                 }
             }
 
