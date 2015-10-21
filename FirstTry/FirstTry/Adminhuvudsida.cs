@@ -62,7 +62,7 @@ namespace FirstTry
         private void buttonRapporter_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Rapporter rapporter = new Rapporter();
+            Rapporter rapporter = new Rapporter(aktorlistaId);
             rapporter.ShowDialog();
             this.Close();
         }
