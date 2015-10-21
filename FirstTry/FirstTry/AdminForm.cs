@@ -1293,7 +1293,8 @@ namespace FirstTry
 
             //starttid
             if (textBoxAktStarttid.Text != "" || textBoxAktStarttid.Text != null)
-            { 
+            {
+                
                 try
                 {
                     //DateTime forestStart = valdforestallning.starttid;
@@ -1310,7 +1311,7 @@ namespace FirstTry
                         }
                         else //- blir knas att sätta fyll i starttid rätt eftersom det kan den ju vara även om tiden är knas. 
                         {
-
+                            
                             textBoxAktSluttid.Focus();
                         }
 
