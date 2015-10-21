@@ -58,6 +58,11 @@
             this.label15 = new System.Windows.Forms.Label();
             this.listBoxForestallning = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonAdminhuvudsida = new System.Windows.Forms.Button();
+            this.buttonAndraBehorighet = new System.Windows.Forms.Button();
+            this.buttonRapporter = new System.Windows.Forms.Button();
+            this.buttonTillHuvudsida = new System.Windows.Forms.Button();
+            this.buttonLoggaUt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label30
@@ -227,7 +232,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(563, 83);
+            this.label26.Location = new System.Drawing.Point(563, 111);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(89, 17);
@@ -238,7 +243,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(377, 80);
+            this.label24.Location = new System.Drawing.Point(377, 111);
             this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(178, 20);
@@ -350,7 +355,7 @@
             // 
             this.listBoxForestallning.FormattingEnabled = true;
             this.listBoxForestallning.ItemHeight = 16;
-            this.listBoxForestallning.Location = new System.Drawing.Point(68, 112);
+            this.listBoxForestallning.Location = new System.Drawing.Point(58, 171);
             this.listBoxForestallning.Name = "listBoxForestallning";
             this.listBoxForestallning.Size = new System.Drawing.Size(294, 372);
             this.listBoxForestallning.TabIndex = 119;
@@ -359,17 +364,78 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(65, 79);
+            this.label1.Location = new System.Drawing.Point(64, 141);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 17);
             this.label1.TabIndex = 120;
             this.label1.Text = "Föreställning";
+            // 
+            // buttonAdminhuvudsida
+            // 
+            this.buttonAdminhuvudsida.Location = new System.Drawing.Point(220, 13);
+            this.buttonAdminhuvudsida.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAdminhuvudsida.Name = "buttonAdminhuvudsida";
+            this.buttonAdminhuvudsida.Size = new System.Drawing.Size(144, 37);
+            this.buttonAdminhuvudsida.TabIndex = 125;
+            this.buttonAdminhuvudsida.Text = "Administration";
+            this.buttonAdminhuvudsida.UseVisualStyleBackColor = true;
+            this.buttonAdminhuvudsida.Click += new System.EventHandler(this.buttonAdminhuvudsida_Click);
+            // 
+            // buttonAndraBehorighet
+            // 
+            this.buttonAndraBehorighet.Location = new System.Drawing.Point(372, 13);
+            this.buttonAndraBehorighet.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAndraBehorighet.Name = "buttonAndraBehorighet";
+            this.buttonAndraBehorighet.Size = new System.Drawing.Size(144, 37);
+            this.buttonAndraBehorighet.TabIndex = 124;
+            this.buttonAndraBehorighet.Text = "Ändra behörighet";
+            this.buttonAndraBehorighet.UseVisualStyleBackColor = true;
+            this.buttonAndraBehorighet.Click += new System.EventHandler(this.buttonAndraBehorighet_Click);
+            // 
+            // buttonRapporter
+            // 
+            this.buttonRapporter.Location = new System.Drawing.Point(522, 13);
+            this.buttonRapporter.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonRapporter.Name = "buttonRapporter";
+            this.buttonRapporter.Size = new System.Drawing.Size(146, 37);
+            this.buttonRapporter.TabIndex = 123;
+            this.buttonRapporter.Text = "Rapporter";
+            this.buttonRapporter.UseVisualStyleBackColor = true;
+            this.buttonRapporter.Click += new System.EventHandler(this.buttonRapporter_Click);
+            // 
+            // buttonTillHuvudsida
+            // 
+            this.buttonTillHuvudsida.Location = new System.Drawing.Point(67, 13);
+            this.buttonTillHuvudsida.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonTillHuvudsida.Name = "buttonTillHuvudsida";
+            this.buttonTillHuvudsida.Size = new System.Drawing.Size(145, 37);
+            this.buttonTillHuvudsida.TabIndex = 121;
+            this.buttonTillHuvudsida.Text = "Till huvudsidan";
+            this.buttonTillHuvudsida.UseVisualStyleBackColor = true;
+            this.buttonTillHuvudsida.Click += new System.EventHandler(this.buttonTillHuvudsida_Click);
+            // 
+            // buttonLoggaUt
+            // 
+            this.buttonLoggaUt.Enabled = false;
+            this.buttonLoggaUt.Location = new System.Drawing.Point(924, 13);
+            this.buttonLoggaUt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonLoggaUt.Name = "buttonLoggaUt";
+            this.buttonLoggaUt.Size = new System.Drawing.Size(144, 37);
+            this.buttonLoggaUt.TabIndex = 126;
+            this.buttonLoggaUt.Text = "Logga ut";
+            this.buttonLoggaUt.UseVisualStyleBackColor = true;
+            this.buttonLoggaUt.Click += new System.EventHandler(this.buttonLoggaUt_Click);
             // 
             // Rapporter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 555);
+            this.Controls.Add(this.buttonLoggaUt);
+            this.Controls.Add(this.buttonAdminhuvudsida);
+            this.Controls.Add(this.buttonAndraBehorighet);
+            this.Controls.Add(this.buttonRapporter);
+            this.Controls.Add(this.buttonTillHuvudsida);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxForestallning);
             this.Controls.Add(this.label30);
@@ -440,5 +506,10 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ListBox listBoxForestallning;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonAdminhuvudsida;
+        private System.Windows.Forms.Button buttonAndraBehorighet;
+        private System.Windows.Forms.Button buttonRapporter;
+        private System.Windows.Forms.Button buttonTillHuvudsida;
+        private System.Windows.Forms.Button buttonLoggaUt;
     }
 }
