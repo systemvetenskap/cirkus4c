@@ -245,7 +245,7 @@ namespace FirstTry
 
             }
 
-            /* if (aktorlistaId.Contains(4) == true)
+            /*if (aktorlistaId.Contains(4) == true)
              {
                  uppdatera.Enabled = true;
                  buttonUppdateraAkt.Enabled = true;

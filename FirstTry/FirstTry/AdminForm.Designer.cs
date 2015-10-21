@@ -455,7 +455,7 @@
             // btnAndraTaBortBeh
             // 
             this.btnAndraTaBortBeh.Enabled = false;
-            this.btnAndraTaBortBeh.Location = new System.Drawing.Point(325, 14);
+            this.btnAndraTaBortBeh.Location = new System.Drawing.Point(301, 14);
             this.btnAndraTaBortBeh.Margin = new System.Windows.Forms.Padding(2);
             this.btnAndraTaBortBeh.Name = "btnAndraTaBortBeh";
             this.btnAndraTaBortBeh.Size = new System.Drawing.Size(129, 30);
@@ -509,12 +509,12 @@
             // 
             // btn_Huvud
             // 
-            this.btn_Huvud.Location = new System.Drawing.Point(35, 14);
+            this.btn_Huvud.Location = new System.Drawing.Point(28, 14);
             this.btn_Huvud.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Huvud.Name = "btn_Huvud";
             this.btn_Huvud.Size = new System.Drawing.Size(129, 30);
             this.btn_Huvud.TabIndex = 88;
-            this.btn_Huvud.Text = "Tillbaka till Huvudsidan";
+            this.btn_Huvud.Text = "Biljettförsäljning";
             this.btn_Huvud.UseVisualStyleBackColor = true;
             this.btn_Huvud.Click += new System.EventHandler(this.btn_Huvud_Click);
             // 
@@ -534,17 +534,17 @@
             // 
             // buttonAdminhuvudsida
             // 
-            this.buttonAdminhuvudsida.Location = new System.Drawing.Point(177, 14);
+            this.buttonAdminhuvudsida.Location = new System.Drawing.Point(162, 14);
             this.buttonAdminhuvudsida.Name = "buttonAdminhuvudsida";
             this.buttonAdminhuvudsida.Size = new System.Drawing.Size(134, 30);
             this.buttonAdminhuvudsida.TabIndex = 89;
-            this.buttonAdminhuvudsida.Text = "Administration";
+            this.buttonAdminhuvudsida.Text = "Admin";
             this.buttonAdminhuvudsida.UseVisualStyleBackColor = true;
             this.buttonAdminhuvudsida.Click += new System.EventHandler(this.buttonAdminhuvudsida_Click);
             // 
             // buttonLoggaUt
             // 
-            this.buttonLoggaUt.Location = new System.Drawing.Point(464, 14);
+            this.buttonLoggaUt.Location = new System.Drawing.Point(831, 14);
             this.buttonLoggaUt.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLoggaUt.Name = "buttonLoggaUt";
             this.buttonLoggaUt.Size = new System.Drawing.Size(129, 30);

@@ -259,7 +259,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(26, 12);
+            this.button2.Location = new System.Drawing.Point(935, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(129, 35);
             this.button2.TabIndex = 20;
@@ -326,7 +326,7 @@
             // button3
             // 
             this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(171, 12);
+            this.button3.Location = new System.Drawing.Point(26, 12);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(129, 35);
             this.button3.TabIndex = 27;
@@ -337,7 +337,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(318, 12);
+            this.button4.Location = new System.Drawing.Point(161, 12);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(129, 35);
             this.button4.TabIndex = 28;
@@ -365,12 +365,12 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(866, 20);
+            this.button5.Location = new System.Drawing.Point(609, 328);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(198, 19);
+            this.button5.Size = new System.Drawing.Size(18, 19);
             this.button5.TabIndex = 31;
-            this.button5.Text = "Visa platskarta för valda akter";
+            this.button5.Text = "syns inte";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Visible = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);

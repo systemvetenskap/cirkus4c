@@ -51,7 +51,7 @@ namespace FirstTry
                 
         private void Adminhuvudsida_Load(object sender, EventArgs e)
         {
-            if (aktorlistaId.Contains(5) == true || aktorlistaId.Contains(7) == true)
+            if (aktorlistaId.Contains(5) == true || aktorlistaId.Contains(9) == true)
             {
                 this.buttonAndraBehorighet.Enabled = true;
                 this.buttonAndraBehorighet.Visible = true;
